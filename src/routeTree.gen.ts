@@ -17,6 +17,7 @@ import { Route as AppSearchRouteImport } from './routes/app.search'
 import { Route as AppScenariosRouteImport } from './routes/app.scenarios'
 import { Route as AppReportsRouteImport } from './routes/app.reports'
 import { Route as AppLearningRouteImport } from './routes/app.learning'
+import { Route as AppInstructorRouteImport } from './routes/app.instructor'
 import { Route as AppIncidentsRouteImport } from './routes/app.incidents'
 import { Route as AppIdentityRouteImport } from './routes/app.identity'
 import { Route as AppEndpointsRouteImport } from './routes/app.endpoints'
@@ -65,6 +66,11 @@ const AppReportsRoute = AppReportsRouteImport.update({
 const AppLearningRoute = AppLearningRouteImport.update({
   id: '/learning',
   path: '/learning',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppInstructorRoute = AppInstructorRouteImport.update({
+  id: '/instructor',
+  path: '/instructor',
   getParentRoute: () => AppRoute,
 } as any)
 const AppIncidentsRoute = AppIncidentsRouteImport.update({
@@ -123,6 +129,7 @@ export interface FileRoutesByFullPath {
   '/app/endpoints': typeof AppEndpointsRoute
   '/app/identity': typeof AppIdentityRoute
   '/app/incidents': typeof AppIncidentsRoute
+  '/app/instructor': typeof AppInstructorRoute
   '/app/learning': typeof AppLearningRoute
   '/app/reports': typeof AppReportsRoute
   '/app/scenarios': typeof AppScenariosRoute
@@ -141,6 +148,7 @@ export interface FileRoutesByTo {
   '/app/endpoints': typeof AppEndpointsRoute
   '/app/identity': typeof AppIdentityRoute
   '/app/incidents': typeof AppIncidentsRoute
+  '/app/instructor': typeof AppInstructorRoute
   '/app/learning': typeof AppLearningRoute
   '/app/reports': typeof AppReportsRoute
   '/app/scenarios': typeof AppScenariosRoute
@@ -161,6 +169,7 @@ export interface FileRoutesById {
   '/app/endpoints': typeof AppEndpointsRoute
   '/app/identity': typeof AppIdentityRoute
   '/app/incidents': typeof AppIncidentsRoute
+  '/app/instructor': typeof AppInstructorRoute
   '/app/learning': typeof AppLearningRoute
   '/app/reports': typeof AppReportsRoute
   '/app/scenarios': typeof AppScenariosRoute
@@ -182,6 +191,7 @@ export interface FileRouteTypes {
     | '/app/endpoints'
     | '/app/identity'
     | '/app/incidents'
+    | '/app/instructor'
     | '/app/learning'
     | '/app/reports'
     | '/app/scenarios'
@@ -200,6 +210,7 @@ export interface FileRouteTypes {
     | '/app/endpoints'
     | '/app/identity'
     | '/app/incidents'
+    | '/app/instructor'
     | '/app/learning'
     | '/app/reports'
     | '/app/scenarios'
@@ -219,6 +230,7 @@ export interface FileRouteTypes {
     | '/app/endpoints'
     | '/app/identity'
     | '/app/incidents'
+    | '/app/instructor'
     | '/app/learning'
     | '/app/reports'
     | '/app/scenarios'
@@ -290,6 +302,13 @@ declare module '@tanstack/react-router' {
       path: '/learning'
       fullPath: '/app/learning'
       preLoaderRoute: typeof AppLearningRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/instructor': {
+      id: '/app/instructor'
+      path: '/instructor'
+      fullPath: '/app/instructor'
+      preLoaderRoute: typeof AppInstructorRouteImport
       parentRoute: typeof AppRoute
     }
     '/app/incidents': {
@@ -366,6 +385,7 @@ interface AppRouteChildren {
   AppEndpointsRoute: typeof AppEndpointsRoute
   AppIdentityRoute: typeof AppIdentityRoute
   AppIncidentsRoute: typeof AppIncidentsRoute
+  AppInstructorRoute: typeof AppInstructorRoute
   AppLearningRoute: typeof AppLearningRoute
   AppReportsRoute: typeof AppReportsRoute
   AppScenariosRoute: typeof AppScenariosRoute
@@ -384,6 +404,7 @@ const AppRouteChildren: AppRouteChildren = {
   AppEndpointsRoute: AppEndpointsRoute,
   AppIdentityRoute: AppIdentityRoute,
   AppIncidentsRoute: AppIncidentsRoute,
+  AppInstructorRoute: AppInstructorRoute,
   AppLearningRoute: AppLearningRoute,
   AppReportsRoute: AppReportsRoute,
   AppScenariosRoute: AppScenariosRoute,
