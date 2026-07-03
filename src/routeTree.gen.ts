@@ -13,6 +13,7 @@ import { Route as AppRouteImport } from './routes/app'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AppIndexRouteImport } from './routes/app.index'
 import { Route as AppIncidentsRouteImport } from './routes/app.incidents'
+import { Route as AppIdentityRouteImport } from './routes/app.identity'
 import { Route as AppAlertsRouteImport } from './routes/app.alerts'
 import { Route as AppInvestigationsIndexRouteImport } from './routes/app.investigations.index'
 import { Route as AppInvestigationsIdRouteImport } from './routes/app.investigations.$id'
@@ -37,6 +38,11 @@ const AppIncidentsRoute = AppIncidentsRouteImport.update({
   path: '/incidents',
   getParentRoute: () => AppRoute,
 } as any)
+const AppIdentityRoute = AppIdentityRouteImport.update({
+  id: '/identity',
+  path: '/identity',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppAlertsRoute = AppAlertsRouteImport.update({
   id: '/alerts',
   path: '/alerts',
@@ -57,6 +63,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/app': typeof AppRouteWithChildren
   '/app/alerts': typeof AppAlertsRoute
+  '/app/identity': typeof AppIdentityRoute
   '/app/incidents': typeof AppIncidentsRoute
   '/app/': typeof AppIndexRoute
   '/app/investigations/$id': typeof AppInvestigationsIdRoute
@@ -65,6 +72,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/app/alerts': typeof AppAlertsRoute
+  '/app/identity': typeof AppIdentityRoute
   '/app/incidents': typeof AppIncidentsRoute
   '/app': typeof AppIndexRoute
   '/app/investigations/$id': typeof AppInvestigationsIdRoute
@@ -75,6 +83,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/app': typeof AppRouteWithChildren
   '/app/alerts': typeof AppAlertsRoute
+  '/app/identity': typeof AppIdentityRoute
   '/app/incidents': typeof AppIncidentsRoute
   '/app/': typeof AppIndexRoute
   '/app/investigations/$id': typeof AppInvestigationsIdRoute
@@ -86,6 +95,7 @@ export interface FileRouteTypes {
     | '/'
     | '/app'
     | '/app/alerts'
+    | '/app/identity'
     | '/app/incidents'
     | '/app/'
     | '/app/investigations/$id'
@@ -94,6 +104,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/app/alerts'
+    | '/app/identity'
     | '/app/incidents'
     | '/app'
     | '/app/investigations/$id'
@@ -103,6 +114,7 @@ export interface FileRouteTypes {
     | '/'
     | '/app'
     | '/app/alerts'
+    | '/app/identity'
     | '/app/incidents'
     | '/app/'
     | '/app/investigations/$id'
@@ -144,6 +156,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppIncidentsRouteImport
       parentRoute: typeof AppRoute
     }
+    '/app/identity': {
+      id: '/app/identity'
+      path: '/identity'
+      fullPath: '/app/identity'
+      preLoaderRoute: typeof AppIdentityRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/app/alerts': {
       id: '/app/alerts'
       path: '/alerts'
@@ -170,6 +189,7 @@ declare module '@tanstack/react-router' {
 
 interface AppRouteChildren {
   AppAlertsRoute: typeof AppAlertsRoute
+  AppIdentityRoute: typeof AppIdentityRoute
   AppIncidentsRoute: typeof AppIncidentsRoute
   AppIndexRoute: typeof AppIndexRoute
   AppInvestigationsIdRoute: typeof AppInvestigationsIdRoute
@@ -178,6 +198,7 @@ interface AppRouteChildren {
 
 const AppRouteChildren: AppRouteChildren = {
   AppAlertsRoute: AppAlertsRoute,
+  AppIdentityRoute: AppIdentityRoute,
   AppIncidentsRoute: AppIncidentsRoute,
   AppIndexRoute: AppIndexRoute,
   AppInvestigationsIdRoute: AppInvestigationsIdRoute,
