@@ -16,6 +16,7 @@ import { Route as AppThreatIntelRouteImport } from './routes/app.threat-intel'
 import { Route as AppSearchRouteImport } from './routes/app.search'
 import { Route as AppScenariosRouteImport } from './routes/app.scenarios'
 import { Route as AppReportsRouteImport } from './routes/app.reports'
+import { Route as AppOrganizationsRouteImport } from './routes/app.organizations'
 import { Route as AppLearningRouteImport } from './routes/app.learning'
 import { Route as AppInstructorRouteImport } from './routes/app.instructor'
 import { Route as AppIncidentsRouteImport } from './routes/app.incidents'
@@ -61,6 +62,11 @@ const AppScenariosRoute = AppScenariosRouteImport.update({
 const AppReportsRoute = AppReportsRouteImport.update({
   id: '/reports',
   path: '/reports',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppOrganizationsRoute = AppOrganizationsRouteImport.update({
+  id: '/organizations',
+  path: '/organizations',
   getParentRoute: () => AppRoute,
 } as any)
 const AppLearningRoute = AppLearningRouteImport.update({
@@ -131,6 +137,7 @@ export interface FileRoutesByFullPath {
   '/app/incidents': typeof AppIncidentsRoute
   '/app/instructor': typeof AppInstructorRoute
   '/app/learning': typeof AppLearningRoute
+  '/app/organizations': typeof AppOrganizationsRoute
   '/app/reports': typeof AppReportsRoute
   '/app/scenarios': typeof AppScenariosRoute
   '/app/search': typeof AppSearchRoute
@@ -150,6 +157,7 @@ export interface FileRoutesByTo {
   '/app/incidents': typeof AppIncidentsRoute
   '/app/instructor': typeof AppInstructorRoute
   '/app/learning': typeof AppLearningRoute
+  '/app/organizations': typeof AppOrganizationsRoute
   '/app/reports': typeof AppReportsRoute
   '/app/scenarios': typeof AppScenariosRoute
   '/app/search': typeof AppSearchRoute
@@ -171,6 +179,7 @@ export interface FileRoutesById {
   '/app/incidents': typeof AppIncidentsRoute
   '/app/instructor': typeof AppInstructorRoute
   '/app/learning': typeof AppLearningRoute
+  '/app/organizations': typeof AppOrganizationsRoute
   '/app/reports': typeof AppReportsRoute
   '/app/scenarios': typeof AppScenariosRoute
   '/app/search': typeof AppSearchRoute
@@ -193,6 +202,7 @@ export interface FileRouteTypes {
     | '/app/incidents'
     | '/app/instructor'
     | '/app/learning'
+    | '/app/organizations'
     | '/app/reports'
     | '/app/scenarios'
     | '/app/search'
@@ -212,6 +222,7 @@ export interface FileRouteTypes {
     | '/app/incidents'
     | '/app/instructor'
     | '/app/learning'
+    | '/app/organizations'
     | '/app/reports'
     | '/app/scenarios'
     | '/app/search'
@@ -232,6 +243,7 @@ export interface FileRouteTypes {
     | '/app/incidents'
     | '/app/instructor'
     | '/app/learning'
+    | '/app/organizations'
     | '/app/reports'
     | '/app/scenarios'
     | '/app/search'
@@ -295,6 +307,13 @@ declare module '@tanstack/react-router' {
       path: '/reports'
       fullPath: '/app/reports'
       preLoaderRoute: typeof AppReportsRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/organizations': {
+      id: '/app/organizations'
+      path: '/organizations'
+      fullPath: '/app/organizations'
+      preLoaderRoute: typeof AppOrganizationsRouteImport
       parentRoute: typeof AppRoute
     }
     '/app/learning': {
@@ -387,6 +406,7 @@ interface AppRouteChildren {
   AppIncidentsRoute: typeof AppIncidentsRoute
   AppInstructorRoute: typeof AppInstructorRoute
   AppLearningRoute: typeof AppLearningRoute
+  AppOrganizationsRoute: typeof AppOrganizationsRoute
   AppReportsRoute: typeof AppReportsRoute
   AppScenariosRoute: typeof AppScenariosRoute
   AppSearchRoute: typeof AppSearchRoute
@@ -406,6 +426,7 @@ const AppRouteChildren: AppRouteChildren = {
   AppIncidentsRoute: AppIncidentsRoute,
   AppInstructorRoute: AppInstructorRoute,
   AppLearningRoute: AppLearningRoute,
+  AppOrganizationsRoute: AppOrganizationsRoute,
   AppReportsRoute: AppReportsRoute,
   AppScenariosRoute: AppScenariosRoute,
   AppSearchRoute: AppSearchRoute,
