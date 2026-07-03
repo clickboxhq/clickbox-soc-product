@@ -13,6 +13,7 @@ import { Route as AppRouteImport } from './routes/app'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AppIndexRouteImport } from './routes/app.index'
 import { Route as AppThreatIntelRouteImport } from './routes/app.threat-intel'
+import { Route as AppSettingsRouteImport } from './routes/app.settings'
 import { Route as AppSearchRouteImport } from './routes/app.search'
 import { Route as AppScenariosRouteImport } from './routes/app.scenarios'
 import { Route as AppReportsRouteImport } from './routes/app.reports'
@@ -47,6 +48,11 @@ const AppIndexRoute = AppIndexRouteImport.update({
 const AppThreatIntelRoute = AppThreatIntelRouteImport.update({
   id: '/threat-intel',
   path: '/threat-intel',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppSettingsRoute = AppSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
   getParentRoute: () => AppRoute,
 } as any)
 const AppSearchRoute = AppSearchRouteImport.update({
@@ -141,6 +147,7 @@ export interface FileRoutesByFullPath {
   '/app/reports': typeof AppReportsRoute
   '/app/scenarios': typeof AppScenariosRoute
   '/app/search': typeof AppSearchRoute
+  '/app/settings': typeof AppSettingsRoute
   '/app/threat-intel': typeof AppThreatIntelRoute
   '/app/': typeof AppIndexRoute
   '/app/investigations/$id': typeof AppInvestigationsIdRoute
@@ -161,6 +168,7 @@ export interface FileRoutesByTo {
   '/app/reports': typeof AppReportsRoute
   '/app/scenarios': typeof AppScenariosRoute
   '/app/search': typeof AppSearchRoute
+  '/app/settings': typeof AppSettingsRoute
   '/app/threat-intel': typeof AppThreatIntelRoute
   '/app': typeof AppIndexRoute
   '/app/investigations/$id': typeof AppInvestigationsIdRoute
@@ -183,6 +191,7 @@ export interface FileRoutesById {
   '/app/reports': typeof AppReportsRoute
   '/app/scenarios': typeof AppScenariosRoute
   '/app/search': typeof AppSearchRoute
+  '/app/settings': typeof AppSettingsRoute
   '/app/threat-intel': typeof AppThreatIntelRoute
   '/app/': typeof AppIndexRoute
   '/app/investigations/$id': typeof AppInvestigationsIdRoute
@@ -206,6 +215,7 @@ export interface FileRouteTypes {
     | '/app/reports'
     | '/app/scenarios'
     | '/app/search'
+    | '/app/settings'
     | '/app/threat-intel'
     | '/app/'
     | '/app/investigations/$id'
@@ -226,6 +236,7 @@ export interface FileRouteTypes {
     | '/app/reports'
     | '/app/scenarios'
     | '/app/search'
+    | '/app/settings'
     | '/app/threat-intel'
     | '/app'
     | '/app/investigations/$id'
@@ -247,6 +258,7 @@ export interface FileRouteTypes {
     | '/app/reports'
     | '/app/scenarios'
     | '/app/search'
+    | '/app/settings'
     | '/app/threat-intel'
     | '/app/'
     | '/app/investigations/$id'
@@ -286,6 +298,13 @@ declare module '@tanstack/react-router' {
       path: '/threat-intel'
       fullPath: '/app/threat-intel'
       preLoaderRoute: typeof AppThreatIntelRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/settings': {
+      id: '/app/settings'
+      path: '/settings'
+      fullPath: '/app/settings'
+      preLoaderRoute: typeof AppSettingsRouteImport
       parentRoute: typeof AppRoute
     }
     '/app/search': {
@@ -410,6 +429,7 @@ interface AppRouteChildren {
   AppReportsRoute: typeof AppReportsRoute
   AppScenariosRoute: typeof AppScenariosRoute
   AppSearchRoute: typeof AppSearchRoute
+  AppSettingsRoute: typeof AppSettingsRoute
   AppThreatIntelRoute: typeof AppThreatIntelRoute
   AppIndexRoute: typeof AppIndexRoute
   AppInvestigationsIdRoute: typeof AppInvestigationsIdRoute
@@ -430,6 +450,7 @@ const AppRouteChildren: AppRouteChildren = {
   AppReportsRoute: AppReportsRoute,
   AppScenariosRoute: AppScenariosRoute,
   AppSearchRoute: AppSearchRoute,
+  AppSettingsRoute: AppSettingsRoute,
   AppThreatIntelRoute: AppThreatIntelRoute,
   AppIndexRoute: AppIndexRoute,
   AppInvestigationsIdRoute: AppInvestigationsIdRoute,
