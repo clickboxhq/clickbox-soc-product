@@ -20,6 +20,7 @@ import { Route as AppIncidentsRouteImport } from './routes/app.incidents'
 import { Route as AppIdentityRouteImport } from './routes/app.identity'
 import { Route as AppEndpointsRouteImport } from './routes/app.endpoints'
 import { Route as AppEmailRouteImport } from './routes/app.email'
+import { Route as AppCertificatesRouteImport } from './routes/app.certificates'
 import { Route as AppAlertsRouteImport } from './routes/app.alerts'
 import { Route as AppInvestigationsIndexRouteImport } from './routes/app.investigations.index'
 import { Route as AppInvestigationsIdRouteImport } from './routes/app.investigations.$id'
@@ -79,6 +80,11 @@ const AppEmailRoute = AppEmailRouteImport.update({
   path: '/email',
   getParentRoute: () => AppRoute,
 } as any)
+const AppCertificatesRoute = AppCertificatesRouteImport.update({
+  id: '/certificates',
+  path: '/certificates',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppAlertsRoute = AppAlertsRouteImport.update({
   id: '/alerts',
   path: '/alerts',
@@ -99,6 +105,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/app': typeof AppRouteWithChildren
   '/app/alerts': typeof AppAlertsRoute
+  '/app/certificates': typeof AppCertificatesRoute
   '/app/email': typeof AppEmailRoute
   '/app/endpoints': typeof AppEndpointsRoute
   '/app/identity': typeof AppIdentityRoute
@@ -114,6 +121,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/app/alerts': typeof AppAlertsRoute
+  '/app/certificates': typeof AppCertificatesRoute
   '/app/email': typeof AppEmailRoute
   '/app/endpoints': typeof AppEndpointsRoute
   '/app/identity': typeof AppIdentityRoute
@@ -131,6 +139,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/app': typeof AppRouteWithChildren
   '/app/alerts': typeof AppAlertsRoute
+  '/app/certificates': typeof AppCertificatesRoute
   '/app/email': typeof AppEmailRoute
   '/app/endpoints': typeof AppEndpointsRoute
   '/app/identity': typeof AppIdentityRoute
@@ -149,6 +158,7 @@ export interface FileRouteTypes {
     | '/'
     | '/app'
     | '/app/alerts'
+    | '/app/certificates'
     | '/app/email'
     | '/app/endpoints'
     | '/app/identity'
@@ -164,6 +174,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/app/alerts'
+    | '/app/certificates'
     | '/app/email'
     | '/app/endpoints'
     | '/app/identity'
@@ -180,6 +191,7 @@ export interface FileRouteTypes {
     | '/'
     | '/app'
     | '/app/alerts'
+    | '/app/certificates'
     | '/app/email'
     | '/app/endpoints'
     | '/app/identity'
@@ -277,6 +289,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppEmailRouteImport
       parentRoute: typeof AppRoute
     }
+    '/app/certificates': {
+      id: '/app/certificates'
+      path: '/certificates'
+      fullPath: '/app/certificates'
+      preLoaderRoute: typeof AppCertificatesRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/app/alerts': {
       id: '/app/alerts'
       path: '/alerts'
@@ -303,6 +322,7 @@ declare module '@tanstack/react-router' {
 
 interface AppRouteChildren {
   AppAlertsRoute: typeof AppAlertsRoute
+  AppCertificatesRoute: typeof AppCertificatesRoute
   AppEmailRoute: typeof AppEmailRoute
   AppEndpointsRoute: typeof AppEndpointsRoute
   AppIdentityRoute: typeof AppIdentityRoute
@@ -318,6 +338,7 @@ interface AppRouteChildren {
 
 const AppRouteChildren: AppRouteChildren = {
   AppAlertsRoute: AppAlertsRoute,
+  AppCertificatesRoute: AppCertificatesRoute,
   AppEmailRoute: AppEmailRoute,
   AppEndpointsRoute: AppEndpointsRoute,
   AppIdentityRoute: AppIdentityRoute,
