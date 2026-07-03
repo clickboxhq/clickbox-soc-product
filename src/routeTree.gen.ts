@@ -9,38 +9,288 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as AppRouteImport } from './routes/app'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AppIndexRouteImport } from './routes/app.index'
+import { Route as AppThreatIntelRouteImport } from './routes/app.threat-intel'
+import { Route as AppSettingsRouteImport } from './routes/app.settings'
+import { Route as AppSearchRouteImport } from './routes/app.search'
+import { Route as AppScenariosRouteImport } from './routes/app.scenarios'
+import { Route as AppReportsRouteImport } from './routes/app.reports'
+import { Route as AppProfileRouteImport } from './routes/app.profile'
+import { Route as AppOrganizationsRouteImport } from './routes/app.organizations'
+import { Route as AppLearningRouteImport } from './routes/app.learning'
+import { Route as AppInstructorRouteImport } from './routes/app.instructor'
+import { Route as AppIncidentsRouteImport } from './routes/app.incidents'
+import { Route as AppIdentityRouteImport } from './routes/app.identity'
+import { Route as AppEndpointsRouteImport } from './routes/app.endpoints'
+import { Route as AppEmailRouteImport } from './routes/app.email'
+import { Route as AppCertificatesRouteImport } from './routes/app.certificates'
+import { Route as AppAnalyticsRouteImport } from './routes/app.analytics'
+import { Route as AppAlertsRouteImport } from './routes/app.alerts'
+import { Route as AppInvestigationsIndexRouteImport } from './routes/app.investigations.index'
+import { Route as AppInvestigationsIdRouteImport } from './routes/app.investigations.$id'
 
+const AppRoute = AppRouteImport.update({
+  id: '/app',
+  path: '/app',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AppIndexRoute = AppIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppThreatIntelRoute = AppThreatIntelRouteImport.update({
+  id: '/threat-intel',
+  path: '/threat-intel',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppSettingsRoute = AppSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppSearchRoute = AppSearchRouteImport.update({
+  id: '/search',
+  path: '/search',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppScenariosRoute = AppScenariosRouteImport.update({
+  id: '/scenarios',
+  path: '/scenarios',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppReportsRoute = AppReportsRouteImport.update({
+  id: '/reports',
+  path: '/reports',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppProfileRoute = AppProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppOrganizationsRoute = AppOrganizationsRouteImport.update({
+  id: '/organizations',
+  path: '/organizations',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppLearningRoute = AppLearningRouteImport.update({
+  id: '/learning',
+  path: '/learning',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppInstructorRoute = AppInstructorRouteImport.update({
+  id: '/instructor',
+  path: '/instructor',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppIncidentsRoute = AppIncidentsRouteImport.update({
+  id: '/incidents',
+  path: '/incidents',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppIdentityRoute = AppIdentityRouteImport.update({
+  id: '/identity',
+  path: '/identity',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppEndpointsRoute = AppEndpointsRouteImport.update({
+  id: '/endpoints',
+  path: '/endpoints',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppEmailRoute = AppEmailRouteImport.update({
+  id: '/email',
+  path: '/email',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppCertificatesRoute = AppCertificatesRouteImport.update({
+  id: '/certificates',
+  path: '/certificates',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppAnalyticsRoute = AppAnalyticsRouteImport.update({
+  id: '/analytics',
+  path: '/analytics',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppAlertsRoute = AppAlertsRouteImport.update({
+  id: '/alerts',
+  path: '/alerts',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppInvestigationsIndexRoute = AppInvestigationsIndexRouteImport.update({
+  id: '/investigations/',
+  path: '/investigations/',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppInvestigationsIdRoute = AppInvestigationsIdRouteImport.update({
+  id: '/investigations/$id',
+  path: '/investigations/$id',
+  getParentRoute: () => AppRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/app': typeof AppRouteWithChildren
+  '/app/alerts': typeof AppAlertsRoute
+  '/app/analytics': typeof AppAnalyticsRoute
+  '/app/certificates': typeof AppCertificatesRoute
+  '/app/email': typeof AppEmailRoute
+  '/app/endpoints': typeof AppEndpointsRoute
+  '/app/identity': typeof AppIdentityRoute
+  '/app/incidents': typeof AppIncidentsRoute
+  '/app/instructor': typeof AppInstructorRoute
+  '/app/learning': typeof AppLearningRoute
+  '/app/organizations': typeof AppOrganizationsRoute
+  '/app/profile': typeof AppProfileRoute
+  '/app/reports': typeof AppReportsRoute
+  '/app/scenarios': typeof AppScenariosRoute
+  '/app/search': typeof AppSearchRoute
+  '/app/settings': typeof AppSettingsRoute
+  '/app/threat-intel': typeof AppThreatIntelRoute
+  '/app/': typeof AppIndexRoute
+  '/app/investigations/$id': typeof AppInvestigationsIdRoute
+  '/app/investigations/': typeof AppInvestigationsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/app/alerts': typeof AppAlertsRoute
+  '/app/analytics': typeof AppAnalyticsRoute
+  '/app/certificates': typeof AppCertificatesRoute
+  '/app/email': typeof AppEmailRoute
+  '/app/endpoints': typeof AppEndpointsRoute
+  '/app/identity': typeof AppIdentityRoute
+  '/app/incidents': typeof AppIncidentsRoute
+  '/app/instructor': typeof AppInstructorRoute
+  '/app/learning': typeof AppLearningRoute
+  '/app/organizations': typeof AppOrganizationsRoute
+  '/app/profile': typeof AppProfileRoute
+  '/app/reports': typeof AppReportsRoute
+  '/app/scenarios': typeof AppScenariosRoute
+  '/app/search': typeof AppSearchRoute
+  '/app/settings': typeof AppSettingsRoute
+  '/app/threat-intel': typeof AppThreatIntelRoute
+  '/app': typeof AppIndexRoute
+  '/app/investigations/$id': typeof AppInvestigationsIdRoute
+  '/app/investigations': typeof AppInvestigationsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/app': typeof AppRouteWithChildren
+  '/app/alerts': typeof AppAlertsRoute
+  '/app/analytics': typeof AppAnalyticsRoute
+  '/app/certificates': typeof AppCertificatesRoute
+  '/app/email': typeof AppEmailRoute
+  '/app/endpoints': typeof AppEndpointsRoute
+  '/app/identity': typeof AppIdentityRoute
+  '/app/incidents': typeof AppIncidentsRoute
+  '/app/instructor': typeof AppInstructorRoute
+  '/app/learning': typeof AppLearningRoute
+  '/app/organizations': typeof AppOrganizationsRoute
+  '/app/profile': typeof AppProfileRoute
+  '/app/reports': typeof AppReportsRoute
+  '/app/scenarios': typeof AppScenariosRoute
+  '/app/search': typeof AppSearchRoute
+  '/app/settings': typeof AppSettingsRoute
+  '/app/threat-intel': typeof AppThreatIntelRoute
+  '/app/': typeof AppIndexRoute
+  '/app/investigations/$id': typeof AppInvestigationsIdRoute
+  '/app/investigations/': typeof AppInvestigationsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/app'
+    | '/app/alerts'
+    | '/app/analytics'
+    | '/app/certificates'
+    | '/app/email'
+    | '/app/endpoints'
+    | '/app/identity'
+    | '/app/incidents'
+    | '/app/instructor'
+    | '/app/learning'
+    | '/app/organizations'
+    | '/app/profile'
+    | '/app/reports'
+    | '/app/scenarios'
+    | '/app/search'
+    | '/app/settings'
+    | '/app/threat-intel'
+    | '/app/'
+    | '/app/investigations/$id'
+    | '/app/investigations/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/app/alerts'
+    | '/app/analytics'
+    | '/app/certificates'
+    | '/app/email'
+    | '/app/endpoints'
+    | '/app/identity'
+    | '/app/incidents'
+    | '/app/instructor'
+    | '/app/learning'
+    | '/app/organizations'
+    | '/app/profile'
+    | '/app/reports'
+    | '/app/scenarios'
+    | '/app/search'
+    | '/app/settings'
+    | '/app/threat-intel'
+    | '/app'
+    | '/app/investigations/$id'
+    | '/app/investigations'
+  id:
+    | '__root__'
+    | '/'
+    | '/app'
+    | '/app/alerts'
+    | '/app/analytics'
+    | '/app/certificates'
+    | '/app/email'
+    | '/app/endpoints'
+    | '/app/identity'
+    | '/app/incidents'
+    | '/app/instructor'
+    | '/app/learning'
+    | '/app/organizations'
+    | '/app/profile'
+    | '/app/reports'
+    | '/app/scenarios'
+    | '/app/search'
+    | '/app/settings'
+    | '/app/threat-intel'
+    | '/app/'
+    | '/app/investigations/$id'
+    | '/app/investigations/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AppRoute: typeof AppRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/app': {
+      id: '/app'
+      path: '/app'
+      fullPath: '/app'
+      preLoaderRoute: typeof AppRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,22 +298,192 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/app/': {
+      id: '/app/'
+      path: '/'
+      fullPath: '/app/'
+      preLoaderRoute: typeof AppIndexRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/threat-intel': {
+      id: '/app/threat-intel'
+      path: '/threat-intel'
+      fullPath: '/app/threat-intel'
+      preLoaderRoute: typeof AppThreatIntelRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/settings': {
+      id: '/app/settings'
+      path: '/settings'
+      fullPath: '/app/settings'
+      preLoaderRoute: typeof AppSettingsRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/search': {
+      id: '/app/search'
+      path: '/search'
+      fullPath: '/app/search'
+      preLoaderRoute: typeof AppSearchRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/scenarios': {
+      id: '/app/scenarios'
+      path: '/scenarios'
+      fullPath: '/app/scenarios'
+      preLoaderRoute: typeof AppScenariosRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/reports': {
+      id: '/app/reports'
+      path: '/reports'
+      fullPath: '/app/reports'
+      preLoaderRoute: typeof AppReportsRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/profile': {
+      id: '/app/profile'
+      path: '/profile'
+      fullPath: '/app/profile'
+      preLoaderRoute: typeof AppProfileRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/organizations': {
+      id: '/app/organizations'
+      path: '/organizations'
+      fullPath: '/app/organizations'
+      preLoaderRoute: typeof AppOrganizationsRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/learning': {
+      id: '/app/learning'
+      path: '/learning'
+      fullPath: '/app/learning'
+      preLoaderRoute: typeof AppLearningRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/instructor': {
+      id: '/app/instructor'
+      path: '/instructor'
+      fullPath: '/app/instructor'
+      preLoaderRoute: typeof AppInstructorRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/incidents': {
+      id: '/app/incidents'
+      path: '/incidents'
+      fullPath: '/app/incidents'
+      preLoaderRoute: typeof AppIncidentsRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/identity': {
+      id: '/app/identity'
+      path: '/identity'
+      fullPath: '/app/identity'
+      preLoaderRoute: typeof AppIdentityRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/endpoints': {
+      id: '/app/endpoints'
+      path: '/endpoints'
+      fullPath: '/app/endpoints'
+      preLoaderRoute: typeof AppEndpointsRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/email': {
+      id: '/app/email'
+      path: '/email'
+      fullPath: '/app/email'
+      preLoaderRoute: typeof AppEmailRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/certificates': {
+      id: '/app/certificates'
+      path: '/certificates'
+      fullPath: '/app/certificates'
+      preLoaderRoute: typeof AppCertificatesRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/analytics': {
+      id: '/app/analytics'
+      path: '/analytics'
+      fullPath: '/app/analytics'
+      preLoaderRoute: typeof AppAnalyticsRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/alerts': {
+      id: '/app/alerts'
+      path: '/alerts'
+      fullPath: '/app/alerts'
+      preLoaderRoute: typeof AppAlertsRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/investigations/': {
+      id: '/app/investigations/'
+      path: '/investigations'
+      fullPath: '/app/investigations/'
+      preLoaderRoute: typeof AppInvestigationsIndexRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/investigations/$id': {
+      id: '/app/investigations/$id'
+      path: '/investigations/$id'
+      fullPath: '/app/investigations/$id'
+      preLoaderRoute: typeof AppInvestigationsIdRouteImport
+      parentRoute: typeof AppRoute
+    }
   }
 }
 
+interface AppRouteChildren {
+  AppAlertsRoute: typeof AppAlertsRoute
+  AppAnalyticsRoute: typeof AppAnalyticsRoute
+  AppCertificatesRoute: typeof AppCertificatesRoute
+  AppEmailRoute: typeof AppEmailRoute
+  AppEndpointsRoute: typeof AppEndpointsRoute
+  AppIdentityRoute: typeof AppIdentityRoute
+  AppIncidentsRoute: typeof AppIncidentsRoute
+  AppInstructorRoute: typeof AppInstructorRoute
+  AppLearningRoute: typeof AppLearningRoute
+  AppOrganizationsRoute: typeof AppOrganizationsRoute
+  AppProfileRoute: typeof AppProfileRoute
+  AppReportsRoute: typeof AppReportsRoute
+  AppScenariosRoute: typeof AppScenariosRoute
+  AppSearchRoute: typeof AppSearchRoute
+  AppSettingsRoute: typeof AppSettingsRoute
+  AppThreatIntelRoute: typeof AppThreatIntelRoute
+  AppIndexRoute: typeof AppIndexRoute
+  AppInvestigationsIdRoute: typeof AppInvestigationsIdRoute
+  AppInvestigationsIndexRoute: typeof AppInvestigationsIndexRoute
+}
+
+const AppRouteChildren: AppRouteChildren = {
+  AppAlertsRoute: AppAlertsRoute,
+  AppAnalyticsRoute: AppAnalyticsRoute,
+  AppCertificatesRoute: AppCertificatesRoute,
+  AppEmailRoute: AppEmailRoute,
+  AppEndpointsRoute: AppEndpointsRoute,
+  AppIdentityRoute: AppIdentityRoute,
+  AppIncidentsRoute: AppIncidentsRoute,
+  AppInstructorRoute: AppInstructorRoute,
+  AppLearningRoute: AppLearningRoute,
+  AppOrganizationsRoute: AppOrganizationsRoute,
+  AppProfileRoute: AppProfileRoute,
+  AppReportsRoute: AppReportsRoute,
+  AppScenariosRoute: AppScenariosRoute,
+  AppSearchRoute: AppSearchRoute,
+  AppSettingsRoute: AppSettingsRoute,
+  AppThreatIntelRoute: AppThreatIntelRoute,
+  AppIndexRoute: AppIndexRoute,
+  AppInvestigationsIdRoute: AppInvestigationsIdRoute,
+  AppInvestigationsIndexRoute: AppInvestigationsIndexRoute,
+}
+
+const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AppRoute: AppRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
