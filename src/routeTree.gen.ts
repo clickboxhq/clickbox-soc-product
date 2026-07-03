@@ -17,6 +17,7 @@ import { Route as AppSettingsRouteImport } from './routes/app.settings'
 import { Route as AppSearchRouteImport } from './routes/app.search'
 import { Route as AppScenariosRouteImport } from './routes/app.scenarios'
 import { Route as AppReportsRouteImport } from './routes/app.reports'
+import { Route as AppProfileRouteImport } from './routes/app.profile'
 import { Route as AppOrganizationsRouteImport } from './routes/app.organizations'
 import { Route as AppLearningRouteImport } from './routes/app.learning'
 import { Route as AppInstructorRouteImport } from './routes/app.instructor'
@@ -68,6 +69,11 @@ const AppScenariosRoute = AppScenariosRouteImport.update({
 const AppReportsRoute = AppReportsRouteImport.update({
   id: '/reports',
   path: '/reports',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppProfileRoute = AppProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
   getParentRoute: () => AppRoute,
 } as any)
 const AppOrganizationsRoute = AppOrganizationsRouteImport.update({
@@ -144,6 +150,7 @@ export interface FileRoutesByFullPath {
   '/app/instructor': typeof AppInstructorRoute
   '/app/learning': typeof AppLearningRoute
   '/app/organizations': typeof AppOrganizationsRoute
+  '/app/profile': typeof AppProfileRoute
   '/app/reports': typeof AppReportsRoute
   '/app/scenarios': typeof AppScenariosRoute
   '/app/search': typeof AppSearchRoute
@@ -165,6 +172,7 @@ export interface FileRoutesByTo {
   '/app/instructor': typeof AppInstructorRoute
   '/app/learning': typeof AppLearningRoute
   '/app/organizations': typeof AppOrganizationsRoute
+  '/app/profile': typeof AppProfileRoute
   '/app/reports': typeof AppReportsRoute
   '/app/scenarios': typeof AppScenariosRoute
   '/app/search': typeof AppSearchRoute
@@ -188,6 +196,7 @@ export interface FileRoutesById {
   '/app/instructor': typeof AppInstructorRoute
   '/app/learning': typeof AppLearningRoute
   '/app/organizations': typeof AppOrganizationsRoute
+  '/app/profile': typeof AppProfileRoute
   '/app/reports': typeof AppReportsRoute
   '/app/scenarios': typeof AppScenariosRoute
   '/app/search': typeof AppSearchRoute
@@ -212,6 +221,7 @@ export interface FileRouteTypes {
     | '/app/instructor'
     | '/app/learning'
     | '/app/organizations'
+    | '/app/profile'
     | '/app/reports'
     | '/app/scenarios'
     | '/app/search'
@@ -233,6 +243,7 @@ export interface FileRouteTypes {
     | '/app/instructor'
     | '/app/learning'
     | '/app/organizations'
+    | '/app/profile'
     | '/app/reports'
     | '/app/scenarios'
     | '/app/search'
@@ -255,6 +266,7 @@ export interface FileRouteTypes {
     | '/app/instructor'
     | '/app/learning'
     | '/app/organizations'
+    | '/app/profile'
     | '/app/reports'
     | '/app/scenarios'
     | '/app/search'
@@ -326,6 +338,13 @@ declare module '@tanstack/react-router' {
       path: '/reports'
       fullPath: '/app/reports'
       preLoaderRoute: typeof AppReportsRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/profile': {
+      id: '/app/profile'
+      path: '/profile'
+      fullPath: '/app/profile'
+      preLoaderRoute: typeof AppProfileRouteImport
       parentRoute: typeof AppRoute
     }
     '/app/organizations': {
@@ -426,6 +445,7 @@ interface AppRouteChildren {
   AppInstructorRoute: typeof AppInstructorRoute
   AppLearningRoute: typeof AppLearningRoute
   AppOrganizationsRoute: typeof AppOrganizationsRoute
+  AppProfileRoute: typeof AppProfileRoute
   AppReportsRoute: typeof AppReportsRoute
   AppScenariosRoute: typeof AppScenariosRoute
   AppSearchRoute: typeof AppSearchRoute
@@ -447,6 +467,7 @@ const AppRouteChildren: AppRouteChildren = {
   AppInstructorRoute: AppInstructorRoute,
   AppLearningRoute: AppLearningRoute,
   AppOrganizationsRoute: AppOrganizationsRoute,
+  AppProfileRoute: AppProfileRoute,
   AppReportsRoute: AppReportsRoute,
   AppScenariosRoute: AppScenariosRoute,
   AppSearchRoute: AppSearchRoute,
