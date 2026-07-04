@@ -178,6 +178,40 @@
   a {
     color: inherit;
   }
+
+  body :is(
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
+    span,
+    div,
+    a,
+    button,
+    label,
+    input,
+    textarea,
+    select,
+    option,
+    th,
+    td,
+    li,
+    small,
+    kbd,
+    strong,
+    em,
+    code,
+    svg
+  ) {
+    color: #ffffff !important;
+  }
+
+  body :is([class*="text-[color:var(--info)]"]) {
+    color: var(--info) !important;
+  }
 }
 
 /* Enforce white status text globally while preserving ClickBox emerald brand accents. */
@@ -185,7 +219,7 @@
 [class*="text-[color:var(--high)]"],
 [class*="text-[color:var(--warning)]"],
 [class*="text-[color:var(--success)]"] {
-  color: #ffffff;
+  color: #ffffff !important;
 }
 
 @utility text-secondary {
