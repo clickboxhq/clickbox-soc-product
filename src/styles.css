@@ -75,14 +75,14 @@
   --surface: oklch(0.20 0.006 240);           /* ~#12161B */
   --surface-2: oklch(0.235 0.006 240);
   --card: oklch(0.195 0.006 240);             /* ~#111419 */
-  --card-foreground: oklch(1 0 0);
+  --card-foreground: #ffffff;
   --popover: oklch(0.195 0.006 240);
-  --popover-foreground: oklch(1 0 0);
+  --popover-foreground: #ffffff;
 
-  /* Text — high contrast, WCAG AA on dark surfaces */
-  --foreground: oklch(1 0 0);                    /* #FFFFFF primary */
-  --secondary-foreground: oklch(0.94 0.004 240); /* ~#EDEFF2 body */
-  --muted-foreground: oklch(0.85 0.006 240);     /* ~#CFD3D9 muted (still AA) */
+  /* Text — platform-wide pure white for maximum readability */
+  --foreground: #ffffff;
+  --secondary-foreground: #ffffff;
+  --muted-foreground: #ffffff;
 
   /* Borders / inputs */
   --border: oklch(0.30 0.008 240);            /* ~#262C34 */
@@ -91,13 +91,13 @@
 
   /* Buttons / accents — ClickBox deep emerald */
   --primary: oklch(0.55 0.13 156);            /* ~#0F6E48 deep emerald */
-  --primary-foreground: oklch(1 0 0);
+  --primary-foreground: #ffffff;
   --secondary: oklch(0.26 0.008 240);
   --muted: oklch(0.24 0.006 240);
   --accent: oklch(0.30 0.008 240);
-  --accent-foreground: oklch(1 0 0);
+  --accent-foreground: #ffffff;
   --destructive: oklch(0.66 0.22 22);
-  --destructive-foreground: oklch(1 0 0);
+  --destructive-foreground: #ffffff;
 
   /* Status */
   --success: oklch(0.62 0.14 156);            /* emerald */
@@ -107,12 +107,12 @@
   --info: oklch(0.55 0.13 156);               /* accent = deep emerald */
 
   /* Sidebar */
-  --sidebar-foreground: oklch(0.905 0.006 240);
+  --sidebar-foreground: #ffffff;
   --sidebar-accent: oklch(0.24 0.008 240);
-  --sidebar-accent-foreground: oklch(1 0 0);
+  --sidebar-accent-foreground: #ffffff;
   --sidebar-border: oklch(0.24 0.008 240);
   --sidebar-primary: oklch(0.55 0.13 156);
-  --sidebar-primary-foreground: oklch(1 0 0);
+  --sidebar-primary-foreground: #ffffff;
   --sidebar-ring: oklch(0.55 0.13 156);
 
   /* Charts (emerald accent + supporting) */
@@ -158,6 +158,34 @@
   ::selection {
     background-color: color-mix(in oklab, var(--info) 40%, transparent);
   }
+
+  ::placeholder {
+    color: #ffffff;
+    opacity: 1;
+  }
+
+  input,
+  textarea,
+  select,
+  button,
+  table,
+  th,
+  td,
+  label,
+  small,
+  p,
+  li,
+  a {
+    color: inherit;
+  }
+}
+
+/* Enforce white status text globally while preserving ClickBox emerald brand accents. */
+[class*="text-[color:var(--critical)]"],
+[class*="text-[color:var(--high)]"],
+[class*="text-[color:var(--warning)]"],
+[class*="text-[color:var(--success)]"] {
+  color: #ffffff;
 }
 
 @utility text-secondary {
