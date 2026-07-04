@@ -13,6 +13,7 @@ import {
   Target,
 } from "lucide-react";
 import { SeverityBadge } from "@/components/soc/primitives";
+import clickboxLogo from "@/assets/clickbox-logo.asset.json";
 
 export const Route = createFileRoute("/")({
   component: Landing,
