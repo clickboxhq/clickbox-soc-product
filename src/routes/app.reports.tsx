@@ -22,7 +22,7 @@ function ReportsPage() {
         title="Reports"
         description="Executive briefs, analyst performance, MITRE coverage, and learning outcomes."
         actions={
-          <button className="inline-flex h-9 items-center gap-2 rounded-md bg-[color:var(--info)] px-3 text-[12px] font-medium text-white">
+          <button className="inline-flex h-9 items-center gap-2 rounded-md bg-[color:var(--info)] px-3 text-[12px] font-medium text-[color:var(--background)]">
             Generate report
           </button>
         }
