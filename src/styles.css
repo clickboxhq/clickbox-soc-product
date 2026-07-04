@@ -81,43 +81,43 @@
 
   /* Text — higher contrast, always readable */
   --foreground: oklch(1 0 0);                 /* #FFFFFF */
-  --secondary-foreground: oklch(0.89 0.008 240); /* ~#D6DCE4 */
-  --muted-foreground: oklch(0.72 0.010 240);  /* ~#A2ABB8 */
+  --secondary-foreground: oklch(0.905 0.006 240); /* ~#DCE0E5 */
+  --muted-foreground: oklch(0.78 0.008 240);  /* ~#B4BAC3 */
 
   /* Borders / inputs */
-  --border: oklch(0.28 0.008 240);            /* ~#22282F */
-  --input: oklch(0.28 0.008 240);
-  --ring: oklch(0.88 0.22 138);
+  --border: oklch(0.30 0.008 240);            /* ~#262C34 */
+  --input: oklch(0.30 0.008 240);
+  --ring: oklch(0.58 0.13 156);
 
-  /* Buttons / accents */
-  --primary: oklch(0.88 0.22 138);            /* ClickBox lime green */
-  --primary-foreground: oklch(0.14 0.006 240);
+  /* Buttons / accents — ClickBox deep emerald */
+  --primary: oklch(0.55 0.13 156);            /* ~#0F6E48 deep emerald */
+  --primary-foreground: oklch(1 0 0);
   --secondary: oklch(0.26 0.008 240);
   --muted: oklch(0.24 0.006 240);
-  --accent: oklch(0.28 0.008 240);
+  --accent: oklch(0.30 0.008 240);
   --accent-foreground: oklch(1 0 0);
   --destructive: oklch(0.66 0.22 22);
   --destructive-foreground: oklch(1 0 0);
 
   /* Status */
-  --success: oklch(0.82 0.20 148);            /* premium green */
+  --success: oklch(0.62 0.14 156);            /* emerald */
   --warning: oklch(0.82 0.17 82);
   --high: oklch(0.72 0.19 45);
   --critical: oklch(0.66 0.22 22);
-  --info: oklch(0.88 0.22 138);               /* accent = ClickBox green */
+  --info: oklch(0.55 0.13 156);               /* accent = deep emerald */
 
   /* Sidebar */
-  --sidebar-foreground: oklch(0.89 0.008 240);
+  --sidebar-foreground: oklch(0.905 0.006 240);
   --sidebar-accent: oklch(0.24 0.008 240);
   --sidebar-accent-foreground: oklch(1 0 0);
   --sidebar-border: oklch(0.24 0.008 240);
-  --sidebar-primary: oklch(0.88 0.22 138);
-  --sidebar-primary-foreground: oklch(0.14 0.006 240);
-  --sidebar-ring: oklch(0.88 0.22 138);
+  --sidebar-primary: oklch(0.55 0.13 156);
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --sidebar-ring: oklch(0.55 0.13 156);
 
-  /* Charts (green accent + supporting) */
-  --chart-1: oklch(0.88 0.22 138);
-  --chart-2: oklch(0.82 0.20 148);
+  /* Charts (emerald accent + supporting) */
+  --chart-1: oklch(0.55 0.13 156);
+  --chart-2: oklch(0.68 0.14 156);
   --chart-3: oklch(0.82 0.17 82);
   --chart-4: oklch(0.72 0.19 45);
   --chart-5: oklch(0.55 0.008 240);
