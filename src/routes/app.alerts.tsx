@@ -19,7 +19,7 @@ function AlertsPage() {
             <button className="inline-flex h-9 items-center gap-2 rounded-md border border-border bg-card px-3 text-[12px] text-secondary hover:text-foreground">
               <Bookmark className="size-3.5" /> Saved views
             </button>
-            <button className="inline-flex h-9 items-center gap-2 rounded-md bg-[color:var(--info)] px-3 text-[12px] font-medium text-[color:var(--background)]">
+            <button className="inline-flex h-9 items-center gap-2 rounded-md bg-[color:var(--info)] px-3 text-[12px] font-medium text-white">
               Assign selected
             </button>
           </>
