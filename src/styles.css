@@ -79,10 +79,10 @@
   --popover: oklch(0.195 0.006 240);
   --popover-foreground: oklch(1 0 0);
 
-  /* Text — higher contrast, always readable */
-  --foreground: oklch(1 0 0);                 /* #FFFFFF */
-  --secondary-foreground: oklch(0.905 0.006 240); /* ~#DCE0E5 */
-  --muted-foreground: oklch(0.78 0.008 240);  /* ~#B4BAC3 */
+  /* Text — high contrast, WCAG AA on dark surfaces */
+  --foreground: oklch(1 0 0);                    /* #FFFFFF primary */
+  --secondary-foreground: oklch(0.94 0.004 240); /* ~#EDEFF2 body */
+  --muted-foreground: oklch(0.85 0.006 240);     /* ~#CFD3D9 muted (still AA) */
 
   /* Borders / inputs */
   --border: oklch(0.30 0.008 240);            /* ~#262C34 */
