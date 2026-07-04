@@ -41,11 +41,10 @@ function Landing() {
 
       {/* Nav */}
       <header className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
-        <a href="/" className="flex items-center gap-2">
-          <div className="grid size-8 place-items-center rounded-md bg-[color:var(--info)]/15 text-[color:var(--info)]">
-            <ShieldAlert className="size-4" />
-          </div>
+        <a href="/" className="flex items-center gap-2.5">
+          <img src={clickboxLogo.url} alt="ClickBox" className="size-7 object-contain" />
           <span className="text-[15px] font-semibold tracking-tight">SOCBOX</span>
+          <span className="hidden text-[10.5px] font-medium uppercase tracking-[0.14em] text-muted-foreground sm:inline">by ClickBox</span>
         </a>
         <nav className="hidden items-center gap-7 text-[13px] text-secondary md:flex">
           <a href="#platform" className="hover:text-foreground">Platform</a>
