@@ -13,6 +13,7 @@ import {
   Target,
 } from "lucide-react";
 import { SeverityBadge } from "@/components/soc/primitives";
+import clickboxLogo from "@/assets/clickbox-logo.asset.json";
 
 export const Route = createFileRoute("/")({
   component: Landing,
@@ -40,11 +41,10 @@ function Landing() {
 
       {/* Nav */}
       <header className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
-        <a href="/" className="flex items-center gap-2">
-          <div className="grid size-8 place-items-center rounded-md bg-[color:var(--info)]/15 text-[color:var(--info)]">
-            <ShieldAlert className="size-4" />
-          </div>
+        <a href="/" className="flex items-center gap-2.5">
+          <img src={clickboxLogo.url} alt="ClickBox" className="size-7 object-contain" />
           <span className="text-[15px] font-semibold tracking-tight">SOCBOX</span>
+          <span className="hidden text-[10.5px] font-medium uppercase tracking-[0.14em] text-muted-foreground sm:inline">by ClickBox</span>
         </a>
         <nav className="hidden items-center gap-7 text-[13px] text-secondary md:flex">
           <a href="#platform" className="hover:text-foreground">Platform</a>
@@ -59,7 +59,7 @@ function Landing() {
           </Link>
           <Link
             to="/app"
-            className="inline-flex items-center gap-1.5 rounded-md bg-[color:var(--info)] px-3 py-1.5 text-[13px] font-medium text-[color:var(--background)]"
+            className="inline-flex items-center gap-1.5 rounded-md bg-[color:var(--info)] px-3 py-1.5 text-[13px] font-medium text-white"
           >
             Open console <ArrowRight className="size-3.5" />
           </Link>
@@ -85,7 +85,7 @@ function Landing() {
           <div className="mt-8 flex items-center justify-center gap-3">
             <Link
               to="/app"
-              className="inline-flex items-center gap-1.5 rounded-md bg-[color:var(--info)] px-4 py-2.5 text-[13.5px] font-medium text-[color:var(--background)] shadow-elev"
+              className="inline-flex items-center gap-1.5 rounded-md bg-[color:var(--info)] px-4 py-2.5 text-[13.5px] font-medium text-white shadow-elev"
             >
               Launch the console <ArrowRight className="size-4" />
             </Link>
@@ -318,7 +318,7 @@ function Landing() {
               <button
                 className={`mt-6 inline-flex w-full items-center justify-center rounded-md px-3 py-2 text-[12.5px] font-medium ${
                   t.featured
-                    ? "bg-[color:var(--info)] text-[color:var(--background)]"
+                    ? "bg-[color:var(--info)] text-white"
                     : "border border-border bg-background text-secondary"
                 }`}
               >
@@ -340,7 +340,7 @@ function Landing() {
             The SOCBOX console is ready. No log ingestion, no risk, no waiting for the next real incident.
           </p>
           <div className="mt-6 flex items-center justify-center gap-3">
-            <Link to="/app" className="inline-flex items-center gap-1.5 rounded-md bg-[color:var(--info)] px-4 py-2.5 text-[13.5px] font-medium text-[color:var(--background)]">
+            <Link to="/app" className="inline-flex items-center gap-1.5 rounded-md bg-[color:var(--info)] px-4 py-2.5 text-[13.5px] font-medium text-white">
               Open the console <ArrowRight className="size-4" />
             </Link>
             <a href="#pricing" className="rounded-md border border-border bg-background px-4 py-2.5 text-[13.5px] text-secondary">

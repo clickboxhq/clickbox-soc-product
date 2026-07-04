@@ -15,7 +15,7 @@ function InvList() {
         title="Investigations"
         description="Open workspaces for active analyst investigations."
         actions={
-          <button className="inline-flex h-9 items-center gap-2 rounded-md bg-[color:var(--info)] px-3 text-[12px] font-medium text-[color:var(--background)]">
+          <button className="inline-flex h-9 items-center gap-2 rounded-md bg-[color:var(--info)] px-3 text-[12px] font-medium text-white">
             <Plus className="size-3.5" /> New investigation
           </button>
         }
