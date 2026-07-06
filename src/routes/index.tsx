@@ -182,6 +182,9 @@ function Landing() {
         </div>
       </section>
 
+      {/* Interactive primary CTA */}
+      <InteractiveCTA />
+
       {/* Feature grid */}
       <section id="platform" className="mx-auto max-w-7xl px-6 py-24">
         <div className="max-w-2xl">
