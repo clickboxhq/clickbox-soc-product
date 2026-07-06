@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import { SeverityBadge } from "@/components/soc/primitives";
 import clickboxLogo from "@/assets/clickbox-logo.asset.json";
+import { InteractiveCTA } from "@/components/soc/interactive-cta";
 
 export const Route = createFileRoute("/")({
   component: Landing,
@@ -180,6 +181,9 @@ function Landing() {
           ))}
         </div>
       </section>
+
+      {/* Interactive primary CTA */}
+      <InteractiveCTA />
 
       {/* Feature grid */}
       <section id="platform" className="mx-auto max-w-7xl px-6 py-24">
