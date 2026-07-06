@@ -98,7 +98,13 @@ function Landing() {
             SOC 2 · ISO 27001 · GDPR · EU / US / APAC data residency
           </div>
         </div>
+      </section>
 
+      {/* Primary interactive CTA — immediately after hero */}
+      <InteractiveCTA />
+
+      {/* Secondary product mock section */}
+      <section className="mx-auto max-w-7xl px-6">
         {/* Hero product mock */}
         <div className="shadow-elev mx-auto mt-14 max-w-6xl overflow-hidden rounded-2xl border border-border bg-card">
           <div className="flex items-center gap-2 border-b border-border bg-background/60 px-3 py-2">
@@ -182,8 +188,6 @@ function Landing() {
         </div>
       </section>
 
-      {/* Interactive primary CTA */}
-      <InteractiveCTA />
 
       {/* Feature grid */}
       <section id="platform" className="mx-auto max-w-7xl px-6 py-24">
