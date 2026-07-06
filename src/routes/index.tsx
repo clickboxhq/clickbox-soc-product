@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import { SeverityBadge } from "@/components/soc/primitives";
 import clickboxLogo from "@/assets/clickbox-logo.asset.json";
+import { InteractiveCTA } from "@/components/soc/interactive-cta";
 
 export const Route = createFileRoute("/")({
   component: Landing,
