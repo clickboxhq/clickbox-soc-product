@@ -162,7 +162,7 @@ function Sidebar() {
   );
 }
 
-function Topbar({ crumb }: { crumb: string }) {
+function Topbar({ crumb, onOpenPalette }: { crumb: string; onOpenPalette: () => void }) {
   return (
     <header className="sticky top-0 z-20 flex h-14 items-center gap-3 border-b border-border bg-background/85 px-4 backdrop-blur-md md:px-6">
       <div className="flex items-center gap-2 text-sm">
@@ -171,7 +171,10 @@ function Topbar({ crumb }: { crumb: string }) {
         <span className="font-medium">{crumb}</span>
       </div>
       <div className="ml-4 flex flex-1 items-center">
-        <button className="group flex h-9 w-full max-w-md items-center gap-2 rounded-md border border-border bg-card px-3 text-[13px] text-muted-foreground transition-colors hover:border-border/80">
+        <button
+          onClick={onOpenPalette}
+          className="group flex h-9 w-full max-w-md items-center gap-2 rounded-md border border-border bg-card px-3 text-[13px] text-muted-foreground transition-colors hover:border-[color:var(--info)]/50"
+        >
           <Search className="size-4" />
           <span className="flex-1 text-left">Search users, devices, alerts, MITRE IDs…</span>
           <Kbd>⌘</Kbd>
@@ -179,7 +182,10 @@ function Topbar({ crumb }: { crumb: string }) {
         </button>
       </div>
       <div className="flex items-center gap-2">
-        <button className="inline-flex h-9 items-center gap-2 rounded-md border border-border bg-card px-2.5 text-[12px] text-secondary hover:text-foreground">
+        <button
+          onClick={onOpenPalette}
+          className="inline-flex h-9 items-center gap-2 rounded-md border border-border bg-card px-2.5 text-[12px] text-secondary hover:text-foreground"
+        >
           <Command className="size-4" />
           <span className="hidden md:inline">Command</span>
         </button>
