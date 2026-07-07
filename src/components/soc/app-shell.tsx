@@ -233,14 +233,19 @@ export function AppShell({ children }: { children?: ReactNode }) {
   const crumb =
     crumbMap[path] ??
     (path.startsWith("/app/investigations/") ? "Investigation" : "Dashboard");
+  const { open, setOpen } = useCommandPalette();
 
   return (
     <div className="flex min-h-screen bg-background text-foreground">
       <Sidebar />
       <div className="flex min-w-0 flex-1 flex-col">
-        <Topbar crumb={crumb} />
-        <main className="flex-1 overflow-x-hidden">{children ?? <Outlet />}</main>
+        <Topbar crumb={crumb} onOpenPalette={() => setOpen(true)} />
+        <main className="flex-1 overflow-x-hidden">
+          <PageTransition>{children ?? <Outlet />}</PageTransition>
+        </main>
       </div>
+      <CommandPalette open={open} onOpenChange={setOpen} />
     </div>
   );
+}
 }
