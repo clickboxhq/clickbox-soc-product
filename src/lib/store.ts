@@ -60,9 +60,9 @@ type SocState = {
   reset: () => void;
 };
 
-const seed = () => ({
-  alerts: seedAlerts.map((a) => ({ ...a, notes: [] as Note[] })),
-  incidents: seedIncidents.map((i) => ({ ...i, notes: [] as Note[] })),
+const seed = (): Pick<SocState, "alerts" | "incidents" | "identities" | "endpoints" | "scenarios" | "emailCases" | "scenarioProgress"> => ({
+  alerts: seedAlerts.map((a) => ({ ...a, notes: [] as Note[] })) as Alert[],
+  incidents: seedIncidents.map((i) => ({ ...i, notes: [] as Note[] })) as Incident[],
   identities: [...seedIdentities],
   endpoints: [...seedEndpoints],
   scenarios: [...seedScenarios],
