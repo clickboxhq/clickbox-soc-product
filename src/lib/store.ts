@@ -11,8 +11,8 @@ import {
 export type Severity = "critical" | "high" | "medium" | "low";
 export type AlertStatus = "new" | "open" | "in-progress" | "escalated" | "resolved" | "closed";
 
-export type Alert = (typeof seedAlerts)[number] & { notes?: Note[] };
-export type Incident = (typeof seedIncidents)[number] & { notes?: Note[] };
+export type Alert = Omit<(typeof seedAlerts)[number], "status"> & { status: AlertStatus; notes?: Note[] };
+export type Incident = Omit<(typeof seedIncidents)[number], "status"> & { status: AlertStatus; notes?: Note[] };
 export type Identity = (typeof seedIdentities)[number];
 export type Endpoint = (typeof seedEndpoints)[number];
 export type Scenario = (typeof seedScenarios)[number];
