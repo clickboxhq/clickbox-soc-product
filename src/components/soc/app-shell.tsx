@@ -30,6 +30,8 @@ import {
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 import { Kbd } from "@/components/soc/primitives";
+import { CommandPalette, useCommandPalette } from "@/components/soc/command-palette";
+import { PageTransition } from "@/components/soc/ui/motion";
 
 type NavItem = { to: string; label: string; icon: React.ComponentType<{ className?: string }>; badge?: string };
 
