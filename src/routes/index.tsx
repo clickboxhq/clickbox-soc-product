@@ -12,8 +12,9 @@ import {
   Sparkles,
   Target,
 } from "lucide-react";
-import { SeverityBadge } from "@/components/soc/primitives";
+
 import clickboxLogo from "@/assets/clickbox-logo.asset.json";
+import productDemo from "@/assets/product-demo.mp4.asset.json";
 import { InteractiveCTA } from "@/components/soc/interactive-cta";
 
 export const Route = createFileRoute("/")({
@@ -103,79 +104,52 @@ function Landing() {
       {/* Primary interactive CTA — immediately after hero */}
       <InteractiveCTA />
 
-      {/* Secondary product mock section */}
+      {/* Product demo video — primary landing page demo */}
       <section className="mx-auto max-w-7xl px-6">
-        {/* Hero product mock */}
-        <div className="shadow-elev mx-auto mt-14 max-w-6xl overflow-hidden rounded-2xl border border-border bg-card">
-          <div className="flex items-center gap-2 border-b border-border bg-background/60 px-3 py-2">
-            <div className="flex gap-1.5">
-              <span className="size-2.5 rounded-full bg-[color:var(--critical)]/60" />
-              <span className="size-2.5 rounded-full bg-[color:var(--warning)]/60" />
-              <span className="size-2.5 rounded-full bg-[color:var(--success)]/60" />
-            </div>
-            <div className="mx-auto rounded-md border border-border bg-card px-3 py-0.5 font-mono text-[10.5px] text-muted-foreground">
-              socbox.io / console / dashboard
-            </div>
-          </div>
-          <div className="grid grid-cols-[220px_1fr]">
-            {/* mini sidebar */}
-            <div className="hidden border-r border-border bg-sidebar p-3 text-[12px] md:block">
-              <div className="mb-3 flex items-center gap-2 rounded-md border border-sidebar-border bg-background/40 px-2 py-1.5">
-                <div className="grid size-5 place-items-center rounded bg-[color:var(--info)]/15 text-[color:var(--info)]">
-                  <ShieldAlert className="size-3" />
-                </div>
-                <span className="text-[11.5px] font-medium">Contoso Global SOC</span>
+        <div className="relative mx-auto mt-14 max-w-6xl">
+          {/* Ambient glow behind the frame */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute -inset-x-8 -inset-y-10 -z-10 rounded-[2rem] opacity-70 blur-3xl"
+            style={{
+              background:
+                "radial-gradient(ellipse at center, color-mix(in oklab, var(--info) 22%, transparent) 0%, transparent 65%)",
+            }}
+          />
+
+          {/* Browser-style container */}
+          <div
+            className="overflow-hidden rounded-2xl border border-white/10 bg-card/70 backdrop-blur-xl"
+            style={{
+              boxShadow:
+                "0 1px 0 rgba(255,255,255,0.06) inset, 0 40px 120px -30px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.03)",
+            }}
+          >
+            {/* Chrome */}
+            <div className="flex items-center gap-2 border-b border-white/10 bg-background/60 px-3 py-2">
+              <div className="flex gap-1.5">
+                <span className="size-2.5 rounded-full bg-[color:var(--critical)]/60" />
+                <span className="size-2.5 rounded-full bg-[color:var(--warning)]/60" />
+                <span className="size-2.5 rounded-full bg-[color:var(--success)]/60" />
               </div>
-              {[
-                ["Dashboard", true],
-                ["Investigations", false],
-                ["Alerts", false],
-                ["Incident Queue", false],
-                ["Identity Center", false],
-                ["Endpoint Center", false],
-                ["Threat Intelligence", false],
-                ["Scenario Library", false],
-              ].map(([l, active]) => (
-                <div
-                  key={l as string}
-                  className={`mb-0.5 rounded px-2 py-1.5 ${active ? "bg-sidebar-accent text-foreground" : "text-secondary"}`}
-                >
-                  {l as string}
-                </div>
-              ))}
+              <div className="mx-auto rounded-md border border-border bg-card px-3 py-0.5 font-mono text-[10.5px] text-muted-foreground">
+                socbox.io / console
+              </div>
             </div>
-            <div className="p-5">
-              <div className="text-[11px] text-muted-foreground">Welcome back, John</div>
-              <div className="mt-1 text-lg font-semibold">Security overview</div>
-              <div className="mt-4 grid grid-cols-2 gap-3 md:grid-cols-4">
-                {[
-                  ["Active investigations", "128"],
-                  ["Open incidents", "47"],
-                  ["Critical alerts", "26"],
-                  ["Avg. score", "87.4"],
-                ].map(([l, v]) => (
-                  <div key={l} className="rounded-lg border border-border bg-background/60 p-3">
-                    <div className="text-[10px] uppercase tracking-wider text-muted-foreground">{l}</div>
-                    <div className="mt-1 text-xl font-semibold tabular-nums">{v}</div>
-                  </div>
-                ))}
-              </div>
-              <div className="mt-4 rounded-lg border border-border bg-background/40 p-3">
-                <div className="mb-2 text-[11px] font-medium text-secondary">Recent alerts</div>
-                <ul className="space-y-2 text-[11.5px]">
-                  {[
-                    ["Impossible travel — kate.morgan@contoso.com", "high" as const],
-                    ["Encoded PowerShell on SRV-DB-07", "critical" as const],
-                    ["Password spray against tenant", "high" as const],
-                    ["OAuth consent grant — sarah.chen", "high" as const],
-                  ].map(([t, sev]) => (
-                    <li key={t as string} className="flex items-center justify-between rounded-md border border-border bg-card px-2.5 py-1.5">
-                      <span className="truncate">{t as string}</span>
-                      <SeverityBadge level={sev as any} />
-                    </li>
-                  ))}
-                </ul>
-              </div>
+
+            {/* Video */}
+            <div className="relative aspect-video w-full bg-black">
+              <video
+                className="absolute inset-0 h-full w-full object-cover"
+                src={productDemo.url}
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="auto"
+                disablePictureInPicture
+                controls={false}
+              />
             </div>
           </div>
         </div>
