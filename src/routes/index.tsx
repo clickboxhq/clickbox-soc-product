@@ -12,7 +12,7 @@ import {
   Sparkles,
   Target,
 } from "lucide-react";
-import { SeverityBadge } from "@/components/soc/primitives";
+
 import clickboxLogo from "@/assets/clickbox-logo.asset.json";
 import productDemo from "@/assets/product-demo.mp4.asset.json";
 import { InteractiveCTA } from "@/components/soc/interactive-cta";
