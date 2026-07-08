@@ -7,7 +7,6 @@ import {
   Boxes,
   BrainCircuit,
   ClipboardList,
-  Clock,
   Database,
   FileText,
   Fingerprint,
@@ -18,9 +17,6 @@ import {
   PlayCircle,
   Radar,
   ScrollText,
-  Search,
-  ShieldAlert,
-  ShieldCheck,
   Sparkles,
   Workflow,
 } from "lucide-react";
