@@ -215,7 +215,7 @@ function Hero() {
           </div>
           <div className="relative aspect-video w-full bg-black">
             <video
-              className="absolute inset-0 h-full w-full object-cover"
+              className="absolute inset-0 h-full w-full object-contain"
               src={productDemo.url}
               autoPlay
               loop
@@ -224,6 +224,7 @@ function Hero() {
               preload="auto"
               disablePictureInPicture
               controls={false}
+              style={{ imageRendering: "auto" }}
             />
           </div>
         </div>
