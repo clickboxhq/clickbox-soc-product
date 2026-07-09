@@ -944,6 +944,7 @@ function Landing() {
       <Hero />
       <HowItWorks />
       <Architecture />
+      <BeforeAfter />
       <Modules />
       <Screenshots />
       <AIWorkflow />
