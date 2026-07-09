@@ -118,19 +118,14 @@ function WordStack({
 
 export function CapabilityStack() {
   return (
-    <section className="mx-auto max-w-7xl space-y-24 px-6 py-24">
+    <section className="mx-auto max-w-7xl px-6 py-24">
       <WordStack
         words={COVERAGE}
         eyebrow="Coverage"
         heading="Every layer of your stack, one platform."
         sub="SOCBOX ingests and correlates signal across the surfaces your attackers actually touch."
       />
-      <WordStack
-        words={CAPABILITIES}
-        eyebrow="What it does"
-        heading="From raw telemetry to answered incidents."
-        sub="One console handles the full analyst workflow — end to end, in minutes."
-      />
     </section>
   );
 }
+

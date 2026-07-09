@@ -299,3 +299,8 @@
     box-shadow 0.15s ease;
 }
 
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-33.3333%); }
+}
+
