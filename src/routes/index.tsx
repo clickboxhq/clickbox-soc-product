@@ -23,7 +23,8 @@ import {
 
 import clickboxLogo from "@/assets/clickbox-logo.asset.json";
 import productDemo from "@/assets/product-demo.mp4.asset.json";
-import { ArchitectureDiagram } from "@/components/soc/architecture-diagram";
+import { CapabilityStack } from "@/components/soc/capability-stack";
+import { IntegrationsGrid } from "@/components/soc/integrations-grid";
 
 export const Route = createFileRoute("/")({
   component: Landing,
@@ -214,7 +215,7 @@ function Hero() {
           </div>
           <div className="relative aspect-video w-full bg-black">
             <video
-              className="absolute inset-0 h-full w-full object-cover"
+              className="absolute inset-0 h-full w-full object-contain"
               src={productDemo.url}
               autoPlay
               loop
@@ -223,6 +224,7 @@ function Hero() {
               preload="auto"
               disablePictureInPicture
               controls={false}
+              style={{ imageRendering: "auto" }}
             />
           </div>
         </div>
@@ -299,30 +301,10 @@ function HowItWorks() {
   );
 }
 
-/* -------------------- ARCHITECTURE (signature) -------------------- */
+/* -------------------- CAPABILITIES (signature) -------------------- */
 
 function Architecture() {
-  return (
-    <section className="mx-auto max-w-7xl px-6 py-24">
-      <div className="max-w-2xl">
-        <div
-          className="text-[11px] font-semibold uppercase tracking-[0.14em]"
-          style={{ color: "#16c784" }}
-        >
-          Architecture
-        </div>
-        <h2
-          className="mt-3 text-[32px] font-semibold leading-[1.1] tracking-[-0.02em] text-white md:text-[44px]"
-          style={displayFont}
-        >
-          Built to sit on top of what you already run.
-        </h2>
-      </div>
-      <div className="mt-12">
-        <ArchitectureDiagram />
-      </div>
-    </section>
-  );
+  return <CapabilityStack />;
 }
 
 /* -------------------------- MODULES GRID -------------------------- */
@@ -563,62 +545,7 @@ function AIWorkflow() {
 
 /* --------------------- ENTERPRISE INTEGRATIONS --------------------- */
 
-const INTEGRATIONS: { name: string; soon?: boolean }[] = [
-  { name: "Microsoft" },
-  { name: "Google Workspace" },
-  { name: "AWS" },
-  { name: "Azure" },
-  { name: "Okta" },
-  { name: "Slack" },
-  { name: "CrowdStrike" },
-  { name: "SentinelOne", soon: true },
-  { name: "Splunk" },
-  { name: "GitHub" },
-];
-
-function Integrations() {
-  return (
-    <section id="solutions" className="mx-auto max-w-7xl px-6 py-24">
-      <div className="max-w-2xl">
-        <div
-          className="text-[11px] font-semibold uppercase tracking-[0.14em]"
-          style={{ color: "#16c784" }}
-        >
-          Integrations
-        </div>
-        <h2
-          className="mt-3 text-[32px] font-semibold leading-[1.1] tracking-[-0.02em] text-white md:text-[44px]"
-          style={displayFont}
-        >
-          Works with what you already have.
-        </h2>
-      </div>
-      <div className="mt-10 grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-white/10 bg-white/5 sm:grid-cols-3 md:grid-cols-5">
-        {INTEGRATIONS.map((i) => (
-          <div
-            key={i.name}
-            className="group relative flex flex-col items-center justify-center gap-1.5 bg-[#10151a] px-4 py-7 text-center transition-colors hover:bg-[#141a20]"
-          >
-            <span
-              className="text-[13.5px] font-medium text-white/50 transition-colors group-hover:text-white"
-              style={displayFont}
-            >
-              {i.name}
-            </span>
-            {i.soon && (
-              <span
-                className="text-[9.5px] uppercase tracking-[0.14em] text-white/35"
-                style={monoFont}
-              >
-                Coming soon
-              </span>
-            )}
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-}
+const Integrations = IntegrationsGrid;
 
 /* ------------------------- TRUST & SECURITY ------------------------- */
 
