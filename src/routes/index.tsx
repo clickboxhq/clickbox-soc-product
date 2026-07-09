@@ -300,30 +300,10 @@ function HowItWorks() {
   );
 }
 
-/* -------------------- ARCHITECTURE (signature) -------------------- */
+/* -------------------- CAPABILITIES (signature) -------------------- */
 
 function Architecture() {
-  return (
-    <section className="mx-auto max-w-7xl px-6 py-24">
-      <div className="max-w-2xl">
-        <div
-          className="text-[11px] font-semibold uppercase tracking-[0.14em]"
-          style={{ color: "#16c784" }}
-        >
-          Architecture
-        </div>
-        <h2
-          className="mt-3 text-[32px] font-semibold leading-[1.1] tracking-[-0.02em] text-white md:text-[44px]"
-          style={displayFont}
-        >
-          Built to sit on top of what you already run.
-        </h2>
-      </div>
-      <div className="mt-12">
-        <ArchitectureDiagram />
-      </div>
-    </section>
-  );
+  return <CapabilityStack />;
 }
 
 /* -------------------------- MODULES GRID -------------------------- */
