@@ -23,7 +23,8 @@ import {
 
 import clickboxLogo from "@/assets/clickbox-logo.asset.json";
 import productDemo from "@/assets/product-demo.mp4.asset.json";
-import { ArchitectureDiagram } from "@/components/soc/architecture-diagram";
+import { CapabilityStack } from "@/components/soc/capability-stack";
+import { IntegrationsGrid } from "@/components/soc/integrations-grid";
 
 export const Route = createFileRoute("/")({
   component: Landing,
