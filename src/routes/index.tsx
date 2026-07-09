@@ -25,6 +25,7 @@ import clickboxLogo from "@/assets/clickbox-logo.asset.json";
 import productDemo from "@/assets/product-demo.mp4.asset.json";
 import { CapabilityStack } from "@/components/soc/capability-stack";
 import { IntegrationsGrid } from "@/components/soc/integrations-grid";
+import { BeforeAfter } from "@/components/soc/before-after";
 
 export const Route = createFileRoute("/")({
   component: Landing,
