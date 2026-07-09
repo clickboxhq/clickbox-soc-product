@@ -544,62 +544,7 @@ function AIWorkflow() {
 
 /* --------------------- ENTERPRISE INTEGRATIONS --------------------- */
 
-const INTEGRATIONS: { name: string; soon?: boolean }[] = [
-  { name: "Microsoft" },
-  { name: "Google Workspace" },
-  { name: "AWS" },
-  { name: "Azure" },
-  { name: "Okta" },
-  { name: "Slack" },
-  { name: "CrowdStrike" },
-  { name: "SentinelOne", soon: true },
-  { name: "Splunk" },
-  { name: "GitHub" },
-];
-
-function Integrations() {
-  return (
-    <section id="solutions" className="mx-auto max-w-7xl px-6 py-24">
-      <div className="max-w-2xl">
-        <div
-          className="text-[11px] font-semibold uppercase tracking-[0.14em]"
-          style={{ color: "#16c784" }}
-        >
-          Integrations
-        </div>
-        <h2
-          className="mt-3 text-[32px] font-semibold leading-[1.1] tracking-[-0.02em] text-white md:text-[44px]"
-          style={displayFont}
-        >
-          Works with what you already have.
-        </h2>
-      </div>
-      <div className="mt-10 grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-white/10 bg-white/5 sm:grid-cols-3 md:grid-cols-5">
-        {INTEGRATIONS.map((i) => (
-          <div
-            key={i.name}
-            className="group relative flex flex-col items-center justify-center gap-1.5 bg-[#10151a] px-4 py-7 text-center transition-colors hover:bg-[#141a20]"
-          >
-            <span
-              className="text-[13.5px] font-medium text-white/50 transition-colors group-hover:text-white"
-              style={displayFont}
-            >
-              {i.name}
-            </span>
-            {i.soon && (
-              <span
-                className="text-[9.5px] uppercase tracking-[0.14em] text-white/35"
-                style={monoFont}
-              >
-                Coming soon
-              </span>
-            )}
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-}
+const Integrations = IntegrationsGrid;
 
 /* ------------------------- TRUST & SECURITY ------------------------- */
 
