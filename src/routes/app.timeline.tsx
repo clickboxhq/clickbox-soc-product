@@ -32,7 +32,7 @@ function TimelinePage() {
   const globalTimeline = useSoc((s) => s.globalTimeline);
   const events = useMemo(() => timelineEventsFrom(globalTimeline), [globalTimeline]);
   const cases = useSoc((s) => s.cases);
-  const reset = useSoc((s) => s.reset);
+  const reset = useSoc.getState().reset;
 
   return (
     <div className="px-4 py-6 md:px-8 md:py-8">

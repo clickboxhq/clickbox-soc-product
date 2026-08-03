@@ -77,7 +77,7 @@ function CaseWorkspace() {
     useHint,
     logAction,
     submitCase,
-  } = useSoc();
+  } = useSoc.getState();
 
   const [query, setQuery] = useState("");
   const [note, setNote] = useState("");
