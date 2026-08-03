@@ -1,5 +1,5 @@
 import { createFileRoute, Link, useParams } from "@tanstack/react-router";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   Panel,
   SectionHeader,
@@ -59,6 +59,18 @@ const verdicts: { id: CaseVerdict; label: string; hint: string }[] = [
 ];
 
 function CaseWorkspace() {
+  const hydrated = useHydrated();
+  if (!hydrated) return <div className="px-4 py-10 text-[12px] text-muted-foreground md:px-8">Loading session…</div>;
+  return <CaseWorkspaceInner />;
+}
+
+function useHydrated() {
+  const [h, setH] = useState(false);
+  useEffect(() => setH(true), []);
+  return h;
+}
+
+function CaseWorkspaceInner() {
   const { id } = useParams({ from: "/app/cases/$id" });
   const incident = useSoc((s) => s.incidents.find((i) => i.id === id));
   const c = useSoc((s) => getCase(s, id));

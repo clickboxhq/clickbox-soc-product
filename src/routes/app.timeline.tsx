@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Panel, SectionHeader, SeverityBadge } from "@/components/soc/primitives";
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useSoc, timelineEventsFrom } from "@/lib/store";
 import type { EntityType } from "@/lib/case-data";
 import { ListTree, Trash2 } from "lucide-react";
@@ -29,6 +29,18 @@ const lanes: { key: EntityType; label: string }[] = [
 ];
 
 function TimelinePage() {
+  const hydrated = useHydrated();
+  if (!hydrated) return <div className="px-4 py-10 text-[12px] text-muted-foreground md:px-8">Loading session…</div>;
+  return <TimelinePageInner />;
+}
+
+function useHydrated() {
+  const [h, setH] = useState(false);
+  useEffect(() => setH(true), []);
+  return h;
+}
+
+function TimelinePageInner() {
   const globalTimeline = useSoc((s) => s.globalTimeline);
   const events = useMemo(() => timelineEventsFrom(globalTimeline), [globalTimeline]);
   const cases = useSoc((s) => s.cases);
