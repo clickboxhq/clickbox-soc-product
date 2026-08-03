@@ -70,15 +70,16 @@ function IncidentsPage() {
                   <td className="px-4 py-3 text-right text-muted-foreground">{i.updated}</td>
                   <td className="px-3 py-3 text-right">
                     <Link
-                      to="/app/investigations/$id"
+                      to="/app/cases/$id"
                       params={{ id: i.id }}
                       className="inline-flex items-center gap-1 text-[color:var(--info)] hover:opacity-80"
                     >
-                      Open <ArrowUpRight className="size-3" />
+                      Open case <ArrowUpRight className="size-3" />
                     </Link>
                   </td>
                 </tr>
               ))}
+
             </tbody>
           </table>
         </div>
