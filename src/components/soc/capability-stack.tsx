@@ -123,7 +123,7 @@ export function CapabilityStack() {
         words={COVERAGE}
         eyebrow="Coverage"
         heading="Every layer of your stack, one platform."
-        sub="SOCBOX ingests and correlates signal across the surfaces your attackers actually touch."
+        sub="ClickBox ingests and correlates signal across the surfaces your attackers actually touch."
       />
     </section>
   );

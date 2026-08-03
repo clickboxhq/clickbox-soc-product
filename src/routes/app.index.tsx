@@ -43,7 +43,7 @@ import {
 
 export const Route = createFileRoute("/app/")({
   component: Dashboard,
-  head: () => ({ meta: [{ title: "SOCBOX · Dashboard" }] }),
+  head: () => ({ meta: [{ title: "ClickBox · Dashboard" }] }),
 });
 
 function Dashboard() {
@@ -321,7 +321,7 @@ function Dashboard() {
               Recent certificates
             </div>
             {[
-              { name: "SOCBOX Certified Analyst — L2", when: "Jun 24" },
+              { name: "ClickBox Certified Analyst — L2", when: "Jun 24" },
               { name: "Identity Attack Investigation", when: "Jun 12" },
               { name: "Endpoint Forensics Fundamentals", when: "May 30" },
             ].map((c) => (
@@ -337,7 +337,7 @@ function Dashboard() {
 
       {/* AI + News */}
       <div className="mt-6 grid grid-cols-1 gap-4 lg:grid-cols-3">
-        <Panel className="lg:col-span-2" title="SOCBOX Copilot">
+        <Panel className="lg:col-span-2" title="ClickBox Copilot">
           <div className="flex items-start gap-3">
             <div className="grid size-9 place-items-center rounded-md bg-[color:var(--info)]/15 text-[color:var(--info)]">
               <Sparkles className="size-4" />

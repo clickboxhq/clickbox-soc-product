@@ -4,7 +4,7 @@ import { Award } from "lucide-react";
 
 export const Route = createFileRoute("/app/profile")({
   component: ProfilePage,
-  head: () => ({ meta: [{ title: "SOCBOX · Profile" }] }),
+  head: () => ({ meta: [{ title: "ClickBox · Profile" }] }),
 });
 
 function ProfilePage() {
@@ -58,7 +58,7 @@ function ProfilePage() {
           </div>
           <div className="border-t border-border p-4">
             <div className="mb-2 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">Certificates</div>
-            {["SOCBOX Certified Analyst — L2", "Identity Attack Investigation", "Endpoint Forensics Fundamentals"].map((c) => (
+            {["ClickBox Certified Analyst — L2", "Identity Attack Investigation", "Endpoint Forensics Fundamentals"].map((c) => (
               <div key={c} className="flex items-center gap-2 py-1 text-[12.5px]">
                 <Award className="size-3.5 text-[color:var(--info)]" />
                 {c}

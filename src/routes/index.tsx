@@ -33,16 +33,16 @@ export const Route = createFileRoute("/")({
     meta: [
       {
         title:
-          "SOCBOX — AI-native Security Operations. One console. Every signal.",
+          "ClickBox — AI-native Security Operations. One console. Every signal.",
       },
       {
         name: "description",
         content:
-          "SOCBOX correlates alerts across identity, endpoint, email, and cloud — and tells your analysts what actually happened. Book a demo.",
+          "ClickBox correlates alerts across identity, endpoint, email, and cloud — and tells your analysts what actually happened. Book a demo.",
       },
       {
         property: "og:title",
-        content: "SOCBOX — AI-native Security Operations",
+        content: "ClickBox — AI-native Security Operations",
       },
       {
         property: "og:description",
@@ -81,12 +81,12 @@ function Nav() {
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         <a href="/" className="flex items-center gap-2.5">
-          <img src={clickboxLogo.url} alt="SOCBOX" className="size-7 object-contain" />
+          <img src={clickboxLogo.url} alt="ClickBox" className="size-7 object-contain" />
           <span
             className="text-[15px] font-semibold tracking-tight"
             style={displayFont}
           >
-            SOCBOX
+            ClickBox
           </span>
         </a>
         <nav className="hidden items-center gap-8 text-[13px] text-white/70 md:flex">
@@ -160,7 +160,7 @@ function Hero() {
         </h1>
 
         <p className="mx-auto mt-6 max-w-2xl text-[16px] leading-[1.6] text-white/70">
-          SOCBOX correlates alerts across identity, endpoint, email, and cloud —
+          ClickBox correlates alerts across identity, endpoint, email, and cloud —
           and tells your analysts what actually happened.
         </p>
 
@@ -211,7 +211,7 @@ function Hero() {
               className="mx-auto rounded-md border border-white/10 bg-black/50 px-3 py-0.5 text-[10.5px] text-white/60"
               style={monoFont}
             >
-              socbox.io / console
+              clickbox.io / console
             </div>
           </div>
           <div className="relative aspect-video w-full bg-black">
@@ -259,7 +259,7 @@ function HowItWorks() {
           className="mt-3 text-[32px] font-semibold leading-[1.1] tracking-[-0.02em] text-white md:text-[44px]"
           style={displayFont}
         >
-          How SOCBOX works
+          How ClickBox works
         </h2>
       </div>
 
@@ -496,7 +496,7 @@ function AIWorkflow() {
         <div className="overflow-hidden rounded-2xl border border-white/10 bg-[#10151a]">
           <div className="flex items-center gap-2 border-b border-white/10 bg-black/30 px-4 py-2.5">
             <Sparkles className="size-3.5" style={{ color: "#16c784" }} />
-            <span className="text-[12px] font-medium text-white/80">SOCBOX Copilot</span>
+            <span className="text-[12px] font-medium text-white/80">ClickBox Copilot</span>
             <span className="ml-auto text-[10.5px] text-white/40" style={monoFont}>
               incident · INC-42188
             </span>
@@ -575,7 +575,7 @@ function Trust() {
         </h2>
         <p className="mt-4 text-[14.5px] leading-[1.6] text-white/60">
           Formal certification programs are underway. In the meantime, here's
-          what's already true about how SOCBOX is architected.
+          what's already true about how ClickBox is architected.
         </p>
       </div>
       <div className="mt-10 grid grid-cols-1 gap-3 md:grid-cols-2">
@@ -606,16 +606,16 @@ function Trust() {
 /* --------------------------- DEVELOPERS --------------------------- */
 
 const CODE_SAMPLES: Record<string, string> = {
-  REST: `curl https://api.socbox.io/v1/investigations \\
-  -H "Authorization: Bearer $SOCBOX_KEY" \\
+  REST: `curl https://api.clickbox.io/v1/investigations \\
+  -H "Authorization: Bearer $ClickBox_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{
     "entity": "sarah.chen@contoso.com",
     "window": "24h"
   }'`,
-  Python: `from socbox import SOCBox
+  Python: `from clickbox import ClickBox
 
-sb = SOCBox(api_key=os.environ["SOCBOX_KEY"])
+sb = ClickBox(api_key=os.environ["ClickBox_KEY"])
 
 case = sb.investigations.create(
     entity="sarah.chen@contoso.com",
@@ -624,9 +624,9 @@ case = sb.investigations.create(
 
 print(case.summary)   # AI-generated incident narrative
 print(case.timeline)  # ordered evidence artifacts`,
-  Node: `import { SOCBox } from "@socbox/sdk";
+  Node: `import { ClickBox } from "@clickbox/sdk";
 
-const sb = new SOCBox({ apiKey: process.env.SOCBOX_KEY });
+const sb = new ClickBox({ apiKey: process.env.ClickBox_KEY });
 
 const case_ = await sb.investigations.create({
   entity: "sarah.chen@contoso.com",
@@ -655,7 +655,7 @@ function Developers() {
           Built API-first.
         </h2>
         <p className="mt-4 text-[14.5px] leading-[1.6] text-white/60">
-          Every action in the console is an API call. Wire SOCBOX into your
+          Every action in the console is an API call. Wire ClickBox into your
           SOAR, ticketing, or custom internal tools.
         </p>
       </div>
@@ -857,7 +857,7 @@ function Footer() {
               className="text-[26px] font-semibold leading-[1.15] tracking-[-0.02em] text-white md:text-[32px]"
               style={displayFont}
             >
-              Ready to see SOCBOX on your telemetry?
+              Ready to see ClickBox on your telemetry?
             </h3>
             <p className="mt-3 text-[14.5px] leading-[1.6] text-white/65">
               A 30-minute walkthrough with an engineer, on your stack. No slide
@@ -865,7 +865,7 @@ function Footer() {
             </p>
           </div>
           <a
-            href="mailto:hello@socbox.io"
+            href="mailto:hello@clickbox.io"
             className="inline-flex shrink-0 items-center gap-1.5 rounded-md px-5 py-3 text-[13.5px] font-medium text-white"
             style={{
               background: "#16c784",
@@ -882,12 +882,12 @@ function Footer() {
         <div className="grid grid-cols-2 gap-10 md:grid-cols-6">
           <div className="col-span-2 md:col-span-1">
             <div className="flex items-center gap-2">
-              <img src={clickboxLogo.url} alt="SOCBOX" className="size-6 object-contain" />
+              <img src={clickboxLogo.url} alt="ClickBox" className="size-6 object-contain" />
               <span
                 className="text-[14px] font-semibold tracking-tight text-white"
                 style={displayFont}
               >
-                SOCBOX
+                ClickBox
               </span>
             </div>
             <p className="mt-4 text-[12.5px] leading-[1.6] text-white/50">
@@ -920,7 +920,7 @@ function Footer() {
         </div>
 
         <div className="mt-16 flex flex-wrap items-center justify-between gap-4 border-t border-white/10 pt-6 text-[11.5px] text-white/45">
-          <div>© 2026 SOCBOX</div>
+          <div>© 2026 ClickBox</div>
           <div className="flex items-center gap-5">
             <a href="#" className="transition-colors hover:text-white">Twitter</a>
             <a href="#" className="transition-colors hover:text-white">LinkedIn</a>

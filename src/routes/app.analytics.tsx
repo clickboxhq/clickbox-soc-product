@@ -17,7 +17,7 @@ import { mitreCoverage, signedOverTime } from "@/lib/soc-data";
 
 export const Route = createFileRoute("/app/analytics")({
   component: AnalyticsPage,
-  head: () => ({ meta: [{ title: "SOCBOX · Analytics" }] }),
+  head: () => ({ meta: [{ title: "ClickBox · Analytics" }] }),
 });
 
 const meantime = [

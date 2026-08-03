@@ -4,7 +4,7 @@ import { Mail, Paperclip, Link as LinkIcon, ShieldCheck, ShieldAlert, Copy } fro
 
 export const Route = createFileRoute("/app/email")({
   component: EmailPage,
-  head: () => ({ meta: [{ title: "SOCBOX · Email Investigations" }] }),
+  head: () => ({ meta: [{ title: "ClickBox · Email Investigations" }] }),
 });
 
 const messages = [
@@ -119,7 +119,7 @@ Authentication-Results: contoso.com; spf=fail (sender IP is 185.220.101.44)
 Message-ID: <5d1c0a1c-4e7b-adobe-secure@mailer-31.rr-out.com>
 From: "Adobe Billing" <billing@adobe-secure-invoice.com>
 Subject: Adobe subscription — action required
-X-SOCBOX-Verdict: PHISH/BRAND-IMPERSONATION`}
+X-ClickBox-Verdict: PHISH/BRAND-IMPERSONATION`}
             </pre>
           </Panel>
         </div>

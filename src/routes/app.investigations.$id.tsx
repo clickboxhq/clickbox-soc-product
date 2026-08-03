@@ -23,7 +23,7 @@ import { Link } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/app/investigations/$id")({
   component: InvestigationWorkspace,
-  head: () => ({ meta: [{ title: "SOCBOX · Investigation" }] }),
+  head: () => ({ meta: [{ title: "ClickBox · Investigation" }] }),
 });
 
 function InvestigationWorkspace() {
@@ -203,7 +203,7 @@ function InvestigationWorkspace() {
 
         {/* RIGHT — copilot + scoring */}
         <div className="space-y-4">
-          <Panel title="SOCBOX Copilot">
+          <Panel title="ClickBox Copilot">
             <div className="flex items-start gap-2">
               <div className="grid size-8 place-items-center rounded-md bg-[color:var(--info)]/15 text-[color:var(--info)]">
                 <Sparkles className="size-4" />

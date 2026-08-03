@@ -4,7 +4,7 @@ import { Building2 } from "lucide-react";
 
 export const Route = createFileRoute("/app/organizations")({
   component: OrgsPage,
-  head: () => ({ meta: [{ title: "SOCBOX · Organizations" }] }),
+  head: () => ({ meta: [{ title: "ClickBox · Organizations" }] }),
 });
 
 const orgs = [
