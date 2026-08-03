@@ -166,7 +166,7 @@ function Topbar({ crumb, onOpenPalette }: { crumb: string; onOpenPalette: () => 
   return (
     <header className="sticky top-0 z-20 flex h-14 items-center gap-3 border-b border-border bg-background/85 px-4 backdrop-blur-md md:px-6">
       <div className="flex items-center gap-2 text-sm">
-        <span className="text-muted-foreground">SOCBOX</span>
+        <span className="text-muted-foreground">ClickBox</span>
         <span className="text-muted-foreground">/</span>
         <span className="font-medium">{crumb}</span>
       </div>

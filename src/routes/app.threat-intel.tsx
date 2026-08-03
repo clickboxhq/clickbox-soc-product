@@ -4,7 +4,7 @@ import { Globe, Hash, Radar } from "lucide-react";
 
 export const Route = createFileRoute("/app/threat-intel")({
   component: TIPage,
-  head: () => ({ meta: [{ title: "SOCBOX · Threat Intelligence" }] }),
+  head: () => ({ meta: [{ title: "ClickBox · Threat Intelligence" }] }),
 });
 
 const actors = [

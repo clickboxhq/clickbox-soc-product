@@ -5,7 +5,7 @@ import { Search, UserRound, Cpu, Mail, FileText, Globe, Hash, Radar } from "luci
 
 export const Route = createFileRoute("/app/search")({
   component: SearchPage,
-  head: () => ({ meta: [{ title: "SOCBOX · Global Search" }] }),
+  head: () => ({ meta: [{ title: "ClickBox · Global Search" }] }),
 });
 
 const categories = [

@@ -50,7 +50,7 @@ function WordStack({
       <div className="mx-auto max-w-2xl text-center">
         <div
           className="text-[11px] font-semibold uppercase tracking-[0.14em]"
-          style={{ color: "#16c784" }}
+          style={{ color: "#53B5E0" }}
         >
           {eyebrow}
         </div>
@@ -65,7 +65,7 @@ function WordStack({
         </p>
       </div>
 
-      <div className="relative mx-auto mt-12 aspect-[16/7] max-w-5xl overflow-hidden rounded-3xl border border-white/10 bg-[#10151a]/60 backdrop-blur-xl">
+      <div className="relative mx-auto mt-12 aspect-[16/7] max-w-5xl overflow-hidden rounded-3xl border border-white/10 bg-[#153140]/60 backdrop-blur-xl">
         <div
           className="pointer-events-none absolute inset-0"
           style={{
@@ -74,8 +74,8 @@ function WordStack({
           }}
         />
         <div className="pointer-events-none absolute inset-0 bg-grid opacity-[0.08]" />
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-[#10151a] to-transparent" />
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#10151a] to-transparent" />
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-[#153140] to-transparent" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#153140] to-transparent" />
 
         <div className="absolute inset-0 flex flex-col items-center justify-center gap-2">
           {visible.map(({ offset, word }) => {
@@ -123,7 +123,7 @@ export function CapabilityStack() {
         words={COVERAGE}
         eyebrow="Coverage"
         heading="Every layer of your stack, one platform."
-        sub="SOCBOX ingests and correlates signal across the surfaces your attackers actually touch."
+        sub="ClickBox ingests and correlates signal across the surfaces your attackers actually touch."
       />
     </section>
   );

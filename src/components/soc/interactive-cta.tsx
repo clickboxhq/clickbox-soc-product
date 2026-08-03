@@ -21,7 +21,7 @@ const WORDS = [
   "PROTECT",
   "SECURE",
   "AI",
-  "SOCBOX",
+  "ClickBox",
 ];
 
 export function InteractiveCTA() {
@@ -62,7 +62,7 @@ export function InteractiveCTA() {
           Every threat. One intelligent platform.
         </h2>
         <p className="mx-auto mt-4 max-w-2xl text-[15px] leading-relaxed text-secondary">
-          SOCBOX combines AI-powered monitoring, threat detection, incident response,
+          ClickBox combines AI-powered monitoring, threat detection, incident response,
           and security automation into one unified Security Operations Platform.
         </p>
       </div>

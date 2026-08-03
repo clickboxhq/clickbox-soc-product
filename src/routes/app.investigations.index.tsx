@@ -5,7 +5,7 @@ import { ArrowUpRight, Plus } from "lucide-react";
 
 export const Route = createFileRoute("/app/investigations/")({
   component: InvList,
-  head: () => ({ meta: [{ title: "SOCBOX · Investigations" }] }),
+  head: () => ({ meta: [{ title: "ClickBox · Investigations" }] }),
 });
 
 function InvList() {

@@ -5,7 +5,7 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * SOCBOX Design System
+ * ClickBox Design System
  * Enterprise cybersecurity console. Dark, monochrome, executive.
  * All tokens are semantic and defined once here.
  */
@@ -72,14 +72,19 @@
 .dark {
   --radius: 0.75rem;
 
-  /* Core surfaces — deep matte black with graphite undertones */
-  --background: oklch(0.14 0.006 240);        /* ~#07090C */
-  --sidebar: oklch(0.165 0.006 240);          /* ~#0C0F13 */
-  --surface: oklch(0.20 0.006 240);           /* ~#12161B */
-  --surface-2: oklch(0.235 0.006 240);
-  --card: oklch(0.195 0.006 240);             /* ~#111419 */
+  /* ClickBox brand palette
+     Axiom Blue #153140 · Supporting Black #0D2028 · Safe Zone #F7F3F2
+     Supporting Gray #455A63 · Light Gray #BDC4C6
+     Tertiary Blue #53B5E0 · Tertiary Green #6AC6A7 · Danger #D40019 */
+
+  /* Core surfaces — Supporting Black base with Axiom Blue elevation */
+  --background: #081419;
+  --sidebar: #0D2028;
+  --surface: #123040;
+  --surface-2: #17394A;
+  --card: #102A36;
   --card-foreground: #ffffff;
-  --popover: oklch(0.195 0.006 240);
+  --popover: #102A36;
   --popover-foreground: #ffffff;
 
   /* Text — platform-wide pure white for maximum readability */
@@ -87,43 +92,43 @@
   --secondary-foreground: #ffffff;
   --muted-foreground: #ffffff;
 
-  /* Borders / inputs */
-  --border: oklch(0.30 0.008 240);            /* ~#262C34 */
-  --input: oklch(0.30 0.008 240);
-  --ring: oklch(0.58 0.13 156);
+  /* Borders / inputs — Supporting Gray */
+  --border: #2A4854;
+  --input: #2A4854;
+  --ring: #53B5E0;
 
-  /* Buttons / accents — ClickBox deep emerald */
-  --primary: oklch(0.55 0.13 156);            /* ~#0F6E48 deep emerald */
-  --primary-foreground: #ffffff;
-  --secondary: oklch(0.26 0.008 240);
-  --muted: oklch(0.24 0.006 240);
-  --accent: oklch(0.30 0.008 240);
+  /* Buttons / accents — Axiom Blue with Tertiary Blue interaction */
+  --primary: #153140;
+  --primary-foreground: #F7F3F2;
+  --secondary: #455A63;
+  --muted: #1B3A48;
+  --accent: #2A4854;
   --accent-foreground: #ffffff;
-  --destructive: oklch(0.66 0.22 22);
-  --destructive-foreground: #ffffff;
+  --destructive: #D40019;
+  --destructive-foreground: #F7F3F2;
 
   /* Status */
-  --success: oklch(0.62 0.14 156);            /* emerald */
-  --warning: oklch(0.82 0.17 82);
-  --high: oklch(0.72 0.19 45);
-  --critical: oklch(0.66 0.22 22);
-  --info: oklch(0.55 0.13 156);               /* accent = deep emerald */
+  --success: #6AC6A7;
+  --warning: #E0A93F;
+  --high: #E8743A;
+  --critical: #D40019;
+  --info: #53B5E0;
 
   /* Sidebar */
   --sidebar-foreground: #ffffff;
-  --sidebar-accent: oklch(0.24 0.008 240);
+  --sidebar-accent: #16394A;
   --sidebar-accent-foreground: #ffffff;
-  --sidebar-border: oklch(0.24 0.008 240);
-  --sidebar-primary: oklch(0.55 0.13 156);
-  --sidebar-primary-foreground: #ffffff;
-  --sidebar-ring: oklch(0.55 0.13 156);
+  --sidebar-border: #23414D;
+  --sidebar-primary: #53B5E0;
+  --sidebar-primary-foreground: #0D2028;
+  --sidebar-ring: #53B5E0;
 
-  /* Charts (emerald accent + supporting) */
-  --chart-1: oklch(0.55 0.13 156);
-  --chart-2: oklch(0.68 0.14 156);
-  --chart-3: oklch(0.82 0.17 82);
-  --chart-4: oklch(0.72 0.19 45);
-  --chart-5: oklch(0.55 0.008 240);
+  /* Charts */
+  --chart-1: #53B5E0;
+  --chart-2: #6AC6A7;
+  --chart-3: #E0A93F;
+  --chart-4: #D40019;
+  --chart-5: #BDC4C6;
 
   /* Elevations */
   --shadow-card:
@@ -143,6 +148,7 @@
     linear-gradient(180deg, var(--background), var(--background));
   --grid-line: color-mix(in oklab, var(--border) 55%, transparent);
 }
+
 
 @layer base {
   * {
@@ -248,7 +254,7 @@
     0 24px 60px -22px oklch(0 0 0 / 75%);
 }
 
-/* Typography scale — SOCBOX enterprise */
+/* Typography scale — ClickBox enterprise */
 @utility t-display {
   font-size: 2.5rem;
   line-height: 1.05;

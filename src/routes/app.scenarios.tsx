@@ -5,7 +5,7 @@ import { Clock, Filter, PlayCircle } from "lucide-react";
 
 export const Route = createFileRoute("/app/scenarios")({
   component: ScenarioLib,
-  head: () => ({ meta: [{ title: "SOCBOX · Scenario Library" }] }),
+  head: () => ({ meta: [{ title: "ClickBox · Scenario Library" }] }),
 });
 
 function ScenarioLib() {

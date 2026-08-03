@@ -130,7 +130,7 @@ export const useSoc = create<SocState>()(
 
       reset: () => set(seed()),
     }),
-    { name: "socbox:v1", version: 1 },
+    { name: "clickbox:v1", version: 1 },
   ),
 );
 

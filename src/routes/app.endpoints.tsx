@@ -5,7 +5,7 @@ import { Cpu, Filter, Lock, Wifi } from "lucide-react";
 
 export const Route = createFileRoute("/app/endpoints")({
   component: EndpointCenter,
-  head: () => ({ meta: [{ title: "SOCBOX · Endpoint Center" }] }),
+  head: () => ({ meta: [{ title: "ClickBox · Endpoint Center" }] }),
 });
 
 function statusTone(s: string) {

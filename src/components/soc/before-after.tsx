@@ -2,7 +2,7 @@ import { AlertTriangle, Mail, MessageSquare, Monitor, ShieldCheck, Sparkles, Che
 
 /**
  * Before / After split — chaotic fan of disconnected tool panels on the left,
- * one clean resolved SOCBOX investigation card on the right.
+ * one clean resolved ClickBox investigation card on the right.
  */
 export function BeforeAfter() {
   return (
@@ -10,7 +10,7 @@ export function BeforeAfter() {
       <div className="mx-auto max-w-2xl text-center">
         <div
           className="text-[11px] font-semibold uppercase tracking-[0.14em]"
-          style={{ color: "#16c784" }}
+          style={{ color: "#53B5E0" }}
         >
           What it does
         </div>
@@ -25,7 +25,7 @@ export function BeforeAfter() {
         </p>
       </div>
 
-      <div className="relative mt-14 grid grid-cols-1 gap-6 overflow-hidden rounded-3xl border border-white/10 bg-[#0b1013]/70 backdrop-blur-xl md:grid-cols-2 md:gap-0">
+      <div className="relative mt-14 grid grid-cols-1 gap-6 overflow-hidden rounded-3xl border border-white/10 bg-[#0D2028]/70 backdrop-blur-xl md:grid-cols-2 md:gap-0">
         {/* seam */}
         <div
           aria-hidden
@@ -62,7 +62,7 @@ function BeforeSide() {
         className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.03] px-2.5 py-1 text-[10.5px] font-medium uppercase tracking-[0.14em] text-white/55"
         style={{ fontFamily: '"Geist Mono", monospace' }}
       >
-        Without SOCBOX
+        Without ClickBox
       </span>
       <h3
         className="mt-4 text-[38px] font-semibold leading-none tracking-[-0.03em] text-white/85 md:text-[52px]"
@@ -76,7 +76,7 @@ function BeforeSide() {
         {/* SIEM feed */}
         <MockPanel
           className="left-0 top-2 w-[280px] rotate-[-9deg]"
-          header={{ icon: <AlertTriangle className="size-3.5 text-[#ff6a5c]" />, title: "raw-siem.log" }}
+          header={{ icon: <AlertTriangle className="size-3.5 text-[#EF3B50]" />, title: "raw-siem.log" }}
           desaturate
         >
           <LogRow sev="crit" text="4625 · logon failure · svc_backup" />
@@ -140,11 +140,11 @@ function AfterSide() {
           style={{
             fontFamily: '"Geist Mono", monospace',
             background: "rgba(22,199,132,0.10)",
-            color: "#7fecc0",
+            color: "#8FD5F0",
             border: "1px solid rgba(22,199,132,0.3)",
           }}
         >
-          With SOCBOX
+          With ClickBox
         </span>
       </div>
       <h3
@@ -156,12 +156,12 @@ function AfterSide() {
 
       {/* clean investigation card */}
       <div
-        className="mt-8 overflow-hidden rounded-xl border border-white/12 bg-[#10151a]"
+        className="mt-8 overflow-hidden rounded-xl border border-white/12 bg-[#153140]"
         style={{ boxShadow: "0 30px 60px -30px rgba(0,0,0,0.7)" }}
       >
         <div className="flex items-center justify-between border-b border-white/8 bg-black/30 px-4 py-2.5">
           <div className="flex items-center gap-2">
-            <ShieldCheck className="size-3.5" style={{ color: "#16c784" }} />
+            <ShieldCheck className="size-3.5" style={{ color: "#53B5E0" }} />
             <span
               className="text-[11px] font-medium text-white/70"
               style={{ fontFamily: '"Geist Mono", monospace' }}
@@ -173,7 +173,7 @@ function AfterSide() {
             className="rounded-full px-2 py-0.5 text-[9.5px] font-semibold uppercase tracking-[0.12em]"
             style={{
               background: "rgba(22,199,132,0.14)",
-              color: "#7fecc0",
+              color: "#8FD5F0",
               border: "1px solid rgba(22,199,132,0.35)",
             }}
           >
@@ -183,7 +183,7 @@ function AfterSide() {
 
         <div className="space-y-3 p-4">
           <div className="flex items-start gap-2.5">
-            <Sparkles className="mt-0.5 size-3.5 shrink-0" style={{ color: "#16c784" }} />
+            <Sparkles className="mt-0.5 size-3.5 shrink-0" style={{ color: "#53B5E0" }} />
             <p className="text-[12.5px] leading-[1.55] text-white/80">
               18,412 raw events correlated into <span className="text-white">1 incident</span>.
               Phishing email delivered credentials, used from unmanaged host to
@@ -203,13 +203,13 @@ function AfterSide() {
             </div>
             <div className="flex items-center justify-between gap-3">
               <div className="flex items-center gap-2 text-[12.5px] text-white/85">
-                <CheckCircle2 className="size-3.5" style={{ color: "#16c784" }} />
+                <CheckCircle2 className="size-3.5" style={{ color: "#53B5E0" }} />
                 Disable svc_backup, revoke sessions, quarantine host-042.
               </div>
               <button
                 className="shrink-0 rounded-md px-2.5 py-1 text-[11px] font-medium text-white"
                 style={{
-                  background: "#16c784",
+                  background: "#53B5E0",
                   boxShadow: "0 0 0 1px rgba(22,199,132,0.4)",
                 }}
               >
@@ -238,7 +238,7 @@ function MockPanel({
 }) {
   return (
     <div
-      className={`absolute overflow-hidden rounded-lg border border-white/8 bg-[#0f1418] shadow-[0_20px_50px_-20px_rgba(0,0,0,0.7)] ${className}`}
+      className={`absolute overflow-hidden rounded-lg border border-white/8 bg-[#0D2028] shadow-[0_20px_50px_-20px_rgba(0,0,0,0.7)] ${className}`}
       style={desaturate ? { filter: "saturate(0.7) brightness(0.92)" } : undefined}
     >
       <div className="flex items-center gap-1.5 border-b border-white/6 bg-black/40 px-2.5 py-1.5">
@@ -254,7 +254,7 @@ function MockPanel({
 
 function LogRow({ sev, text }: { sev: "crit" | "warn" | "info"; text: string }) {
   const color =
-    sev === "crit" ? "#ff6a5c" : sev === "warn" ? "#f0b429" : "rgba(255,255,255,0.35)";
+    sev === "crit" ? "#EF3B50" : sev === "warn" ? "#f0b429" : "rgba(255,255,255,0.35)";
   return (
     <div className="flex items-center gap-2 truncate">
       <span className="size-1.5 shrink-0 rounded-full" style={{ background: color }} />
@@ -270,7 +270,7 @@ function MailRow({ subject, from, flag }: { subject: string; from: string; flag?
     <div className="flex items-start gap-2">
       <span
         className="mt-1 size-1.5 shrink-0 rounded-full"
-        style={{ background: flag ? "#ff6a5c" : "rgba(255,255,255,0.25)" }}
+        style={{ background: flag ? "#EF3B50" : "rgba(255,255,255,0.25)" }}
       />
       <div className="min-w-0">
         <div className="truncate text-white/80">{subject}</div>

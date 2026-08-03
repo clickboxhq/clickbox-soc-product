@@ -77,14 +77,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "SOCBOX — Enterprise Cybersecurity Investigation & SOC Training" },
+      { title: "ClickBox — Enterprise Cybersecurity Investigation & SOC Training" },
       {
         name: "description",
         content:
-          "SOCBOX is a cloud-native cybersecurity investigation and SOC training platform. Practice enterprise-grade incident response with realistic synthetic telemetry.",
+          "ClickBox is a cloud-native cybersecurity investigation and SOC training platform. Practice enterprise-grade incident response with realistic synthetic telemetry.",
       },
-      { name: "author", content: "SOCBOX" },
-      { property: "og:title", content: "SOCBOX — Enterprise Cybersecurity Investigation Platform" },
+      { name: "author", content: "ClickBox" },
+      { property: "og:title", content: "ClickBox — Enterprise Cybersecurity Investigation Platform" },
       {
         property: "og:description",
         content:

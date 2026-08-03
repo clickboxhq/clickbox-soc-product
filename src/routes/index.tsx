@@ -33,16 +33,16 @@ export const Route = createFileRoute("/")({
     meta: [
       {
         title:
-          "SOCBOX — AI-native Security Operations. One console. Every signal.",
+          "ClickBox — AI-native Security Operations. One console. Every signal.",
       },
       {
         name: "description",
         content:
-          "SOCBOX correlates alerts across identity, endpoint, email, and cloud — and tells your analysts what actually happened. Book a demo.",
+          "ClickBox correlates alerts across identity, endpoint, email, and cloud — and tells your analysts what actually happened. Book a demo.",
       },
       {
         property: "og:title",
-        content: "SOCBOX — AI-native Security Operations",
+        content: "ClickBox — AI-native Security Operations",
       },
       {
         property: "og:description",
@@ -81,12 +81,12 @@ function Nav() {
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         <a href="/" className="flex items-center gap-2.5">
-          <img src={clickboxLogo.url} alt="SOCBOX" className="size-7 object-contain" />
+          <img src={clickboxLogo.url} alt="ClickBox" className="size-7 object-contain" />
           <span
             className="text-[15px] font-semibold tracking-tight"
             style={displayFont}
           >
-            SOCBOX
+            ClickBox
           </span>
         </a>
         <nav className="hidden items-center gap-8 text-[13px] text-white/70 md:flex">
@@ -106,7 +106,7 @@ function Nav() {
             href="#book"
             className="inline-flex items-center gap-1.5 rounded-md px-3.5 py-1.5 text-[13px] font-medium text-white transition-all"
             style={{
-              background: "#16c784",
+              background: "#53B5E0",
               boxShadow: "0 0 0 1px rgba(22,199,132,0.4), 0 8px 24px -8px rgba(22,199,132,0.6)",
             }}
           >
@@ -140,12 +140,12 @@ function Hero() {
           style={{
             borderColor: "rgba(22,199,132,0.25)",
             background: "rgba(22,199,132,0.08)",
-            color: "#7fecc0",
+            color: "#8FD5F0",
           }}
         >
           <span
             className="size-1.5 rounded-full"
-            style={{ background: "#16c784", boxShadow: "0 0 8px 2px rgba(22,199,132,0.6)" }}
+            style={{ background: "#53B5E0", boxShadow: "0 0 8px 2px rgba(22,199,132,0.6)" }}
           />
           AI-native Security Operations
         </div>
@@ -160,7 +160,7 @@ function Hero() {
         </h1>
 
         <p className="mx-auto mt-6 max-w-2xl text-[16px] leading-[1.6] text-white/70">
-          SOCBOX correlates alerts across identity, endpoint, email, and cloud —
+          ClickBox correlates alerts across identity, endpoint, email, and cloud —
           and tells your analysts what actually happened.
         </p>
 
@@ -169,7 +169,7 @@ function Hero() {
             href="#book"
             className="inline-flex items-center gap-1.5 rounded-md px-5 py-3 text-[13.5px] font-medium text-white transition-all"
             style={{
-              background: "#16c784",
+              background: "#53B5E0",
               boxShadow: "0 0 0 1px rgba(22,199,132,0.4), 0 12px 32px -10px rgba(22,199,132,0.55)",
             }}
           >
@@ -195,7 +195,7 @@ function Hero() {
           }}
         />
         <div
-          className="overflow-hidden rounded-2xl border border-white/10 bg-[#10151a]/80 backdrop-blur-xl"
+          className="overflow-hidden rounded-2xl border border-white/10 bg-[#153140]/80 backdrop-blur-xl"
           style={{
             boxShadow:
               "0 1px 0 rgba(255,255,255,0.05) inset, 0 50px 120px -30px rgba(0,0,0,0.75)",
@@ -211,7 +211,7 @@ function Hero() {
               className="mx-auto rounded-md border border-white/10 bg-black/50 px-3 py-0.5 text-[10.5px] text-white/60"
               style={monoFont}
             >
-              socbox.io / console
+              clickbox.io / console
             </div>
           </div>
           <div className="relative aspect-video w-full bg-black">
@@ -251,7 +251,7 @@ function HowItWorks() {
       <div className="max-w-2xl">
         <div
           className="text-[11px] font-semibold uppercase tracking-[0.14em]"
-          style={{ color: "#16c784" }}
+          style={{ color: "#53B5E0" }}
         >
           Pipeline
         </div>
@@ -259,7 +259,7 @@ function HowItWorks() {
           className="mt-3 text-[32px] font-semibold leading-[1.1] tracking-[-0.02em] text-white md:text-[44px]"
           style={displayFont}
         >
-          How SOCBOX works
+          How ClickBox works
         </h2>
       </div>
 
@@ -277,7 +277,7 @@ function HowItWorks() {
           {STEPS.map((s) => (
             <div key={s.n} className="relative">
               <div
-                className="flex size-12 items-center justify-center rounded-lg border bg-[#10151a]"
+                className="flex size-12 items-center justify-center rounded-lg border bg-[#153140]"
                 style={{ borderColor: "rgba(255,255,255,0.08)" }}
               >
                 <s.icon className="size-5 text-white/85" />
@@ -328,7 +328,7 @@ function Modules() {
       <div className="max-w-2xl">
         <div
           className="text-[11px] font-semibold uppercase tracking-[0.14em]"
-          style={{ color: "#16c784" }}
+          style={{ color: "#53B5E0" }}
         >
           Platform
         </div>
@@ -343,14 +343,14 @@ function Modules() {
         {MODULES.map((m) => (
           <div
             key={m.name}
-            className="group rounded-xl border bg-[#10151a] p-5 transition-all duration-150 hover:-translate-y-px"
+            className="group rounded-xl border bg-[#153140] p-5 transition-all duration-150 hover:-translate-y-px"
             style={{ borderColor: "rgba(255,255,255,0.08)" }}
             onMouseEnter={(e) => (e.currentTarget.style.borderColor = "rgba(22,199,132,0.45)")}
             onMouseLeave={(e) => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)")}
           >
             <div
               className="flex size-10 items-center justify-center rounded-lg"
-              style={{ background: "rgba(22,199,132,0.10)", color: "#16c784" }}
+              style={{ background: "rgba(22,199,132,0.10)", color: "#53B5E0" }}
             >
               <m.icon className="size-5" />
             </div>
@@ -373,7 +373,7 @@ function Screenshots() {
       <div className="max-w-2xl">
         <div
           className="text-[11px] font-semibold uppercase tracking-[0.14em]"
-          style={{ color: "#16c784" }}
+          style={{ color: "#53B5E0" }}
         >
           The product
         </div>
@@ -411,7 +411,7 @@ function ShotFrame({
   return (
     <figure>
       <div
-        className="overflow-hidden rounded-xl border border-white/10 bg-[#0b1013]"
+        className="overflow-hidden rounded-xl border border-white/10 bg-[#0D2028]"
         style={{ boxShadow: "0 40px 100px -30px rgba(0,0,0,0.7)" }}
       >
         <div
@@ -422,7 +422,7 @@ function ShotFrame({
             title={caption}
             loading="lazy"
             className="absolute inset-0 h-full w-full"
-            style={{ border: 0, background: "#0b1013" }}
+            style={{ border: 0, background: "#0D2028" }}
           />
         </div>
       </div>
@@ -449,7 +449,7 @@ function AIWorkflow() {
       <div className="max-w-2xl">
         <div
           className="text-[11px] font-semibold uppercase tracking-[0.14em]"
-          style={{ color: "#16c784" }}
+          style={{ color: "#53B5E0" }}
         >
           AI Investigator
         </div>
@@ -463,7 +463,7 @@ function AIWorkflow() {
 
       <div className="mt-12 grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)]">
         {/* chain */}
-        <div className="rounded-2xl border border-white/10 bg-[#10151a] p-6">
+        <div className="rounded-2xl border border-white/10 bg-[#153140] p-6">
           <ol className="relative space-y-5 pl-8">
             <div
               aria-hidden
@@ -475,11 +475,11 @@ function AIWorkflow() {
                 <span
                   className="absolute -left-[22px] top-1.5 flex size-4 items-center justify-center rounded-full"
                   style={{
-                    background: "#0b1013",
-                    boxShadow: "0 0 0 1.5px #16c784",
+                    background: "#0D2028",
+                    boxShadow: "0 0 0 1.5px #53B5E0",
                   }}
                 >
-                  <span className="size-1.5 rounded-full" style={{ background: "#16c784" }} />
+                  <span className="size-1.5 rounded-full" style={{ background: "#53B5E0" }} />
                 </span>
                 <div className="text-[11px] font-medium tracking-[0.14em] text-white/45" style={monoFont}>
                   {String(i + 1).padStart(2, "0")} · {s.meta}
@@ -493,10 +493,10 @@ function AIWorkflow() {
         </div>
 
         {/* chat panel */}
-        <div className="overflow-hidden rounded-2xl border border-white/10 bg-[#10151a]">
+        <div className="overflow-hidden rounded-2xl border border-white/10 bg-[#153140]">
           <div className="flex items-center gap-2 border-b border-white/10 bg-black/30 px-4 py-2.5">
-            <Sparkles className="size-3.5" style={{ color: "#16c784" }} />
-            <span className="text-[12px] font-medium text-white/80">SOCBOX Copilot</span>
+            <Sparkles className="size-3.5" style={{ color: "#53B5E0" }} />
+            <span className="text-[12px] font-medium text-white/80">ClickBox Copilot</span>
             <span className="ml-auto text-[10.5px] text-white/40" style={monoFont}>
               incident · INC-42188
             </span>
@@ -515,7 +515,7 @@ function AIWorkflow() {
                 background: "rgba(22,199,132,0.05)",
               }}
             >
-              <span className="mr-2 text-[10.5px] uppercase tracking-widest" style={{ ...monoFont, color: "#7fecc0" }}>
+              <span className="mr-2 text-[10.5px] uppercase tracking-widest" style={{ ...monoFont, color: "#8FD5F0" }}>
                 copilot
               </span>
               SRV-DB-07 saw a successful SSH login from an unrecognized ASN at
@@ -563,7 +563,7 @@ function Trust() {
       <div className="max-w-2xl">
         <div
           className="text-[11px] font-semibold uppercase tracking-[0.14em]"
-          style={{ color: "#16c784" }}
+          style={{ color: "#53B5E0" }}
         >
           Trust
         </div>
@@ -575,18 +575,18 @@ function Trust() {
         </h2>
         <p className="mt-4 text-[14.5px] leading-[1.6] text-white/60">
           Formal certification programs are underway. In the meantime, here's
-          what's already true about how SOCBOX is architected.
+          what's already true about how ClickBox is architected.
         </p>
       </div>
       <div className="mt-10 grid grid-cols-1 gap-3 md:grid-cols-2">
         {TRUST.map((c) => (
           <div
             key={c.t}
-            className="flex gap-4 rounded-xl border border-white/10 bg-[#10151a] p-5"
+            className="flex gap-4 rounded-xl border border-white/10 bg-[#153140] p-5"
           >
             <div
               className="flex size-10 shrink-0 items-center justify-center rounded-lg"
-              style={{ background: "rgba(22,199,132,0.10)", color: "#16c784" }}
+              style={{ background: "rgba(22,199,132,0.10)", color: "#53B5E0" }}
             >
               <c.icon className="size-5" />
             </div>
@@ -606,16 +606,16 @@ function Trust() {
 /* --------------------------- DEVELOPERS --------------------------- */
 
 const CODE_SAMPLES: Record<string, string> = {
-  REST: `curl https://api.socbox.io/v1/investigations \\
-  -H "Authorization: Bearer $SOCBOX_KEY" \\
+  REST: `curl https://api.clickbox.io/v1/investigations \\
+  -H "Authorization: Bearer $ClickBox_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{
     "entity": "sarah.chen@contoso.com",
     "window": "24h"
   }'`,
-  Python: `from socbox import SOCBox
+  Python: `from clickbox import ClickBox
 
-sb = SOCBox(api_key=os.environ["SOCBOX_KEY"])
+sb = ClickBox(api_key=os.environ["ClickBox_KEY"])
 
 case = sb.investigations.create(
     entity="sarah.chen@contoso.com",
@@ -624,9 +624,9 @@ case = sb.investigations.create(
 
 print(case.summary)   # AI-generated incident narrative
 print(case.timeline)  # ordered evidence artifacts`,
-  Node: `import { SOCBox } from "@socbox/sdk";
+  Node: `import { ClickBox } from "@clickbox/sdk";
 
-const sb = new SOCBox({ apiKey: process.env.SOCBOX_KEY });
+const sb = new ClickBox({ apiKey: process.env.ClickBox_KEY });
 
 const case_ = await sb.investigations.create({
   entity: "sarah.chen@contoso.com",
@@ -644,7 +644,7 @@ function Developers() {
       <div className="max-w-2xl">
         <div
           className="text-[11px] font-semibold uppercase tracking-[0.14em]"
-          style={{ color: "#16c784" }}
+          style={{ color: "#53B5E0" }}
         >
           Developers
         </div>
@@ -655,12 +655,12 @@ function Developers() {
           Built API-first.
         </h2>
         <p className="mt-4 text-[14.5px] leading-[1.6] text-white/60">
-          Every action in the console is an API call. Wire SOCBOX into your
+          Every action in the console is an API call. Wire ClickBox into your
           SOAR, ticketing, or custom internal tools.
         </p>
       </div>
 
-      <div className="mt-10 overflow-hidden rounded-xl border border-white/10 bg-[#0b1013]">
+      <div className="mt-10 overflow-hidden rounded-xl border border-white/10 bg-[#0D2028]">
         <div className="flex items-center gap-1 border-b border-white/10 px-2 py-1.5">
           {(Object.keys(CODE_SAMPLES) as (keyof typeof CODE_SAMPLES)[]).map(
             (k) => (
@@ -729,7 +729,7 @@ function Pricing() {
       <div className="max-w-2xl">
         <div
           className="text-[11px] font-semibold uppercase tracking-[0.14em]"
-          style={{ color: "#16c784" }}
+          style={{ color: "#53B5E0" }}
         >
           Pricing
         </div>
@@ -753,8 +753,8 @@ function Pricing() {
             style={{
               borderColor: t.featured ? "rgba(22,199,132,0.4)" : "rgba(255,255,255,0.10)",
               background: t.featured
-                ? "linear-gradient(180deg, rgba(22,199,132,0.06), rgba(22,199,132,0) 60%), #10151a"
-                : "#10151a",
+                ? "linear-gradient(180deg, rgba(22,199,132,0.06), rgba(22,199,132,0) 60%), #153140"
+                : "#153140",
             }}
           >
             <div className="flex items-center justify-between">
@@ -766,7 +766,7 @@ function Pricing() {
                   className="rounded-full px-2 py-0.5 text-[10px] font-medium uppercase tracking-[0.14em]"
                   style={{
                     background: "rgba(22,199,132,0.12)",
-                    color: "#7fecc0",
+                    color: "#8FD5F0",
                   }}
                 >
                   Most teams
@@ -782,7 +782,7 @@ function Pricing() {
                 <li key={f} className="flex items-start gap-2 text-white/80">
                   <span
                     className="mt-1.5 size-1.5 shrink-0 rounded-full"
-                    style={{ background: "#16c784" }}
+                    style={{ background: "#53B5E0" }}
                   />
                   {f}
                 </li>
@@ -794,7 +794,7 @@ function Pricing() {
               style={
                 t.featured
                   ? {
-                      background: "#16c784",
+                      background: "#53B5E0",
                       color: "#fff",
                       boxShadow: "0 0 0 1px rgba(22,199,132,0.4)",
                     }
@@ -841,7 +841,7 @@ const FOOTER_COLS = [
 
 function Footer() {
   return (
-    <footer id="book" className="border-t border-white/10 bg-[#0a0d0c]">
+    <footer id="book" className="border-t border-white/10 bg-[#081419]">
       {/* CTA band */}
       <div className="mx-auto max-w-7xl px-6 py-20">
         <div
@@ -849,7 +849,7 @@ function Footer() {
           style={{
             borderColor: "rgba(22,199,132,0.25)",
             background:
-              "linear-gradient(90deg, rgba(22,199,132,0.06), rgba(22,199,132,0) 70%), #10151a",
+              "linear-gradient(90deg, rgba(22,199,132,0.06), rgba(22,199,132,0) 70%), #153140",
           }}
         >
           <div className="max-w-xl">
@@ -857,7 +857,7 @@ function Footer() {
               className="text-[26px] font-semibold leading-[1.15] tracking-[-0.02em] text-white md:text-[32px]"
               style={displayFont}
             >
-              Ready to see SOCBOX on your telemetry?
+              Ready to see ClickBox on your telemetry?
             </h3>
             <p className="mt-3 text-[14.5px] leading-[1.6] text-white/65">
               A 30-minute walkthrough with an engineer, on your stack. No slide
@@ -865,10 +865,10 @@ function Footer() {
             </p>
           </div>
           <a
-            href="mailto:hello@socbox.io"
+            href="mailto:hello@clickbox.io"
             className="inline-flex shrink-0 items-center gap-1.5 rounded-md px-5 py-3 text-[13.5px] font-medium text-white"
             style={{
-              background: "#16c784",
+              background: "#53B5E0",
               boxShadow: "0 0 0 1px rgba(22,199,132,0.4), 0 12px 32px -10px rgba(22,199,132,0.55)",
             }}
           >
@@ -882,12 +882,12 @@ function Footer() {
         <div className="grid grid-cols-2 gap-10 md:grid-cols-6">
           <div className="col-span-2 md:col-span-1">
             <div className="flex items-center gap-2">
-              <img src={clickboxLogo.url} alt="SOCBOX" className="size-6 object-contain" />
+              <img src={clickboxLogo.url} alt="ClickBox" className="size-6 object-contain" />
               <span
                 className="text-[14px] font-semibold tracking-tight text-white"
                 style={displayFont}
               >
-                SOCBOX
+                ClickBox
               </span>
             </div>
             <p className="mt-4 text-[12.5px] leading-[1.6] text-white/50">
@@ -920,7 +920,7 @@ function Footer() {
         </div>
 
         <div className="mt-16 flex flex-wrap items-center justify-between gap-4 border-t border-white/10 pt-6 text-[11.5px] text-white/45">
-          <div>© 2026 SOCBOX</div>
+          <div>© 2026 ClickBox</div>
           <div className="flex items-center gap-5">
             <a href="#" className="transition-colors hover:text-white">Twitter</a>
             <a href="#" className="transition-colors hover:text-white">LinkedIn</a>
@@ -938,7 +938,7 @@ function Landing() {
   return (
     <div
       className="relative min-h-screen overflow-hidden"
-      style={{ background: "#0a0d0c", color: "#e9efec" }}
+      style={{ background: "#081419", color: "#e9efec" }}
     >
       <Nav />
       <Hero />

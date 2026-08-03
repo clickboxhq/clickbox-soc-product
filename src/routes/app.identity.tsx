@@ -5,7 +5,7 @@ import { Filter, MapPin, ShieldCheck } from "lucide-react";
 
 export const Route = createFileRoute("/app/identity")({
   component: IdentityCenter,
-  head: () => ({ meta: [{ title: "SOCBOX · Identity Center" }] }),
+  head: () => ({ meta: [{ title: "ClickBox · Identity Center" }] }),
 });
 
 function riskTone(r: number) {
