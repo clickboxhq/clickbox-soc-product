@@ -92,6 +92,18 @@ export type CaseState = {
   instructorFeedback?: { body: string; adjustment: number; ts: string };
 };
 
+const EMPTY_CASE: CaseState = {
+  status: "open",
+  summary: "",
+  techniqueTags: [],
+  evidence: [],
+  timeline: [],
+  notes: [],
+  actions: [],
+  hintsUsed: 0,
+  statusHistory: [],
+};
+
 const emptyCase = (): CaseState => ({
   status: "open",
   summary: "",
@@ -431,7 +443,7 @@ export const useSoc = create<SocState>()(
   ),
 );
 
-export const getCase = (s: SocState, id: string): CaseState => s.cases[id] ?? emptyCase();
+export const getCase = (s: SocState, id: string): CaseState => s.cases[id] ?? EMPTY_CASE;
 
 // Derived selectors
 export const selectOpenAlerts = (s: SocState) =>
@@ -440,8 +452,8 @@ export const selectCriticalOpen = (s: SocState) =>
   s.alerts.filter((a) => a.severity === "critical" && a.status !== "resolved" && a.status !== "closed");
 export const selectOpenIncidents = (s: SocState) =>
   s.incidents.filter((i) => i.status !== "resolved" && i.status !== "closed");
-export const selectTimelineEvents = (s: SocState) =>
-  s.globalTimeline
+export const timelineEventsFrom = (ids: string[]) =>
+  ids
     .map((id) => securityEvents.find((e) => e.id === id))
     .filter((e): e is (typeof securityEvents)[number] => Boolean(e))
     .sort((a, b) => a.ts.localeCompare(b.ts));

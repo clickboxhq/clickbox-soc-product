@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Panel, SectionHeader, SeverityBadge } from "@/components/soc/primitives";
-import { useSoc, selectTimelineEvents } from "@/lib/store";
+import { useMemo } from "react";
+import { useSoc, timelineEventsFrom } from "@/lib/store";
 import type { EntityType } from "@/lib/case-data";
 import { ListTree, Trash2 } from "lucide-react";
 
@@ -28,8 +29,8 @@ const lanes: { key: EntityType; label: string }[] = [
 ];
 
 function TimelinePage() {
-  const events = useSoc(selectTimelineEvents);
   const globalTimeline = useSoc((s) => s.globalTimeline);
+  const events = useMemo(() => timelineEventsFrom(globalTimeline), [globalTimeline]);
   const cases = useSoc((s) => s.cases);
   const reset = useSoc((s) => s.reset);
 

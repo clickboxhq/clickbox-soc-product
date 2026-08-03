@@ -62,7 +62,8 @@ function CaseWorkspace() {
   const { id } = useParams({ from: "/app/cases/$id" });
   const incident = useSoc((s) => s.incidents.find((i) => i.id === id));
   const c = useSoc((s) => getCase(s, id));
-  const alerts = useSoc((s) => s.alerts.filter((a) => a.incidentId === id));
+  const allAlerts = useSoc((s) => s.alerts);
+  const alerts = useMemo(() => allAlerts.filter((a) => a.incidentId === id), [allAlerts, id]);
   const {
     setCaseStatus,
     pinEvidence,
