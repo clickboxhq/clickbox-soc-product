@@ -4,6 +4,7 @@ import {
   ShieldAlert,
   Bell,
   Inbox,
+  ListTree,
   UserRound,
   MonitorSmartphone,
   Mail,
@@ -40,6 +41,7 @@ const primary: NavItem[] = [
   { to: "/app/investigations", label: "Investigations", icon: ShieldAlert, badge: "12" },
   { to: "/app/alerts", label: "Alerts", icon: Bell, badge: "48" },
   { to: "/app/incidents", label: "Incident Queue", icon: Inbox, badge: "5" },
+  { to: "/app/timeline", label: "Global Timeline", icon: ListTree },
   { to: "/app/identity", label: "Identity Center", icon: UserRound },
   { to: "/app/endpoints", label: "Endpoint Center", icon: MonitorSmartphone },
   { to: "/app/email", label: "Email Investigations", icon: Mail },
@@ -211,6 +213,7 @@ const crumbMap: Record<string, string> = {
   "/app": "Dashboard",
   "/app/alerts": "Alerts",
   "/app/incidents": "Incident Queue",
+  "/app/timeline": "Global Timeline",
   "/app/investigations": "Investigations",
   "/app/identity": "Identity Center",
   "/app/endpoints": "Endpoint Center",
@@ -232,7 +235,7 @@ export function AppShell({ children }: { children?: ReactNode }) {
   const path = useRouterState({ select: (s) => s.location.pathname });
   const crumb =
     crumbMap[path] ??
-    (path.startsWith("/app/investigations/") ? "Investigation" : "Dashboard");
+    (path.startsWith("/app/investigations/") ? "Investigation" : path.startsWith("/app/cases/") ? "Case Management" : "Dashboard");
   const { open, setOpen } = useCommandPalette();
 
   return (
