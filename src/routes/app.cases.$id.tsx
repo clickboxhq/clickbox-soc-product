@@ -457,7 +457,7 @@ function CaseWorkspaceInner() {
                   addCaseNote(id, note.trim());
                   setNote("");
                 }}
-                className="mt-2 h-8 w-full rounded-md bg-[color:var(--info)] text-[12px] font-medium text-[#0D2028] disabled:opacity-40"
+                className="mt-2 h-8 w-full rounded-md bg-[color:var(--info)] text-[12px] font-medium text-[#0A0A0A] disabled:opacity-40"
               >
                 Save note
               </button>
@@ -553,7 +553,7 @@ function CaseWorkspaceInner() {
 
                 <button
                   onClick={onSubmit}
-                  className="mt-3 inline-flex h-9 w-full items-center justify-center gap-2 rounded-md bg-[color:var(--info)] text-[12.5px] font-medium text-[#0D2028]"
+                  className="mt-3 inline-flex h-9 w-full items-center justify-center gap-2 rounded-md bg-[color:var(--info)] text-[12.5px] font-medium text-[#0A0A0A]"
                 >
                   <ShieldCheck className="size-4" /> Submit and score
                 </button>

@@ -106,8 +106,8 @@ function Nav() {
             href="#book"
             className="inline-flex items-center gap-1.5 rounded-md px-3.5 py-1.5 text-[13px] font-medium text-white transition-all"
             style={{
-              background: "#53B5E0",
-              boxShadow: "0 0 0 1px rgba(22,199,132,0.4), 0 8px 24px -8px rgba(22,199,132,0.6)",
+              background: "#FFFFFF",
+              boxShadow: "0 0 0 1px rgba(255,255,255,0.4), 0 8px 24px -8px rgba(255,255,255,0.6)",
             }}
           >
             Book a demo <ArrowRight className="size-3.5" />
@@ -129,7 +129,7 @@ function Hero() {
         className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[900px]"
         style={{
           background:
-            "radial-gradient(1200px 500px at 50% 0%, rgba(22,199,132,0.14), transparent 60%)",
+            "radial-gradient(1200px 500px at 50% 0%, rgba(255,255,255,0.14), transparent 60%)",
         }}
       />
       <div className="pointer-events-none absolute inset-0 -z-10 bg-grid opacity-[0.06]" />
@@ -138,14 +138,14 @@ function Hero() {
         <div
           className="inline-flex items-center gap-2 rounded-full border px-3 py-1 text-[11.5px] backdrop-blur"
           style={{
-            borderColor: "rgba(22,199,132,0.25)",
-            background: "rgba(22,199,132,0.08)",
+            borderColor: "rgba(255,255,255,0.25)",
+            background: "rgba(255,255,255,0.08)",
             color: "#8FD5F0",
           }}
         >
           <span
             className="size-1.5 rounded-full"
-            style={{ background: "#53B5E0", boxShadow: "0 0 8px 2px rgba(22,199,132,0.6)" }}
+            style={{ background: "#FFFFFF", boxShadow: "0 0 8px 2px rgba(255,255,255,0.6)" }}
           />
           AI-native Security Operations
         </div>
@@ -169,8 +169,8 @@ function Hero() {
             href="#book"
             className="inline-flex items-center gap-1.5 rounded-md px-5 py-3 text-[13.5px] font-medium text-white transition-all"
             style={{
-              background: "#53B5E0",
-              boxShadow: "0 0 0 1px rgba(22,199,132,0.4), 0 12px 32px -10px rgba(22,199,132,0.55)",
+              background: "#FFFFFF",
+              boxShadow: "0 0 0 1px rgba(255,255,255,0.4), 0 12px 32px -10px rgba(255,255,255,0.55)",
             }}
           >
             Book a demo <ArrowRight className="size-4" />
@@ -191,11 +191,11 @@ function Hero() {
           className="pointer-events-none absolute -inset-x-10 -inset-y-14 -z-10 rounded-[2.5rem] opacity-70 blur-3xl"
           style={{
             background:
-              "radial-gradient(ellipse at center, rgba(22,199,132,0.18) 0%, transparent 65%)",
+              "radial-gradient(ellipse at center, rgba(255,255,255,0.18) 0%, transparent 65%)",
           }}
         />
         <div
-          className="overflow-hidden rounded-2xl border border-white/10 bg-[#153140]/80 backdrop-blur-xl"
+          className="overflow-hidden rounded-2xl border border-white/10 bg-[#111111]/80 backdrop-blur-xl"
           style={{
             boxShadow:
               "0 1px 0 rgba(255,255,255,0.05) inset, 0 50px 120px -30px rgba(0,0,0,0.75)",
@@ -251,7 +251,7 @@ function HowItWorks() {
       <div className="max-w-2xl">
         <div
           className="text-[11px] font-semibold uppercase tracking-[0.14em]"
-          style={{ color: "#53B5E0" }}
+          style={{ color: "#FFFFFF" }}
         >
           Pipeline
         </div>
@@ -270,14 +270,14 @@ function HowItWorks() {
           className="absolute left-0 right-0 top-6 hidden h-px lg:block"
           style={{
             background:
-              "linear-gradient(90deg, transparent, rgba(22,199,132,0.35), rgba(22,199,132,0.35), transparent)",
+              "linear-gradient(90deg, transparent, rgba(255,255,255,0.35), rgba(255,255,255,0.35), transparent)",
           }}
         />
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-6 lg:gap-4">
           {STEPS.map((s) => (
             <div key={s.n} className="relative">
               <div
-                className="flex size-12 items-center justify-center rounded-lg border bg-[#153140]"
+                className="flex size-12 items-center justify-center rounded-lg border bg-[#111111]"
                 style={{ borderColor: "rgba(255,255,255,0.08)" }}
               >
                 <s.icon className="size-5 text-white/85" />
@@ -328,7 +328,7 @@ function Modules() {
       <div className="max-w-2xl">
         <div
           className="text-[11px] font-semibold uppercase tracking-[0.14em]"
-          style={{ color: "#53B5E0" }}
+          style={{ color: "#FFFFFF" }}
         >
           Platform
         </div>
@@ -343,14 +343,14 @@ function Modules() {
         {MODULES.map((m) => (
           <div
             key={m.name}
-            className="group rounded-xl border bg-[#153140] p-5 transition-all duration-150 hover:-translate-y-px"
+            className="group rounded-xl border bg-[#111111] p-5 transition-all duration-150 hover:-translate-y-px"
             style={{ borderColor: "rgba(255,255,255,0.08)" }}
-            onMouseEnter={(e) => (e.currentTarget.style.borderColor = "rgba(22,199,132,0.45)")}
+            onMouseEnter={(e) => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.45)")}
             onMouseLeave={(e) => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)")}
           >
             <div
               className="flex size-10 items-center justify-center rounded-lg"
-              style={{ background: "rgba(22,199,132,0.10)", color: "#53B5E0" }}
+              style={{ background: "rgba(255,255,255,0.10)", color: "#FFFFFF" }}
             >
               <m.icon className="size-5" />
             </div>
@@ -373,7 +373,7 @@ function Screenshots() {
       <div className="max-w-2xl">
         <div
           className="text-[11px] font-semibold uppercase tracking-[0.14em]"
-          style={{ color: "#53B5E0" }}
+          style={{ color: "#FFFFFF" }}
         >
           The product
         </div>
@@ -411,7 +411,7 @@ function ShotFrame({
   return (
     <figure>
       <div
-        className="overflow-hidden rounded-xl border border-white/10 bg-[#0D2028]"
+        className="overflow-hidden rounded-xl border border-white/10 bg-[#0A0A0A]"
         style={{ boxShadow: "0 40px 100px -30px rgba(0,0,0,0.7)" }}
       >
         <div
@@ -422,7 +422,7 @@ function ShotFrame({
             title={caption}
             loading="lazy"
             className="absolute inset-0 h-full w-full"
-            style={{ border: 0, background: "#0D2028" }}
+            style={{ border: 0, background: "#0A0A0A" }}
           />
         </div>
       </div>
@@ -449,7 +449,7 @@ function AIWorkflow() {
       <div className="max-w-2xl">
         <div
           className="text-[11px] font-semibold uppercase tracking-[0.14em]"
-          style={{ color: "#53B5E0" }}
+          style={{ color: "#FFFFFF" }}
         >
           AI Investigator
         </div>
@@ -463,23 +463,23 @@ function AIWorkflow() {
 
       <div className="mt-12 grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)]">
         {/* chain */}
-        <div className="rounded-2xl border border-white/10 bg-[#153140] p-6">
+        <div className="rounded-2xl border border-white/10 bg-[#111111] p-6">
           <ol className="relative space-y-5 pl-8">
             <div
               aria-hidden
               className="absolute bottom-2 left-3 top-2 w-px"
-              style={{ background: "rgba(22,199,132,0.25)" }}
+              style={{ background: "rgba(255,255,255,0.25)" }}
             />
             {AI_STEPS.map((s, i) => (
               <li key={s.t} className="relative">
                 <span
                   className="absolute -left-[22px] top-1.5 flex size-4 items-center justify-center rounded-full"
                   style={{
-                    background: "#0D2028",
-                    boxShadow: "0 0 0 1.5px #53B5E0",
+                    background: "#0A0A0A",
+                    boxShadow: "0 0 0 1.5px #FFFFFF",
                   }}
                 >
-                  <span className="size-1.5 rounded-full" style={{ background: "#53B5E0" }} />
+                  <span className="size-1.5 rounded-full" style={{ background: "#FFFFFF" }} />
                 </span>
                 <div className="text-[11px] font-medium tracking-[0.14em] text-white/45" style={monoFont}>
                   {String(i + 1).padStart(2, "0")} · {s.meta}
@@ -493,9 +493,9 @@ function AIWorkflow() {
         </div>
 
         {/* chat panel */}
-        <div className="overflow-hidden rounded-2xl border border-white/10 bg-[#153140]">
+        <div className="overflow-hidden rounded-2xl border border-white/10 bg-[#111111]">
           <div className="flex items-center gap-2 border-b border-white/10 bg-black/30 px-4 py-2.5">
-            <Sparkles className="size-3.5" style={{ color: "#53B5E0" }} />
+            <Sparkles className="size-3.5" style={{ color: "#FFFFFF" }} />
             <span className="text-[12px] font-medium text-white/80">ClickBox Copilot</span>
             <span className="ml-auto text-[10.5px] text-white/40" style={monoFont}>
               incident · INC-42188
@@ -511,8 +511,8 @@ function AIWorkflow() {
             <div
               className="rounded-lg border px-3.5 py-3 text-white/90"
               style={{
-                borderColor: "rgba(22,199,132,0.25)",
-                background: "rgba(22,199,132,0.05)",
+                borderColor: "rgba(255,255,255,0.25)",
+                background: "rgba(255,255,255,0.05)",
               }}
             >
               <span className="mr-2 text-[10.5px] uppercase tracking-widest" style={{ ...monoFont, color: "#8FD5F0" }}>
@@ -563,7 +563,7 @@ function Trust() {
       <div className="max-w-2xl">
         <div
           className="text-[11px] font-semibold uppercase tracking-[0.14em]"
-          style={{ color: "#53B5E0" }}
+          style={{ color: "#FFFFFF" }}
         >
           Trust
         </div>
@@ -582,11 +582,11 @@ function Trust() {
         {TRUST.map((c) => (
           <div
             key={c.t}
-            className="flex gap-4 rounded-xl border border-white/10 bg-[#153140] p-5"
+            className="flex gap-4 rounded-xl border border-white/10 bg-[#111111] p-5"
           >
             <div
               className="flex size-10 shrink-0 items-center justify-center rounded-lg"
-              style={{ background: "rgba(22,199,132,0.10)", color: "#53B5E0" }}
+              style={{ background: "rgba(255,255,255,0.10)", color: "#FFFFFF" }}
             >
               <c.icon className="size-5" />
             </div>
@@ -644,7 +644,7 @@ function Developers() {
       <div className="max-w-2xl">
         <div
           className="text-[11px] font-semibold uppercase tracking-[0.14em]"
-          style={{ color: "#53B5E0" }}
+          style={{ color: "#FFFFFF" }}
         >
           Developers
         </div>
@@ -660,7 +660,7 @@ function Developers() {
         </p>
       </div>
 
-      <div className="mt-10 overflow-hidden rounded-xl border border-white/10 bg-[#0D2028]">
+      <div className="mt-10 overflow-hidden rounded-xl border border-white/10 bg-[#0A0A0A]">
         <div className="flex items-center gap-1 border-b border-white/10 px-2 py-1.5">
           {(Object.keys(CODE_SAMPLES) as (keyof typeof CODE_SAMPLES)[]).map(
             (k) => (
@@ -670,7 +670,7 @@ function Developers() {
                 className="rounded-md px-3 py-1 text-[12px] font-medium transition-colors"
                 style={{
                   color: tab === k ? "#fff" : "rgba(255,255,255,0.55)",
-                  background: tab === k ? "rgba(22,199,132,0.10)" : "transparent",
+                  background: tab === k ? "rgba(255,255,255,0.10)" : "transparent",
                 }}
               >
                 {k}
@@ -729,7 +729,7 @@ function Pricing() {
       <div className="max-w-2xl">
         <div
           className="text-[11px] font-semibold uppercase tracking-[0.14em]"
-          style={{ color: "#53B5E0" }}
+          style={{ color: "#FFFFFF" }}
         >
           Pricing
         </div>
@@ -751,10 +751,10 @@ function Pricing() {
             key={t.name}
             className="relative rounded-2xl border p-8"
             style={{
-              borderColor: t.featured ? "rgba(22,199,132,0.4)" : "rgba(255,255,255,0.10)",
+              borderColor: t.featured ? "rgba(255,255,255,0.4)" : "rgba(255,255,255,0.10)",
               background: t.featured
-                ? "linear-gradient(180deg, rgba(22,199,132,0.06), rgba(22,199,132,0) 60%), #153140"
-                : "#153140",
+                ? "linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0) 60%), #111111"
+                : "#111111",
             }}
           >
             <div className="flex items-center justify-between">
@@ -765,7 +765,7 @@ function Pricing() {
                 <span
                   className="rounded-full px-2 py-0.5 text-[10px] font-medium uppercase tracking-[0.14em]"
                   style={{
-                    background: "rgba(22,199,132,0.12)",
+                    background: "rgba(255,255,255,0.12)",
                     color: "#8FD5F0",
                   }}
                 >
@@ -782,7 +782,7 @@ function Pricing() {
                 <li key={f} className="flex items-start gap-2 text-white/80">
                   <span
                     className="mt-1.5 size-1.5 shrink-0 rounded-full"
-                    style={{ background: "#53B5E0" }}
+                    style={{ background: "#FFFFFF" }}
                   />
                   {f}
                 </li>
@@ -794,9 +794,9 @@ function Pricing() {
               style={
                 t.featured
                   ? {
-                      background: "#53B5E0",
+                      background: "#FFFFFF",
                       color: "#fff",
-                      boxShadow: "0 0 0 1px rgba(22,199,132,0.4)",
+                      boxShadow: "0 0 0 1px rgba(255,255,255,0.4)",
                     }
                   : {
                       background: "transparent",
@@ -841,15 +841,15 @@ const FOOTER_COLS = [
 
 function Footer() {
   return (
-    <footer id="book" className="border-t border-white/10 bg-[#081419]">
+    <footer id="book" className="border-t border-white/10 bg-[#000000]">
       {/* CTA band */}
       <div className="mx-auto max-w-7xl px-6 py-20">
         <div
           className="flex flex-col items-start justify-between gap-6 rounded-2xl border p-8 md:flex-row md:items-center md:p-12"
           style={{
-            borderColor: "rgba(22,199,132,0.25)",
+            borderColor: "rgba(255,255,255,0.25)",
             background:
-              "linear-gradient(90deg, rgba(22,199,132,0.06), rgba(22,199,132,0) 70%), #153140",
+              "linear-gradient(90deg, rgba(255,255,255,0.06), rgba(255,255,255,0) 70%), #111111",
           }}
         >
           <div className="max-w-xl">
@@ -868,8 +868,8 @@ function Footer() {
             href="mailto:hello@clickbox.io"
             className="inline-flex shrink-0 items-center gap-1.5 rounded-md px-5 py-3 text-[13.5px] font-medium text-white"
             style={{
-              background: "#53B5E0",
-              boxShadow: "0 0 0 1px rgba(22,199,132,0.4), 0 12px 32px -10px rgba(22,199,132,0.55)",
+              background: "#FFFFFF",
+              boxShadow: "0 0 0 1px rgba(255,255,255,0.4), 0 12px 32px -10px rgba(255,255,255,0.55)",
             }}
           >
             Book a demo <ArrowRight className="size-4" />
@@ -938,7 +938,7 @@ function Landing() {
   return (
     <div
       className="relative min-h-screen overflow-hidden"
-      style={{ background: "#081419", color: "#e9efec" }}
+      style={{ background: "#000000", color: "#e9efec" }}
     >
       <Nav />
       <Hero />
