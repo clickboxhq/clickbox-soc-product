@@ -108,11 +108,11 @@
   --destructive-foreground: #FFFFFF;
 
   /* Semantic status */
-  --success: #12946B;
-  --warning: #C98A0B;
-  --high: #DD6B20;
-  --critical: #D93A3F;
-  --info: #2B7FD4;
+  --success: #2FBF8F;
+  --warning: #E3A008;
+  --high: #F97316;
+  --critical: #F2555A;
+  --info: #58A6E8;
 
   /* Sidebar */
   --sidebar-foreground: #AEBAC6;

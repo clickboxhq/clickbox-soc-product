@@ -57,7 +57,7 @@ function Dashboard() {
             <button className="inline-flex h-9 items-center gap-2 rounded-md border border-border bg-card px-3 text-[12px] text-secondary hover:text-foreground">
               <Download className="size-3.5" /> Export
             </button>
-            <button className="inline-flex h-9 items-center gap-2 rounded-md bg-[color:var(--info)] px-3 text-[12px] font-medium text-white hover:opacity-90">
+            <button className="inline-flex h-9 items-center gap-2 rounded-md bg-primary px-3 text-[12px] font-medium text-primary-foreground hover:bg-primary-hover hover:opacity-90">
               <ShieldAlert className="size-3.5" /> New investigation
             </button>
           </>

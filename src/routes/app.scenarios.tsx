@@ -55,7 +55,7 @@ function ScenarioLib() {
             <div className="mt-2 h-1 overflow-hidden rounded-full bg-background">
               <div className="h-full rounded-full bg-[color:var(--info)]" style={{ width: `${s.completion}%` }} />
             </div>
-            <button className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-md bg-[color:var(--info)] py-2 text-[12px] font-medium text-white">
+            <button className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-md bg-primary py-2 text-[12px] font-medium text-primary-foreground hover:bg-primary-hover">
               <PlayCircle className="size-4" /> Launch investigation
             </button>
           </Panel>
