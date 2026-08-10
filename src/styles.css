@@ -72,62 +72,63 @@
 .dark {
   --radius: 0.75rem;
 
-  /* ClickBox brand palette — monochrome
-     Pure Black #000000 · Ink #0A0A0A · Panel #111111 · Elevated #161616
-     Line #262626 · Gray #8A8A8A · Light Gray #D4D4D4 · White #FFFFFF */
+  /* ClickBox brand palette
+     Black #05070A · Deep Blue #0C1A24 / #123C5A · Dark Green #0E6B4F
+     Neutral grays · White #FFFFFF */
 
-  /* Core surfaces — rich matte black with neutral elevation */
-  --background: #000000;
-  --sidebar: #0A0A0A;
-  --surface: #111111;
-  --surface-2: #161616;
-  --card: #0E0E0E;
-  --card-foreground: #ffffff;
-  --popover: #111111;
-  --popover-foreground: #ffffff;
+  /* Core surfaces — near-black with a deep-blue cast and real elevation steps */
+  --background: #06090D;
+  --sidebar: #0A0E14;
+  --surface: #0F141B;
+  --surface-2: #151C24;
+  --card: #0E131A;
+  --card-foreground: #EEF2F6;
+  --popover: #121820;
+  --popover-foreground: #EEF2F6;
 
-  /* Text — platform-wide pure white for maximum readability */
-  --foreground: #ffffff;
-  --secondary-foreground: #ffffff;
-  --muted-foreground: #ffffff;
+  /* Text hierarchy */
+  --foreground: #F3F6F9;
+  --secondary-foreground: #AEBAC6;
+  --muted-foreground: #8391A0;
 
-  /* Borders / inputs — neutral gray lines */
-  --border: #262626;
-  --input: #262626;
-  --ring: #ffffff;
+  /* Borders / inputs */
+  --border: #212B35;
+  --input: #26313C;
+  --ring: #2B7FD4;
 
-  /* Buttons / accents — white on black */
-  --primary: #ffffff;
-  --primary-foreground: #000000;
-  --secondary: #8A8A8A;
-  --muted: #161616;
-  --accent: #1F1F1F;
-  --accent-foreground: #ffffff;
-  --destructive: #ffffff;
-  --destructive-foreground: #000000;
+  /* Brand accents */
+  --primary: #1E6FB8;
+  --primary-foreground: #FFFFFF;
+  --primary-hover: #2585D6;
+  --secondary: #AEBAC6;
+  --muted: #151C24;
+  --accent: #17222D;
+  --accent-foreground: #EEF2F6;
+  --destructive: #D93A3F;
+  --destructive-foreground: #FFFFFF;
 
-  /* Status — grayscale steps */
-  --success: #ffffff;
-  --warning: #D4D4D4;
-  --high: #BFBFBF;
-  --critical: #ffffff;
-  --info: #ffffff;
+  /* Semantic status */
+  --success: #12946B;
+  --warning: #C98A0B;
+  --high: #DD6B20;
+  --critical: #D93A3F;
+  --info: #2B7FD4;
 
   /* Sidebar */
-  --sidebar-foreground: #ffffff;
-  --sidebar-accent: #1A1A1A;
-  --sidebar-accent-foreground: #ffffff;
-  --sidebar-border: #232323;
-  --sidebar-primary: #ffffff;
-  --sidebar-primary-foreground: #000000;
-  --sidebar-ring: #ffffff;
+  --sidebar-foreground: #AEBAC6;
+  --sidebar-accent: #17222D;
+  --sidebar-accent-foreground: #F3F6F9;
+  --sidebar-border: #1C242D;
+  --sidebar-primary: #2B7FD4;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-ring: #2B7FD4;
 
   /* Charts */
-  --chart-1: #ffffff;
-  --chart-2: #C9C9C9;
-  --chart-3: #9A9A9A;
-  --chart-4: #6E6E6E;
-  --chart-5: #454545;
+  --chart-1: #2B7FD4;
+  --chart-2: #12946B;
+  --chart-3: #8391A0;
+  --chart-4: #C98A0B;
+  --chart-5: #5A6875;
 
   /* Elevations */
   --shadow-card:
@@ -136,18 +137,21 @@
     0 12px 32px -14px oklch(0 0 0 / 70%);
   --gradient-hero: radial-gradient(
       1200px 600px at 80% -10%,
-      color-mix(in oklab, var(--foreground) 6%, transparent),
+      color-mix(in oklab, var(--info) 12%, transparent),
       transparent 60%
     ),
     radial-gradient(
       900px 500px at 0% 20%,
-      color-mix(in oklab, var(--foreground) 4%, transparent),
+      color-mix(in oklab, var(--success) 8%, transparent),
       transparent 60%
     ),
     linear-gradient(180deg, var(--background), var(--background));
-  --grid-line: color-mix(in oklab, var(--border) 55%, transparent);
+  --grid-line: color-mix(in oklab, var(--border) 65%, transparent);
 }
 
+@theme inline {
+  --color-primary-hover: var(--primary-hover);
+}
 
 @layer base {
   * {
@@ -168,7 +172,7 @@
   }
 
   ::placeholder {
-    color: #ffffff;
+    color: var(--muted-foreground);
     opacity: 1;
   }
 
@@ -186,53 +190,12 @@
   a {
     color: inherit;
   }
-
-  body :is(
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6,
-    p,
-    span,
-    div,
-    a,
-    button,
-    label,
-    input,
-    textarea,
-    select,
-    option,
-    th,
-    td,
-    li,
-    small,
-    kbd,
-    strong,
-    em,
-    code,
-    svg
-  ) {
-    color: #ffffff !important;
-  }
-
-  body :is([class*="text-[color:var(--info)]"]) {
-    color: var(--info) !important;
-  }
-}
-
-/* Monochrome theme: all status text renders pure white. */
-[class*="text-[color:var(--critical)]"],
-[class*="text-[color:var(--high)]"],
-[class*="text-[color:var(--warning)]"],
-[class*="text-[color:var(--success)]"] {
-  color: #ffffff !important;
 }
 
 @utility text-secondary {
   color: var(--secondary-foreground);
 }
+
 
 @utility bg-grid {
   background-image:
