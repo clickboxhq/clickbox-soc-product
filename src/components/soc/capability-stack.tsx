@@ -50,7 +50,7 @@ function WordStack({
       <div className="mx-auto max-w-2xl text-center">
         <div
           className="text-[11px] font-semibold uppercase tracking-[0.14em]"
-          style={{ color: "#53B5E0" }}
+          style={{ color: "#FFFFFF" }}
         >
           {eyebrow}
         </div>
@@ -65,17 +65,17 @@ function WordStack({
         </p>
       </div>
 
-      <div className="relative mx-auto mt-12 aspect-[16/7] max-w-5xl overflow-hidden rounded-3xl border border-white/10 bg-[#153140]/60 backdrop-blur-xl">
+      <div className="relative mx-auto mt-12 aspect-[16/7] max-w-5xl overflow-hidden rounded-3xl border border-white/10 bg-[#111111]/60 backdrop-blur-xl">
         <div
           className="pointer-events-none absolute inset-0"
           style={{
             background:
-              "radial-gradient(circle at 50% 50%, rgba(22,199,132,0.16) 0%, transparent 65%)",
+              "radial-gradient(circle at 50% 50%, rgba(255,255,255,0.16) 0%, transparent 65%)",
           }}
         />
         <div className="pointer-events-none absolute inset-0 bg-grid opacity-[0.08]" />
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-[#153140] to-transparent" />
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#153140] to-transparent" />
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-[#111111] to-transparent" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#111111] to-transparent" />
 
         <div className="absolute inset-0 flex flex-col items-center justify-center gap-2">
           {visible.map(({ offset, word }) => {
@@ -101,7 +101,7 @@ function WordStack({
                   style={{
                     fontFamily: 'Geist, "Inter", system-ui, sans-serif',
                     textShadow: isActive
-                      ? "0 0 32px rgba(22,199,132,0.55)"
+                      ? "0 0 32px rgba(255,255,255,0.55)"
                       : "none",
                   }}
                 >

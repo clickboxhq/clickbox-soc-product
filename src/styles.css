@@ -72,19 +72,18 @@
 .dark {
   --radius: 0.75rem;
 
-  /* ClickBox brand palette
-     Axiom Blue #153140 · Supporting Black #0D2028 · Safe Zone #F7F3F2
-     Supporting Gray #455A63 · Light Gray #BDC4C6
-     Tertiary Blue #53B5E0 · Tertiary Green #6AC6A7 · Danger #D40019 */
+  /* ClickBox brand palette — monochrome
+     Pure Black #000000 · Ink #0A0A0A · Panel #111111 · Elevated #161616
+     Line #262626 · Gray #8A8A8A · Light Gray #D4D4D4 · White #FFFFFF */
 
-  /* Core surfaces — Supporting Black base with Axiom Blue elevation */
-  --background: #081419;
-  --sidebar: #0D2028;
-  --surface: #123040;
-  --surface-2: #17394A;
-  --card: #102A36;
+  /* Core surfaces — rich matte black with neutral elevation */
+  --background: #000000;
+  --sidebar: #0A0A0A;
+  --surface: #111111;
+  --surface-2: #161616;
+  --card: #0E0E0E;
   --card-foreground: #ffffff;
-  --popover: #102A36;
+  --popover: #111111;
   --popover-foreground: #ffffff;
 
   /* Text — platform-wide pure white for maximum readability */
@@ -92,43 +91,43 @@
   --secondary-foreground: #ffffff;
   --muted-foreground: #ffffff;
 
-  /* Borders / inputs — Supporting Gray */
-  --border: #2A4854;
-  --input: #2A4854;
-  --ring: #53B5E0;
+  /* Borders / inputs — neutral gray lines */
+  --border: #262626;
+  --input: #262626;
+  --ring: #ffffff;
 
-  /* Buttons / accents — Axiom Blue with Tertiary Blue interaction */
-  --primary: #153140;
-  --primary-foreground: #F7F3F2;
-  --secondary: #455A63;
-  --muted: #1B3A48;
-  --accent: #2A4854;
+  /* Buttons / accents — white on black */
+  --primary: #ffffff;
+  --primary-foreground: #000000;
+  --secondary: #8A8A8A;
+  --muted: #161616;
+  --accent: #1F1F1F;
   --accent-foreground: #ffffff;
-  --destructive: #D40019;
-  --destructive-foreground: #F7F3F2;
+  --destructive: #ffffff;
+  --destructive-foreground: #000000;
 
-  /* Status */
-  --success: #6AC6A7;
-  --warning: #E0A93F;
-  --high: #E8743A;
-  --critical: #D40019;
-  --info: #53B5E0;
+  /* Status — grayscale steps */
+  --success: #ffffff;
+  --warning: #D4D4D4;
+  --high: #BFBFBF;
+  --critical: #ffffff;
+  --info: #ffffff;
 
   /* Sidebar */
   --sidebar-foreground: #ffffff;
-  --sidebar-accent: #16394A;
+  --sidebar-accent: #1A1A1A;
   --sidebar-accent-foreground: #ffffff;
-  --sidebar-border: #23414D;
-  --sidebar-primary: #53B5E0;
-  --sidebar-primary-foreground: #0D2028;
-  --sidebar-ring: #53B5E0;
+  --sidebar-border: #232323;
+  --sidebar-primary: #ffffff;
+  --sidebar-primary-foreground: #000000;
+  --sidebar-ring: #ffffff;
 
   /* Charts */
-  --chart-1: #53B5E0;
-  --chart-2: #6AC6A7;
-  --chart-3: #E0A93F;
-  --chart-4: #D40019;
-  --chart-5: #BDC4C6;
+  --chart-1: #ffffff;
+  --chart-2: #C9C9C9;
+  --chart-3: #9A9A9A;
+  --chart-4: #6E6E6E;
+  --chart-5: #454545;
 
   /* Elevations */
   --shadow-card:
@@ -137,12 +136,12 @@
     0 12px 32px -14px oklch(0 0 0 / 70%);
   --gradient-hero: radial-gradient(
       1200px 600px at 80% -10%,
-      color-mix(in oklab, var(--info) 18%, transparent),
+      color-mix(in oklab, var(--foreground) 6%, transparent),
       transparent 60%
     ),
     radial-gradient(
       900px 500px at 0% 20%,
-      color-mix(in oklab, var(--success) 10%, transparent),
+      color-mix(in oklab, var(--foreground) 4%, transparent),
       transparent 60%
     ),
     linear-gradient(180deg, var(--background), var(--background));
@@ -223,7 +222,7 @@
   }
 }
 
-/* Enforce white status text globally while preserving ClickBox emerald brand accents. */
+/* Monochrome theme: all status text renders pure white. */
 [class*="text-[color:var(--critical)]"],
 [class*="text-[color:var(--high)]"],
 [class*="text-[color:var(--warning)]"],

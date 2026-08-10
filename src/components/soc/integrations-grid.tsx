@@ -162,7 +162,7 @@ export function IntegrationsGrid() {
       <div className="max-w-2xl">
         <div
           className="text-[11px] font-semibold uppercase tracking-[0.14em]"
-          style={{ color: "#53B5E0" }}
+          style={{ color: "#FFFFFF" }}
         >
           Integrations
         </div>
