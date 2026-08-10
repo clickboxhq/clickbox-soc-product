@@ -71,7 +71,7 @@ function TimelinePageInner() {
             </p>
             <Link
               to="/app/incidents"
-              className="mt-4 inline-flex h-9 items-center rounded-md bg-[color:var(--info)] px-3 text-[12px] font-medium text-[#0A0A0A]"
+              className="mt-4 inline-flex h-9 items-center rounded-md bg-primary px-3 text-[12px] font-medium text-primary-foreground hover:bg-primary-hover"
             >
               Go to Incident Queue
             </Link>
