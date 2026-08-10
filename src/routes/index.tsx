@@ -106,8 +106,8 @@ function Nav() {
             href="#book"
             className="inline-flex items-center gap-1.5 rounded-md px-3.5 py-1.5 text-[13px] font-medium text-white transition-all"
             style={{
-              background: "#FFFFFF",
-              boxShadow: "0 0 0 1px rgba(255,255,255,0.4), 0 8px 24px -8px rgba(255,255,255,0.6)",
+              background: "var(--primary)",
+              boxShadow: "0 0 0 1px color-mix(in oklab, var(--primary) 70%, transparent), 0 8px 24px -8px color-mix(in oklab, var(--primary) 55%, transparent)",
             }}
           >
             Book a demo <ArrowRight className="size-3.5" />
@@ -145,7 +145,7 @@ function Hero() {
         >
           <span
             className="size-1.5 rounded-full"
-            style={{ background: "#FFFFFF", boxShadow: "0 0 8px 2px rgba(255,255,255,0.6)" }}
+            style={{ background: "var(--primary)", boxShadow: "0 0 8px 2px rgba(255,255,255,0.6)" }}
           />
           AI-native Security Operations
         </div>
@@ -169,8 +169,8 @@ function Hero() {
             href="#book"
             className="inline-flex items-center gap-1.5 rounded-md px-5 py-3 text-[13.5px] font-medium text-white transition-all"
             style={{
-              background: "#FFFFFF",
-              boxShadow: "0 0 0 1px rgba(255,255,255,0.4), 0 12px 32px -10px rgba(255,255,255,0.55)",
+              background: "var(--primary)",
+              boxShadow: "0 0 0 1px color-mix(in oklab, var(--primary) 70%, transparent), 0 12px 32px -10px color-mix(in oklab, var(--primary) 50%, transparent)",
             }}
           >
             Book a demo <ArrowRight className="size-4" />
@@ -479,7 +479,7 @@ function AIWorkflow() {
                     boxShadow: "0 0 0 1.5px #FFFFFF",
                   }}
                 >
-                  <span className="size-1.5 rounded-full" style={{ background: "#FFFFFF" }} />
+                  <span className="size-1.5 rounded-full" style={{ background: "var(--primary)" }} />
                 </span>
                 <div className="text-[11px] font-medium tracking-[0.14em] text-white/45" style={monoFont}>
                   {String(i + 1).padStart(2, "0")} · {s.meta}
@@ -782,7 +782,7 @@ function Pricing() {
                 <li key={f} className="flex items-start gap-2 text-white/80">
                   <span
                     className="mt-1.5 size-1.5 shrink-0 rounded-full"
-                    style={{ background: "#FFFFFF" }}
+                    style={{ background: "var(--primary)" }}
                   />
                   {f}
                 </li>
@@ -794,9 +794,9 @@ function Pricing() {
               style={
                 t.featured
                   ? {
-                      background: "#FFFFFF",
+                      background: "var(--primary)",
                       color: "#fff",
-                      boxShadow: "0 0 0 1px rgba(255,255,255,0.4)",
+                      boxShadow: "0 0 0 1px color-mix(in oklab, var(--primary) 70%, transparent)",
                     }
                   : {
                       background: "transparent",
@@ -868,8 +868,8 @@ function Footer() {
             href="mailto:hello@clickbox.io"
             className="inline-flex shrink-0 items-center gap-1.5 rounded-md px-5 py-3 text-[13.5px] font-medium text-white"
             style={{
-              background: "#FFFFFF",
-              boxShadow: "0 0 0 1px rgba(255,255,255,0.4), 0 12px 32px -10px rgba(255,255,255,0.55)",
+              background: "var(--primary)",
+              boxShadow: "0 0 0 1px color-mix(in oklab, var(--primary) 70%, transparent), 0 12px 32px -10px color-mix(in oklab, var(--primary) 50%, transparent)",
             }}
           >
             Book a demo <ArrowRight className="size-4" />
