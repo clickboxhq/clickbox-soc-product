@@ -136,12 +136,12 @@
     0 12px 32px -14px oklch(0 0 0 / 70%);
   --gradient-hero: radial-gradient(
       1200px 600px at 80% -10%,
-      color-mix(in oklab, var(--info) 18%, transparent),
+      color-mix(in oklab, var(--foreground) 6%, transparent),
       transparent 60%
     ),
     radial-gradient(
       900px 500px at 0% 20%,
-      color-mix(in oklab, var(--success) 10%, transparent),
+      color-mix(in oklab, var(--foreground) 4%, transparent),
       transparent 60%
     ),
     linear-gradient(180deg, var(--background), var(--background));
@@ -222,7 +222,7 @@
   }
 }
 
-/* Enforce white status text globally while preserving ClickBox emerald brand accents. */
+/* Monochrome theme: all status text renders pure white. */
 [class*="text-[color:var(--critical)]"],
 [class*="text-[color:var(--high)]"],
 [class*="text-[color:var(--warning)]"],
