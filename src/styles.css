@@ -73,10 +73,10 @@
   --radius: 0.75rem;
 
   /* ClickBox brand palette
-     Black #05070A · Deep Blue #0C1A24 / #123C5A · Dark Green #0E6B4F
+     Black #05070A · Signal Red #C8353A / #E04347 · Dark Green #0E6B4F
      Neutral grays · White #FFFFFF */
 
-  /* Core surfaces — near-black with a deep-blue cast and real elevation steps */
+  /* Core surfaces — near-black with a subtle warm cast and real elevation steps */
   --background: #06090D;
   --sidebar: #0A0E14;
   --surface: #0F141B;
@@ -94,12 +94,12 @@
   /* Borders / inputs */
   --border: #212B35;
   --input: #26313C;
-  --ring: #2B7FD4;
+  --ring: #D8464B;
 
   /* Brand accents */
-  --primary: #1E6FB8;
+  --primary: #C0292F;
   --primary-foreground: #FFFFFF;
-  --primary-hover: #2585D6;
+  --primary-hover: #DA383E;
   --secondary: #AEBAC6;
   --muted: #151C24;
   --accent: #17222D;
@@ -112,19 +112,19 @@
   --warning: #E3A008;
   --high: #F97316;
   --critical: #F2555A;
-  --info: #58A6E8;
+  --info: #F0706F;
 
   /* Sidebar */
   --sidebar-foreground: #AEBAC6;
   --sidebar-accent: #17222D;
   --sidebar-accent-foreground: #F3F6F9;
   --sidebar-border: #1C242D;
-  --sidebar-primary: #2B7FD4;
+  --sidebar-primary: #D8464B;
   --sidebar-primary-foreground: #FFFFFF;
-  --sidebar-ring: #2B7FD4;
+  --sidebar-ring: #D8464B;
 
   /* Charts */
-  --chart-1: #2B7FD4;
+  --chart-1: #D8464B;
   --chart-2: #12946B;
   --chart-3: #8391A0;
   --chart-4: #C98A0B;
