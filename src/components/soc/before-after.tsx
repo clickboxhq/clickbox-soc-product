@@ -172,13 +172,14 @@ function AfterSide() {
           <span
             className="rounded-full px-2 py-0.5 text-[9.5px] font-semibold uppercase tracking-[0.12em]"
             style={{
-              background: "rgba(255,255,255,0.14)",
-              color: "#8FD5F0",
-              border: "1px solid rgba(255,255,255,0.35)",
+              background: "color-mix(in oklab, var(--success) 16%, transparent)",
+              color: "var(--success)",
+              border: "1px solid color-mix(in oklab, var(--success) 40%, transparent)",
             }}
           >
             Contained
           </span>
+
         </div>
 
         <div className="space-y-3 p-4">
@@ -207,14 +208,16 @@ function AfterSide() {
                 Disable svc_backup, revoke sessions, quarantine host-042.
               </div>
               <button
-                className="shrink-0 rounded-md px-2.5 py-1 text-[11px] font-medium text-white"
+                className="shrink-0 rounded-md px-2.5 py-1 text-[11px] font-medium"
                 style={{
-                  background: "#FFFFFF",
-                  boxShadow: "0 0 0 1px rgba(255,255,255,0.4)",
+                  background: "var(--primary)",
+                  color: "var(--primary-foreground)",
+                  boxShadow: "0 0 0 1px color-mix(in oklab, var(--primary) 70%, transparent)",
                 }}
               >
                 Run playbook
               </button>
+
             </div>
           </div>
         </div>
