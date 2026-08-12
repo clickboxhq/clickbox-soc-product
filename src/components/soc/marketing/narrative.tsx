@@ -295,23 +295,24 @@ function Response() {
 export function Narrative() {
   return (
     <section id="how" className="relative">
-      <GridField className="opacity-[0.045]" size={64} opacity={0.045} />
+      <GridField className="opacity-[0.06]" size={64} opacity={0.06} />
       <div className="relative mx-auto max-w-7xl px-6">
-        <div className="border-b border-white/8 py-24 md:py-32">
+        <div className="border-b border-white/8 py-20 md:py-24">
           <Signal />
         </div>
-        <div className="border-b border-white/8 py-24 md:py-32">
+        <div className="border-b border-white/8 py-20 md:py-24">
           <Correlation />
         </div>
-        <div className="border-b border-white/8 py-24 md:py-32">
+        <div className="border-b border-white/8 py-20 md:py-24">
           <Investigation />
         </div>
-        <div className="border-b border-white/8 py-24 md:py-32">
+        <div className="border-b border-white/8 py-20 md:py-24">
           <Understanding />
         </div>
-        <div className="py-24 md:py-32">
+        <div className="py-20 md:py-24">
           <Response />
         </div>
+
       </div>
     </section>
   );
