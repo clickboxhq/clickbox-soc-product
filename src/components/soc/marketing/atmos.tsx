@@ -197,7 +197,7 @@ export function SignalStreams({ className = "" }: { className?: string }) {
       <defs>
         <linearGradient id="cb-stream" x1="0" x2="1">
           <stop offset="0%" stopColor="rgba(255,255,255,0)" />
-          <stop offset="38%" stopColor="rgba(255,255,255,.34)" />
+          <stop offset="38%" stopColor="rgba(255,255,255,.5)" />
           <stop offset="100%" stopColor="rgba(255,255,255,0)" />
         </linearGradient>
         <radialGradient id="cb-core" cx="50%" cy="50%">
