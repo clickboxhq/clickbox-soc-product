@@ -138,7 +138,7 @@ export function SectionHead({
 export function GridField({
   className = "",
   size = 44,
-  opacity = 0.05,
+  opacity = 0.085,
 }: {
   className?: string;
   size?: number;
