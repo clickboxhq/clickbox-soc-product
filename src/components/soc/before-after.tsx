@@ -208,14 +208,16 @@ function AfterSide() {
                 Disable svc_backup, revoke sessions, quarantine host-042.
               </div>
               <button
-                className="shrink-0 rounded-md px-2.5 py-1 text-[11px] font-medium text-white"
+                className="shrink-0 rounded-md px-2.5 py-1 text-[11px] font-medium"
                 style={{
-                  background: "#FFFFFF",
-                  boxShadow: "0 0 0 1px rgba(255,255,255,0.4)",
+                  background: "var(--primary)",
+                  color: "var(--primary-foreground)",
+                  boxShadow: "0 0 0 1px color-mix(in oklab, var(--primary) 70%, transparent)",
                 }}
               >
                 Run playbook
               </button>
+
             </div>
           </div>
         </div>
