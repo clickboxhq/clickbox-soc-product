@@ -1123,28 +1123,12 @@ function ExecutiveDashboard() {
 export function ProductDemos() {
   return (
     <div id="product" className="relative">
-      <DemoSection id="command-center">
-        <div className="pointer-events-none absolute inset-0 -z-10">
-          <Schematic opacity={0.28} />
-          <Glow className="left-1/2 top-10 h-[26rem] w-[52rem] -translate-x-1/2" intensity={0.1} />
-        </div>
-        <DemoIntro
-          index="01"
-          kicker="Security Command Center"
-          title="The whole environment, on one surface."
-          body="Every alert from every source lands in one triage queue — deduplicated, scored, and already explained. Analysts start at the verdict, not the raw log."
-        />
-        <Reveal className="mt-14">
-          <CommandCenter />
-        </Reveal>
-      </DemoSection>
-
       <DemoSection id="workspace">
         <div className="pointer-events-none absolute inset-0 -z-10">
           <Pathways opacity={0.32} />
         </div>
         <DemoIntro
-          index="02"
+          index="01"
           kicker="AI Investigation Workspace"
           title="The investigation writes itself."
           body="ClickBox reconstructs the incident across identity, endpoint, email and cloud, shows its reasoning step by step, and hands the analyst a defensible narrative."
@@ -1159,7 +1143,7 @@ export function ProductDemos() {
           <GraphField opacity={0.3} />
         </div>
         <DemoIntro
-          index="03"
+          index="02"
           kicker="Threat Correlation Engine"
           title="Isolated signals become one attack path."
           body="Identity, endpoint, email, cloud and network resolve through the AI core into a single security graph — with blast radius, not just severity."
@@ -1174,7 +1158,7 @@ export function ProductDemos() {
           <Schematic opacity={0.22} />
         </div>
         <DemoIntro
-          index="04"
+          index="03"
           kicker="Executive Security Dashboard"
           title="Numbers the board actually asks for."
           body="Posture, MTTR, risk reduction and coverage — measured continuously and rendered as a report you can present without a week of preparation."

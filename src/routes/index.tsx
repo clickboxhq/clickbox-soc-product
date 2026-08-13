@@ -23,7 +23,7 @@ import clickboxLogo from "@/assets/clickbox-logo.asset.json";
 import { CapabilityStack } from "@/components/soc/capability-stack";
 import { IntegrationsGrid } from "@/components/soc/integrations-grid";
 import { Narrative } from "@/components/soc/marketing/narrative";
-import { ProductDemos, ProofStrip } from "@/components/soc/marketing/demos";
+import { CommandCenter, ProductDemos, ProofStrip } from "@/components/soc/marketing/demos";
 import { GraphField, Schematic } from "@/components/soc/marketing/art";
 import {
   Bloom,
