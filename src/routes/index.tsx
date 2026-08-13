@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   ArrowRight,
   BarChart3,
@@ -14,19 +14,17 @@ import {
   Layers,
   LayoutDashboard,
   Lock,
-  PlayCircle,
   Radar,
   ScrollText,
-  Sparkles,
   Workflow,
 } from "lucide-react";
 
 import clickboxLogo from "@/assets/clickbox-logo.asset.json";
-import productDemo from "@/assets/product-demo.mp4.asset.json";
 import { CapabilityStack } from "@/components/soc/capability-stack";
 import { IntegrationsGrid } from "@/components/soc/integrations-grid";
-import { BeforeAfter } from "@/components/soc/before-after";
 import { Narrative } from "@/components/soc/marketing/narrative";
+import { ProductDemos, ProofStrip } from "@/components/soc/marketing/demos";
+import { GraphField, Schematic } from "@/components/soc/marketing/art";
 import {
   Bloom,
   GridField,
@@ -134,168 +132,25 @@ function Nav() {
 
 /* ------------------------------- HERO ------------------------------- */
 
-/** Faint constellation of security entities drifting behind the headline. */
+/** Atmospheric security graph + schematic plate behind the headline. */
 function HeroArtwork() {
   return (
     <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
-      <GridField size={56} opacity={0.055} />
+      <Schematic opacity={0.35} />
+      <div className="absolute inset-x-0 top-0 h-[900px]">
+        <GraphField opacity={0.34} />
+      </div>
       <div
         className="absolute inset-x-0 top-0 h-[820px]"
         style={{
           background:
-            "radial-gradient(1100px 460px at 50% -8%, color-mix(in oklab, var(--primary) 16%, transparent), transparent 62%)",
+            "radial-gradient(1100px 460px at 50% -10%, color-mix(in oklab, var(--primary) 15%, transparent), transparent 62%)",
         }}
       />
-      <svg
-        viewBox="0 0 1440 760"
-        className="absolute inset-x-0 top-0 h-[760px] w-full opacity-[0.5]"
-        preserveAspectRatio="xMidYMin slice"
-      >
-        <defs>
-          <linearGradient id="hero-arc" x1="0" x2="1">
-            <stop offset="0%" stopColor="rgba(255,255,255,0)" />
-            <stop offset="50%" stopColor="rgba(255,255,255,.22)" />
-            <stop offset="100%" stopColor="rgba(255,255,255,0)" />
-          </linearGradient>
-          <radialGradient id="hero-mask" cx="50%" cy="18%">
-            <stop offset="0%" stopColor="#fff" stopOpacity="0" />
-            <stop offset="55%" stopColor="#fff" stopOpacity="1" />
-          </radialGradient>
-          <mask id="hero-m">
-            <rect width="1440" height="760" fill="url(#hero-mask)" />
-          </mask>
-        </defs>
-        <g mask="url(#hero-m)" fill="none" stroke="url(#hero-arc)">
-          {[300, 420, 540, 660, 780].map((r, i) => (
-            <ellipse
-              key={r}
-              cx="720"
-              cy="120"
-              rx={r}
-              ry={r * 0.42}
-              strokeWidth={i % 2 ? 0.6 : 1}
-              strokeDasharray={i % 2 ? "2 10" : undefined}
-            />
-          ))}
-          {Array.from({ length: 15 }, (_, i) => {
-            const x = 60 + i * 95;
-            return (
-              <line
-                key={i}
-                x1={x}
-                y1="0"
-                x2={720}
-                y2="620"
-                strokeWidth="0.5"
-                opacity="0.5"
-              />
-            );
-          })}
-        </g>
-      </svg>
-    </div>
-  );
-}
-
-/** Product demo, framed as a premium showcase with scroll-linked lift. */
-function DemoShowcase() {
-  const ref = useRef<HTMLDivElement>(null);
-  const [p, setP] = useState(0);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    let raf = 0;
-    const on = () => {
-      cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(() => {
-        const r = el.getBoundingClientRect();
-        const v = 1 - Math.min(1, Math.max(0, r.top / window.innerHeight));
-        setP(v);
-      });
-    };
-    on();
-    window.addEventListener("scroll", on, { passive: true });
-    window.addEventListener("resize", on);
-    return () => {
-      cancelAnimationFrame(raf);
-      window.removeEventListener("scroll", on);
-      window.removeEventListener("resize", on);
-    };
-  }, []);
-
-  const eased = Math.min(1, p * 1.25);
-
-  return (
-    <div id="demo" ref={ref} className="relative mx-auto mt-20 max-w-6xl">
-      <Bloom
-        className="-inset-x-16 -inset-y-16 rounded-[3rem]"
-        intensity={0.18}
-      />
       <div
-        className="relative overflow-hidden rounded-2xl border border-white/10"
+        className="absolute inset-x-0 bottom-0 h-64"
         style={{
-          background: "rgba(10,13,17,0.9)",
-          backdropFilter: "blur(20px)",
-          transform: `perspective(2000px) rotateX(${(1 - eased) * 5}deg) translateY(${(1 - eased) * 26}px) scale(${0.965 + eased * 0.035})`,
-          opacity: 0.55 + eased * 0.45,
-          transition: "transform 120ms linear, opacity 240ms linear",
-          boxShadow:
-            "0 1px 0 rgba(255,255,255,0.06) inset, 0 60px 140px -40px rgba(0,0,0,0.9), 0 0 0 1px rgba(255,255,255,0.03)",
-        }}
-      >
-        <div className="flex items-center gap-2 border-b border-white/8 bg-black/50 px-3.5 py-2.5">
-          <div className="flex gap-1.5">
-            <span className="size-2.5 rounded-full bg-white/12" />
-            <span className="size-2.5 rounded-full bg-white/12" />
-            <span className="size-2.5 rounded-full bg-white/12" />
-          </div>
-          <div
-            className="mx-auto flex items-center gap-2 rounded-md border border-white/8 bg-black/60 px-3 py-1 text-[10.5px] text-white/55"
-            style={monoFont}
-          >
-            <Lock className="size-2.5" />
-            clickbox.io / console
-          </div>
-          <div
-            className="hidden items-center gap-1.5 text-[10px] uppercase tracking-[0.18em] text-white/35 sm:flex"
-            style={monoFont}
-          >
-            <span
-              className="size-1.5 rounded-full"
-              style={{ background: "var(--primary)" }}
-            />
-            live
-          </div>
-        </div>
-        <div className="relative aspect-video w-full bg-black">
-          <video
-            className="absolute inset-0 h-full w-full object-contain"
-            src={productDemo.url}
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="auto"
-            disablePictureInPicture
-            controls={false}
-          />
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-0"
-            style={{
-              background:
-                "linear-gradient(180deg, rgba(255,255,255,0.04), transparent 18%)",
-            }}
-          />
-        </div>
-      </div>
-      {/* the frame dissolves into the page below it */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-x-0 -bottom-24 h-24"
-        style={{
-          background: "linear-gradient(180deg, rgba(0,0,0,.85), #000)",
+          background: "linear-gradient(180deg, transparent, #000)",
         }}
       />
     </div>
@@ -304,10 +159,10 @@ function DemoShowcase() {
 
 function Hero() {
   return (
-    <section className="relative overflow-hidden px-6 pb-24 pt-32 md:pt-40">
+    <section className="relative overflow-hidden px-6 pb-28 pt-36 md:pb-36 md:pt-48">
       <HeroArtwork />
       <div className="mx-auto max-w-7xl">
-        <div className="mx-auto max-w-3xl text-center">
+        <div className="mx-auto max-w-4xl text-center">
           <Reveal>
             <div className="inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/[0.04] px-3 py-1 text-[11.5px] text-white/70 backdrop-blur">
               <span
@@ -318,45 +173,44 @@ function Hero() {
                     "0 0 10px 2px color-mix(in oklab, var(--primary) 60%, transparent)",
                 }}
               />
-              AI-native Security Operations
+              AI-native Security Operations Platform
             </div>
           </Reveal>
 
           <Reveal delay={80}>
             <h1
-              className="mt-7 text-[42px] font-semibold leading-[1.0] tracking-[-0.035em] text-white md:text-[72px]"
+              className="mt-8 text-[46px] font-semibold leading-[0.98] tracking-[-0.04em] text-white md:text-[86px]"
               style={displayFont}
             >
-              One console.
+              Security operations,
               <br />
-              Every signal.
-              <span className="block text-white/40">
-                Answered in minutes.
-              </span>
+              finally correlated.
             </h1>
           </Reveal>
 
           <Reveal delay={160}>
-            <p className="mx-auto mt-7 max-w-xl text-[16px] leading-[1.65] text-white/55 [text-wrap:pretty]">
-              ClickBox correlates alerts across identity, endpoint, email, and
-              cloud — then tells your analysts what actually happened, and what
-              to do about it.
+            <p className="mx-auto mt-8 max-w-2xl text-[17px] leading-[1.65] text-white/55 [text-wrap:pretty]">
+              ClickBox joins identity, endpoint, email, cloud and network signal
+              into a single security graph — then tells your analysts what
+              actually happened, and what to do about it.
             </p>
           </Reveal>
 
           <Reveal delay={230}>
-            <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <div className="mt-11 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <a href="#book" className="btn-primary w-full sm:w-auto">
                 Book a demo <ArrowRight className="size-4" />
               </a>
-              <a href="#demo" className="btn-ghost w-full sm:w-auto">
-                <PlayCircle className="size-4" /> Watch the product tour
+              <a href="#product" className="btn-ghost w-full sm:w-auto">
+                <Layers className="size-4" /> Explore the platform
               </a>
             </div>
           </Reveal>
-        </div>
 
-        <DemoShowcase />
+          <Reveal delay={300}>
+            <ProofStrip />
+          </Reveal>
+        </div>
       </div>
     </section>
   );
@@ -483,210 +337,81 @@ function Modules() {
   );
 }
 
-/* --------------------- REAL PRODUCT SCREENSHOTS --------------------- */
+/* ---------------------------- CUSTOMERS ---------------------------- */
 
-function Screenshots() {
-  return (
-    <section className="relative mx-auto max-w-7xl px-6 py-24">
-      <SectionHead
-        eyebrow="The product"
-        title="See it, don't just read about it."
-        sub="These are live surfaces from the ClickBox console, running in this page."
-      />
-      <div className="mt-12 space-y-6">
-        <ShotFrame
-          caption="Alert Center — every signal, one triage surface."
-          embedSrc="/app/alerts"
-        />
-        <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-          <ShotFrame
-            caption="Incident Queue — cases, ownership, SLAs."
-            embedSrc="/app/incidents"
-            tall
-          />
-          <ShotFrame
-            caption="Identity Center — risk across every user."
-            embedSrc="/app/identity"
-            tall
-          />
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function ShotFrame({
-  caption,
-  embedSrc,
-  tall,
-}: {
-  caption: string;
-  embedSrc: string;
-  tall?: boolean;
-}) {
-  return (
-    <Reveal>
-      <figure>
-        <div
-          className="overflow-hidden rounded-xl border border-white/8 bg-[#07090C]"
-          style={{ boxShadow: "0 50px 110px -40px rgba(0,0,0,0.9)" }}
-        >
-          <div
-            className={`relative w-full ${tall ? "aspect-[4/3]" : "aspect-[16/9]"}`}
-          >
-            <iframe
-              src={embedSrc}
-              title={caption}
-              loading="lazy"
-              className="absolute inset-0 h-full w-full"
-              style={{ border: 0, background: "#07090C" }}
-            />
-          </div>
-        </div>
-        <figcaption
-          className="mt-3 text-[11.5px] text-white/40"
-          style={monoFont}
-        >
-          {caption}
-        </figcaption>
-      </figure>
-    </Reveal>
-  );
-}
-
-/* ---------------------- AI INVESTIGATOR WORKFLOW ---------------------- */
-
-const AI_STEPS = [
-  { t: "Reads 18,000 raw events", meta: "ingest" },
-  { t: "Clusters related alerts", meta: "correlate" },
-  { t: "Eliminates false positives", meta: "score" },
-  { t: "Builds the incident timeline", meta: "assemble" },
-  { t: "Recommends a response", meta: "act" },
+const SEGMENTS = [
+  { t: "Financial institutions", b: "Tier-1 banks and payment networks running 24×7 fraud and intrusion response." },
+  { t: "Government agencies", b: "National CERTs and defence programs with strict residency and audit demands." },
+  { t: "Technology companies", b: "Platform security teams protecting multi-tenant cloud estates at scale." },
+  { t: "Managed security providers", b: "MSSPs operating dozens of client tenants from one correlated console." },
 ];
 
-function AIWorkflow() {
+function Customers() {
   return (
-    <section className="relative mx-auto max-w-7xl px-6 py-24">
+    <section className="relative mx-auto max-w-7xl px-6 py-28">
       <SectionHead
-        eyebrow="AI Investigator"
-        title="What the AI actually does."
+        eyebrow="Trusted by"
+        title="Deployed where the consequences are real."
+        sub="ClickBox is built for teams whose incidents make the news if they're handled badly."
       />
-
-      <div className="mt-12 grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)]">
-        <Reveal className="rounded-2xl border border-white/8 bg-[#080B0F] p-7">
-          <ol className="relative space-y-6 pl-8">
-            <div
-              aria-hidden
-              className="absolute bottom-2 left-[7px] top-2 w-px"
-              style={{
-                background:
-                  "linear-gradient(180deg, transparent, rgba(255,255,255,.25), transparent)",
-              }}
-            />
-            {AI_STEPS.map((s, i) => (
-              <li key={s.t} className="relative">
-                <span
-                  className="absolute -left-[26px] top-1.5 flex size-[15px] items-center justify-center rounded-full border border-white/25 bg-[#05070A]"
-                >
-                  <span
-                    className="size-1.5 rounded-full"
-                    style={{ background: "var(--primary)" }}
-                  />
-                </span>
-                <div
-                  className="text-[10.5px] tracking-[0.2em] text-white/35"
-                  style={monoFont}
-                >
-                  {String(i + 1).padStart(2, "0")} · {s.meta}
-                </div>
-                <div
-                  className="mt-1 text-[15px] font-medium text-white"
-                  style={displayFont}
-                >
-                  {s.t}
-                </div>
-              </li>
-            ))}
-          </ol>
-        </Reveal>
-
-        <Reveal
-          delay={100}
-          className="overflow-hidden rounded-2xl border border-white/8 bg-[#080B0F]"
-        >
-          <div className="flex items-center gap-2 border-b border-white/8 bg-black/40 px-4 py-3">
-            <Sparkles
-              className="size-3.5"
-              style={{ color: "var(--primary)" }}
-            />
-            <span className="text-[12px] font-medium text-white/85">
-              ClickBox Copilot
-            </span>
+      <div className="mt-12 grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-white/8 bg-white/[0.06] md:grid-cols-2 lg:grid-cols-4">
+        {SEGMENTS.map((s, i) => (
+          <div
+            key={s.t}
+            className="group relative bg-[#07090C] p-6 transition-colors duration-300 hover:bg-[#0C1016]"
+          >
             <span
-              className="ml-auto text-[10.5px] text-white/35"
+              className="text-[10px] tracking-[0.22em] text-white/25"
               style={monoFont}
             >
-              incident · INC-42188
+              {String(i + 1).padStart(2, "0")}
             </span>
+            <h3
+              className="mt-4 text-[15px] font-semibold text-white"
+              style={displayFont}
+            >
+              {s.t}
+            </h3>
+            <p className="mt-2 text-[13px] leading-[1.6] text-white/50">
+              {s.b}
+            </p>
           </div>
-          <div className="space-y-4 p-5 text-[13px] leading-[1.65]">
-            <div className="rounded-lg bg-white/[0.03] px-3.5 py-2.5 text-white/80">
-              <span
-                className="mr-2 text-[10px] uppercase tracking-[0.2em] text-white/35"
+        ))}
+      </div>
+
+      <Reveal delay={120}>
+        <div className="mt-6 grid grid-cols-1 gap-3 md:grid-cols-3">
+          {[
+            {
+              q: "We replaced three consoles and a spreadsheet. The first week, ClickBox closed a phishing-to-cloud chain our SIEM had split into nine unrelated alerts.",
+              a: "Director of Security Operations, global payments",
+            },
+            {
+              q: "The narrative it writes is the narrative we hand to regulators. That has never been true of a tool before.",
+              a: "Head of Cyber Defence, public sector",
+            },
+            {
+              q: "Our analysts stopped triaging and started investigating. MTTR went from hours to minutes.",
+              a: "SOC Manager, enterprise technology",
+            },
+          ].map((c) => (
+            <figure
+              key={c.a}
+              className="rounded-xl border border-white/8 bg-[#080B0F] p-6"
+            >
+              <blockquote className="text-[13.5px] leading-[1.7] text-white/75">
+                “{c.q}”
+              </blockquote>
+              <figcaption
+                className="mt-4 text-[10.5px] uppercase tracking-[0.16em] text-white/35"
                 style={monoFont}
               >
-                analyst
-              </span>
-              What happened with SRV-DB-07?
-            </div>
-            <div
-              className="rounded-lg border px-3.5 py-3 text-white/85"
-              style={{
-                borderColor:
-                  "color-mix(in oklab, var(--primary) 40%, transparent)",
-                background:
-                  "color-mix(in oklab, var(--primary) 8%, transparent)",
-              }}
-            >
-              <span
-                className="mr-2 text-[10px] uppercase tracking-[0.2em]"
-                style={{
-                  ...monoFont,
-                  color: "color-mix(in oklab, var(--primary) 92%, white)",
-                }}
-              >
-                copilot
-              </span>
-              SRV-DB-07 saw a successful SSH login from an unrecognized ASN at
-              02:14 UTC, followed by 3 privileged queries against{" "}
-              <span style={monoFont} className="text-white">
-                customers.pii
-              </span>
-              . I've correlated this with an OAuth consent phish on{" "}
-              <span style={monoFont} className="text-white">
-                sarah.chen@contoso.com
-              </span>{" "}
-              from 4 hours earlier. Mapped to{" "}
-              <span style={monoFont} className="text-white">
-                T1078 · T1213
-              </span>
-              . Recommended action: revoke the token and quarantine the host.
-            </div>
-            <div className="flex flex-wrap gap-2">
-              {["Draft executive brief", "Open incident", "Explain T1078"].map(
-                (c) => (
-                  <button
-                    key={c}
-                    className="rounded-md border border-white/8 bg-white/[0.02] px-2.5 py-1 text-[11.5px] text-white/65 transition-colors hover:border-white/25 hover:text-white"
-                  >
-                    {c}
-                  </button>
-                ),
-              )}
-            </div>
-          </div>
-        </Reveal>
-      </div>
+                {c.a}
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </Reveal>
     </section>
   );
 }
@@ -1037,14 +762,13 @@ function Landing() {
     >
       <Nav />
       <Hero />
+      <ProductDemos />
       <Narrative />
-      <Pipeline />
       <CapabilityStack />
-      <BeforeAfter />
+      <Pipeline />
       <Modules />
-      <Screenshots />
-      <AIWorkflow />
       <IntegrationsGrid />
+      <Customers />
       <Trust />
       <Developers />
       <Pricing />
