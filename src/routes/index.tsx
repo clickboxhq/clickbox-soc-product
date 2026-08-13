@@ -1037,14 +1037,13 @@ function Landing() {
     >
       <Nav />
       <Hero />
+      <ProductDemos />
       <Narrative />
-      <Pipeline />
       <CapabilityStack />
-      <BeforeAfter />
+      <Pipeline />
       <Modules />
-      <Screenshots />
-      <AIWorkflow />
       <IntegrationsGrid />
+      <Customers />
       <Trust />
       <Developers />
       <Pricing />
