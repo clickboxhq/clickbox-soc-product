@@ -134,168 +134,25 @@ function Nav() {
 
 /* ------------------------------- HERO ------------------------------- */
 
-/** Faint constellation of security entities drifting behind the headline. */
+/** Atmospheric security graph + schematic plate behind the headline. */
 function HeroArtwork() {
   return (
     <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
-      <GridField size={56} opacity={0.055} />
+      <Schematic opacity={0.35} />
+      <div className="absolute inset-x-0 top-0 h-[900px]">
+        <GraphField opacity={0.34} />
+      </div>
       <div
         className="absolute inset-x-0 top-0 h-[820px]"
         style={{
           background:
-            "radial-gradient(1100px 460px at 50% -8%, color-mix(in oklab, var(--primary) 16%, transparent), transparent 62%)",
+            "radial-gradient(1100px 460px at 50% -10%, color-mix(in oklab, var(--primary) 15%, transparent), transparent 62%)",
         }}
       />
-      <svg
-        viewBox="0 0 1440 760"
-        className="absolute inset-x-0 top-0 h-[760px] w-full opacity-[0.5]"
-        preserveAspectRatio="xMidYMin slice"
-      >
-        <defs>
-          <linearGradient id="hero-arc" x1="0" x2="1">
-            <stop offset="0%" stopColor="rgba(255,255,255,0)" />
-            <stop offset="50%" stopColor="rgba(255,255,255,.22)" />
-            <stop offset="100%" stopColor="rgba(255,255,255,0)" />
-          </linearGradient>
-          <radialGradient id="hero-mask" cx="50%" cy="18%">
-            <stop offset="0%" stopColor="#fff" stopOpacity="0" />
-            <stop offset="55%" stopColor="#fff" stopOpacity="1" />
-          </radialGradient>
-          <mask id="hero-m">
-            <rect width="1440" height="760" fill="url(#hero-mask)" />
-          </mask>
-        </defs>
-        <g mask="url(#hero-m)" fill="none" stroke="url(#hero-arc)">
-          {[300, 420, 540, 660, 780].map((r, i) => (
-            <ellipse
-              key={r}
-              cx="720"
-              cy="120"
-              rx={r}
-              ry={r * 0.42}
-              strokeWidth={i % 2 ? 0.6 : 1}
-              strokeDasharray={i % 2 ? "2 10" : undefined}
-            />
-          ))}
-          {Array.from({ length: 15 }, (_, i) => {
-            const x = 60 + i * 95;
-            return (
-              <line
-                key={i}
-                x1={x}
-                y1="0"
-                x2={720}
-                y2="620"
-                strokeWidth="0.5"
-                opacity="0.5"
-              />
-            );
-          })}
-        </g>
-      </svg>
-    </div>
-  );
-}
-
-/** Product demo, framed as a premium showcase with scroll-linked lift. */
-function DemoShowcase() {
-  const ref = useRef<HTMLDivElement>(null);
-  const [p, setP] = useState(0);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    let raf = 0;
-    const on = () => {
-      cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(() => {
-        const r = el.getBoundingClientRect();
-        const v = 1 - Math.min(1, Math.max(0, r.top / window.innerHeight));
-        setP(v);
-      });
-    };
-    on();
-    window.addEventListener("scroll", on, { passive: true });
-    window.addEventListener("resize", on);
-    return () => {
-      cancelAnimationFrame(raf);
-      window.removeEventListener("scroll", on);
-      window.removeEventListener("resize", on);
-    };
-  }, []);
-
-  const eased = Math.min(1, p * 1.25);
-
-  return (
-    <div id="demo" ref={ref} className="relative mx-auto mt-20 max-w-6xl">
-      <Bloom
-        className="-inset-x-16 -inset-y-16 rounded-[3rem]"
-        intensity={0.18}
-      />
       <div
-        className="relative overflow-hidden rounded-2xl border border-white/10"
+        className="absolute inset-x-0 bottom-0 h-64"
         style={{
-          background: "rgba(10,13,17,0.9)",
-          backdropFilter: "blur(20px)",
-          transform: `perspective(2000px) rotateX(${(1 - eased) * 5}deg) translateY(${(1 - eased) * 26}px) scale(${0.965 + eased * 0.035})`,
-          opacity: 0.55 + eased * 0.45,
-          transition: "transform 120ms linear, opacity 240ms linear",
-          boxShadow:
-            "0 1px 0 rgba(255,255,255,0.06) inset, 0 60px 140px -40px rgba(0,0,0,0.9), 0 0 0 1px rgba(255,255,255,0.03)",
-        }}
-      >
-        <div className="flex items-center gap-2 border-b border-white/8 bg-black/50 px-3.5 py-2.5">
-          <div className="flex gap-1.5">
-            <span className="size-2.5 rounded-full bg-white/12" />
-            <span className="size-2.5 rounded-full bg-white/12" />
-            <span className="size-2.5 rounded-full bg-white/12" />
-          </div>
-          <div
-            className="mx-auto flex items-center gap-2 rounded-md border border-white/8 bg-black/60 px-3 py-1 text-[10.5px] text-white/55"
-            style={monoFont}
-          >
-            <Lock className="size-2.5" />
-            clickbox.io / console
-          </div>
-          <div
-            className="hidden items-center gap-1.5 text-[10px] uppercase tracking-[0.18em] text-white/35 sm:flex"
-            style={monoFont}
-          >
-            <span
-              className="size-1.5 rounded-full"
-              style={{ background: "var(--primary)" }}
-            />
-            live
-          </div>
-        </div>
-        <div className="relative aspect-video w-full bg-black">
-          <video
-            className="absolute inset-0 h-full w-full object-contain"
-            src={productDemo.url}
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="auto"
-            disablePictureInPicture
-            controls={false}
-          />
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-0"
-            style={{
-              background:
-                "linear-gradient(180deg, rgba(255,255,255,0.04), transparent 18%)",
-            }}
-          />
-        </div>
-      </div>
-      {/* the frame dissolves into the page below it */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-x-0 -bottom-24 h-24"
-        style={{
-          background: "linear-gradient(180deg, rgba(0,0,0,.85), #000)",
+          background: "linear-gradient(180deg, transparent, #000)",
         }}
       />
     </div>
@@ -304,10 +161,10 @@ function DemoShowcase() {
 
 function Hero() {
   return (
-    <section className="relative overflow-hidden px-6 pb-24 pt-32 md:pt-40">
+    <section className="relative overflow-hidden px-6 pb-28 pt-36 md:pb-36 md:pt-48">
       <HeroArtwork />
       <div className="mx-auto max-w-7xl">
-        <div className="mx-auto max-w-3xl text-center">
+        <div className="mx-auto max-w-4xl text-center">
           <Reveal>
             <div className="inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/[0.04] px-3 py-1 text-[11.5px] text-white/70 backdrop-blur">
               <span
@@ -318,45 +175,44 @@ function Hero() {
                     "0 0 10px 2px color-mix(in oklab, var(--primary) 60%, transparent)",
                 }}
               />
-              AI-native Security Operations
+              AI-native Security Operations Platform
             </div>
           </Reveal>
 
           <Reveal delay={80}>
             <h1
-              className="mt-7 text-[42px] font-semibold leading-[1.0] tracking-[-0.035em] text-white md:text-[72px]"
+              className="mt-8 text-[46px] font-semibold leading-[0.98] tracking-[-0.04em] text-white md:text-[86px]"
               style={displayFont}
             >
-              One console.
+              Security operations,
               <br />
-              Every signal.
-              <span className="block text-white/40">
-                Answered in minutes.
-              </span>
+              finally correlated.
             </h1>
           </Reveal>
 
           <Reveal delay={160}>
-            <p className="mx-auto mt-7 max-w-xl text-[16px] leading-[1.65] text-white/55 [text-wrap:pretty]">
-              ClickBox correlates alerts across identity, endpoint, email, and
-              cloud — then tells your analysts what actually happened, and what
-              to do about it.
+            <p className="mx-auto mt-8 max-w-2xl text-[17px] leading-[1.65] text-white/55 [text-wrap:pretty]">
+              ClickBox joins identity, endpoint, email, cloud and network signal
+              into a single security graph — then tells your analysts what
+              actually happened, and what to do about it.
             </p>
           </Reveal>
 
           <Reveal delay={230}>
-            <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <div className="mt-11 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <a href="#book" className="btn-primary w-full sm:w-auto">
                 Book a demo <ArrowRight className="size-4" />
               </a>
-              <a href="#demo" className="btn-ghost w-full sm:w-auto">
-                <PlayCircle className="size-4" /> Watch the product tour
+              <a href="#product" className="btn-ghost w-full sm:w-auto">
+                <Layers className="size-4" /> Explore the platform
               </a>
             </div>
           </Reveal>
-        </div>
 
-        <DemoShowcase />
+          <Reveal delay={300}>
+            <ProofStrip />
+          </Reveal>
+        </div>
       </div>
     </section>
   );
