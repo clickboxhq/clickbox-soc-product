@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   ArrowRight,
   BarChart3,
@@ -14,19 +14,17 @@ import {
   Layers,
   LayoutDashboard,
   Lock,
-  PlayCircle,
   Radar,
   ScrollText,
-  Sparkles,
   Workflow,
 } from "lucide-react";
 
 import clickboxLogo from "@/assets/clickbox-logo.asset.json";
-import productDemo from "@/assets/product-demo.mp4.asset.json";
 import { CapabilityStack } from "@/components/soc/capability-stack";
 import { IntegrationsGrid } from "@/components/soc/integrations-grid";
-import { BeforeAfter } from "@/components/soc/before-after";
 import { Narrative } from "@/components/soc/marketing/narrative";
+import { ProductDemos, ProofStrip } from "@/components/soc/marketing/demos";
+import { GraphField, Schematic } from "@/components/soc/marketing/art";
 import {
   Bloom,
   GridField,
