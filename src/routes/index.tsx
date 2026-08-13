@@ -23,7 +23,7 @@ import clickboxLogo from "@/assets/clickbox-logo.asset.json";
 import { CapabilityStack } from "@/components/soc/capability-stack";
 import { IntegrationsGrid } from "@/components/soc/integrations-grid";
 import { Narrative } from "@/components/soc/marketing/narrative";
-import { ProductDemos, ProofStrip } from "@/components/soc/marketing/demos";
+import { CommandCenter, ProductDemos, ProofStrip } from "@/components/soc/marketing/demos";
 import { GraphField, Schematic } from "@/components/soc/marketing/art";
 import {
   Bloom,
@@ -159,12 +159,15 @@ function HeroArtwork() {
 
 function Hero() {
   return (
-    <section className="relative overflow-hidden px-6 pb-28 pt-36 md:pb-36 md:pt-48">
+    <section className="relative overflow-hidden px-6 pb-16 pt-24 md:pb-20 md:pt-28">
       <HeroArtwork />
       <div className="mx-auto max-w-7xl">
-        <div className="mx-auto max-w-4xl text-center">
+        <div className="mx-auto max-w-3xl text-center">
           <Reveal>
-            <div className="inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/[0.04] px-3 py-1 text-[11.5px] text-white/70 backdrop-blur">
+            <div
+              className="inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/[0.04] px-3 py-1 text-[11px] uppercase tracking-[0.18em] text-white/60 backdrop-blur"
+              style={monoFont}
+            >
               <span
                 className="size-1.5 rounded-full"
                 style={{
@@ -173,47 +176,58 @@ function Hero() {
                     "0 0 10px 2px color-mix(in oklab, var(--primary) 60%, transparent)",
                 }}
               />
-              AI-native Security Operations Platform
+              AI-native SecOps Platform
             </div>
           </Reveal>
 
-          <Reveal delay={80}>
+          <Reveal delay={70}>
             <h1
-              className="mt-8 text-[46px] font-semibold leading-[0.98] tracking-[-0.04em] text-white md:text-[86px]"
+              className="mt-5 text-[38px] font-semibold leading-[1.02] tracking-[-0.04em] text-white md:text-[54px]"
               style={displayFont}
             >
-              Security operations,
-              <br />
-              finally correlated.
+              Security Operations. Rebuilt.
             </h1>
           </Reveal>
 
-          <Reveal delay={160}>
-            <p className="mx-auto mt-8 max-w-2xl text-[17px] leading-[1.65] text-white/55 [text-wrap:pretty]">
-              ClickBox joins identity, endpoint, email, cloud and network signal
-              into a single security graph — then tells your analysts what
-              actually happened, and what to do about it.
+          <Reveal delay={130}>
+            <p className="mx-auto mt-4 max-w-xl text-[15px] leading-[1.6] text-white/55 [text-wrap:pretty]">
+              Every signal correlated. Every incident explained.
             </p>
           </Reveal>
 
-          <Reveal delay={230}>
-            <div className="mt-11 flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <Reveal delay={190}>
+            <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <a href="#book" className="btn-primary w-full sm:w-auto">
                 Book a demo <ArrowRight className="size-4" />
               </a>
-              <a href="#product" className="btn-ghost w-full sm:w-auto">
-                <Layers className="size-4" /> Explore the platform
-              </a>
+              <Link to="/app" className="btn-ghost w-full sm:w-auto">
+                <Layers className="size-4" /> Open the console
+              </Link>
             </div>
           </Reveal>
-
-          <Reveal delay={300}>
-            <ProofStrip />
-          </Reveal>
         </div>
+
+        <Reveal delay={250} className="mt-12 md:mt-14">
+          <div className="relative">
+            <div
+              aria-hidden
+              className="pointer-events-none absolute -inset-x-10 -top-10 bottom-0 -z-10"
+              style={{
+                background:
+                  "radial-gradient(900px 320px at 50% 0%, color-mix(in oklab, var(--primary) 12%, transparent), transparent 70%)",
+              }}
+            />
+            <CommandCenter />
+          </div>
+        </Reveal>
+
+        <Reveal delay={320}>
+          <ProofStrip />
+        </Reveal>
       </div>
     </section>
   );
+
 }
 
 /* -------------------------- PIPELINE STRIP -------------------------- */
