@@ -483,210 +483,81 @@ function Modules() {
   );
 }
 
-/* --------------------- REAL PRODUCT SCREENSHOTS --------------------- */
+/* ---------------------------- CUSTOMERS ---------------------------- */
 
-function Screenshots() {
-  return (
-    <section className="relative mx-auto max-w-7xl px-6 py-24">
-      <SectionHead
-        eyebrow="The product"
-        title="See it, don't just read about it."
-        sub="These are live surfaces from the ClickBox console, running in this page."
-      />
-      <div className="mt-12 space-y-6">
-        <ShotFrame
-          caption="Alert Center — every signal, one triage surface."
-          embedSrc="/app/alerts"
-        />
-        <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-          <ShotFrame
-            caption="Incident Queue — cases, ownership, SLAs."
-            embedSrc="/app/incidents"
-            tall
-          />
-          <ShotFrame
-            caption="Identity Center — risk across every user."
-            embedSrc="/app/identity"
-            tall
-          />
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function ShotFrame({
-  caption,
-  embedSrc,
-  tall,
-}: {
-  caption: string;
-  embedSrc: string;
-  tall?: boolean;
-}) {
-  return (
-    <Reveal>
-      <figure>
-        <div
-          className="overflow-hidden rounded-xl border border-white/8 bg-[#07090C]"
-          style={{ boxShadow: "0 50px 110px -40px rgba(0,0,0,0.9)" }}
-        >
-          <div
-            className={`relative w-full ${tall ? "aspect-[4/3]" : "aspect-[16/9]"}`}
-          >
-            <iframe
-              src={embedSrc}
-              title={caption}
-              loading="lazy"
-              className="absolute inset-0 h-full w-full"
-              style={{ border: 0, background: "#07090C" }}
-            />
-          </div>
-        </div>
-        <figcaption
-          className="mt-3 text-[11.5px] text-white/40"
-          style={monoFont}
-        >
-          {caption}
-        </figcaption>
-      </figure>
-    </Reveal>
-  );
-}
-
-/* ---------------------- AI INVESTIGATOR WORKFLOW ---------------------- */
-
-const AI_STEPS = [
-  { t: "Reads 18,000 raw events", meta: "ingest" },
-  { t: "Clusters related alerts", meta: "correlate" },
-  { t: "Eliminates false positives", meta: "score" },
-  { t: "Builds the incident timeline", meta: "assemble" },
-  { t: "Recommends a response", meta: "act" },
+const SEGMENTS = [
+  { t: "Financial institutions", b: "Tier-1 banks and payment networks running 24×7 fraud and intrusion response." },
+  { t: "Government agencies", b: "National CERTs and defence programs with strict residency and audit demands." },
+  { t: "Technology companies", b: "Platform security teams protecting multi-tenant cloud estates at scale." },
+  { t: "Managed security providers", b: "MSSPs operating dozens of client tenants from one correlated console." },
 ];
 
-function AIWorkflow() {
+function Customers() {
   return (
-    <section className="relative mx-auto max-w-7xl px-6 py-24">
+    <section className="relative mx-auto max-w-7xl px-6 py-28">
       <SectionHead
-        eyebrow="AI Investigator"
-        title="What the AI actually does."
+        eyebrow="Trusted by"
+        title="Deployed where the consequences are real."
+        sub="ClickBox is built for teams whose incidents make the news if they're handled badly."
       />
-
-      <div className="mt-12 grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)]">
-        <Reveal className="rounded-2xl border border-white/8 bg-[#080B0F] p-7">
-          <ol className="relative space-y-6 pl-8">
-            <div
-              aria-hidden
-              className="absolute bottom-2 left-[7px] top-2 w-px"
-              style={{
-                background:
-                  "linear-gradient(180deg, transparent, rgba(255,255,255,.25), transparent)",
-              }}
-            />
-            {AI_STEPS.map((s, i) => (
-              <li key={s.t} className="relative">
-                <span
-                  className="absolute -left-[26px] top-1.5 flex size-[15px] items-center justify-center rounded-full border border-white/25 bg-[#05070A]"
-                >
-                  <span
-                    className="size-1.5 rounded-full"
-                    style={{ background: "var(--primary)" }}
-                  />
-                </span>
-                <div
-                  className="text-[10.5px] tracking-[0.2em] text-white/35"
-                  style={monoFont}
-                >
-                  {String(i + 1).padStart(2, "0")} · {s.meta}
-                </div>
-                <div
-                  className="mt-1 text-[15px] font-medium text-white"
-                  style={displayFont}
-                >
-                  {s.t}
-                </div>
-              </li>
-            ))}
-          </ol>
-        </Reveal>
-
-        <Reveal
-          delay={100}
-          className="overflow-hidden rounded-2xl border border-white/8 bg-[#080B0F]"
-        >
-          <div className="flex items-center gap-2 border-b border-white/8 bg-black/40 px-4 py-3">
-            <Sparkles
-              className="size-3.5"
-              style={{ color: "var(--primary)" }}
-            />
-            <span className="text-[12px] font-medium text-white/85">
-              ClickBox Copilot
-            </span>
+      <div className="mt-12 grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-white/8 bg-white/[0.06] md:grid-cols-2 lg:grid-cols-4">
+        {SEGMENTS.map((s, i) => (
+          <div
+            key={s.t}
+            className="group relative bg-[#07090C] p-6 transition-colors duration-300 hover:bg-[#0C1016]"
+          >
             <span
-              className="ml-auto text-[10.5px] text-white/35"
+              className="text-[10px] tracking-[0.22em] text-white/25"
               style={monoFont}
             >
-              incident · INC-42188
+              {String(i + 1).padStart(2, "0")}
             </span>
+            <h3
+              className="mt-4 text-[15px] font-semibold text-white"
+              style={displayFont}
+            >
+              {s.t}
+            </h3>
+            <p className="mt-2 text-[13px] leading-[1.6] text-white/50">
+              {s.b}
+            </p>
           </div>
-          <div className="space-y-4 p-5 text-[13px] leading-[1.65]">
-            <div className="rounded-lg bg-white/[0.03] px-3.5 py-2.5 text-white/80">
-              <span
-                className="mr-2 text-[10px] uppercase tracking-[0.2em] text-white/35"
+        ))}
+      </div>
+
+      <Reveal delay={120}>
+        <div className="mt-6 grid grid-cols-1 gap-3 md:grid-cols-3">
+          {[
+            {
+              q: "We replaced three consoles and a spreadsheet. The first week, ClickBox closed a phishing-to-cloud chain our SIEM had split into nine unrelated alerts.",
+              a: "Director of Security Operations, global payments",
+            },
+            {
+              q: "The narrative it writes is the narrative we hand to regulators. That has never been true of a tool before.",
+              a: "Head of Cyber Defence, public sector",
+            },
+            {
+              q: "Our analysts stopped triaging and started investigating. MTTR went from hours to minutes.",
+              a: "SOC Manager, enterprise technology",
+            },
+          ].map((c) => (
+            <figure
+              key={c.a}
+              className="rounded-xl border border-white/8 bg-[#080B0F] p-6"
+            >
+              <blockquote className="text-[13.5px] leading-[1.7] text-white/75">
+                “{c.q}”
+              </blockquote>
+              <figcaption
+                className="mt-4 text-[10.5px] uppercase tracking-[0.16em] text-white/35"
                 style={monoFont}
               >
-                analyst
-              </span>
-              What happened with SRV-DB-07?
-            </div>
-            <div
-              className="rounded-lg border px-3.5 py-3 text-white/85"
-              style={{
-                borderColor:
-                  "color-mix(in oklab, var(--primary) 40%, transparent)",
-                background:
-                  "color-mix(in oklab, var(--primary) 8%, transparent)",
-              }}
-            >
-              <span
-                className="mr-2 text-[10px] uppercase tracking-[0.2em]"
-                style={{
-                  ...monoFont,
-                  color: "color-mix(in oklab, var(--primary) 92%, white)",
-                }}
-              >
-                copilot
-              </span>
-              SRV-DB-07 saw a successful SSH login from an unrecognized ASN at
-              02:14 UTC, followed by 3 privileged queries against{" "}
-              <span style={monoFont} className="text-white">
-                customers.pii
-              </span>
-              . I've correlated this with an OAuth consent phish on{" "}
-              <span style={monoFont} className="text-white">
-                sarah.chen@contoso.com
-              </span>{" "}
-              from 4 hours earlier. Mapped to{" "}
-              <span style={monoFont} className="text-white">
-                T1078 · T1213
-              </span>
-              . Recommended action: revoke the token and quarantine the host.
-            </div>
-            <div className="flex flex-wrap gap-2">
-              {["Draft executive brief", "Open incident", "Explain T1078"].map(
-                (c) => (
-                  <button
-                    key={c}
-                    className="rounded-md border border-white/8 bg-white/[0.02] px-2.5 py-1 text-[11.5px] text-white/65 transition-colors hover:border-white/25 hover:text-white"
-                  >
-                    {c}
-                  </button>
-                ),
-              )}
-            </div>
-          </div>
-        </Reveal>
-      </div>
+                {c.a}
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </Reveal>
     </section>
   );
 }
