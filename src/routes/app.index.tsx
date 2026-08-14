@@ -1,22 +1,18 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   Panel,
   SectionHeader,
   StatCard,
   SeverityBadge,
-  StatusBadge,
 } from "@/components/soc/primitives";
 import {
   Activity,
   AlertOctagon,
   ArrowUpRight,
   Award,
-  BadgeCheck,
-  Bell,
-  Cpu,
-  Download,
-  Flame,
+  Crosshair,
   Gauge,
+  PlayCircle,
   ShieldAlert,
   Sparkles,
   Target,
@@ -25,104 +21,123 @@ import {
 import {
   Area,
   AreaChart,
-  Bar,
-  BarChart,
   CartesianGrid,
+  Line,
   ResponsiveContainer,
   Tooltip,
   XAxis,
   YAxis,
 } from "recharts";
 import {
-  alerts,
-  incidents,
+  assignedScenarios,
+  investigationPerformance,
   leaderboard,
-  mitreCoverage,
-  signedOverTime,
+  mitreMastery,
+  recentInvestigations,
+  trainingKpis,
 } from "@/lib/soc-data";
 
 export const Route = createFileRoute("/app/")({
   component: Dashboard,
-  head: () => ({ meta: [{ title: "ClickBox · Dashboard" }] }),
+  head: () => ({
+    meta: [
+      { title: "ClickBox · Investigation Dashboard" },
+      {
+        name: "description",
+        content:
+          "Learner investigation performance, MITRE ATT&CK mastery, and assigned SOC training scenarios.",
+      },
+    ],
+  }),
 });
+
+const kpiIcons = [
+  <Activity className="size-4" key="a" />,
+  <AlertOctagon className="size-4" key="b" />,
+  <Gauge className="size-4" key="c" />,
+  <Target className="size-4" key="d" />,
+  <Crosshair className="size-4" key="e" />,
+  <ShieldAlert className="size-4" key="f" />,
+];
+
+function masteryTone(v: number) {
+  if (v >= 85) return "var(--success)";
+  if (v >= 70) return "var(--info)";
+  if (v >= 60) return "var(--warning)";
+  return "var(--high)";
+}
 
 function Dashboard() {
   return (
     <div className="px-4 py-6 md:px-8 md:py-8">
       <SectionHeader
         title="Welcome back, John"
-        description="Live view of investigations, alerts, and analyst performance across Contoso Global SOC."
+        description="Your investigation activity, scoring, and ATT&CK mastery across the Contoso Global SOC training environment."
         actions={
           <>
-            <button className="inline-flex h-9 items-center gap-2 rounded-md border border-border bg-card px-3 text-[12px] text-secondary hover:text-foreground">
-              <Download className="size-3.5" /> Export
-            </button>
-            <button className="inline-flex h-9 items-center gap-2 rounded-md bg-primary px-3 text-[12px] font-medium text-primary-foreground hover:bg-primary-hover hover:opacity-90">
-              <ShieldAlert className="size-3.5" /> New investigation
-            </button>
+            <Link
+              to="/app/scenarios"
+              className="inline-flex h-9 items-center gap-2 rounded-md border border-border bg-card px-3 text-[12px] text-secondary hover:text-foreground"
+            >
+              <PlayCircle className="size-3.5" /> Explore scenarios
+            </Link>
+            <Link
+              to="/app/investigations"
+              className="inline-flex h-9 items-center gap-2 rounded-md bg-primary px-3 text-[12px] font-medium text-primary-foreground hover:bg-primary-hover"
+            >
+              <ShieldAlert className="size-3.5" /> Resume investigation
+            </Link>
           </>
         }
       />
 
-      {/* KPI grid */}
-      <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
-        <StatCard
-          label="Active investigations"
-          value="128"
-          delta="+14 today"
-          icon={<Activity className="size-4" />}
-        />
-        <StatCard
-          label="Open incidents"
-          value="47"
-          delta="5 critical"
-          tone="critical"
-          icon={<AlertOctagon className="size-4" />}
-        />
-        <StatCard
-          label="Critical alerts (24h)"
-          value="26"
-          delta="↑ 12% vs yesterday"
-          tone="high"
-          icon={<Flame className="size-4" />}
-        />
-        <StatCard
-          label="Avg. investigation score"
-          value="87.4"
-          delta="Top decile"
-          tone="success"
-          icon={<Gauge className="size-4" />}
-        />
+      {/* Training KPI grid */}
+      <div className="grid grid-cols-2 gap-4 lg:grid-cols-3 xl:grid-cols-6">
+        {trainingKpis.map((k, i) => (
+          <StatCard
+            key={k.label}
+            label={k.label}
+            value={k.value}
+            delta={k.delta}
+            tone={k.tone}
+            icon={kpiIcons[i]}
+          />
+        ))}
       </div>
 
-      {/* Chart row */}
+      {/* Performance + ATT&CK mastery */}
       <div className="mt-6 grid grid-cols-1 gap-4 lg:grid-cols-3">
         <Panel
           className="lg:col-span-2"
-          title="Investigations completed"
+          title="Investigation performance"
           actions={
-            <div className="flex items-center gap-2 text-[11px] text-muted-foreground">
+            <div className="flex items-center gap-3 text-[11px] text-muted-foreground">
               <span className="inline-flex items-center gap-1.5">
-                <span className="size-2 rounded-sm bg-[color:var(--info)]" />
-                Actual
+                <span className="size-2 rounded-sm bg-[color:var(--info)]" /> Started
               </span>
               <span className="inline-flex items-center gap-1.5">
-                <span className="size-2 rounded-sm bg-muted-foreground/60" />
-                Target
+                <span className="size-2 rounded-sm bg-[color:var(--success)]" /> Completed
               </span>
-              <span className="rounded border border-border bg-background px-2 py-0.5 text-[11px] text-secondary">
-                Jan – Jul
+              <span className="inline-flex items-center gap-1.5">
+                <span className="size-2 rounded-sm bg-muted-foreground/70" /> Avg. score
+              </span>
+              <span className="rounded border border-border bg-background px-2 py-0.5 text-secondary">
+                Feb – Aug
               </span>
             </div>
           }
         >
           <div className="h-[260px]">
             <ResponsiveContainer width="100%" height="100%">
-              <AreaChart data={signedOverTime} margin={{ top: 10, right: 8, left: -18, bottom: 0 }}>
+              <AreaChart data={investigationPerformance} margin={{ top: 10, right: 8, left: -18, bottom: 0 }}>
                 <defs>
-                  <linearGradient id="gInv" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="var(--info)" stopOpacity={0.5} />
+                  <linearGradient id="gStarted" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stopColor="var(--info)" stopOpacity={0.35} />
                     <stop offset="100%" stopColor="var(--info)" stopOpacity={0} />
+                  </linearGradient>
+                  <linearGradient id="gDone" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stopColor="var(--success)" stopOpacity={0.4} />
+                    <stop offset="100%" stopColor="var(--success)" stopOpacity={0} />
                   </linearGradient>
                 </defs>
                 <CartesianGrid stroke="var(--border)" vertical={false} strokeDasharray="3 3" />
@@ -136,102 +151,137 @@ function Dashboard() {
                     fontSize: 12,
                   }}
                 />
-                <Area
-                  type="monotone"
-                  dataKey="target"
-                  stroke="var(--muted-foreground)"
-                  strokeDasharray="4 4"
-                  fill="transparent"
-                  strokeWidth={1.5}
-                />
-                <Area
-                  type="monotone"
-                  dataKey="investigations"
-                  stroke="var(--info)"
-                  strokeWidth={2}
-                  fill="url(#gInv)"
-                />
+                <Area type="monotone" dataKey="started" name="Started" stroke="var(--info)" strokeWidth={2} fill="url(#gStarted)" />
+                <Area type="monotone" dataKey="completed" name="Completed" stroke="var(--success)" strokeWidth={2} fill="url(#gDone)" />
+                <Line type="monotone" dataKey="score" name="Avg. score" stroke="var(--muted-foreground)" strokeWidth={1.5} strokeDasharray="4 4" dot={false} />
+                <Line type="monotone" dataKey="mttr" name="Time to resolution (min)" stroke="var(--warning)" strokeWidth={1.5} dot={false} />
               </AreaChart>
             </ResponsiveContainer>
           </div>
+          <div className="mt-3 grid grid-cols-2 gap-3 border-t border-border pt-3 text-[11px] md:grid-cols-4">
+            <div>
+              <div className="text-muted-foreground">Investigations started</div>
+              <div className="mt-0.5 text-[15px] font-semibold tabular-nums">47</div>
+            </div>
+            <div>
+              <div className="text-muted-foreground">Completed</div>
+              <div className="mt-0.5 text-[15px] font-semibold tabular-nums">44</div>
+            </div>
+            <div>
+              <div className="text-muted-foreground">Average score</div>
+              <div className="mt-0.5 text-[15px] font-semibold tabular-nums text-[color:var(--success)]">92%</div>
+            </div>
+            <div>
+              <div className="text-muted-foreground">Time to resolution</div>
+              <div className="mt-0.5 text-[15px] font-semibold tabular-nums">34 min</div>
+            </div>
+          </div>
         </Panel>
 
-        <Panel title="MITRE ATT&CK coverage" actions={<Target className="size-4 text-muted-foreground" />}>
-          <div className="h-[260px]">
-            <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={mitreCoverage} layout="vertical" margin={{ top: 4, right: 12, left: 4, bottom: 0 }}>
-                <CartesianGrid stroke="var(--border)" horizontal={false} strokeDasharray="3 3" />
-                <XAxis type="number" domain={[0, 100]} hide />
-                <YAxis
-                  type="category"
-                  dataKey="tactic"
-                  stroke="var(--muted-foreground)"
-                  fontSize={10.5}
-                  width={110}
-                  tickLine={false}
-                  axisLine={false}
-                />
-                <Tooltip
-                  contentStyle={{
-                    background: "var(--card)",
-                    border: "1px solid var(--border)",
-                    borderRadius: 8,
-                    fontSize: 12,
-                  }}
-                  formatter={(v) => [`${v}%`, "Coverage"]}
-                />
-                <Bar dataKey="cov" fill="var(--info)" radius={[3, 3, 3, 3]} barSize={10} />
-              </BarChart>
-            </ResponsiveContainer>
-          </div>
+        <Panel
+          title="MITRE ATT&CK mastery"
+          actions={<span className="text-[11px] text-muted-foreground tabular-nums">76% overall</span>}
+        >
+          <ul className="space-y-2.5">
+            {mitreMastery.map((t) => (
+              <li key={t.tactic}>
+                <div className="flex items-baseline justify-between text-[11.5px]">
+                  <span className="text-secondary">{t.tactic}</span>
+                  <span className="tabular-nums text-muted-foreground">
+                    {t.practiced}/{t.total} · <span className="text-foreground">{t.mastery}%</span>
+                  </span>
+                </div>
+                <div className="mt-1 h-1.5 overflow-hidden rounded-full bg-background">
+                  <div
+                    className="h-full rounded-full"
+                    style={{ width: `${t.mastery}%`, background: masteryTone(t.mastery) }}
+                  />
+                </div>
+              </li>
+            ))}
+          </ul>
         </Panel>
       </div>
 
-      {/* Alerts + Incidents */}
+      {/* Recent investigations + assigned scenarios */}
       <div className="mt-6 grid grid-cols-1 gap-4 lg:grid-cols-3">
         <Panel
           className="lg:col-span-2"
-          title="Recent alerts"
+          title="Recent investigations"
           padded={false}
           actions={
-            <a href="/app/alerts" className="inline-flex items-center gap-1 text-[12px] text-secondary hover:text-foreground">
-              View all <ArrowUpRight className="size-3" />
-            </a>
+            <Link to="/app/investigations" className="inline-flex items-center gap-1 text-[12px] text-secondary hover:text-foreground">
+              View queue <ArrowUpRight className="size-3" />
+            </Link>
           }
         >
           <div className="divide-y divide-border">
-            {alerts.slice(0, 6).map((a) => (
-              <div key={a.id} className="grid grid-cols-[auto_1fr_auto] items-center gap-3 px-4 py-3 hover:bg-background/40">
-                <div className="grid size-8 place-items-center rounded-md border border-border bg-background/60 text-secondary">
-                  <Bell className="size-4" />
-                </div>
+            {recentInvestigations.map((r) => (
+              <div key={r.id} className="grid grid-cols-[1fr_auto] items-center gap-3 px-4 py-3 transition-colors hover:bg-background/40">
                 <div className="min-w-0">
-                  <div className="flex items-center gap-2">
-                    <span className="truncate text-[13px] font-medium">{a.name}</span>
-                    <SeverityBadge level={a.severity} />
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span className="font-mono text-[10.5px] text-muted-foreground">{r.id}</span>
+                    <span className="truncate text-[13px] font-medium">{r.title}</span>
+                    <SeverityBadge level={r.severity} />
                   </div>
-                  <div className="mt-0.5 truncate text-[11px] text-muted-foreground">
-                    {a.mitre} · {a.source} · {a.user}
+                  <div className="mt-1 truncate text-[11px] text-muted-foreground">
+                    {r.subjectLabel}: <span className="text-secondary">{r.subject}</span> · {r.mitre}
+                  </div>
+                  <div className="mt-2 flex items-center gap-2">
+                    <div className="h-1 w-32 overflow-hidden rounded-full bg-background">
+                      <div
+                        className="h-full rounded-full bg-[color:var(--info)]"
+                        style={{ width: `${r.progress}%` }}
+                      />
+                    </div>
+                    <span className="text-[10.5px] tabular-nums text-muted-foreground">{r.progress}% complete</span>
                   </div>
                 </div>
-                <div className="text-right text-[11px] text-muted-foreground tabular-nums">{a.ts}</div>
+                <div className="text-right">
+                  <div className="text-[11px] font-medium text-secondary">{r.statusLabel}</div>
+                  <div className="mt-1 text-[10.5px] text-muted-foreground tabular-nums">{r.ts}</div>
+                </div>
               </div>
             ))}
           </div>
         </Panel>
 
-        <Panel title="Open incidents" padded={false}>
+        <Panel
+          title="Assigned scenarios"
+          padded={false}
+          actions={
+            <Link to="/app/scenarios" className="text-[12px] text-secondary hover:text-foreground">
+              Library
+            </Link>
+          }
+        >
           <div className="divide-y divide-border">
-            {incidents.slice(0, 5).map((i) => (
-              <div key={i.id} className="px-4 py-3 hover:bg-background/40">
+            {assignedScenarios.map((s) => (
+              <div key={s.id} className="px-4 py-3 transition-colors hover:bg-background/40">
                 <div className="flex items-center justify-between gap-2">
-                  <span className="font-mono text-[10px] text-muted-foreground">{i.id}</span>
-                  <StatusBadge status={i.status} />
+                  <span className="truncate text-[13px] font-medium">{s.title}</span>
+                  <span className="rounded border border-border bg-background px-1.5 py-0.5 text-[10px] text-secondary">
+                    {s.difficulty}
+                  </span>
                 </div>
-                <div className="mt-1 line-clamp-2 text-[13px] font-medium">{i.title}</div>
-                <div className="mt-2 flex items-center justify-between text-[11px] text-muted-foreground">
-                  <span>{i.alerts} alerts · {i.entities} entities</span>
-                  <span>{i.owner}</span>
+                <div className="mt-2 h-1 overflow-hidden rounded-full bg-background">
+                  <div
+                    className="h-full rounded-full"
+                    style={{
+                      width: `${s.progress}%`,
+                      background: s.progress === 100 ? "var(--success)" : "var(--info)",
+                    }}
+                  />
+                </div>
+                <div className="mt-2 flex items-center justify-between text-[10.5px] text-muted-foreground tabular-nums">
+                  <span>{s.progress}% · {s.duration}</span>
+                  <span>
+                    {s.score !== null ? (
+                      <span className="text-[color:var(--success)]">Score {s.score}%</span>
+                    ) : (
+                      "Not graded"
+                    )}
+                  </span>
                 </div>
               </div>
             ))}
@@ -239,9 +289,9 @@ function Dashboard() {
         </Panel>
       </div>
 
-      {/* Bottom row */}
+      {/* Cohort + skills + copilot */}
       <div className="mt-6 grid grid-cols-1 gap-4 lg:grid-cols-3">
-        <Panel title="Analyst leaderboard" padded={false}>
+        <Panel title="Cohort leaderboard" padded={false}>
           <div className="divide-y divide-border">
             {leaderboard.map((l, i) => (
               <div key={l.name} className="flex items-center gap-3 px-4 py-3">
@@ -251,70 +301,30 @@ function Dashboard() {
                 <div className="flex-1 text-[13px] font-medium">{l.name}</div>
                 <div className="text-right">
                   <div className="text-[12px] tabular-nums">{l.score.toLocaleString()}</div>
-                  <div className="text-[10px] text-muted-foreground">{l.solved} solved</div>
+                  <div className="text-[10px] text-muted-foreground">{l.solved} investigations</div>
                 </div>
               </div>
             ))}
           </div>
         </Panel>
 
-        <Panel title="Organization risk">
-          <div className="flex items-baseline gap-2">
-            <div className="text-4xl font-semibold tabular-nums text-[color:var(--high)]">63</div>
-            <div className="text-[11px] text-muted-foreground">/ 100 · Elevated</div>
-          </div>
-          <div className="mt-3 h-2 overflow-hidden rounded-full bg-background">
-            <div className="h-full w-[63%] rounded-full bg-gradient-to-r from-[color:var(--success)] via-[color:var(--warning)] to-[color:var(--critical)]" />
-          </div>
-          <ul className="mt-4 space-y-2.5 text-[12px]">
-            <li className="flex items-center justify-between">
-              <span className="text-secondary">Identity</span>
-              <span className="tabular-nums text-[color:var(--critical)]">72</span>
-            </li>
-            <li className="flex items-center justify-between">
-              <span className="text-secondary">Endpoint</span>
-              <span className="tabular-nums text-[color:var(--high)]">68</span>
-            </li>
-            <li className="flex items-center justify-between">
-              <span className="text-secondary">Cloud</span>
-              <span className="tabular-nums text-[color:var(--warning)]">54</span>
-            </li>
-            <li className="flex items-center justify-between">
-              <span className="text-secondary">Email</span>
-              <span className="tabular-nums text-[color:var(--success)]">41</span>
-            </li>
-          </ul>
-        </Panel>
-
-        <Panel title="Learning & certificates" padded={false}>
+        <Panel title="Skill tracks & certificates" padded={false}>
           <div className="space-y-3 p-4">
-            <div>
-              <div className="flex items-center justify-between text-[12px]">
-                <span>SOC Analyst Track</span>
-                <span className="tabular-nums text-secondary">74%</span>
+            {[
+              { t: "SOC Analyst Track", v: 74 },
+              { t: "Threat Hunter Track", v: 42 },
+              { t: "Incident Responder Track", v: 88 },
+            ].map((s) => (
+              <div key={s.t}>
+                <div className="flex items-center justify-between text-[12px]">
+                  <span>{s.t}</span>
+                  <span className="tabular-nums text-secondary">{s.v}%</span>
+                </div>
+                <div className="mt-1 h-1.5 overflow-hidden rounded-full bg-background">
+                  <div className="h-full rounded-full bg-[color:var(--info)]" style={{ width: `${s.v}%` }} />
+                </div>
               </div>
-              <div className="mt-1 h-1.5 overflow-hidden rounded-full bg-background">
-                <div className="h-full w-[74%] rounded-full bg-[color:var(--info)]" />
-              </div>
-            </div>
-            <div>
-              <div className="flex items-center justify-between text-[12px]">
-                <span>Threat Hunter Track</span>
-                <span className="tabular-nums text-secondary">42%</span>
-              </div>
-              <div className="mt-1 h-1.5 overflow-hidden rounded-full bg-background">
-                <div className="h-full w-[42%] rounded-full bg-[color:var(--info)]" />
-              </div>
-            </div>
-            <div>
-              <div className="flex items-center justify-between text-[12px]">
-                <span>Incident Responder Track</span>
-                <span className="tabular-nums text-secondary">88%</span>
-              </div>
-              <div className="mt-1 h-1.5 overflow-hidden rounded-full bg-background">
-                <div className="h-full w-[88%] rounded-full bg-[color:var(--info)]" />
-              </div>
-            </div>
+            ))}
           </div>
           <div className="border-t border-border p-4">
             <div className="mb-2 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
@@ -333,56 +343,28 @@ function Dashboard() {
             ))}
           </div>
         </Panel>
-      </div>
 
-      {/* AI + News */}
-      <div className="mt-6 grid grid-cols-1 gap-4 lg:grid-cols-3">
-        <Panel className="lg:col-span-2" title="ClickBox Copilot">
+        <Panel title="ClickBox Copilot">
           <div className="flex items-start gap-3">
             <div className="grid size-9 place-items-center rounded-md bg-[color:var(--info)]/15 text-[color:var(--info)]">
               <Sparkles className="size-4" />
             </div>
             <div className="flex-1">
               <p className="text-[13px] text-secondary">
-                <span className="text-foreground">3 investigations</span> match the current
-                <span className="text-foreground"> BEC via OAuth consent phishing</span> pattern.
-                Consider correlating <span className="font-mono text-foreground">ALT-24810</span>
-                with the identity risk spike on <span className="font-mono text-foreground">sarah.chen@contoso.com</span>.
-                I can draft an executive brief and open a linked incident.
+                On <span className="font-mono text-foreground">INV-3181</span> you have collected
+                <span className="text-foreground"> 7 of 9 required artifacts</span>. The message trace
+                and the inbox rule created after sign-in are still missing — both are needed to justify
+                a BEC conclusion under <span className="font-mono text-foreground">T1114.002</span>.
               </p>
               <div className="mt-3 flex flex-wrap gap-2">
                 <button className="rounded-md border border-border bg-background px-2.5 py-1 text-[11px] text-secondary hover:text-foreground">
-                  Draft executive brief
+                  Show missing evidence
                 </button>
                 <button className="rounded-md border border-border bg-background px-2.5 py-1 text-[11px] text-secondary hover:text-foreground">
-                  Open linked incident
-                </button>
-                <button className="rounded-md border border-border bg-background px-2.5 py-1 text-[11px] text-secondary hover:text-foreground">
-                  Explain T1528
+                  Explain T1114.002
                 </button>
               </div>
             </div>
-          </div>
-        </Panel>
-
-        <Panel title="Threat intel feed" padded={false}>
-          <div className="divide-y divide-border">
-            {[
-              { t: "APT29 rotates infrastructure across 14 new domains", tag: "Nation-state", when: "1h" },
-              { t: "Emerging Lumma Stealer campaign targeting finance", tag: "Malware", when: "3h" },
-              { t: "CVE-2026-31142: Critical RCE in Fortinet SSL-VPN", tag: "Vulnerability", when: "6h" },
-              { t: "Storm-1811 shifts to Teams-based social engineering", tag: "Ransomware", when: "1d" },
-            ].map((n) => (
-              <div key={n.t} className="px-4 py-3">
-                <div className="flex items-center gap-2 text-[10px]">
-                  <span className="rounded border border-border bg-background px-1.5 py-0.5 text-muted-foreground">
-                    {n.tag}
-                  </span>
-                  <span className="text-muted-foreground">{n.when} ago</span>
-                </div>
-                <div className="mt-1 text-[13px]">{n.t}</div>
-              </div>
-            ))}
           </div>
         </Panel>
       </div>

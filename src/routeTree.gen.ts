@@ -15,22 +15,34 @@ import { Route as AppIndexRouteImport } from './routes/app.index'
 import { Route as VerifyIdRouteImport } from './routes/verify.$id'
 import { Route as AppTimelineRouteImport } from './routes/app.timeline'
 import { Route as AppThreatIntelRouteImport } from './routes/app.threat-intel'
+import { Route as AppStudentAnalyticsRouteImport } from './routes/app.student-analytics'
 import { Route as AppSettingsRouteImport } from './routes/app.settings'
 import { Route as AppSearchRouteImport } from './routes/app.search'
 import { Route as AppScenariosRouteImport } from './routes/app.scenarios'
+import { Route as AppScenarioBuilderRouteImport } from './routes/app.scenario-builder'
 import { Route as AppReportsRouteImport } from './routes/app.reports'
 import { Route as AppProfileRouteImport } from './routes/app.profile'
 import { Route as AppOrganizationsRouteImport } from './routes/app.organizations'
+import { Route as AppMitreRouteImport } from './routes/app.mitre'
 import { Route as AppLearningRouteImport } from './routes/app.learning'
+import { Route as AppLeaderboardRouteImport } from './routes/app.leaderboard'
 import { Route as AppInstructorRouteImport } from './routes/app.instructor'
 import { Route as AppIncidentsRouteImport } from './routes/app.incidents'
 import { Route as AppIdentityRouteImport } from './routes/app.identity'
+import { Route as AppFeedbackRouteImport } from './routes/app.feedback'
+import { Route as AppEvidenceRouteImport } from './routes/app.evidence'
 import { Route as AppEndpointsRouteImport } from './routes/app.endpoints'
 import { Route as AppEmailRouteImport } from './routes/app.email'
+import { Route as AppCohortsRouteImport } from './routes/app.cohorts'
 import { Route as AppCertificatesRouteImport } from './routes/app.certificates'
+import { Route as AppBillingRouteImport } from './routes/app.billing'
+import { Route as AppAuditLogsRouteImport } from './routes/app.audit-logs'
+import { Route as AppAssessmentsRouteImport } from './routes/app.assessments'
 import { Route as AppAnalyticsRouteImport } from './routes/app.analytics'
 import { Route as AppAlertsRouteImport } from './routes/app.alerts'
+import { Route as AppAchievementsRouteImport } from './routes/app.achievements'
 import { Route as AppInvestigationsIndexRouteImport } from './routes/app.investigations.index'
+import { Route as AppCasesIndexRouteImport } from './routes/app.cases.index'
 import { Route as AppInvestigationsIdRouteImport } from './routes/app.investigations.$id'
 import { Route as AppCasesIdRouteImport } from './routes/app.cases.$id'
 
@@ -64,6 +76,11 @@ const AppThreatIntelRoute = AppThreatIntelRouteImport.update({
   path: '/threat-intel',
   getParentRoute: () => AppRoute,
 } as any)
+const AppStudentAnalyticsRoute = AppStudentAnalyticsRouteImport.update({
+  id: '/student-analytics',
+  path: '/student-analytics',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppSettingsRoute = AppSettingsRouteImport.update({
   id: '/settings',
   path: '/settings',
@@ -77,6 +94,11 @@ const AppSearchRoute = AppSearchRouteImport.update({
 const AppScenariosRoute = AppScenariosRouteImport.update({
   id: '/scenarios',
   path: '/scenarios',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppScenarioBuilderRoute = AppScenarioBuilderRouteImport.update({
+  id: '/scenario-builder',
+  path: '/scenario-builder',
   getParentRoute: () => AppRoute,
 } as any)
 const AppReportsRoute = AppReportsRouteImport.update({
@@ -94,9 +116,19 @@ const AppOrganizationsRoute = AppOrganizationsRouteImport.update({
   path: '/organizations',
   getParentRoute: () => AppRoute,
 } as any)
+const AppMitreRoute = AppMitreRouteImport.update({
+  id: '/mitre',
+  path: '/mitre',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppLearningRoute = AppLearningRouteImport.update({
   id: '/learning',
   path: '/learning',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppLeaderboardRoute = AppLeaderboardRouteImport.update({
+  id: '/leaderboard',
+  path: '/leaderboard',
   getParentRoute: () => AppRoute,
 } as any)
 const AppInstructorRoute = AppInstructorRouteImport.update({
@@ -114,6 +146,16 @@ const AppIdentityRoute = AppIdentityRouteImport.update({
   path: '/identity',
   getParentRoute: () => AppRoute,
 } as any)
+const AppFeedbackRoute = AppFeedbackRouteImport.update({
+  id: '/feedback',
+  path: '/feedback',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppEvidenceRoute = AppEvidenceRouteImport.update({
+  id: '/evidence',
+  path: '/evidence',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppEndpointsRoute = AppEndpointsRouteImport.update({
   id: '/endpoints',
   path: '/endpoints',
@@ -124,9 +166,29 @@ const AppEmailRoute = AppEmailRouteImport.update({
   path: '/email',
   getParentRoute: () => AppRoute,
 } as any)
+const AppCohortsRoute = AppCohortsRouteImport.update({
+  id: '/cohorts',
+  path: '/cohorts',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppCertificatesRoute = AppCertificatesRouteImport.update({
   id: '/certificates',
   path: '/certificates',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppBillingRoute = AppBillingRouteImport.update({
+  id: '/billing',
+  path: '/billing',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppAuditLogsRoute = AppAuditLogsRouteImport.update({
+  id: '/audit-logs',
+  path: '/audit-logs',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppAssessmentsRoute = AppAssessmentsRouteImport.update({
+  id: '/assessments',
+  path: '/assessments',
   getParentRoute: () => AppRoute,
 } as any)
 const AppAnalyticsRoute = AppAnalyticsRouteImport.update({
@@ -139,9 +201,19 @@ const AppAlertsRoute = AppAlertsRouteImport.update({
   path: '/alerts',
   getParentRoute: () => AppRoute,
 } as any)
+const AppAchievementsRoute = AppAchievementsRouteImport.update({
+  id: '/achievements',
+  path: '/achievements',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppInvestigationsIndexRoute = AppInvestigationsIndexRouteImport.update({
   id: '/investigations/',
   path: '/investigations/',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppCasesIndexRoute = AppCasesIndexRouteImport.update({
+  id: '/cases/',
+  path: '/cases/',
   getParentRoute: () => AppRoute,
 } as any)
 const AppInvestigationsIdRoute = AppInvestigationsIdRouteImport.update({
@@ -158,79 +230,115 @@ const AppCasesIdRoute = AppCasesIdRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/app': typeof AppRouteWithChildren
+  '/app/achievements': typeof AppAchievementsRoute
   '/app/alerts': typeof AppAlertsRoute
   '/app/analytics': typeof AppAnalyticsRoute
+  '/app/assessments': typeof AppAssessmentsRoute
+  '/app/audit-logs': typeof AppAuditLogsRoute
+  '/app/billing': typeof AppBillingRoute
   '/app/certificates': typeof AppCertificatesRoute
+  '/app/cohorts': typeof AppCohortsRoute
   '/app/email': typeof AppEmailRoute
   '/app/endpoints': typeof AppEndpointsRoute
+  '/app/evidence': typeof AppEvidenceRoute
+  '/app/feedback': typeof AppFeedbackRoute
   '/app/identity': typeof AppIdentityRoute
   '/app/incidents': typeof AppIncidentsRoute
   '/app/instructor': typeof AppInstructorRoute
+  '/app/leaderboard': typeof AppLeaderboardRoute
   '/app/learning': typeof AppLearningRoute
+  '/app/mitre': typeof AppMitreRoute
   '/app/organizations': typeof AppOrganizationsRoute
   '/app/profile': typeof AppProfileRoute
   '/app/reports': typeof AppReportsRoute
+  '/app/scenario-builder': typeof AppScenarioBuilderRoute
   '/app/scenarios': typeof AppScenariosRoute
   '/app/search': typeof AppSearchRoute
   '/app/settings': typeof AppSettingsRoute
+  '/app/student-analytics': typeof AppStudentAnalyticsRoute
   '/app/threat-intel': typeof AppThreatIntelRoute
   '/app/timeline': typeof AppTimelineRoute
   '/verify/$id': typeof VerifyIdRoute
   '/app/': typeof AppIndexRoute
   '/app/cases/$id': typeof AppCasesIdRoute
   '/app/investigations/$id': typeof AppInvestigationsIdRoute
+  '/app/cases/': typeof AppCasesIndexRoute
   '/app/investigations/': typeof AppInvestigationsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/app/achievements': typeof AppAchievementsRoute
   '/app/alerts': typeof AppAlertsRoute
   '/app/analytics': typeof AppAnalyticsRoute
+  '/app/assessments': typeof AppAssessmentsRoute
+  '/app/audit-logs': typeof AppAuditLogsRoute
+  '/app/billing': typeof AppBillingRoute
   '/app/certificates': typeof AppCertificatesRoute
+  '/app/cohorts': typeof AppCohortsRoute
   '/app/email': typeof AppEmailRoute
   '/app/endpoints': typeof AppEndpointsRoute
+  '/app/evidence': typeof AppEvidenceRoute
+  '/app/feedback': typeof AppFeedbackRoute
   '/app/identity': typeof AppIdentityRoute
   '/app/incidents': typeof AppIncidentsRoute
   '/app/instructor': typeof AppInstructorRoute
+  '/app/leaderboard': typeof AppLeaderboardRoute
   '/app/learning': typeof AppLearningRoute
+  '/app/mitre': typeof AppMitreRoute
   '/app/organizations': typeof AppOrganizationsRoute
   '/app/profile': typeof AppProfileRoute
   '/app/reports': typeof AppReportsRoute
+  '/app/scenario-builder': typeof AppScenarioBuilderRoute
   '/app/scenarios': typeof AppScenariosRoute
   '/app/search': typeof AppSearchRoute
   '/app/settings': typeof AppSettingsRoute
+  '/app/student-analytics': typeof AppStudentAnalyticsRoute
   '/app/threat-intel': typeof AppThreatIntelRoute
   '/app/timeline': typeof AppTimelineRoute
   '/verify/$id': typeof VerifyIdRoute
   '/app': typeof AppIndexRoute
   '/app/cases/$id': typeof AppCasesIdRoute
   '/app/investigations/$id': typeof AppInvestigationsIdRoute
+  '/app/cases': typeof AppCasesIndexRoute
   '/app/investigations': typeof AppInvestigationsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/app': typeof AppRouteWithChildren
+  '/app/achievements': typeof AppAchievementsRoute
   '/app/alerts': typeof AppAlertsRoute
   '/app/analytics': typeof AppAnalyticsRoute
+  '/app/assessments': typeof AppAssessmentsRoute
+  '/app/audit-logs': typeof AppAuditLogsRoute
+  '/app/billing': typeof AppBillingRoute
   '/app/certificates': typeof AppCertificatesRoute
+  '/app/cohorts': typeof AppCohortsRoute
   '/app/email': typeof AppEmailRoute
   '/app/endpoints': typeof AppEndpointsRoute
+  '/app/evidence': typeof AppEvidenceRoute
+  '/app/feedback': typeof AppFeedbackRoute
   '/app/identity': typeof AppIdentityRoute
   '/app/incidents': typeof AppIncidentsRoute
   '/app/instructor': typeof AppInstructorRoute
+  '/app/leaderboard': typeof AppLeaderboardRoute
   '/app/learning': typeof AppLearningRoute
+  '/app/mitre': typeof AppMitreRoute
   '/app/organizations': typeof AppOrganizationsRoute
   '/app/profile': typeof AppProfileRoute
   '/app/reports': typeof AppReportsRoute
+  '/app/scenario-builder': typeof AppScenarioBuilderRoute
   '/app/scenarios': typeof AppScenariosRoute
   '/app/search': typeof AppSearchRoute
   '/app/settings': typeof AppSettingsRoute
+  '/app/student-analytics': typeof AppStudentAnalyticsRoute
   '/app/threat-intel': typeof AppThreatIntelRoute
   '/app/timeline': typeof AppTimelineRoute
   '/verify/$id': typeof VerifyIdRoute
   '/app/': typeof AppIndexRoute
   '/app/cases/$id': typeof AppCasesIdRoute
   '/app/investigations/$id': typeof AppInvestigationsIdRoute
+  '/app/cases/': typeof AppCasesIndexRoute
   '/app/investigations/': typeof AppInvestigationsIndexRoute
 }
 export interface FileRouteTypes {
@@ -238,78 +346,114 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/app'
+    | '/app/achievements'
     | '/app/alerts'
     | '/app/analytics'
+    | '/app/assessments'
+    | '/app/audit-logs'
+    | '/app/billing'
     | '/app/certificates'
+    | '/app/cohorts'
     | '/app/email'
     | '/app/endpoints'
+    | '/app/evidence'
+    | '/app/feedback'
     | '/app/identity'
     | '/app/incidents'
     | '/app/instructor'
+    | '/app/leaderboard'
     | '/app/learning'
+    | '/app/mitre'
     | '/app/organizations'
     | '/app/profile'
     | '/app/reports'
+    | '/app/scenario-builder'
     | '/app/scenarios'
     | '/app/search'
     | '/app/settings'
+    | '/app/student-analytics'
     | '/app/threat-intel'
     | '/app/timeline'
     | '/verify/$id'
     | '/app/'
     | '/app/cases/$id'
     | '/app/investigations/$id'
+    | '/app/cases/'
     | '/app/investigations/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/app/achievements'
     | '/app/alerts'
     | '/app/analytics'
+    | '/app/assessments'
+    | '/app/audit-logs'
+    | '/app/billing'
     | '/app/certificates'
+    | '/app/cohorts'
     | '/app/email'
     | '/app/endpoints'
+    | '/app/evidence'
+    | '/app/feedback'
     | '/app/identity'
     | '/app/incidents'
     | '/app/instructor'
+    | '/app/leaderboard'
     | '/app/learning'
+    | '/app/mitre'
     | '/app/organizations'
     | '/app/profile'
     | '/app/reports'
+    | '/app/scenario-builder'
     | '/app/scenarios'
     | '/app/search'
     | '/app/settings'
+    | '/app/student-analytics'
     | '/app/threat-intel'
     | '/app/timeline'
     | '/verify/$id'
     | '/app'
     | '/app/cases/$id'
     | '/app/investigations/$id'
+    | '/app/cases'
     | '/app/investigations'
   id:
     | '__root__'
     | '/'
     | '/app'
+    | '/app/achievements'
     | '/app/alerts'
     | '/app/analytics'
+    | '/app/assessments'
+    | '/app/audit-logs'
+    | '/app/billing'
     | '/app/certificates'
+    | '/app/cohorts'
     | '/app/email'
     | '/app/endpoints'
+    | '/app/evidence'
+    | '/app/feedback'
     | '/app/identity'
     | '/app/incidents'
     | '/app/instructor'
+    | '/app/leaderboard'
     | '/app/learning'
+    | '/app/mitre'
     | '/app/organizations'
     | '/app/profile'
     | '/app/reports'
+    | '/app/scenario-builder'
     | '/app/scenarios'
     | '/app/search'
     | '/app/settings'
+    | '/app/student-analytics'
     | '/app/threat-intel'
     | '/app/timeline'
     | '/verify/$id'
     | '/app/'
     | '/app/cases/$id'
     | '/app/investigations/$id'
+    | '/app/cases/'
     | '/app/investigations/'
   fileRoutesById: FileRoutesById
 }
@@ -363,6 +507,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppThreatIntelRouteImport
       parentRoute: typeof AppRoute
     }
+    '/app/student-analytics': {
+      id: '/app/student-analytics'
+      path: '/student-analytics'
+      fullPath: '/app/student-analytics'
+      preLoaderRoute: typeof AppStudentAnalyticsRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/app/settings': {
       id: '/app/settings'
       path: '/settings'
@@ -382,6 +533,13 @@ declare module '@tanstack/react-router' {
       path: '/scenarios'
       fullPath: '/app/scenarios'
       preLoaderRoute: typeof AppScenariosRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/scenario-builder': {
+      id: '/app/scenario-builder'
+      path: '/scenario-builder'
+      fullPath: '/app/scenario-builder'
+      preLoaderRoute: typeof AppScenarioBuilderRouteImport
       parentRoute: typeof AppRoute
     }
     '/app/reports': {
@@ -405,11 +563,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppOrganizationsRouteImport
       parentRoute: typeof AppRoute
     }
+    '/app/mitre': {
+      id: '/app/mitre'
+      path: '/mitre'
+      fullPath: '/app/mitre'
+      preLoaderRoute: typeof AppMitreRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/app/learning': {
       id: '/app/learning'
       path: '/learning'
       fullPath: '/app/learning'
       preLoaderRoute: typeof AppLearningRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/leaderboard': {
+      id: '/app/leaderboard'
+      path: '/leaderboard'
+      fullPath: '/app/leaderboard'
+      preLoaderRoute: typeof AppLeaderboardRouteImport
       parentRoute: typeof AppRoute
     }
     '/app/instructor': {
@@ -433,6 +605,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppIdentityRouteImport
       parentRoute: typeof AppRoute
     }
+    '/app/feedback': {
+      id: '/app/feedback'
+      path: '/feedback'
+      fullPath: '/app/feedback'
+      preLoaderRoute: typeof AppFeedbackRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/evidence': {
+      id: '/app/evidence'
+      path: '/evidence'
+      fullPath: '/app/evidence'
+      preLoaderRoute: typeof AppEvidenceRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/app/endpoints': {
       id: '/app/endpoints'
       path: '/endpoints'
@@ -447,11 +633,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppEmailRouteImport
       parentRoute: typeof AppRoute
     }
+    '/app/cohorts': {
+      id: '/app/cohorts'
+      path: '/cohorts'
+      fullPath: '/app/cohorts'
+      preLoaderRoute: typeof AppCohortsRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/app/certificates': {
       id: '/app/certificates'
       path: '/certificates'
       fullPath: '/app/certificates'
       preLoaderRoute: typeof AppCertificatesRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/billing': {
+      id: '/app/billing'
+      path: '/billing'
+      fullPath: '/app/billing'
+      preLoaderRoute: typeof AppBillingRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/audit-logs': {
+      id: '/app/audit-logs'
+      path: '/audit-logs'
+      fullPath: '/app/audit-logs'
+      preLoaderRoute: typeof AppAuditLogsRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/assessments': {
+      id: '/app/assessments'
+      path: '/assessments'
+      fullPath: '/app/assessments'
+      preLoaderRoute: typeof AppAssessmentsRouteImport
       parentRoute: typeof AppRoute
     }
     '/app/analytics': {
@@ -468,11 +682,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppAlertsRouteImport
       parentRoute: typeof AppRoute
     }
+    '/app/achievements': {
+      id: '/app/achievements'
+      path: '/achievements'
+      fullPath: '/app/achievements'
+      preLoaderRoute: typeof AppAchievementsRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/app/investigations/': {
       id: '/app/investigations/'
       path: '/investigations'
       fullPath: '/app/investigations/'
       preLoaderRoute: typeof AppInvestigationsIndexRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/cases/': {
+      id: '/app/cases/'
+      path: '/cases'
+      fullPath: '/app/cases/'
+      preLoaderRoute: typeof AppCasesIndexRouteImport
       parentRoute: typeof AppRoute
     }
     '/app/investigations/$id': {
@@ -493,50 +721,74 @@ declare module '@tanstack/react-router' {
 }
 
 interface AppRouteChildren {
+  AppAchievementsRoute: typeof AppAchievementsRoute
   AppAlertsRoute: typeof AppAlertsRoute
   AppAnalyticsRoute: typeof AppAnalyticsRoute
+  AppAssessmentsRoute: typeof AppAssessmentsRoute
+  AppAuditLogsRoute: typeof AppAuditLogsRoute
+  AppBillingRoute: typeof AppBillingRoute
   AppCertificatesRoute: typeof AppCertificatesRoute
+  AppCohortsRoute: typeof AppCohortsRoute
   AppEmailRoute: typeof AppEmailRoute
   AppEndpointsRoute: typeof AppEndpointsRoute
+  AppEvidenceRoute: typeof AppEvidenceRoute
+  AppFeedbackRoute: typeof AppFeedbackRoute
   AppIdentityRoute: typeof AppIdentityRoute
   AppIncidentsRoute: typeof AppIncidentsRoute
   AppInstructorRoute: typeof AppInstructorRoute
+  AppLeaderboardRoute: typeof AppLeaderboardRoute
   AppLearningRoute: typeof AppLearningRoute
+  AppMitreRoute: typeof AppMitreRoute
   AppOrganizationsRoute: typeof AppOrganizationsRoute
   AppProfileRoute: typeof AppProfileRoute
   AppReportsRoute: typeof AppReportsRoute
+  AppScenarioBuilderRoute: typeof AppScenarioBuilderRoute
   AppScenariosRoute: typeof AppScenariosRoute
   AppSearchRoute: typeof AppSearchRoute
   AppSettingsRoute: typeof AppSettingsRoute
+  AppStudentAnalyticsRoute: typeof AppStudentAnalyticsRoute
   AppThreatIntelRoute: typeof AppThreatIntelRoute
   AppTimelineRoute: typeof AppTimelineRoute
   AppIndexRoute: typeof AppIndexRoute
   AppCasesIdRoute: typeof AppCasesIdRoute
   AppInvestigationsIdRoute: typeof AppInvestigationsIdRoute
+  AppCasesIndexRoute: typeof AppCasesIndexRoute
   AppInvestigationsIndexRoute: typeof AppInvestigationsIndexRoute
 }
 
 const AppRouteChildren: AppRouteChildren = {
+  AppAchievementsRoute: AppAchievementsRoute,
   AppAlertsRoute: AppAlertsRoute,
   AppAnalyticsRoute: AppAnalyticsRoute,
+  AppAssessmentsRoute: AppAssessmentsRoute,
+  AppAuditLogsRoute: AppAuditLogsRoute,
+  AppBillingRoute: AppBillingRoute,
   AppCertificatesRoute: AppCertificatesRoute,
+  AppCohortsRoute: AppCohortsRoute,
   AppEmailRoute: AppEmailRoute,
   AppEndpointsRoute: AppEndpointsRoute,
+  AppEvidenceRoute: AppEvidenceRoute,
+  AppFeedbackRoute: AppFeedbackRoute,
   AppIdentityRoute: AppIdentityRoute,
   AppIncidentsRoute: AppIncidentsRoute,
   AppInstructorRoute: AppInstructorRoute,
+  AppLeaderboardRoute: AppLeaderboardRoute,
   AppLearningRoute: AppLearningRoute,
+  AppMitreRoute: AppMitreRoute,
   AppOrganizationsRoute: AppOrganizationsRoute,
   AppProfileRoute: AppProfileRoute,
   AppReportsRoute: AppReportsRoute,
+  AppScenarioBuilderRoute: AppScenarioBuilderRoute,
   AppScenariosRoute: AppScenariosRoute,
   AppSearchRoute: AppSearchRoute,
   AppSettingsRoute: AppSettingsRoute,
+  AppStudentAnalyticsRoute: AppStudentAnalyticsRoute,
   AppThreatIntelRoute: AppThreatIntelRoute,
   AppTimelineRoute: AppTimelineRoute,
   AppIndexRoute: AppIndexRoute,
   AppCasesIdRoute: AppCasesIdRoute,
   AppInvestigationsIdRoute: AppInvestigationsIdRoute,
+  AppCasesIndexRoute: AppCasesIndexRoute,
   AppInvestigationsIndexRoute: AppInvestigationsIndexRoute,
 }
 

@@ -27,6 +27,16 @@ import {
   Command,
   Bell as BellIcon,
   Sparkles,
+  Crosshair,
+  Medal,
+  Trophy,
+  Wrench,
+  Users,
+  ClipboardCheck,
+  MessageSquare,
+  ScrollText,
+  Activity,
+
 } from "lucide-react";
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
@@ -38,13 +48,17 @@ type NavItem = { to: string; label: string; icon: React.ComponentType<{ classNam
 
 const primary: NavItem[] = [
   { to: "/app", label: "Dashboard", icon: LayoutGrid },
-  { to: "/app/investigations", label: "Investigations", icon: ShieldAlert, badge: "12" },
-  { to: "/app/alerts", label: "Alerts", icon: Bell, badge: "48" },
-  { to: "/app/incidents", label: "Incident Queue", icon: Inbox, badge: "5" },
+  { to: "/app/investigations", label: "Investigation Queue", icon: ShieldAlert, badge: "12" },
+  { to: "/app/alerts", label: "Alert Center", icon: Bell, badge: "48" },
+  { to: "/app/cases", label: "Case Management", icon: Inbox, badge: "8" },
   { to: "/app/timeline", label: "Global Timeline", icon: ListTree },
+  { to: "/app/evidence", label: "Evidence Locker", icon: HardDrive },
+];
+
+const portals: NavItem[] = [
   { to: "/app/identity", label: "Identity Center", icon: UserRound },
-  { to: "/app/endpoints", label: "Endpoint Center", icon: MonitorSmartphone },
-  { to: "/app/email", label: "Email Investigations", icon: Mail },
+  { to: "/app/endpoints", label: "Device Center", icon: MonitorSmartphone },
+  { to: "/app/email", label: "Email Investigation", icon: Mail },
   { to: "/app/threat-intel", label: "Threat Intelligence", icon: Radar },
   { to: "/app/search", label: "Global Search", icon: Search },
 ];
@@ -52,17 +66,31 @@ const primary: NavItem[] = [
 const learning: NavItem[] = [
   { to: "/app/scenarios", label: "Scenario Library", icon: Library },
   { to: "/app/learning", label: "Learning Center", icon: GraduationCap },
+  { to: "/app/mitre", label: "MITRE ATT&CK Explorer", icon: Crosshair },
+  { to: "/app/achievements", label: "Achievements", icon: Medal },
   { to: "/app/certificates", label: "Certificates", icon: Award },
+  { to: "/app/leaderboard", label: "Leaderboard", icon: Trophy },
+];
+
+const instructor: NavItem[] = [
+  { to: "/app/instructor", label: "Instructor Portal", icon: Presentation },
+  { to: "/app/student-analytics", label: "Student Analytics", icon: BarChart3 },
+  { to: "/app/scenario-builder", label: "Scenario Builder", icon: Wrench },
+  { to: "/app/cohorts", label: "Cohorts", icon: Users },
+  { to: "/app/assessments", label: "Assessments", icon: ClipboardCheck },
+  { to: "/app/feedback", label: "Feedback Center", icon: MessageSquare },
 ];
 
 const admin: NavItem[] = [
-  { to: "/app/analytics", label: "Analytics", icon: BarChart3 },
-  { to: "/app/reports", label: "Reports", icon: FileText },
-  { to: "/app/instructor", label: "Instructor Portal", icon: Presentation },
   { to: "/app/organizations", label: "Organizations", icon: Building2 },
+  { to: "/app/reports", label: "Reports", icon: FileText },
+  { to: "/app/analytics", label: "Analytics", icon: Activity },
   { to: "/app/settings", label: "Settings", icon: SettingsIcon },
+  { to: "/app/audit-logs", label: "Audit Logs", icon: ScrollText },
+  { to: "/app/billing", label: "Billing", icon: CreditCard },
   { to: "/app/profile", label: "Profile", icon: CircleUserRound },
 ];
+
 
 function NavGroup({ label, items }: { label?: string; items: NavItem[] }) {
   const path = useRouterState({ select: (s) => s.location.pathname });
@@ -128,9 +156,12 @@ function Sidebar() {
       </div>
 
       <nav className="flex-1 overflow-y-auto pb-4">
-        <NavGroup items={primary} />
+        <NavGroup label="Investigations" items={primary} />
+        <NavGroup label="Investigation Portals" items={portals} />
         <NavGroup label="Learning" items={learning} />
+        <NavGroup label="Instructor" items={instructor} />
         <NavGroup label="Administration" items={admin} />
+
       </nav>
 
       {/* Footer: subscription + storage */}
@@ -211,25 +242,38 @@ function Topbar({ crumb, onOpenPalette }: { crumb: string; onOpenPalette: () => 
 
 const crumbMap: Record<string, string> = {
   "/app": "Dashboard",
-  "/app/alerts": "Alerts",
+  "/app/alerts": "Alert Center",
   "/app/incidents": "Incident Queue",
+  "/app/cases": "Case Management",
+  "/app/evidence": "Evidence Locker",
   "/app/timeline": "Global Timeline",
-  "/app/investigations": "Investigations",
+  "/app/investigations": "Investigation Queue",
   "/app/identity": "Identity Center",
-  "/app/endpoints": "Endpoint Center",
-  "/app/email": "Email Investigations",
+  "/app/endpoints": "Device Center",
+  "/app/email": "Email Investigation",
   "/app/threat-intel": "Threat Intelligence",
   "/app/search": "Global Search",
   "/app/scenarios": "Scenario Library",
   "/app/learning": "Learning Center",
+  "/app/mitre": "MITRE ATT&CK Explorer",
+  "/app/achievements": "Achievements",
   "/app/certificates": "Certificates",
+  "/app/leaderboard": "Leaderboard",
   "/app/analytics": "Analytics",
   "/app/reports": "Reports",
   "/app/instructor": "Instructor Portal",
+  "/app/student-analytics": "Student Analytics",
+  "/app/scenario-builder": "Scenario Builder",
+  "/app/cohorts": "Cohorts",
+  "/app/assessments": "Assessments",
+  "/app/feedback": "Feedback Center",
   "/app/organizations": "Organizations",
   "/app/settings": "Settings",
+  "/app/audit-logs": "Audit Logs",
+  "/app/billing": "Billing",
   "/app/profile": "Profile",
 };
+
 
 export function AppShell({ children }: { children?: ReactNode }) {
   const path = useRouterState({ select: (s) => s.location.pathname });
