@@ -935,7 +935,7 @@ function CorrelationEngine() {
 /*  DEMO 04 — EXECUTIVE SECURITY DASHBOARD                             */
 /* ------------------------------------------------------------------ */
 
-const MTTR_SERIES = [186, 172, 154, 131, 118, 96, 74, 58, 41, 29, 18, 11];
+const SCORE_SERIES = [52, 58, 61, 67, 65, 71, 76, 79, 81, 84, 86, 91];
 
 function Ring({ value, seen }: { value: number; seen: boolean }) {
   const r = 54;
@@ -992,7 +992,7 @@ function Ring({ value, seen }: { value: number; seen: boolean }) {
         letterSpacing="1.6"
         fontFamily='"Geist Mono", monospace'
       >
-        POSTURE
+        SCORE
       </text>
     </svg>
   );
@@ -1000,20 +1000,20 @@ function Ring({ value, seen }: { value: number; seen: boolean }) {
 
 function ExecutiveDashboard() {
   const { ref, seen } = useOnScreen<HTMLDivElement>();
-  const max = Math.max(...MTTR_SERIES);
+  const max = Math.max(...SCORE_SERIES);
 
   return (
     <div ref={ref}>
-      <AppWindow path="clickbox.io / executive" live={false}>
+      <AppWindow path="clickbox.io / progress" live={false}>
         <div className="flex items-center gap-3 border-b border-white/8 px-4 py-3">
           <div className="text-[13.5px] font-medium text-white">
-            Board report — Q3 security posture
+            Your progress — 12 cases completed
           </div>
           <span
             className="ml-auto text-[10.5px] text-white/35"
             style={monoFont}
           >
-            generated automatically · 12 sources
+            updated after every submitted case
           </span>
         </div>
 
@@ -1022,13 +1022,13 @@ function ExecutiveDashboard() {
             <Ring value={87} seen={seen} />
             <div className="text-center">
               <div className="text-[12.5px] text-white/60">
-                Up 23 points since deployment
+                Up 23 points since your first case
               </div>
               <div
                 className="mt-1 text-[10.5px] uppercase tracking-[0.18em] text-white/30"
                 style={monoFont}
               >
-                vs. peer median 61
+                vs. cohort median 61
               </div>
             </div>
           </div>
@@ -1036,12 +1036,12 @@ function ExecutiveDashboard() {
           <div>
             <div className="grid grid-cols-2 gap-px bg-white/[0.06] md:grid-cols-3">
               {[
-                ["MTTR", "11m", "−94%"],
-                ["Risk reduction", "3.4×", "+240%"],
-                ["Coverage", "96%", "+31 pts"],
-                ["Analyst hours saved", "1,180", "per quarter"],
-                ["Escalation accuracy", "98.2%", "+12 pts"],
-                ["Cost per incident", "$412", "−67%"],
+                ["Avg. case score", "87", "+23 pts"],
+                ["Technique accuracy", "91%", "+34 pts"],
+                ["Evidence precision", "88%", "+19 pts"],
+                ["Cases completed", "12", "this month"],
+                ["Verdict accuracy", "92%", "+11 pts"],
+                ["Median time / case", "34m", "−41%"],
               ].map(([l, v, d]) => (
                 <div key={l} className="bg-[#080B10] px-4 py-3.5">
                   <div
@@ -1075,17 +1075,17 @@ function ExecutiveDashboard() {
                   className="text-[9.5px] uppercase tracking-[0.2em] text-white/35"
                   style={monoFont}
                 >
-                  Mean time to resolve — 12 months
+                  Score trend — last 12 cases
                 </div>
                 <div
                   className="text-[10.5px] text-white/35"
                   style={monoFont}
                 >
-                  minutes
+                  score / 100
                 </div>
               </div>
               <div className="mt-4 flex h-[112px] items-end gap-[6px]">
-                {MTTR_SERIES.map((v, i) => (
+                {SCORE_SERIES.map((v, i) => (
                   <div key={i} className="group flex-1">
                     <div
                       className="w-full rounded-t-[3px] transition-all duration-700"
@@ -1093,7 +1093,7 @@ function ExecutiveDashboard() {
                         height: seen ? `${(v / max) * 104}px` : "2px",
                         transitionDelay: `${i * 55}ms`,
                         background:
-                          i >= MTTR_SERIES.length - 4
+                          i >= SCORE_SERIES.length - 4
                             ? "linear-gradient(180deg, color-mix(in oklab, var(--primary) 90%, white), color-mix(in oklab, var(--primary) 35%, transparent))"
                             : "rgba(255,255,255,0.14)",
                       }}
@@ -1105,8 +1105,8 @@ function ExecutiveDashboard() {
                 className="mt-2 flex justify-between text-[9.5px] text-white/25"
                 style={monoFont}
               >
-                <span>Q3 ’25</span>
-                <span>Q3 ’26</span>
+                <span>Case 1</span>
+                <span>Case 12</span>
               </div>
             </div>
           </div>
@@ -1129,9 +1129,9 @@ export function ProductDemos() {
         </div>
         <DemoIntro
           index="01"
-          kicker="AI Investigation Workspace"
-          title="The investigation writes itself."
-          body="ClickBox reconstructs the incident across identity, endpoint, email and cloud, shows its reasoning step by step, and hands the analyst a defensible narrative."
+          kicker="Investigation Workspace"
+          title="Everything you need to investigate. Nothing solved for you."
+          body="Work the case across identity, endpoint, email and cloud, pin the evidence that matters, and build a narrative you can defend — the console gives you the tools, not the answer."
         />
         <Reveal className="mt-14">
           <InvestigationWorkspace />
@@ -1144,9 +1144,9 @@ export function ProductDemos() {
         </div>
         <DemoIntro
           index="02"
-          kicker="Threat Correlation Engine"
-          title="Isolated signals become one attack path."
-          body="Identity, endpoint, email, cloud and network resolve through the AI core into a single security graph — with blast radius, not just severity."
+          kicker="Correlation Practice"
+          title="Isolated signals become one attack path — once you join them."
+          body="Identity, endpoint, email, cloud and network events sit there until you connect them. Learn to read the graph, not just the alert list — that's the actual job."
         />
         <Reveal className="mt-14">
           <CorrelationEngine />
@@ -1159,9 +1159,9 @@ export function ProductDemos() {
         </div>
         <DemoIntro
           index="03"
-          kicker="Executive Security Dashboard"
-          title="Numbers the board actually asks for."
-          body="Posture, MTTR, risk reduction and coverage — measured continuously and rendered as a report you can present without a week of preparation."
+          kicker="Progress & Instructor Dashboard"
+          title="Numbers that actually track whether you're learning."
+          body="Score trend, technique mastery, and case history for you — or a whole cohort's progress at a glance for instructors. No guessing whether the training is working."
         />
         <Reveal className="mt-14">
           <ExecutiveDashboard />
@@ -1176,9 +1176,9 @@ export { CommandCenter, InvestigationWorkspace, CorrelationEngine, ExecutiveDash
 /** Small hero-adjacent proof strip. */
 export function ProofStrip() {
   const items = [
-    { icon: Network, l: "5 signal domains unified" },
-    { icon: BrainCircuit, l: "94% of noise removed pre-triage" },
-    { icon: Timer, l: "11 minute median MTTR" },
+    { icon: Network, l: "4 signal domains, one console" },
+    { icon: BrainCircuit, l: "A fresh scenario every session" },
+    { icon: Timer, l: "Graded against a hidden ground truth" },
     { icon: ShieldAlert, l: "MITRE ATT&CK mapped by default" },
   ];
   return (

@@ -1,7 +1,8 @@
 /**
- * The ClickBox product narrative: SIGNAL → CORRELATION → AI INVESTIGATION →
- * THREAT UNDERSTANDING → RESPONSE. One continuous story rather than five
- * feature cards; the artwork bleeds past the containers and connects chapters.
+ * The SOCVerse investigation narrative: SIGNAL → CORRELATION → INVESTIGATION →
+ * UNDERSTANDING → RESPONSE. One continuous story of what a learner actually
+ * does in a case, not five feature cards; the artwork bleeds past the
+ * containers and connects chapters.
  */
 import {
   Bloom,
@@ -93,11 +94,11 @@ function Signal() {
       <ChapterCopy
         n="01"
         label="Signal"
-        heading="Your stack never stops talking."
-        body="Firewalls, EDR, identity providers, mail gateways, cloud audit trails — millions of events a day, every one of them insisting it might matter. ClickBox ingests all of it without asking your analysts to read any of it."
+        heading="Every case starts as noise."
+        body="Identity logs, endpoint telemetry, email headers, cloud audit trails — a fresh scenario, generated the moment you open it. Synthetic, never real customer data, but built to feel exactly like a live queue on a bad day."
         facts={[
-          ["events / day", "18.4M"],
-          ["sources", "40+"],
+          ["events / case", "80–300"],
+          ["domains covered", "4"],
         ]}
       />
       <Reveal delay={120} className="relative h-[300px] md:h-[380px]">
@@ -118,11 +119,11 @@ function Correlation() {
         <ChapterCopy
           n="02"
           label="Correlation"
-          heading="Five domains, one graph."
-          body="An OAuth consent grant, a new device, a mailbox rule, an S3 policy change. Individually: noise. Joined on identity, host, and time: an intrusion. ClickBox maintains that graph continuously, not on demand."
+          heading="Learn to see the graph, not the alerts."
+          body="An OAuth consent grant, a new device, a mailbox rule, a database query. Individually: noise. Joined on identity, host, and time: an intrusion. Pinning the right evidence and drawing that connection is the skill — the console just gives you a place to do it."
           facts={[
-            ["domains joined", "5"],
-            ["dedupe rate", "94%"],
+            ["signal domains", "4"],
+            ["decoys seeded", "on purpose"],
           ]}
         />
       </div>
@@ -135,12 +136,12 @@ function Investigation() {
     <div className="relative grid items-center gap-14 lg:grid-cols-[minmax(0,.9fr)_minmax(0,1.1fr)]">
       <ChapterCopy
         n="03"
-        label="AI investigation"
-        heading="The reasoning layer does the reading."
-        body="ClickBox pulls the evidence, tests the hypotheses, discards what doesn't hold, and shows its work as a graph an analyst can audit node by node. No black box, no summary you have to take on faith."
+        label="Investigation"
+        heading="You do the reading. No one does it for you."
+        body="Pull the evidence, test your hypotheses, discard what doesn't hold. The console gives you the graph and the tools an analyst actually uses — but the reasoning is yours, because that's the part a real incident won't do for you either."
         facts={[
-          ["hypotheses tested", "12 / case"],
-          ["median time", "2m 40s"],
+          ["evidence pinned / case", "your call"],
+          ["hints", "cost points"],
         ]}
       />
       <Reveal delay={120} className="relative h-[320px] md:h-[400px]">
@@ -163,9 +164,9 @@ function Understanding() {
     <div className="relative grid items-center gap-14 lg:grid-cols-2">
       <ChapterCopy
         n="04"
-        label="Threat understanding"
-        heading="Four alerts. One story."
-        body="ClickBox resolves scattered detections into a single narrative with a beginning, a blast radius, and an owner — mapped to MITRE ATT&CK so the finding survives review."
+        label="Understanding"
+        heading="Four alerts. One story — if you can write it."
+        body="Resolving scattered detections into a single narrative with a beginning, a blast radius, and an owner is the job. Tag each step to MITRE ATT&CK and write the summary yourself — it's graded on whether the story actually holds up."
       />
       <Reveal delay={120}>
         <div className="relative">
@@ -278,11 +279,11 @@ function Response() {
         <ChapterCopy
           n="05"
           label="Response"
-          heading="What happened, and what to do next."
-          body="Every case closes with a ranked set of containment steps, each one traceable to the evidence that justified it. Approve them in the console or let a playbook run them — the audit trail is identical."
+          heading="What happened, and what you'd do next."
+          body="Every case ends with a verdict and a set of response actions you choose — each one scored against a hidden ground truth. Miss the required steps or take the wrong ones, and it shows up in your breakdown, not just your final grade."
           facts={[
-            ["MTTR change", "−71%"],
-            ["actions audited", "100%"],
+            ["verdict options", "TP · FP · benign"],
+            ["scored on", "evidence + actions"],
           ]}
         />
       </div>

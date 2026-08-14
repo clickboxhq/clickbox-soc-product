@@ -73,8 +73,8 @@
   --radius: 0.75rem;
 
   /* ClickBox brand palette
-     Black #05070A · Signal Red #C8353A / #E04347 · Dark Green #0E6B4F
-     Neutral grays · White #FFFFFF */
+     Black #05070A · Interactive Blue #3E82F7 · Neutral grays · White #FFFFFF
+     Semantic status only: Green (success) · Amber (warning) · Orange (high) · Red (critical) */
 
   /* Core surfaces — near-black with a subtle warm cast and real elevation steps */
   --background: #06090D;
@@ -94,12 +94,12 @@
   /* Borders / inputs */
   --border: #212B35;
   --input: #26313C;
-  --ring: #D8464B;
+  --ring: #3E82F7;
 
-  /* Brand accents */
-  --primary: #C0292F;
+  /* Brand accents — interactive blue, never red (red is reserved for --critical) */
+  --primary: #3E82F7;
   --primary-foreground: #FFFFFF;
-  --primary-hover: #DA383E;
+  --primary-hover: #5C97FF;
   --secondary: #AEBAC6;
   --muted: #151C24;
   --accent: #17222D;
@@ -107,24 +107,24 @@
   --destructive: #D93A3F;
   --destructive-foreground: #FFFFFF;
 
-  /* Semantic status */
+  /* Semantic status — the only place red should appear is --critical */
   --success: #2FBF8F;
   --warning: #E3A008;
   --high: #F97316;
   --critical: #F2555A;
-  --info: #F0706F;
+  --info: #4C90F5;
 
   /* Sidebar */
   --sidebar-foreground: #AEBAC6;
   --sidebar-accent: #17222D;
   --sidebar-accent-foreground: #F3F6F9;
   --sidebar-border: #1C242D;
-  --sidebar-primary: #D8464B;
+  --sidebar-primary: #3E82F7;
   --sidebar-primary-foreground: #FFFFFF;
-  --sidebar-ring: #D8464B;
+  --sidebar-ring: #3E82F7;
 
-  /* Charts */
-  --chart-1: #D8464B;
+  /* Charts — blue for primary/performance series, green for success trends */
+  --chart-1: #3E82F7;
   --chart-2: #12946B;
   --chart-3: #8391A0;
   --chart-4: #C98A0B;
@@ -272,7 +272,9 @@
   to   { transform: translateX(-33.3333%); }
 }
 
-/* Marketing button system — one shape, one motion curve, everywhere */
+/* Marketing button system — one shape, one motion curve, everywhere.
+   Deliberately monochrome (not --primary blue): the marketing site's CTA
+   weight should read black/white/premium, not "dashboard interactive blue". */
 @utility btn-primary {
   display: inline-flex;
   align-items: center;
@@ -282,21 +284,21 @@
   padding: 0.6875rem 1.125rem;
   font-size: 0.84375rem;
   font-weight: 500;
-  color: #fff;
-  background: var(--primary);
+  color: #0A0C0F;
+  background: #F3F5F7;
   box-shadow:
-    0 0 0 1px color-mix(in oklab, var(--primary) 75%, transparent),
-    0 10px 30px -12px color-mix(in oklab, var(--primary) 55%, transparent);
+    0 0 0 1px oklch(1 0 0 / 10%),
+    0 10px 30px -14px oklch(1 0 0 / 25%);
   transition:
     background 200ms ease,
     box-shadow 200ms ease,
     transform 200ms cubic-bezier(0.22, 1, 0.36, 1);
   &:hover {
-    background: var(--primary-hover);
+    background: #FFFFFF;
     transform: translateY(-1px);
     box-shadow:
-      0 0 0 1px color-mix(in oklab, var(--primary) 85%, transparent),
-      0 16px 40px -14px color-mix(in oklab, var(--primary) 65%, transparent);
+      0 0 0 1px oklch(1 0 0 / 16%),
+      0 16px 40px -14px oklch(1 0 0 / 32%);
   }
 }
 

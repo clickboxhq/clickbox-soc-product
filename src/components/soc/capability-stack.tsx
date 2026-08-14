@@ -2,14 +2,14 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const COVERAGE = [
-  "FIREWALL",
-  "EDR",
-  "SIEM",
+  "IDENTITY",
+  "ENDPOINT",
   "EMAIL",
   "CLOUD",
   "THREAT INTEL",
-  "IDENTITY",
-  "AI CORE",
+  "MITRE ATT&CK",
+  "EVIDENCE",
+  "VERDICT",
 ];
 
 const CAPABILITIES = [
@@ -122,8 +122,8 @@ export function CapabilityStack() {
       <WordStack
         words={COVERAGE}
         eyebrow="Coverage"
-        heading="Every layer of your stack, one platform."
-        sub="ClickBox ingests and correlates signal across the surfaces your attackers actually touch."
+        heading="Every domain a real SOC touches, one platform."
+        sub="Practice across the surfaces attackers actually move through — not a quiz, an investigation."
       />
     </section>
   );

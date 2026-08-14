@@ -3,7 +3,7 @@
  *
  * Railway-style atmospheric technical drawing: schematic grids, correlation
  * graphs, and signal pathways that sit *behind* the product and dissolve into
- * the black. Monochrome with a single restrained red accent.
+ * the black. Monochrome with a single restrained blue accent.
  */
 
 /** Blueprint plate: fine grid + coarse grid + corner ticks, masked to fade. */
@@ -187,7 +187,7 @@ export function Pathways({
   );
 }
 
-/** Deep red atmospheric wash, used sparingly around threat surfaces. */
+/** Deep blue atmospheric wash, used sparingly as the accent glow. */
 export function Glow({
   className = "",
   intensity = 0.16,
