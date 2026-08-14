@@ -156,9 +156,12 @@ function Sidebar() {
       </div>
 
       <nav className="flex-1 overflow-y-auto pb-4">
-        <NavGroup items={primary} />
+        <NavGroup label="Investigations" items={primary} />
+        <NavGroup label="Investigation Portals" items={portals} />
         <NavGroup label="Learning" items={learning} />
+        <NavGroup label="Instructor" items={instructor} />
         <NavGroup label="Administration" items={admin} />
+
       </nav>
 
       {/* Footer: subscription + storage */}
