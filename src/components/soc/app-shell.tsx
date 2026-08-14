@@ -242,25 +242,38 @@ function Topbar({ crumb, onOpenPalette }: { crumb: string; onOpenPalette: () => 
 
 const crumbMap: Record<string, string> = {
   "/app": "Dashboard",
-  "/app/alerts": "Alerts",
+  "/app/alerts": "Alert Center",
   "/app/incidents": "Incident Queue",
+  "/app/cases": "Case Management",
+  "/app/evidence": "Evidence Locker",
   "/app/timeline": "Global Timeline",
-  "/app/investigations": "Investigations",
+  "/app/investigations": "Investigation Queue",
   "/app/identity": "Identity Center",
-  "/app/endpoints": "Endpoint Center",
-  "/app/email": "Email Investigations",
+  "/app/endpoints": "Device Center",
+  "/app/email": "Email Investigation",
   "/app/threat-intel": "Threat Intelligence",
   "/app/search": "Global Search",
   "/app/scenarios": "Scenario Library",
   "/app/learning": "Learning Center",
+  "/app/mitre": "MITRE ATT&CK Explorer",
+  "/app/achievements": "Achievements",
   "/app/certificates": "Certificates",
+  "/app/leaderboard": "Leaderboard",
   "/app/analytics": "Analytics",
   "/app/reports": "Reports",
   "/app/instructor": "Instructor Portal",
+  "/app/student-analytics": "Student Analytics",
+  "/app/scenario-builder": "Scenario Builder",
+  "/app/cohorts": "Cohorts",
+  "/app/assessments": "Assessments",
+  "/app/feedback": "Feedback Center",
   "/app/organizations": "Organizations",
   "/app/settings": "Settings",
+  "/app/audit-logs": "Audit Logs",
+  "/app/billing": "Billing",
   "/app/profile": "Profile",
 };
+
 
 export function AppShell({ children }: { children?: ReactNode }) {
   const path = useRouterState({ select: (s) => s.location.pathname });
