@@ -6,9 +6,9 @@ export const Route = createFileRoute("/app/assessments")({
   component: Assessments,
   head: () => ({
     meta: [
-      { title: "ClickBox · Assessments" },
+      { title: "ThreatLens · Assessments" },
       { name: "description", content: "Timed investigation assessments with automated grading and ground-truth comparison." },
-      { property: "og:title", content: "ClickBox · Assessments" },
+      { property: "og:title", content: "ThreatLens · Assessments" },
       { property: "og:description", content: "Proctored investigation assessments and grading outcomes." },
     ],
   }),

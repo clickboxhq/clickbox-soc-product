@@ -11,6 +11,7 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { CookieConsent } from "@/components/soc/marketing/cookie-consent";
 
 function NotFoundComponent() {
   return (
@@ -77,18 +78,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "ClickBox — Enterprise Cybersecurity Investigation & SOC Training" },
+      { title: "ThreatLens by ClickBox — SOC Investigation Training Platform" },
       {
         name: "description",
         content:
-          "ClickBox is a cloud-native cybersecurity investigation and SOC training platform. Practice enterprise-grade incident response with realistic synthetic telemetry.",
+          "ThreatLens is a SOC investigation training platform by ClickBox. Practice realistic threat hunting and incident investigation against synthetic telemetry — graded against a hidden ground truth.",
       },
       { name: "author", content: "ClickBox" },
-      { property: "og:title", content: "ClickBox — Enterprise Cybersecurity Investigation Platform" },
+      { property: "og:title", content: "ThreatLens — SOC Investigation Training Platform" },
       {
         property: "og:description",
         content:
-          "The professional SOC console for investigations, threat hunting, and analyst training.",
+          "Realistic investigations, evidence analysis, and threat hunting — graded, not automated.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -137,6 +138,7 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <Outlet />
+      <CookieConsent />
     </QueryClientProvider>
   );
 }

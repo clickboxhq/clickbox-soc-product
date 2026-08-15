@@ -4,7 +4,7 @@ import { Mail, Paperclip, Link as LinkIcon, ShieldCheck, ShieldAlert, Copy } fro
 
 export const Route = createFileRoute("/app/email")({
   component: EmailPage,
-  head: () => ({ meta: [{ title: "ClickBox · Email Investigations" }] }),
+  head: () => ({ meta: [{ title: "ThreatLens · Email Investigations" }] }),
 });
 
 const messages = [

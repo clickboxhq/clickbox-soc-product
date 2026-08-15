@@ -7,9 +7,9 @@ export const Route = createFileRoute("/app/cases/")({
   component: CaseManagement,
   head: () => ({
     meta: [
-      { title: "ClickBox · Case Management" },
+      { title: "ThreatLens · Case Management" },
       { name: "description", content: "Manage investigation cases, findings, and conclusions in the ClickBox training SOC." },
-      { property: "og:title", content: "ClickBox · Case Management" },
+      { property: "og:title", content: "ThreatLens · Case Management" },
       { property: "og:description", content: "Case files, findings, and graded conclusions for SOC training investigations." },
     ],
   }),

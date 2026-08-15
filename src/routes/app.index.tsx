@@ -12,9 +12,9 @@ import {
   Award,
   Crosshair,
   Gauge,
+  ListChecks,
   PlayCircle,
   ShieldAlert,
-  Sparkles,
   Target,
   Trophy,
 } from "lucide-react";
@@ -41,7 +41,7 @@ export const Route = createFileRoute("/app/")({
   component: Dashboard,
   head: () => ({
     meta: [
-      { title: "ClickBox · Investigation Dashboard" },
+      { title: "ThreatLens · Investigation Dashboard" },
       {
         name: "description",
         content:
@@ -82,7 +82,7 @@ function Dashboard() {
               <PlayCircle className="size-3.5" /> Explore scenarios
             </Link>
             <Link
-              to="/app/investigations"
+              to="/app/cases"
               className="inline-flex h-9 items-center gap-2 rounded-md bg-primary px-3 text-[12px] font-medium text-primary-foreground hover:bg-primary-hover"
             >
               <ShieldAlert className="size-3.5" /> Resume investigation
@@ -210,7 +210,7 @@ function Dashboard() {
           title="Recent investigations"
           padded={false}
           actions={
-            <Link to="/app/investigations" className="inline-flex items-center gap-1 text-[12px] text-secondary hover:text-foreground">
+            <Link to="/app/cases" className="inline-flex items-center gap-1 text-[12px] text-secondary hover:text-foreground">
               View queue <ArrowUpRight className="size-3" />
             </Link>
           }
@@ -289,7 +289,7 @@ function Dashboard() {
         </Panel>
       </div>
 
-      {/* Cohort + skills + copilot */}
+      {/* Cohort + skills + checklist */}
       <div className="mt-6 grid grid-cols-1 gap-4 lg:grid-cols-3">
         <Panel title="Cohort leaderboard" padded={false}>
           <div className="divide-y divide-border">
@@ -344,10 +344,10 @@ function Dashboard() {
           </div>
         </Panel>
 
-        <Panel title="ClickBox Copilot">
+        <Panel title="Case checklist">
           <div className="flex items-start gap-3">
             <div className="grid size-9 place-items-center rounded-md bg-[color:var(--info)]/15 text-[color:var(--info)]">
-              <Sparkles className="size-4" />
+              <ListChecks className="size-4" />
             </div>
             <div className="flex-1">
               <p className="text-[13px] text-secondary">

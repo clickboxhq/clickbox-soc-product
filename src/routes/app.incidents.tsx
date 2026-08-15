@@ -10,7 +10,7 @@ import { ArrowUpRight, Search } from "lucide-react";
 
 export const Route = createFileRoute("/app/incidents")({
   component: IncidentsPage,
-  head: () => ({ meta: [{ title: "ClickBox · Incidents" }] }),
+  head: () => ({ meta: [{ title: "ThreatLens · Incidents" }] }),
 });
 
 function IncidentsPage() {

@@ -6,9 +6,9 @@ export const Route = createFileRoute("/app/achievements")({
   component: Achievements,
   head: () => ({
     meta: [
-      { title: "ClickBox · Achievements" },
+      { title: "ThreatLens · Achievements" },
       { name: "description", content: "Investigation milestones earned across ClickBox SOC training scenarios." },
-      { property: "og:title", content: "ClickBox · Achievements" },
+      { property: "og:title", content: "ThreatLens · Achievements" },
       { property: "og:description", content: "Milestones for accuracy, evidence quality, and ATT&CK breadth." },
     ],
   }),

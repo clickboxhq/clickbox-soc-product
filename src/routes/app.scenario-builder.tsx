@@ -6,9 +6,9 @@ export const Route = createFileRoute("/app/scenario-builder")({
   component: ScenarioBuilder,
   head: () => ({
     meta: [
-      { title: "ClickBox · Scenario Builder" },
+      { title: "ThreatLens · Scenario Builder" },
       { name: "description", content: "Author synthetic telemetry, ground truth, and automated grading for SOC investigation scenarios." },
-      { property: "og:title", content: "ClickBox · Scenario Builder" },
+      { property: "og:title", content: "ThreatLens · Scenario Builder" },
       { property: "og:description", content: "Instructor authoring for identity, endpoint, email, cloud, and network events." },
     ],
   }),

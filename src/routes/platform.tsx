@@ -1,0 +1,121 @@
+import { createFileRoute, Link } from "@tanstack/react-router";
+import {
+  ArrowRight,
+  BarChart3,
+  ClipboardList,
+  FileText,
+  Fingerprint,
+  KeyRound,
+  LayoutDashboard,
+  Lock,
+  Radar,
+  ScrollText,
+} from "lucide-react";
+
+import { MarketingPage, Section } from "@/components/soc/marketing/page-shell";
+import { CapabilityStack } from "@/components/soc/capability-stack";
+import { Signal } from "@/components/soc/marketing/narrative";
+import { Reveal, SectionHead, displayFont, monoFont } from "@/components/soc/marketing/atmos";
+
+export const Route = createFileRoute("/platform")({
+  component: PlatformPage,
+  head: () => ({
+    meta: [
+      { title: "Platform — ThreatLens by ClickBox" },
+      {
+        name: "description",
+        content:
+          "Everything a SOC analyst needs to practice, in one console — scenario engine, investigation portals, MITRE mapping, scoring, learning paths, and instructor tools.",
+      },
+    ],
+  }),
+});
+
+const MODULES = [
+  { icon: LayoutDashboard, name: "SOC Console", body: "The unified investigation workspace — Sentinel/Chronicle-familiar." },
+  { icon: Radar, name: "Scenario Engine", body: "A realistic incident, generated fresh, every session." },
+  { icon: Fingerprint, name: "Identity, Endpoint & Email Portals", body: "Entra-, Defender-, and Outlook-style investigation surfaces." },
+  { icon: KeyRound, name: "Threat Intelligence", body: "Indicators, actors, and campaigns — with deliberate decoys." },
+  { icon: ClipboardList, name: "Case Management", body: "Evidence, timeline, notes, and verdict — one workspace." },
+  { icon: ScrollText, name: "MITRE ATT&CK Mapping", body: "Every technique tagged, every session scored against it." },
+  { icon: BarChart3, name: "Scoring & Feedback", body: "Graded on your evidence and reasoning, not just your answer." },
+  { icon: FileText, name: "Learning Paths & Certificates", body: "Structured tracks from first alert to job-ready." },
+  { icon: Lock, name: "Instructor Tools", body: "Cohorts, rosters, grading overrides, progress at a glance." },
+];
+
+function PlatformPage() {
+  return (
+    <MarketingPage>
+      <Section tone="dark" className="!py-20 md:!py-28 text-center">
+        <Reveal>
+          <div
+            className="mx-auto inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/[0.04] px-3 py-1 text-[11px] uppercase tracking-[0.18em] text-white/60 backdrop-blur"
+            style={monoFont}
+          >
+            Platform
+          </div>
+        </Reveal>
+        <Reveal delay={70}>
+          <h1
+            className="mx-auto mt-5 max-w-2xl text-[34px] font-semibold leading-[1.08] tracking-[-0.03em] text-white md:text-[46px]"
+            style={displayFont}
+          >
+            Everything a SOC analyst needs to practice. Nothing they don't.
+          </h1>
+        </Reveal>
+      </Section>
+
+      <Section tone="dark">
+        <Signal />
+      </Section>
+
+      <Section tone="light">
+        <SectionHead
+          tone="light"
+          eyebrow="Modules"
+          title="One console, every domain."
+        />
+        <div className="mt-12 grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-black/8 bg-black/[0.04] md:grid-cols-2 lg:grid-cols-3">
+          {MODULES.map((m, i) => (
+            <div
+              key={m.name}
+              className="group relative bg-white p-6 transition-colors duration-300 hover:bg-black/[0.02]"
+            >
+              <div className="flex size-10 items-center justify-center rounded-lg border border-black/8 bg-black/[0.03] text-black/75">
+                <m.icon className="size-[18px]" />
+              </div>
+              <h3 className="mt-5 text-[15px] font-semibold text-[#0A0C0F]" style={displayFont}>
+                {m.name}
+              </h3>
+              <p className="mt-1.5 text-[13px] leading-[1.6] text-black/55">{m.body}</p>
+              <span className="mt-4 block text-[10px] tracking-[0.22em] text-black/25" style={monoFont}>
+                {String(i + 1).padStart(2, "0")}
+              </span>
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      <Section tone="dark">
+        <CapabilityStack />
+      </Section>
+
+      <Section tone="light" className="text-center">
+        <h2
+          className="text-[26px] font-semibold tracking-[-0.02em] text-[#0A0C0F] md:text-[34px]"
+          style={displayFont}
+        >
+          See it running on a real case.
+        </h2>
+        <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <Link to="/investigations" className="btn-primary w-full sm:w-auto">
+            The investigation workflow <ArrowRight className="size-4" />
+          </Link>
+          <Link to="/signup" className="btn-ghost-light w-full sm:w-auto">
+            Get started — free
+          </Link>
+        </div>
+      </Section>
+    </MarketingPage>
+  );
+}

@@ -25,9 +25,9 @@ import {
 
 const modules = [
   { to: "/app", label: "Dashboard", icon: LayoutGrid },
-  { to: "/app/investigations", label: "Investigations", icon: ShieldAlert },
+  { to: "/app/cases", label: "Case Management", icon: Inbox },
   { to: "/app/alerts", label: "Alerts", icon: Bell },
-  { to: "/app/incidents", label: "Incident Queue", icon: Inbox },
+  { to: "/app/incidents", label: "Incident Queue", icon: ShieldAlert },
   { to: "/app/identity", label: "Identity Center", icon: UserRound },
   { to: "/app/endpoints", label: "Endpoint Center", icon: MonitorSmartphone },
   { to: "/app/email", label: "Email Investigations", icon: Mail },

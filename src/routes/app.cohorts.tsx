@@ -5,9 +5,9 @@ export const Route = createFileRoute("/app/cohorts")({
   component: Cohorts,
   head: () => ({
     meta: [
-      { title: "ClickBox · Cohorts" },
+      { title: "ThreatLens · Cohorts" },
       { name: "description", content: "Manage analyst cohorts, assigned scenario tracks, and progress." },
-      { property: "og:title", content: "ClickBox · Cohorts" },
+      { property: "og:title", content: "ThreatLens · Cohorts" },
       { property: "og:description", content: "Cohort rosters, tracks, and completion for SOC training programs." },
     ],
   }),

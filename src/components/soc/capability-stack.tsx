@@ -12,14 +12,6 @@ const COVERAGE = [
   "VERDICT",
 ];
 
-const CAPABILITIES = [
-  "DETECTS",
-  "INVESTIGATES",
-  "CORRELATES",
-  "RESPONDS",
-  "REPORTS",
-];
-
 function WordStack({
   words,
   eyebrow,

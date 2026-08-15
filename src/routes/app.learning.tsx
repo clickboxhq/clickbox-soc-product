@@ -4,7 +4,7 @@ import { Award, GraduationCap, Trophy } from "lucide-react";
 
 export const Route = createFileRoute("/app/learning")({
   component: LearningPage,
-  head: () => ({ meta: [{ title: "ClickBox · Learning Center" }] }),
+  head: () => ({ meta: [{ title: "ThreatLens · Learning Center" }] }),
 });
 
 const tracks = [

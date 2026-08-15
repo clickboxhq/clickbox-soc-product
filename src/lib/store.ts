@@ -116,7 +116,13 @@ const emptyCase = (): CaseState => ({
   statusHistory: [],
 });
 
+export type AccountType = "individual" | "organization";
+
 type SocState = {
+  accountType: AccountType;
+  accountName: string;
+  setAccountType: (type: AccountType, name?: string) => void;
+
   alerts: Alert[];
   incidents: Incident[];
   identities: Identity[];
@@ -269,6 +275,14 @@ export const useSoc = create<SocState>()(
   persist(
     (set) => ({
       ...seed(),
+
+      accountType: "individual",
+      accountName: "Personal Workspace",
+      setAccountType: (type, name) =>
+        set(() => ({
+          accountType: type,
+          accountName: name ?? (type === "organization" ? "My Organization" : "Personal Workspace"),
+        })),
 
       setAlertStatus: (id, status) =>
         set((s) => ({ alerts: s.alerts.map((a) => (a.id === id ? { ...a, status } : a)) })),

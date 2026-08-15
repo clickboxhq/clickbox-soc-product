@@ -1,25 +1,27 @@
 /**
- * ClickBox product demonstrations.
+ * ThreatLens product demonstrations.
  *
- * Four native surfaces — Command Center, AI Investigation Workspace, Threat
- * Correlation Engine, Executive Dashboard — rendered as real, interactive
+ * Four native surfaces — Command Center, Investigation Workspace, Threat
+ * Correlation Practice, Progress Dashboard — rendered as real, interactive
  * software rather than screenshots. Monochrome graphite with red reserved for
- * risk, threat and criticality only.
+ * risk, threat and criticality only. Every surface depicts the analyst doing
+ * the work — nothing here investigates or concludes on its own.
  */
 import { useEffect, useMemo, useRef, useState } from "react";
 import {
   Activity,
-  BrainCircuit,
+  CheckCircle2,
   Cloud,
   Fingerprint,
   Gauge,
   HardDrive,
   Mail,
   Network,
+  NotebookPen,
   Search,
+  Shuffle,
   ShieldAlert,
   Siren,
-  Sparkles,
   Timer,
 } from "lucide-react";
 
@@ -70,7 +72,7 @@ const NAV = [
   { icon: HardDrive, l: "Endpoints" },
   { icon: Mail, l: "Email" },
   { icon: Cloud, l: "Cloud" },
-  { icon: BrainCircuit, l: "Copilot" },
+  { icon: Search, l: "Search" },
 ];
 
 type Alert = {
@@ -177,8 +179,8 @@ function CommandCenter() {
               {[
                 ["Open incidents", "7", "critical"],
                 ["Alerts triaged (24h)", "1,942", ""],
-                ["Auto-closed by AI", "87%", ""],
-                ["Median MTTR", "11m", ""],
+                ["Cases closed (24h)", "34", ""],
+                ["Median time to verdict", "11m", ""],
               ].map(([l, v, tone]) => (
                 <div key={l} className="bg-[#080B10] px-4 py-3.5">
                   <div
@@ -288,15 +290,15 @@ function CommandCenter() {
                 })}
               </div>
 
-              {/* AI finding */}
+              {/* alert detail */}
               <div className="bg-black/25 p-4">
                 <div className="flex items-center gap-2">
-                  <Sparkles
+                  <Search
                     className="size-3.5"
                     style={{ color: "var(--primary)" }}
                   />
                   <span className="text-[12px] font-medium text-white">
-                    AI finding
+                    Linked evidence
                   </span>
                   <span
                     className="ml-auto text-[10px] text-white/35"
@@ -319,8 +321,9 @@ function CommandCenter() {
                     <span style={monoFont} className="text-white">
                       {a.entity}
                     </span>
-                    . Correlated with 4 sibling signals across{" "}
-                    {a.src.toLowerCase()} and identity within a 6-hour window.
+                    . 4 related signals across {a.src.toLowerCase()} and
+                    identity, within a 6-hour window — worth pulling the
+                    thread on.
                   </div>
                   <div className="mt-3 flex flex-wrap gap-1.5">
                     {["T1078", "T1110.003", "T1213"].map((t) => (
@@ -335,7 +338,13 @@ function CommandCenter() {
                   </div>
                 </div>
 
-                <div className="mt-3 space-y-1.5">
+                <div
+                  className="mt-3 text-[9.5px] uppercase tracking-[0.18em] text-white/30"
+                  style={monoFont}
+                >
+                  Suggested response
+                </div>
+                <div className="mt-1.5 space-y-1.5">
                   {[
                     ["Revoke active sessions", "identity"],
                     ["Quarantine host", "endpoint"],
@@ -365,7 +374,7 @@ function CommandCenter() {
 }
 
 /* ------------------------------------------------------------------ */
-/*  DEMO 02 — AI INVESTIGATION WORKSPACE                               */
+/*  DEMO 02 — INVESTIGATION WORKSPACE                                  */
 /* ------------------------------------------------------------------ */
 
 type Lane = "Identity" | "Endpoint" | "Email" | "Cloud";
@@ -394,13 +403,12 @@ const LANES: { k: Lane; icon: typeof Mail }[] = [
   { k: "Cloud", icon: Cloud },
 ];
 
-const REASONING = [
-  "Reading 18,402 events across 4 connected sources…",
-  "Clustering 37 alerts into 1 candidate incident…",
-  "Discarding 29 signals as benign automation…",
-  "Linking email consent → token mint → host access…",
-  "Mapping to MITRE ATT&CK: T1566.002, T1078, T1213…",
-  "Verdict: confirmed intrusion. Containment recommended.",
+const EVIDENCE_PINNED = [
+  { label: "OAuth consent phish delivered", tag: "T1566.002" },
+  { label: "Refresh token minted from unfamiliar ASN", tag: "T1078" },
+  { label: "MFA fatigue — 14 pushes, 1 approval", tag: "T1621" },
+  { label: "SSH to SRV-DB-07 accepted", tag: "T1021.004" },
+  { label: "LSASS memory read", tag: "T1003.001" },
 ];
 
 function InvestigationWorkspace() {
@@ -412,7 +420,7 @@ function InvestigationWorkspace() {
     if (!seen) return;
     setStep(0);
     const id = setInterval(
-      () => setStep((s) => (s >= REASONING.length ? s : s + 1)),
+      () => setStep((s) => (s >= EVIDENCE_PINNED.length ? s : s + 1)),
       900,
     );
     return () => clearInterval(id);
@@ -533,40 +541,51 @@ function InvestigationWorkspace() {
             </div>
           </div>
 
-          {/* reasoning */}
+          {/* your evidence & notes */}
           <div className="bg-black/25">
             <div className="flex items-center gap-2 border-b border-white/8 px-4 py-2.5">
-              <BrainCircuit
+              <CheckCircle2
                 className="size-3.5"
                 style={{ color: "var(--primary)" }}
               />
               <span className="text-[12px] font-medium text-white">
-                Investigation reasoning
+                Evidence you've pinned
               </span>
             </div>
             <div className="space-y-2 p-4">
-              {REASONING.map((line, i) => {
-                const done = i < step;
+              {EVIDENCE_PINNED.map((item, i) => {
+                const pinned = i < step;
                 const now = i === step;
                 return (
                   <div
-                    key={line}
+                    key={item.label}
                     className="flex items-start gap-2.5 text-[12.5px] leading-[1.55] transition-all duration-500"
                     style={{
-                      opacity: done ? 1 : now ? 0.85 : 0.22,
-                      transform: done || now ? "none" : "translateY(3px)",
+                      opacity: pinned ? 1 : now ? 0.85 : 0.22,
+                      transform: pinned || now ? "none" : "translateY(3px)",
                     }}
                   >
                     <span
-                      className="mt-[6px] size-1.5 shrink-0 rounded-full"
+                      className="mt-[3px] flex size-3.5 shrink-0 items-center justify-center rounded-[3px] border"
                       style={{
-                        background: done
+                        borderColor: pinned
                           ? "var(--primary)"
                           : "rgba(255,255,255,0.25)",
+                        background: pinned ? "var(--primary)" : "transparent",
                       }}
-                    />
-                    <span className={done ? "text-white/80" : "text-white/55"}>
-                      {line}
+                    >
+                      {pinned && (
+                        <CheckCircle2 className="size-3 text-black" strokeWidth={3} />
+                      )}
+                    </span>
+                    <span className={pinned ? "text-white/80" : "text-white/55"}>
+                      {item.label}
+                    </span>
+                    <span
+                      className="ml-auto shrink-0 text-[9.5px] text-white/30"
+                      style={monoFont}
+                    >
+                      {item.tag}
                     </span>
                   </div>
                 );
@@ -575,26 +594,26 @@ function InvestigationWorkspace() {
               <div
                 className="!mt-5 rounded-lg border p-3.5 transition-all duration-700"
                 style={{
-                  opacity: step >= REASONING.length ? 1 : 0,
+                  opacity: step >= EVIDENCE_PINNED.length ? 1 : 0,
                   transform:
-                    step >= REASONING.length ? "none" : "translateY(8px)",
-                  borderColor:
-                    "color-mix(in oklab, var(--critical) 40%, transparent)",
-                  background:
-                    "color-mix(in oklab, var(--critical) 9%, transparent)",
+                    step >= EVIDENCE_PINNED.length ? "none" : "translateY(8px)",
+                  borderColor: "rgba(255,255,255,0.1)",
+                  background: "rgba(255,255,255,0.03)",
                 }}
               >
                 <div
-                  className="text-[9.5px] uppercase tracking-[0.2em]"
-                  style={{ ...monoFont, color: "#FFC9CB" }}
+                  className="flex items-center gap-1.5 text-[9.5px] uppercase tracking-[0.2em] text-white/40"
+                  style={monoFont}
                 >
-                  Analyst summary
+                  <NotebookPen className="size-3" />
+                  Your case notes (example)
                 </div>
                 <p className="mt-2 text-[12.5px] leading-[1.6] text-white/85">
                   A consent-phish granted persistent mail access, which was used
                   to socially engineer an MFA approval and pivot to SRV-DB-07.
                   Credential material was read from memory before privileged
-                  queries hit customers.pii. No exfiltration observed.
+                  queries hit customers.pii. No exfiltration observed — my
+                  verdict below.
                 </p>
                 <div className="mt-3 flex flex-wrap gap-1.5">
                   {["Revoke token", "Quarantine SRV-DB-07", "Export brief"].map(
@@ -760,7 +779,7 @@ function CorrelationEngine() {
                 letterSpacing="1.6"
                 fontFamily='"Geist Mono", monospace'
               >
-                AI
+                CASE
               </text>
               <text
                 x={cx}
@@ -771,7 +790,7 @@ function CorrelationEngine() {
                 letterSpacing="1.4"
                 fontFamily='"Geist Mono", monospace'
               >
-                CORE
+                GRAPH
               </text>
 
               {/* nodes */}
@@ -899,7 +918,7 @@ function CorrelationEngine() {
               {[
                 ["Signals joined", "37"],
                 ["Sources", "5"],
-                ["Noise removed", "94%"],
+                ["Deduplicated", "94%"],
                 ["Time to graph", "1.8s"],
               ].map(([l, v]) => (
                 <div key={l} className="bg-[#080B10] px-3 py-2.5">
@@ -920,9 +939,9 @@ function CorrelationEngine() {
             </div>
 
             <p className="mt-5 text-[12.5px] leading-[1.65] text-white/50">
-              Every edge is derived, not configured. ClickBox joins entities
-              across sources on shared identity, device, session, and network
-              facts — then ranks the resulting graph by blast radius.
+              Every edge reflects a real shared attribute — identity, device,
+              session, network — not something wired by hand. Reading the
+              graph, and deciding what's worth chasing, is yours.
             </p>
           </div>
         </div>
@@ -1177,7 +1196,7 @@ export { CommandCenter, InvestigationWorkspace, CorrelationEngine, ExecutiveDash
 export function ProofStrip() {
   const items = [
     { icon: Network, l: "4 signal domains, one console" },
-    { icon: BrainCircuit, l: "A fresh scenario every session" },
+    { icon: Shuffle, l: "A fresh scenario every session" },
     { icon: Timer, l: "Graded against a hidden ground truth" },
     { icon: ShieldAlert, l: "MITRE ATT&CK mapped by default" },
   ];

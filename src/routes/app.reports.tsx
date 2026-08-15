@@ -4,7 +4,7 @@ import { Download, FileText } from "lucide-react";
 
 export const Route = createFileRoute("/app/reports")({
   component: ReportsPage,
-  head: () => ({ meta: [{ title: "ClickBox · Reports" }] }),
+  head: () => ({ meta: [{ title: "ThreatLens · Reports" }] }),
 });
 
 const reports = [

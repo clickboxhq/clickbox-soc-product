@@ -9,6 +9,18 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TermsRouteImport } from './routes/terms'
+import { Route as StudentsRouteImport } from './routes/students'
+import { Route as SignupRouteImport } from './routes/signup'
+import { Route as SecurityRouteImport } from './routes/security'
+import { Route as ScoringRouteImport } from './routes/scoring'
+import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as PlatformRouteImport } from './routes/platform'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as InvestigationsRouteImport } from './routes/investigations'
+import { Route as InstructorsRouteImport } from './routes/instructors'
+import { Route as InstitutionsRouteImport } from './routes/institutions'
+import { Route as CorrelationRouteImport } from './routes/correlation'
 import { Route as AppRouteImport } from './routes/app'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AppIndexRouteImport } from './routes/app.index'
@@ -41,11 +53,69 @@ import { Route as AppAssessmentsRouteImport } from './routes/app.assessments'
 import { Route as AppAnalyticsRouteImport } from './routes/app.analytics'
 import { Route as AppAlertsRouteImport } from './routes/app.alerts'
 import { Route as AppAchievementsRouteImport } from './routes/app.achievements'
-import { Route as AppInvestigationsIndexRouteImport } from './routes/app.investigations.index'
 import { Route as AppCasesIndexRouteImport } from './routes/app.cases.index'
-import { Route as AppInvestigationsIdRouteImport } from './routes/app.investigations.$id'
 import { Route as AppCasesIdRouteImport } from './routes/app.cases.$id'
 
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StudentsRoute = StudentsRouteImport.update({
+  id: '/students',
+  path: '/students',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SignupRoute = SignupRouteImport.update({
+  id: '/signup',
+  path: '/signup',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SecurityRoute = SecurityRouteImport.update({
+  id: '/security',
+  path: '/security',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ScoringRoute = ScoringRouteImport.update({
+  id: '/scoring',
+  path: '/scoring',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PlatformRoute = PlatformRouteImport.update({
+  id: '/platform',
+  path: '/platform',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InvestigationsRoute = InvestigationsRouteImport.update({
+  id: '/investigations',
+  path: '/investigations',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InstructorsRoute = InstructorsRouteImport.update({
+  id: '/instructors',
+  path: '/instructors',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InstitutionsRoute = InstitutionsRouteImport.update({
+  id: '/institutions',
+  path: '/institutions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CorrelationRoute = CorrelationRouteImport.update({
+  id: '/correlation',
+  path: '/correlation',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AppRoute = AppRouteImport.update({
   id: '/app',
   path: '/app',
@@ -206,19 +276,9 @@ const AppAchievementsRoute = AppAchievementsRouteImport.update({
   path: '/achievements',
   getParentRoute: () => AppRoute,
 } as any)
-const AppInvestigationsIndexRoute = AppInvestigationsIndexRouteImport.update({
-  id: '/investigations/',
-  path: '/investigations/',
-  getParentRoute: () => AppRoute,
-} as any)
 const AppCasesIndexRoute = AppCasesIndexRouteImport.update({
   id: '/cases/',
   path: '/cases/',
-  getParentRoute: () => AppRoute,
-} as any)
-const AppInvestigationsIdRoute = AppInvestigationsIdRouteImport.update({
-  id: '/investigations/$id',
-  path: '/investigations/$id',
   getParentRoute: () => AppRoute,
 } as any)
 const AppCasesIdRoute = AppCasesIdRouteImport.update({
@@ -230,6 +290,18 @@ const AppCasesIdRoute = AppCasesIdRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/app': typeof AppRouteWithChildren
+  '/correlation': typeof CorrelationRoute
+  '/institutions': typeof InstitutionsRoute
+  '/instructors': typeof InstructorsRoute
+  '/investigations': typeof InvestigationsRoute
+  '/login': typeof LoginRoute
+  '/platform': typeof PlatformRoute
+  '/privacy': typeof PrivacyRoute
+  '/scoring': typeof ScoringRoute
+  '/security': typeof SecurityRoute
+  '/signup': typeof SignupRoute
+  '/students': typeof StudentsRoute
+  '/terms': typeof TermsRoute
   '/app/achievements': typeof AppAchievementsRoute
   '/app/alerts': typeof AppAlertsRoute
   '/app/analytics': typeof AppAnalyticsRoute
@@ -261,12 +333,22 @@ export interface FileRoutesByFullPath {
   '/verify/$id': typeof VerifyIdRoute
   '/app/': typeof AppIndexRoute
   '/app/cases/$id': typeof AppCasesIdRoute
-  '/app/investigations/$id': typeof AppInvestigationsIdRoute
   '/app/cases/': typeof AppCasesIndexRoute
-  '/app/investigations/': typeof AppInvestigationsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/correlation': typeof CorrelationRoute
+  '/institutions': typeof InstitutionsRoute
+  '/instructors': typeof InstructorsRoute
+  '/investigations': typeof InvestigationsRoute
+  '/login': typeof LoginRoute
+  '/platform': typeof PlatformRoute
+  '/privacy': typeof PrivacyRoute
+  '/scoring': typeof ScoringRoute
+  '/security': typeof SecurityRoute
+  '/signup': typeof SignupRoute
+  '/students': typeof StudentsRoute
+  '/terms': typeof TermsRoute
   '/app/achievements': typeof AppAchievementsRoute
   '/app/alerts': typeof AppAlertsRoute
   '/app/analytics': typeof AppAnalyticsRoute
@@ -298,14 +380,24 @@ export interface FileRoutesByTo {
   '/verify/$id': typeof VerifyIdRoute
   '/app': typeof AppIndexRoute
   '/app/cases/$id': typeof AppCasesIdRoute
-  '/app/investigations/$id': typeof AppInvestigationsIdRoute
   '/app/cases': typeof AppCasesIndexRoute
-  '/app/investigations': typeof AppInvestigationsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/app': typeof AppRouteWithChildren
+  '/correlation': typeof CorrelationRoute
+  '/institutions': typeof InstitutionsRoute
+  '/instructors': typeof InstructorsRoute
+  '/investigations': typeof InvestigationsRoute
+  '/login': typeof LoginRoute
+  '/platform': typeof PlatformRoute
+  '/privacy': typeof PrivacyRoute
+  '/scoring': typeof ScoringRoute
+  '/security': typeof SecurityRoute
+  '/signup': typeof SignupRoute
+  '/students': typeof StudentsRoute
+  '/terms': typeof TermsRoute
   '/app/achievements': typeof AppAchievementsRoute
   '/app/alerts': typeof AppAlertsRoute
   '/app/analytics': typeof AppAnalyticsRoute
@@ -337,15 +429,25 @@ export interface FileRoutesById {
   '/verify/$id': typeof VerifyIdRoute
   '/app/': typeof AppIndexRoute
   '/app/cases/$id': typeof AppCasesIdRoute
-  '/app/investigations/$id': typeof AppInvestigationsIdRoute
   '/app/cases/': typeof AppCasesIndexRoute
-  '/app/investigations/': typeof AppInvestigationsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/app'
+    | '/correlation'
+    | '/institutions'
+    | '/instructors'
+    | '/investigations'
+    | '/login'
+    | '/platform'
+    | '/privacy'
+    | '/scoring'
+    | '/security'
+    | '/signup'
+    | '/students'
+    | '/terms'
     | '/app/achievements'
     | '/app/alerts'
     | '/app/analytics'
@@ -377,12 +479,22 @@ export interface FileRouteTypes {
     | '/verify/$id'
     | '/app/'
     | '/app/cases/$id'
-    | '/app/investigations/$id'
     | '/app/cases/'
-    | '/app/investigations/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/correlation'
+    | '/institutions'
+    | '/instructors'
+    | '/investigations'
+    | '/login'
+    | '/platform'
+    | '/privacy'
+    | '/scoring'
+    | '/security'
+    | '/signup'
+    | '/students'
+    | '/terms'
     | '/app/achievements'
     | '/app/alerts'
     | '/app/analytics'
@@ -414,13 +526,23 @@ export interface FileRouteTypes {
     | '/verify/$id'
     | '/app'
     | '/app/cases/$id'
-    | '/app/investigations/$id'
     | '/app/cases'
-    | '/app/investigations'
   id:
     | '__root__'
     | '/'
     | '/app'
+    | '/correlation'
+    | '/institutions'
+    | '/instructors'
+    | '/investigations'
+    | '/login'
+    | '/platform'
+    | '/privacy'
+    | '/scoring'
+    | '/security'
+    | '/signup'
+    | '/students'
+    | '/terms'
     | '/app/achievements'
     | '/app/alerts'
     | '/app/analytics'
@@ -452,19 +574,113 @@ export interface FileRouteTypes {
     | '/verify/$id'
     | '/app/'
     | '/app/cases/$id'
-    | '/app/investigations/$id'
     | '/app/cases/'
-    | '/app/investigations/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AppRoute: typeof AppRouteWithChildren
+  CorrelationRoute: typeof CorrelationRoute
+  InstitutionsRoute: typeof InstitutionsRoute
+  InstructorsRoute: typeof InstructorsRoute
+  InvestigationsRoute: typeof InvestigationsRoute
+  LoginRoute: typeof LoginRoute
+  PlatformRoute: typeof PlatformRoute
+  PrivacyRoute: typeof PrivacyRoute
+  ScoringRoute: typeof ScoringRoute
+  SecurityRoute: typeof SecurityRoute
+  SignupRoute: typeof SignupRoute
+  StudentsRoute: typeof StudentsRoute
+  TermsRoute: typeof TermsRoute
   VerifyIdRoute: typeof VerifyIdRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/students': {
+      id: '/students'
+      path: '/students'
+      fullPath: '/students'
+      preLoaderRoute: typeof StudentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/signup': {
+      id: '/signup'
+      path: '/signup'
+      fullPath: '/signup'
+      preLoaderRoute: typeof SignupRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/security': {
+      id: '/security'
+      path: '/security'
+      fullPath: '/security'
+      preLoaderRoute: typeof SecurityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/scoring': {
+      id: '/scoring'
+      path: '/scoring'
+      fullPath: '/scoring'
+      preLoaderRoute: typeof ScoringRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/platform': {
+      id: '/platform'
+      path: '/platform'
+      fullPath: '/platform'
+      preLoaderRoute: typeof PlatformRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/investigations': {
+      id: '/investigations'
+      path: '/investigations'
+      fullPath: '/investigations'
+      preLoaderRoute: typeof InvestigationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/instructors': {
+      id: '/instructors'
+      path: '/instructors'
+      fullPath: '/instructors'
+      preLoaderRoute: typeof InstructorsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/institutions': {
+      id: '/institutions'
+      path: '/institutions'
+      fullPath: '/institutions'
+      preLoaderRoute: typeof InstitutionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/correlation': {
+      id: '/correlation'
+      path: '/correlation'
+      fullPath: '/correlation'
+      preLoaderRoute: typeof CorrelationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/app': {
       id: '/app'
       path: '/app'
@@ -689,25 +905,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppAchievementsRouteImport
       parentRoute: typeof AppRoute
     }
-    '/app/investigations/': {
-      id: '/app/investigations/'
-      path: '/investigations'
-      fullPath: '/app/investigations/'
-      preLoaderRoute: typeof AppInvestigationsIndexRouteImport
-      parentRoute: typeof AppRoute
-    }
     '/app/cases/': {
       id: '/app/cases/'
       path: '/cases'
       fullPath: '/app/cases/'
       preLoaderRoute: typeof AppCasesIndexRouteImport
-      parentRoute: typeof AppRoute
-    }
-    '/app/investigations/$id': {
-      id: '/app/investigations/$id'
-      path: '/investigations/$id'
-      fullPath: '/app/investigations/$id'
-      preLoaderRoute: typeof AppInvestigationsIdRouteImport
       parentRoute: typeof AppRoute
     }
     '/app/cases/$id': {
@@ -751,9 +953,7 @@ interface AppRouteChildren {
   AppTimelineRoute: typeof AppTimelineRoute
   AppIndexRoute: typeof AppIndexRoute
   AppCasesIdRoute: typeof AppCasesIdRoute
-  AppInvestigationsIdRoute: typeof AppInvestigationsIdRoute
   AppCasesIndexRoute: typeof AppCasesIndexRoute
-  AppInvestigationsIndexRoute: typeof AppInvestigationsIndexRoute
 }
 
 const AppRouteChildren: AppRouteChildren = {
@@ -787,9 +987,7 @@ const AppRouteChildren: AppRouteChildren = {
   AppTimelineRoute: AppTimelineRoute,
   AppIndexRoute: AppIndexRoute,
   AppCasesIdRoute: AppCasesIdRoute,
-  AppInvestigationsIdRoute: AppInvestigationsIdRoute,
   AppCasesIndexRoute: AppCasesIndexRoute,
-  AppInvestigationsIndexRoute: AppInvestigationsIndexRoute,
 }
 
 const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)
@@ -797,6 +995,18 @@ const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AppRoute: AppRouteWithChildren,
+  CorrelationRoute: CorrelationRoute,
+  InstitutionsRoute: InstitutionsRoute,
+  InstructorsRoute: InstructorsRoute,
+  InvestigationsRoute: InvestigationsRoute,
+  LoginRoute: LoginRoute,
+  PlatformRoute: PlatformRoute,
+  PrivacyRoute: PrivacyRoute,
+  ScoringRoute: ScoringRoute,
+  SecurityRoute: SecurityRoute,
+  SignupRoute: SignupRoute,
+  StudentsRoute: StudentsRoute,
+  TermsRoute: TermsRoute,
   VerifyIdRoute: VerifyIdRoute,
 }
 export const routeTree = rootRouteImport

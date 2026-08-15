@@ -5,9 +5,9 @@ export const Route = createFileRoute("/app/audit-logs")({
   component: AuditLogs,
   head: () => ({
     meta: [
-      { title: "ClickBox · Audit Logs" },
+      { title: "ThreatLens · Audit Logs" },
       { name: "description", content: "Platform audit trail for investigation actions, grading changes, and admin events." },
-      { property: "og:title", content: "ClickBox · Audit Logs" },
+      { property: "og:title", content: "ThreatLens · Audit Logs" },
       { property: "og:description", content: "Immutable audit trail across the ClickBox training platform." },
     ],
   }),

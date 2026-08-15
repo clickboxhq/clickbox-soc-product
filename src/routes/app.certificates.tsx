@@ -4,7 +4,7 @@ import { Award, Download } from "lucide-react";
 
 export const Route = createFileRoute("/app/certificates")({
   component: Certs,
-  head: () => ({ meta: [{ title: "ClickBox · Certificates" }] }),
+  head: () => ({ meta: [{ title: "ThreatLens · Certificates" }] }),
 });
 
 const certs = [

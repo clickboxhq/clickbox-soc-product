@@ -1,46 +1,64 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Panel, SectionHeader } from "@/components/soc/primitives";
-import { Building2 } from "lucide-react";
+import { useSoc } from "@/lib/store";
+import { analysts } from "@/lib/soc-data";
+import { Building2, UserPlus } from "lucide-react";
 
 export const Route = createFileRoute("/app/organizations")({
   component: OrgsPage,
-  head: () => ({ meta: [{ title: "ClickBox · Organizations" }] }),
+  head: () => ({ meta: [{ title: "ThreatLens · My Organization" }] }),
 });
 
-const orgs = [
-  { name: "Contoso Global", seats: 420, plan: "Enterprise", region: "EU-West" },
-  { name: "Fabrikam Financial", seats: 180, plan: "Enterprise", region: "US-East" },
-  { name: "Northwind University", seats: 620, plan: "Education", region: "EU-North" },
-  { name: "Adventure Works", seats: 90, plan: "Business", region: "APAC" },
-];
-
 function OrgsPage() {
+  const accountName = useSoc((s) => s.accountName);
+
   return (
     <div className="px-4 py-6 md:px-8 md:py-8">
-      <SectionHeader title="Organizations" description="Multi-tenant management for training providers, MSSPs, and universities." />
-      <Panel padded={false}>
+      <SectionHeader
+        title="My Organization"
+        description="Roster, seats, and training assignment for your team."
+      />
+
+      <Panel>
+        <div className="flex items-center gap-3">
+          <div className="grid size-11 place-items-center rounded-lg bg-[color:var(--info)]/15 text-[color:var(--info)]">
+            <Building2 className="size-5" />
+          </div>
+          <div>
+            <div className="text-[14px] font-medium">{accountName}</div>
+            <div className="text-[12px] text-muted-foreground">
+              Cohort plan · {analysts.length} members · unlimited scenarios
+            </div>
+          </div>
+          <button className="ml-auto inline-flex h-9 items-center gap-1.5 rounded-md bg-primary px-3 text-[12px] font-medium text-primary-foreground hover:bg-primary-hover">
+            <UserPlus className="size-3.5" /> Invite member
+          </button>
+        </div>
+      </Panel>
+
+      <Panel padded={false} className="mt-4">
         <div className="overflow-x-auto">
           <table className="w-full text-[12.5px]">
             <thead className="bg-background/50 text-[10.5px] uppercase tracking-wider text-muted-foreground">
               <tr>
-                <th className="px-4 py-2.5 text-left">Organization</th>
-                <th className="px-4 py-2.5 text-left">Plan</th>
-                <th className="px-4 py-2.5 text-left">Seats</th>
-                <th className="px-4 py-2.5 text-left">Region</th>
+                <th className="px-4 py-2.5 text-left">Member</th>
+                <th className="px-4 py-2.5 text-left">Role</th>
+                <th className="px-4 py-2.5 text-left">Status</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-border">
-              {orgs.map((o) => (
-                <tr key={o.name} className="hover:bg-background/40">
+              {analysts.map((a) => (
+                <tr key={a.name} className="hover:bg-background/40">
                   <td className="px-4 py-3">
-                    <div className="flex items-center gap-2">
-                      <Building2 className="size-4 text-muted-foreground" />
-                      <span className="font-medium">{o.name}</span>
+                    <div className="flex items-center gap-2.5">
+                      <div className="grid size-7 place-items-center rounded bg-[color:var(--info)]/15 text-[10.5px] font-semibold text-[color:var(--info)]">
+                        {a.initials}
+                      </div>
+                      <span className="font-medium">{a.name}</span>
                     </div>
                   </td>
-                  <td className="px-4 py-3 text-secondary">{o.plan}</td>
-                  <td className="px-4 py-3 tabular-nums text-secondary">{o.seats}</td>
-                  <td className="px-4 py-3 text-secondary">{o.region}</td>
+                  <td className="px-4 py-3 text-secondary">{a.role}</td>
+                  <td className="px-4 py-3 text-[color:var(--success)]">Active</td>
                 </tr>
               ))}
             </tbody>

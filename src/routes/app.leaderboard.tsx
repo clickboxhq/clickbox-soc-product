@@ -7,9 +7,9 @@ export const Route = createFileRoute("/app/leaderboard")({
   component: Leaderboard,
   head: () => ({
     meta: [
-      { title: "ClickBox · Leaderboard" },
+      { title: "ThreatLens · Leaderboard" },
       { name: "description", content: "Cohort ranking by investigation score, accuracy, and evidence quality." },
-      { property: "og:title", content: "ClickBox · Leaderboard" },
+      { property: "og:title", content: "ThreatLens · Leaderboard" },
       { property: "og:description", content: "How your investigation performance compares across the cohort." },
     ],
   }),

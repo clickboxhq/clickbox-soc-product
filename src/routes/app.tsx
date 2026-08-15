@@ -4,6 +4,6 @@ import { AppShell } from "@/components/soc/app-shell";
 export const Route = createFileRoute("/app")({
   component: () => <AppShell />,
   head: () => ({
-    meta: [{ title: "ClickBox · Console" }],
+    meta: [{ title: "ThreatLens · Console" }],
   }),
 });

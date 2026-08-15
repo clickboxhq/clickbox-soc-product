@@ -43,13 +43,14 @@ import { cn } from "@/lib/utils";
 import { Kbd } from "@/components/soc/primitives";
 import { CommandPalette, useCommandPalette } from "@/components/soc/command-palette";
 import { PageTransition } from "@/components/soc/ui/motion";
+import { useSoc } from "@/lib/store";
 
 type NavItem = { to: string; label: string; icon: React.ComponentType<{ className?: string }>; badge?: string };
 
 const primary: NavItem[] = [
   { to: "/app", label: "Dashboard", icon: LayoutGrid },
-  { to: "/app/investigations", label: "Investigation Queue", icon: ShieldAlert, badge: "12" },
   { to: "/app/alerts", label: "Alert Center", icon: Bell, badge: "48" },
+  { to: "/app/incidents", label: "Incident Queue", icon: ShieldAlert, badge: "12" },
   { to: "/app/cases", label: "Case Management", icon: Inbox, badge: "8" },
   { to: "/app/timeline", label: "Global Timeline", icon: ListTree },
   { to: "/app/evidence", label: "Evidence Locker", icon: HardDrive },
@@ -72,7 +73,11 @@ const learning: NavItem[] = [
   { to: "/app/leaderboard", label: "Leaderboard", icon: Trophy },
 ];
 
-const instructor: NavItem[] = [
+// Organization accounts only — instructors, cohorts, and org-scoped admin.
+// Nothing platform-operator-wide lives here or anywhere in /app; a true
+// cross-tenant admin surface is future, separate infrastructure
+// (admin.threatlens.useclickbox.com), not something linked from this nav.
+const instructorTools: NavItem[] = [
   { to: "/app/instructor", label: "Instructor Portal", icon: Presentation },
   { to: "/app/student-analytics", label: "Student Analytics", icon: BarChart3 },
   { to: "/app/scenario-builder", label: "Scenario Builder", icon: Wrench },
@@ -81,14 +86,13 @@ const instructor: NavItem[] = [
   { to: "/app/feedback", label: "Feedback Center", icon: MessageSquare },
 ];
 
-const admin: NavItem[] = [
-  { to: "/app/organizations", label: "Organizations", icon: Building2 },
+const organization: NavItem[] = [
+  { to: "/app/organizations", label: "My Organization", icon: Building2 },
   { to: "/app/reports", label: "Reports", icon: FileText },
   { to: "/app/analytics", label: "Analytics", icon: Activity },
   { to: "/app/settings", label: "Settings", icon: SettingsIcon },
   { to: "/app/audit-logs", label: "Audit Logs", icon: ScrollText },
   { to: "/app/billing", label: "Billing", icon: CreditCard },
-  { to: "/app/profile", label: "Profile", icon: CircleUserRound },
 ];
 
 
@@ -139,17 +143,23 @@ function NavGroup({ label, items }: { label?: string; items: NavItem[] }) {
 }
 
 function Sidebar() {
+  const accountType = useSoc((s) => s.accountType);
+  const accountName = useSoc((s) => s.accountName);
+  const isOrg = accountType === "organization";
+
   return (
     <aside className="hidden w-[248px] shrink-0 border-r border-sidebar-border bg-sidebar lg:flex lg:flex-col">
       {/* Workspace switcher */}
       <div className="p-3">
         <button className="flex w-full items-center gap-2.5 rounded-md border border-sidebar-border bg-background/40 px-2.5 py-2 text-left transition-colors hover:bg-sidebar-accent/50">
           <div className="flex size-7 items-center justify-center rounded-md bg-[color:var(--info)]/15 text-[color:var(--info)]">
-            <ShieldAlert className="size-4" />
+            {isOrg ? <Building2 className="size-4" /> : <CircleUserRound className="size-4" />}
           </div>
           <div className="min-w-0 flex-1">
-            <div className="truncate text-[13px] font-medium">Contoso Global SOC</div>
-            <div className="truncate text-[10px] text-muted-foreground">Enterprise · EU-West</div>
+            <div className="truncate text-[13px] font-medium">{accountName}</div>
+            <div className="truncate text-[10px] text-muted-foreground">
+              {isOrg ? "Organization workspace" : "Individual"}
+            </div>
           </div>
           <ChevronsUpDown className="size-3.5 text-muted-foreground" />
         </button>
@@ -159,9 +169,8 @@ function Sidebar() {
         <NavGroup label="Investigations" items={primary} />
         <NavGroup label="Investigation Portals" items={portals} />
         <NavGroup label="Learning" items={learning} />
-        <NavGroup label="Instructor" items={instructor} />
-        <NavGroup label="Administration" items={admin} />
-
+        {isOrg && <NavGroup label="Instructor Tools" items={instructorTools} />}
+        {isOrg && <NavGroup label="Organization" items={organization} />}
       </nav>
 
       {/* Footer: subscription + storage */}
@@ -169,14 +178,17 @@ function Sidebar() {
         <div className="rounded-lg border border-sidebar-border bg-background/40 p-3">
           <div className="flex items-center gap-2 text-[11px] text-secondary">
             <Sparkles className="size-3.5 text-[color:var(--info)]" />
-            <span className="font-medium text-foreground">Enterprise Plan</span>
+            <span className="font-medium text-foreground">{isOrg ? "Cohort Plan" : "Free Plan"}</span>
           </div>
           <div className="mt-2 flex items-center justify-between text-[10px] text-muted-foreground">
             <span>Storage</span>
-            <span className="tabular-nums">184 / 500 GB</span>
+            <span className="tabular-nums">{isOrg ? "184 / 500 GB" : "1.2 / 5 GB"}</span>
           </div>
           <div className="mt-1 h-1 overflow-hidden rounded-full bg-background">
-            <div className="h-full w-[36%] rounded-full bg-[color:var(--info)]" />
+            <div
+              className="h-full rounded-full bg-[color:var(--info)]"
+              style={{ width: isOrg ? "36%" : "24%" }}
+            />
           </div>
           <div className="mt-3 flex items-center gap-3 text-[11px] text-muted-foreground">
             <a href="#" className="inline-flex items-center gap-1 hover:text-foreground">
@@ -185,9 +197,12 @@ function Sidebar() {
             <a href="#" className="inline-flex items-center gap-1 hover:text-foreground">
               <LifeBuoy className="size-3.5" /> Support
             </a>
-            <a href="#" className="ml-auto inline-flex items-center gap-1 hover:text-foreground">
-              <CreditCard className="size-3.5" /> Billing
-            </a>
+            <Link
+              to={isOrg ? "/app/billing" : "/app/profile"}
+              className="ml-auto inline-flex items-center gap-1 hover:text-foreground"
+            >
+              <CreditCard className="size-3.5" /> {isOrg ? "Billing" : "Upgrade"}
+            </Link>
           </div>
         </div>
       </div>
@@ -199,7 +214,7 @@ function Topbar({ crumb, onOpenPalette }: { crumb: string; onOpenPalette: () => 
   return (
     <header className="sticky top-0 z-20 flex h-14 items-center gap-3 border-b border-border bg-background/85 px-4 backdrop-blur-md md:px-6">
       <div className="flex items-center gap-2 text-sm">
-        <span className="text-muted-foreground">ClickBox</span>
+        <span className="text-muted-foreground">ThreatLens</span>
         <span className="text-muted-foreground">/</span>
         <span className="font-medium">{crumb}</span>
       </div>
@@ -226,15 +241,18 @@ function Topbar({ crumb, onOpenPalette }: { crumb: string; onOpenPalette: () => 
           <BellIcon className="size-4" />
           <span className="absolute right-1.5 top-1.5 size-1.5 rounded-full bg-[color:var(--critical)]" />
         </button>
-        <div className="flex items-center gap-2 rounded-md border border-border bg-card py-1 pl-1 pr-2.5">
+        <Link
+          to="/app/profile"
+          className="flex items-center gap-2 rounded-md border border-border bg-card py-1 pl-1 pr-2.5 transition-colors hover:border-[color:var(--info)]/50"
+        >
           <div className="grid size-7 place-items-center rounded bg-[color:var(--info)]/15 text-[11px] font-semibold text-[color:var(--info)]">
             JD
           </div>
           <div className="hidden text-left leading-tight md:block">
             <div className="text-[12px] font-medium">John Doe</div>
-            <div className="text-[10px] text-muted-foreground">Tier 3 · SOC</div>
+            <div className="text-[10px] text-muted-foreground">Profile & settings</div>
           </div>
-        </div>
+        </Link>
       </div>
     </header>
   );
@@ -247,7 +265,6 @@ const crumbMap: Record<string, string> = {
   "/app/cases": "Case Management",
   "/app/evidence": "Evidence Locker",
   "/app/timeline": "Global Timeline",
-  "/app/investigations": "Investigation Queue",
   "/app/identity": "Identity Center",
   "/app/endpoints": "Device Center",
   "/app/email": "Email Investigation",
@@ -267,7 +284,7 @@ const crumbMap: Record<string, string> = {
   "/app/cohorts": "Cohorts",
   "/app/assessments": "Assessments",
   "/app/feedback": "Feedback Center",
-  "/app/organizations": "Organizations",
+  "/app/organizations": "My Organization",
   "/app/settings": "Settings",
   "/app/audit-logs": "Audit Logs",
   "/app/billing": "Billing",
@@ -279,7 +296,7 @@ export function AppShell({ children }: { children?: ReactNode }) {
   const path = useRouterState({ select: (s) => s.location.pathname });
   const crumb =
     crumbMap[path] ??
-    (path.startsWith("/app/investigations/") ? "Investigation" : path.startsWith("/app/cases/") ? "Case Management" : "Dashboard");
+    (path.startsWith("/app/cases/") ? "Case Management" : "Dashboard");
   const { open, setOpen } = useCommandPalette();
 
   return (

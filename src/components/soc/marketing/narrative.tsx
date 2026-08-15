@@ -1,5 +1,5 @@
 /**
- * The SOCVerse investigation narrative: SIGNAL → CORRELATION → INVESTIGATION →
+ * The ThreatLens investigation narrative: SIGNAL → CORRELATION → INVESTIGATION →
  * UNDERSTANDING → RESPONSE. One continuous story of what a learner actually
  * does in a case, not five feature cards; the artwork bleeds past the
  * containers and connects chapters.
@@ -88,7 +88,7 @@ function ChapterCopy({
 
 /* ---------------------------------------------------------- chapters */
 
-function Signal() {
+export function Signal() {
   return (
     <div className="relative grid items-center gap-14 lg:grid-cols-[minmax(0,.9fr)_minmax(0,1.1fr)]">
       <ChapterCopy
@@ -109,7 +109,7 @@ function Signal() {
   );
 }
 
-function Correlation() {
+export function Correlation() {
   return (
     <div className="relative grid items-center gap-14 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,.9fr)]">
       <Reveal className="relative order-2 h-[340px] md:h-[440px] lg:order-1">
@@ -131,7 +131,7 @@ function Correlation() {
   );
 }
 
-function Investigation() {
+export function Investigation() {
   return (
     <div className="relative grid items-center gap-14 lg:grid-cols-[minmax(0,.9fr)_minmax(0,1.1fr)]">
       <ChapterCopy
@@ -159,7 +159,7 @@ const STORY = [
   { t: "23:02", d: "Inbox rule created · forward-external", tag: "T1114" },
 ];
 
-function Understanding() {
+export function Understanding() {
   return (
     <div className="relative grid items-center gap-14 lg:grid-cols-2">
       <ChapterCopy
@@ -242,7 +242,7 @@ const ACTIONS = [
   ["Rotate DB credentials", "cloud"],
 ];
 
-function Response() {
+export function Response() {
   return (
     <div className="relative grid items-center gap-14 lg:grid-cols-2">
       <Reveal className="order-2 lg:order-1">

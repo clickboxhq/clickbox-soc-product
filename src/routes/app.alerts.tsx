@@ -5,7 +5,7 @@ import { Bookmark, Filter, Search, SlidersHorizontal } from "lucide-react";
 
 export const Route = createFileRoute("/app/alerts")({
   component: AlertsPage,
-  head: () => ({ meta: [{ title: "ClickBox · Alerts" }] }),
+  head: () => ({ meta: [{ title: "ThreatLens · Alerts" }] }),
 });
 
 function AlertsPage() {

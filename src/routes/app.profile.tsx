@@ -4,7 +4,7 @@ import { Award } from "lucide-react";
 
 export const Route = createFileRoute("/app/profile")({
   component: ProfilePage,
-  head: () => ({ meta: [{ title: "ClickBox · Profile" }] }),
+  head: () => ({ meta: [{ title: "ThreatLens · Profile" }] }),
 });
 
 function ProfilePage() {

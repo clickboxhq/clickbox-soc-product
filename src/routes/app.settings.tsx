@@ -3,7 +3,7 @@ import { Panel, SectionHeader } from "@/components/soc/primitives";
 
 export const Route = createFileRoute("/app/settings")({
   component: SettingsPage,
-  head: () => ({ meta: [{ title: "ClickBox · Settings" }] }),
+  head: () => ({ meta: [{ title: "ThreatLens · Settings" }] }),
 });
 
 function SettingsPage() {

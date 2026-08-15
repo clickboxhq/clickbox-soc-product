@@ -4,7 +4,7 @@ import { GraduationCap, Users } from "lucide-react";
 
 export const Route = createFileRoute("/app/instructor")({
   component: InstructorPortal,
-  head: () => ({ meta: [{ title: "ClickBox · Instructor Portal" }] }),
+  head: () => ({ meta: [{ title: "ThreatLens · Instructor Portal" }] }),
 });
 
 const cohorts = [

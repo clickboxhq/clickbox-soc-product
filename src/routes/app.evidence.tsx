@@ -7,9 +7,9 @@ export const Route = createFileRoute("/app/evidence")({
   component: EvidenceLocker,
   head: () => ({
     meta: [
-      { title: "ClickBox · Evidence Locker" },
+      { title: "ThreatLens · Evidence Locker" },
       { name: "description", content: "Chain-of-custody store for artifacts collected during SOC investigations." },
-      { property: "og:title", content: "ClickBox · Evidence Locker" },
+      { property: "og:title", content: "ThreatLens · Evidence Locker" },
       { property: "og:description", content: "Artifacts, hashes, and chain of custody for every investigation." },
     ],
   }),

@@ -5,9 +5,9 @@ export const Route = createFileRoute("/app/billing")({
   component: Billing,
   head: () => ({
     meta: [
-      { title: "ClickBox · Billing" },
+      { title: "ThreatLens · Billing" },
       { name: "description", content: "Seat allocation, scenario usage, and invoices for your ClickBox training tenant." },
-      { property: "og:title", content: "ClickBox · Billing" },
+      { property: "og:title", content: "ThreatLens · Billing" },
       { property: "og:description", content: "Seats, usage, and invoices for the ClickBox training platform." },
     ],
   }),

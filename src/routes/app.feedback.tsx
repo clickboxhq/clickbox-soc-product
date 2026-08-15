@@ -5,9 +5,9 @@ export const Route = createFileRoute("/app/feedback")({
   component: FeedbackCenter,
   head: () => ({
     meta: [
-      { title: "ClickBox · Feedback Center" },
+      { title: "ThreatLens · Feedback Center" },
       { name: "description", content: "Instructor feedback on investigation conclusions, evidence handling, and reporting." },
-      { property: "og:title", content: "ClickBox · Feedback Center" },
+      { property: "og:title", content: "ThreatLens · Feedback Center" },
       { property: "og:description", content: "Per-investigation instructor feedback and improvement guidance." },
     ],
   }),

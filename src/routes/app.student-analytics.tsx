@@ -5,9 +5,9 @@ export const Route = createFileRoute("/app/student-analytics")({
   component: StudentAnalytics,
   head: () => ({
     meta: [
-      { title: "ClickBox · Student Analytics" },
+      { title: "ThreatLens · Student Analytics" },
       { name: "description", content: "Per-analyst investigation performance, accuracy, and evidence collection trends." },
-      { property: "og:title", content: "ClickBox · Student Analytics" },
+      { property: "og:title", content: "ThreatLens · Student Analytics" },
       { property: "og:description", content: "Instructor view of learner accuracy, evidence rate, and ATT&CK breadth." },
     ],
   }),

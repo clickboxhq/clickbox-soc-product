@@ -7,9 +7,9 @@ export const Route = createFileRoute("/app/mitre")({
   component: MitreExplorer,
   head: () => ({
     meta: [
-      { title: "ClickBox · MITRE ATT&CK Explorer" },
+      { title: "ThreatLens · MITRE ATT&CK Explorer" },
       { name: "description", content: "Explore ATT&CK tactics and techniques you have practiced across ClickBox investigations." },
-      { property: "og:title", content: "ClickBox · MITRE ATT&CK Explorer" },
+      { property: "og:title", content: "ThreatLens · MITRE ATT&CK Explorer" },
       { property: "og:description", content: "Technique-level mastery across the ATT&CK enterprise matrix." },
     ],
   }),

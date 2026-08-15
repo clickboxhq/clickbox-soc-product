@@ -79,10 +79,18 @@ export function Reveal({
 
 /* ------------------------------------------------ section typography */
 
-export function Eyebrow({ children }: { children: ReactNode }) {
+export function Eyebrow({
+  children,
+  tone = "dark",
+}: {
+  children: ReactNode;
+  tone?: "dark" | "light";
+}) {
   return (
     <div
-      className="inline-flex items-center gap-2.5 text-[10.5px] font-medium uppercase tracking-[0.22em] text-white/45"
+      className={`inline-flex items-center gap-2.5 text-[10.5px] font-medium uppercase tracking-[0.22em] ${
+        tone === "light" ? "text-black/50" : "text-white/45"
+      }`}
       style={monoFont}
     >
       <span
@@ -103,12 +111,14 @@ export function SectionHead({
   sub,
   align = "left",
   max = "max-w-2xl",
+  tone = "dark",
 }: {
   eyebrow: string;
   title: ReactNode;
   sub?: ReactNode;
   align?: "left" | "center";
   max?: string;
+  tone?: "dark" | "light";
 }) {
   return (
     <Reveal
@@ -116,15 +126,21 @@ export function SectionHead({
         align === "center" ? `mx-auto ${max} text-center` : `${max}`
       }
     >
-      <Eyebrow>{eyebrow}</Eyebrow>
+      <Eyebrow tone={tone}>{eyebrow}</Eyebrow>
       <h2
-        className="mt-4 text-[30px] font-semibold leading-[1.06] tracking-[-0.03em] text-white md:text-[46px]"
+        className={`mt-4 text-[30px] font-semibold leading-[1.06] tracking-[-0.03em] md:text-[46px] ${
+          tone === "light" ? "text-[#0A0C0F]" : "text-white"
+        }`}
         style={displayFont}
       >
         {title}
       </h2>
       {sub && (
-        <p className="mt-5 max-w-xl text-[14.5px] leading-[1.65] text-white/55 [text-wrap:pretty]">
+        <p
+          className={`mt-5 max-w-xl text-[14.5px] leading-[1.65] [text-wrap:pretty] ${
+            tone === "light" ? "text-black/55" : "text-white/55"
+          }`}
+        >
           {sub}
         </p>
       )}
@@ -139,19 +155,21 @@ export function GridField({
   className = "",
   size = 44,
   opacity = 0.085,
+  tone = "dark",
 }: {
   className?: string;
   size?: number;
   opacity?: number;
+  tone?: "dark" | "light";
 }) {
+  const lineColor = tone === "light" ? "rgba(10,12,15,.5)" : "rgba(255,255,255,.55)";
   return (
     <div
       aria-hidden
       className={`pointer-events-none absolute inset-0 ${className}`}
       style={{
         opacity,
-        backgroundImage:
-          "linear-gradient(rgba(255,255,255,.55) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.55) 1px, transparent 1px)",
+        backgroundImage: `linear-gradient(${lineColor} 1px, transparent 1px), linear-gradient(90deg, ${lineColor} 1px, transparent 1px)`,
         backgroundSize: `${size}px ${size}px`,
         maskImage:
           "radial-gradient(ellipse 75% 65% at 50% 40%, black, transparent 78%)",
@@ -307,14 +325,25 @@ export function TopologyDiagram({ className = "" }: { className?: string }) {
       />
       <text
         x="380"
-        y="234"
+        y="228"
         textAnchor="middle"
         fill="#fff"
         fontSize="9"
         letterSpacing="1.6"
         fontFamily='"Geist Mono", monospace'
       >
-        AI CORE
+        CASE
+      </text>
+      <text
+        x="380"
+        y="239"
+        textAnchor="middle"
+        fill="rgba(255,255,255,.6)"
+        fontSize="7"
+        letterSpacing="1.4"
+        fontFamily='"Geist Mono", monospace'
+      >
+        GRAPH
       </text>
 
       {nodes.map((n) => (

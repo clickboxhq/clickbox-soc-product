@@ -1,29 +1,18 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useEffect, useId, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   ArrowRight,
-  BarChart3,
-  BookOpen,
-  Boxes,
-  BrainCircuit,
-  ClipboardList,
   Database,
-  FileText,
-  Fingerprint,
-  KeyRound,
   Layers,
-  LayoutDashboard,
-  Lock,
-  MousePointer2,
   Radar,
   ScrollText,
   Workflow,
 } from "lucide-react";
 
-import { CapabilityStack } from "@/components/soc/capability-stack";
-import { Narrative } from "@/components/soc/marketing/narrative";
-import { CommandCenter, ProductDemos, ProofStrip } from "@/components/soc/marketing/demos";
-import { GraphField, Schematic } from "@/components/soc/marketing/art";
+import { CommandCenter, InvestigationWorkspace, ExecutiveDashboard, ProofStrip } from "@/components/soc/marketing/demos";
+import { DemoSection, DemoIntro } from "@/components/soc/marketing/chrome";
+import { GraphField, Pathways, Schematic } from "@/components/soc/marketing/art";
+import { Mark, BrandLockup } from "@/components/soc/marketing/brand";
 import {
   Bloom,
   GridField,
@@ -39,16 +28,16 @@ export const Route = createFileRoute("/")({
     meta: [
       {
         title:
-          "ClickBox — SOCVerse. Learn SOC investigation by doing it.",
+          "ClickBox — ThreatLens. Learn SOC investigation by doing it.",
       },
       {
         name: "description",
         content:
-          "SOCVerse simulates realistic SOC investigations across identity, endpoint, email, and cloud — and grades your investigation against a hidden ground truth. Not a SIEM. A cyber range for analysts.",
+          "ThreatLens simulates realistic SOC investigations across identity, endpoint, email, and cloud — and grades your investigation against a hidden ground truth. Not a SIEM. A cyber range for analysts.",
       },
       {
         property: "og:title",
-        content: "ClickBox — SOCVerse: the SOC investigation simulator",
+        content: "ClickBox — ThreatLens: the SOC investigation simulator",
       },
       {
         property: "og:description",
@@ -61,39 +50,9 @@ export const Route = createFileRoute("/")({
   }),
 });
 
-/* ------------------------------- BRAND MARK ------------------------------- */
-
-/** The ClickBox mark — a cursor, filled and beveled like glass. */
-function Mark({ className = "size-7" }: { className?: string }) {
-  const gradientId = `mark-gradient-${useId()}`;
-  return (
-    <span
-      className={`inline-flex shrink-0 items-center justify-center rounded-[7px] bg-black ${className}`}
-    >
-      <svg width="0" height="0" className="absolute">
-        <defs>
-          <linearGradient id={gradientId} x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#FFFFFF" />
-            <stop offset="100%" stopColor="#C7CDD4" />
-          </linearGradient>
-        </defs>
-      </svg>
-      <MousePointer2
-        className="size-[62%] -translate-x-px translate-y-px"
-        style={{
-          fill: `url(#${gradientId})`,
-          stroke: "rgba(255,255,255,0.9)",
-          strokeWidth: 1.5,
-          strokeLinejoin: "round",
-        }}
-      />
-    </span>
-  );
-}
-
 /* ------------------------------- NAV ------------------------------- */
 
-function Nav() {
+export function Nav() {
   const [scrolled, setScrolled] = useState(false);
   useEffect(() => {
     const on = () => setScrolled(window.scrollY > 8);
@@ -113,21 +72,15 @@ function Nav() {
       }}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3.5">
-        <a href="/" className="flex items-center gap-2.5">
+        <a href="/" className="flex items-center gap-2.5" style={displayFont}>
           <Mark />
-          <span
-            className="text-[15px] font-semibold tracking-[-0.02em]"
-            style={displayFont}
-          >
-            ClickBox
-          </span>
+          <BrandLockup />
         </a>
         <nav className="hidden items-center gap-1 md:flex">
           {[
-            ["Platform", "#platform"],
-            ["How it works", "#how"],
+            ["Platform", "/platform"],
+            ["Investigations", "/investigations"],
             ["Who it's for", "#solutions"],
-            ["For instructors", "#developers"],
             ["Pricing", "#pricing"],
           ].map(([l, h]) => (
             <a
@@ -140,14 +93,14 @@ function Nav() {
           ))}
         </nav>
         <div className="flex items-center gap-1.5">
-          <a
-            href="#book"
+          <Link
+            to="/signup"
             className="hidden rounded-md px-3 py-1.5 text-[13px] text-white/60 transition-colors hover:text-white sm:inline-flex"
           >
-            For institutions
-          </a>
-          <Link to="/app" className="btn-primary text-[13px]">
-            Open the console <ArrowRight className="size-3.5" />
+            Get Started
+          </Link>
+          <Link to="/login" className="btn-primary text-[13px]">
+            Login <ArrowRight className="size-3.5" />
           </Link>
         </div>
       </div>
@@ -184,7 +137,10 @@ function HeroArtwork() {
 
 function Hero() {
   return (
-    <section className="relative overflow-hidden px-6 pb-16 pt-24 md:pb-20 md:pt-28">
+    <section
+      className="relative overflow-hidden px-6 pb-16 pt-24 md:pb-20 md:pt-28"
+      style={{ background: "#000000", color: "#E9EEF3" }}
+    >
       <HeroArtwork />
       <div className="mx-auto max-w-7xl">
         <div className="mx-auto max-w-3xl text-center">
@@ -223,7 +179,7 @@ function Hero() {
 
           <Reveal delay={190}>
             <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
-              <Link to="/app" className="btn-primary w-full sm:w-auto">
+              <Link to="/signup" className="btn-primary w-full sm:w-auto">
                 <Layers className="size-4" /> Start investigating — free
               </Link>
               <a href="#book" className="btn-ghost w-full sm:w-auto">
@@ -260,310 +216,126 @@ function Hero() {
 
 const STEPS = [
   { n: "01", icon: Database, title: "Scenario generated", body: "Realistic, synthetic telemetry — never real customer data." },
-  { n: "02", icon: Layers, title: "You investigate", body: "Work the alerts across identity, endpoint, email, and cloud." },
-  { n: "03", icon: BrainCircuit, title: "Correlate & tag", body: "Pin evidence, tag MITRE ATT&CK techniques as you go." },
-  { n: "04", icon: Radar, title: "Build the case", body: "Assemble the timeline and write your incident summary." },
-  { n: "05", icon: ScrollText, title: "Submit your verdict", body: "True positive, false positive, or benign — your call." },
-  { n: "06", icon: Workflow, title: "Get scored", body: "Graded against a hidden ground truth, evidence included." },
+  { n: "02", icon: Layers, title: "Investigate evidence", body: "Work the alerts across identity, endpoint, email, and cloud." },
+  { n: "03", icon: Radar, title: "Build the timeline", body: "Assemble the case and write your incident summary." },
+  { n: "04", icon: ScrollText, title: "Submit your verdict", body: "True positive, false positive, or benign — your call." },
+  { n: "05", icon: Workflow, title: "Get scored", body: "Graded against a hidden ground truth, evidence included." },
 ];
 
 function Pipeline() {
   return (
-    <section className="relative mx-auto max-w-7xl px-6 py-24">
-      <SectionHead
-        eyebrow="How it works"
-        title="From alert to graded investigation."
-        sub="Six stages, every one of them yours to work through. Nothing is solved for you — that's the entire point."
-      />
-      <div className="relative mt-14">
-        <div
-          aria-hidden
-          className="absolute left-0 right-0 top-[22px] hidden h-px lg:block"
-          style={{
-            background:
-              "linear-gradient(90deg, transparent, rgba(255,255,255,.18) 10%, rgba(255,255,255,.18) 90%, transparent)",
-          }}
+    <section style={{ background: "#FFFFFF", color: "#0A0C0F" }}>
+      <div className="relative mx-auto max-w-7xl px-6 py-24">
+        <SectionHead
+          tone="light"
+          eyebrow="How it works"
+          title="From alert to graded investigation."
+          sub="Five stages, every one of them yours to work through. Nothing is solved for you — that's the entire point."
         />
-        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-6 lg:gap-5">
-          {STEPS.map((s, i) => (
-            <Reveal key={s.n} delay={i * 60}>
-              <div className="relative">
-                <div className="flex size-11 items-center justify-center rounded-lg border border-white/10 bg-[#0B0F14]">
-                  <s.icon className="size-[18px] text-white/80" />
+        <div className="relative mt-14">
+          <div
+            aria-hidden
+            className="absolute left-0 right-0 top-[22px] hidden h-px lg:block"
+            style={{
+              background:
+                "linear-gradient(90deg, transparent, rgba(10,12,15,.14) 10%, rgba(10,12,15,.14) 90%, transparent)",
+            }}
+          />
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-5 lg:gap-5">
+            {STEPS.map((s, i) => (
+              <Reveal key={s.n} delay={i * 60}>
+                <div className="relative">
+                  <div className="flex size-11 items-center justify-center rounded-lg border border-black/10 bg-black/[0.03]">
+                    <s.icon className="size-[18px] text-black/70" />
+                  </div>
+                  <div
+                    className="mt-4 text-[10.5px] tracking-[0.2em] text-black/35"
+                    style={monoFont}
+                  >
+                    {s.n}
+                  </div>
+                  <div
+                    className="mt-1.5 text-[14px] font-semibold text-[#0A0C0F]"
+                    style={displayFont}
+                  >
+                    {s.title}
+                  </div>
+                  <div className="mt-1.5 text-[13px] leading-[1.6] text-black/55">
+                    {s.body}
+                  </div>
                 </div>
-                <div
-                  className="mt-4 text-[10.5px] tracking-[0.2em] text-white/35"
-                  style={monoFont}
-                >
-                  {s.n}
-                </div>
-                <div
-                  className="mt-1.5 text-[14px] font-semibold text-white"
-                  style={displayFont}
-                >
-                  {s.title}
-                </div>
-                <div className="mt-1.5 text-[13px] leading-[1.6] text-white/50">
-                  {s.body}
-                </div>
-              </div>
-            </Reveal>
-          ))}
+              </Reveal>
+            ))}
+          </div>
         </div>
       </div>
     </section>
   );
 }
 
-/* -------------------------- MODULES GRID -------------------------- */
-
-const MODULES = [
-  { icon: LayoutDashboard, name: "SOC Console", body: "The unified investigation workspace — Sentinel/Chronicle-familiar." },
-  { icon: Radar, name: "Scenario Engine", body: "A realistic incident, generated fresh, every session." },
-  { icon: Fingerprint, name: "Identity, Endpoint & Email Portals", body: "Entra-, Defender-, and Outlook-style investigation surfaces." },
-  { icon: KeyRound, name: "Threat Intelligence", body: "Indicators, actors, and campaigns — with deliberate decoys." },
-  { icon: ClipboardList, name: "Case Management", body: "Evidence, timeline, notes, and verdict — one workspace." },
-  { icon: ScrollText, name: "MITRE ATT&CK Mapping", body: "Every technique tagged, every session scored against it." },
-  { icon: BarChart3, name: "Scoring & Feedback", body: "Graded on your evidence and reasoning, not just your answer." },
-  { icon: FileText, name: "Learning Paths & Certificates", body: "Structured tracks from first alert to job-ready." },
-  { icon: Lock, name: "Instructor Tools", body: "Cohorts, rosters, grading overrides, progress at a glance." },
-];
-
-function Modules() {
-  return (
-    <section id="platform" className="relative mx-auto max-w-7xl px-6 py-24">
-      <SectionHead
-        eyebrow="Platform"
-        title="Everything a SOC analyst needs to practice. Nothing they don't."
-      />
-      <div className="mt-12 grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-white/8 bg-white/[0.06] md:grid-cols-2 lg:grid-cols-3">
-        {MODULES.map((m, i) => (
-          <div
-            key={m.name}
-            className="group relative bg-[#07090C] p-6 transition-colors duration-300 hover:bg-[#0C1016]"
-          >
-            <div
-              aria-hidden
-              className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-              style={{
-                background:
-                  "radial-gradient(320px 160px at 20% 0%, color-mix(in oklab, var(--primary) 10%, transparent), transparent 70%)",
-              }}
-            />
-            <div className="relative">
-              <div className="flex size-10 items-center justify-center rounded-lg border border-white/8 bg-white/[0.04] text-white/85 transition-colors group-hover:border-white/20">
-                <m.icon className="size-[18px]" />
-              </div>
-              <h3
-                className="mt-5 text-[15px] font-semibold text-white"
-                style={displayFont}
-              >
-                {m.name}
-              </h3>
-              <p className="mt-1.5 text-[13px] leading-[1.6] text-white/50">
-                {m.body}
-              </p>
-              <span
-                className="mt-4 block text-[10px] tracking-[0.22em] text-white/20"
-                style={monoFont}
-              >
-                {String(i + 1).padStart(2, "0")}
-              </span>
-            </div>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-}
 
 /* ---------------------------- CUSTOMERS ---------------------------- */
 
-const SEGMENTS = [
-  { t: "Aspiring analysts", b: "Building the investigation reps a certification alone can't teach." },
-  { t: "Bootcamps & universities", b: "Cybersecurity programs that need hands-on labs, not another slide deck." },
-  { t: "Career switchers", b: "Portfolio-ready case work for people breaking into their first SOC role." },
-  { t: "Corporate upskilling", b: "Teams onboarding new hires or leveling up junior analysts, at their own pace." },
+const INDIVIDUAL_SEGMENTS = [
+  { t: "Students & career switchers", b: "Portfolio-ready case work for people breaking into their first SOC role." },
+  { t: "SOC analysts", b: "Building the investigation reps a certification alone can't teach." },
+  { t: "Cybersecurity learners", b: "Structured practice, not another course you'll forget by next month." },
+  { t: "Independent professionals", b: "Staying sharp between jobs, or preparing for an interview loop." },
 ];
 
-function Customers() {
+const ORG_SEGMENTS = [
+  { t: "Universities & bootcamps", b: "Cybersecurity programs that need hands-on labs, not another slide deck." },
+  { t: "Enterprises", b: "Onboarding new hires or leveling up junior analysts, at their own pace." },
+  { t: "Government agencies", b: "Workforce-ready SOC training without standing up a live range." },
+  { t: "Workforce development programs", b: "Measurable outcomes for public and nonprofit training initiatives." },
+  { t: "Training providers & MSSPs", b: "A lab component you don't have to build or maintain yourselves." },
+  { t: "Accelerators & incubators", b: "Practical security training as part of a founder or cohort curriculum." },
+];
+
+function SegmentGrid({ label, items }: { label: string; items: { t: string; b: string }[] }) {
   return (
-    <section id="solutions" className="relative mx-auto max-w-7xl px-6 py-28">
-      <SectionHead
-        eyebrow="Who it's for"
-        title="Built for whoever has to learn this the hard way."
-        sub="SOCVerse is for anyone who needs real investigation reps before the stakes are real."
-      />
-      <div className="mt-12 grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-white/8 bg-white/[0.06] md:grid-cols-2 lg:grid-cols-4">
-        {SEGMENTS.map((s, i) => (
+    <div className="mt-10 first:mt-0">
+      <div
+        className="text-[10.5px] uppercase tracking-[0.2em] text-black/40"
+        style={monoFont}
+      >
+        {label}
+      </div>
+      <div className="mt-3 grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-black/8 bg-black/[0.04] md:grid-cols-2 lg:grid-cols-3">
+        {items.map((s) => (
           <div
             key={s.t}
-            className="group relative bg-[#07090C] p-6 transition-colors duration-300 hover:bg-[#0C1016]"
+            className="group relative bg-white p-6 transition-colors duration-300 hover:bg-black/[0.02]"
           >
-            <span
-              className="text-[10px] tracking-[0.22em] text-white/25"
-              style={monoFont}
-            >
-              {String(i + 1).padStart(2, "0")}
-            </span>
             <h3
-              className="mt-4 text-[15px] font-semibold text-white"
+              className="text-[15px] font-semibold text-[#0A0C0F]"
               style={displayFont}
             >
               {s.t}
             </h3>
-            <p className="mt-2 text-[13px] leading-[1.6] text-white/50">
+            <p className="mt-2 text-[13px] leading-[1.6] text-black/55">
               {s.b}
             </p>
           </div>
         ))}
       </div>
-
-      <Reveal delay={120}>
-        <div className="mt-6 grid grid-cols-1 gap-3 md:grid-cols-3">
-          {[
-            {
-              q: "I'd passed Security+ but had never actually worked an incident. SOCVerse was the first time I had to defend a verdict with evidence, not just pick an answer.",
-              a: "Bootcamp graduate, now Tier 1 SOC analyst",
-            },
-            {
-              q: "We use it as the lab component of our SOC course. Students get graded on their reasoning, not whether they guessed the right MITRE technique.",
-              a: "Instructor, cybersecurity program",
-            },
-            {
-              q: "The decoys are what sold me. Half the point is learning what to ignore, and SOCVerse actually punishes you for chasing noise.",
-              a: "Self-taught analyst, career switcher",
-            },
-          ].map((c) => (
-            <figure
-              key={c.a}
-              className="rounded-xl border border-white/8 bg-[#080B0F] p-6"
-            >
-              <blockquote className="text-[13.5px] leading-[1.7] text-white/75">
-                “{c.q}”
-              </blockquote>
-              <figcaption
-                className="mt-4 text-[10.5px] uppercase tracking-[0.16em] text-white/35"
-                style={monoFont}
-              >
-                {c.a}
-              </figcaption>
-            </figure>
-          ))}
-        </div>
-      </Reveal>
-    </section>
+    </div>
   );
 }
 
-/* ------------------------- TRUST & SECURITY ------------------------- */
-
-const TRUST = [
-  { icon: KeyRound, t: "Role-based access control", b: "Least-privilege by default; scoped roles for analyst, lead, admin, auditor." },
-  { icon: ScrollText, t: "Full audit logging", b: "Tamper-evident logs for every read, write, and action across the console." },
-  { icon: Fingerprint, t: "SSO & SAML", b: "Bring your identity provider — Okta, Entra ID, Google, custom SAML." },
-  { icon: Boxes, t: "Data residency options", b: "Pick your region for storage and processing to match your policy." },
-];
-
-function Trust() {
+function CustomerTypes() {
   return (
-    <section className="relative mx-auto max-w-7xl px-6 py-24">
-      <SectionHead
-        eyebrow="Trust"
-        title="Built for how institutions actually operate."
-        sub="Formal certification programs are underway. In the meantime, here's what's already true about how ClickBox handles student and cohort data."
-      />
-      <div className="mt-10 grid grid-cols-1 gap-3 md:grid-cols-2">
-        {TRUST.map((c, i) => (
-          <Reveal key={c.t} delay={i * 60}>
-            <div className="flex h-full gap-4 rounded-xl border border-white/8 bg-[#080B0F] p-5 transition-colors hover:border-white/18">
-              <div className="flex size-10 shrink-0 items-center justify-center rounded-lg border border-white/8 bg-white/[0.04] text-white/85">
-                <c.icon className="size-[18px]" />
-              </div>
-              <div className="min-w-0">
-                <div
-                  className="text-[14.5px] font-semibold text-white"
-                  style={displayFont}
-                >
-                  {c.t}
-                </div>
-                <div className="mt-1 text-[13px] leading-[1.6] text-white/50">
-                  {c.b}
-                </div>
-              </div>
-            </div>
-          </Reveal>
-        ))}
+    <section id="solutions" style={{ background: "#FFFFFF", color: "#0A0C0F" }}>
+      <div className="relative mx-auto max-w-7xl px-6 py-24">
+        <SectionHead
+          tone="light"
+          eyebrow="Who it's for"
+          title="Built for whoever has to learn this the hard way."
+          sub="ThreatLens serves individuals and organizations alike — anyone who needs real investigation reps before the stakes are real."
+        />
+        <SegmentGrid label="For individuals" items={INDIVIDUAL_SEGMENTS} />
+        <SegmentGrid label="For organizations" items={ORG_SEGMENTS} />
       </div>
-    </section>
-  );
-}
-
-/* --------------------------- DEVELOPERS --------------------------- */
-
-const CODE_SAMPLES: Record<string, string> = {
-  REST: `curl https://api.clickbox.io/v1/cohorts/bootcamp-2026/progress \\
-  -H "Authorization: Bearer $CLICKBOX_KEY"`,
-  Python: `from clickbox import ClickBox
-
-cb = ClickBox(api_key=os.environ["CLICKBOX_KEY"])
-
-progress = cb.cohorts.progress("bootcamp-2026")
-
-print(progress.average_score)   # cohort-wide case score
-print(progress.roster)          # per-student breakdown`,
-  Node: `import { ClickBox } from "@clickbox/sdk";
-
-const cb = new ClickBox({ apiKey: process.env.CLICKBOX_KEY });
-
-const progress = await cb.cohorts.progress("bootcamp-2026");
-
-console.log(progress.averageScore);  // cohort-wide case score
-console.log(progress.roster);        // per-student breakdown`,
-};
-
-function Developers() {
-  const [tab, setTab] = useState<keyof typeof CODE_SAMPLES>("REST");
-  return (
-    <section id="developers" className="relative mx-auto max-w-7xl px-6 py-24">
-      <SectionHead
-        eyebrow="For instructors"
-        title="Rosters, progress, and grades — via API too."
-        sub="Sync a roster, pull cohort progress into your LMS gradebook, or export certificates. Every instructor action in the console is also an API call."
-      />
-
-      <Reveal className="mt-10 overflow-hidden rounded-xl border border-white/8 bg-[#05070A]">
-        <div className="flex items-center gap-1 border-b border-white/8 px-2 py-1.5">
-          {(Object.keys(CODE_SAMPLES) as (keyof typeof CODE_SAMPLES)[]).map(
-            (k) => (
-              <button
-                key={k}
-                onClick={() => setTab(k)}
-                className="rounded-md px-3 py-1 text-[12px] font-medium transition-colors"
-                style={{
-                  color: tab === k ? "#fff" : "rgba(255,255,255,0.5)",
-                  background:
-                    tab === k ? "rgba(255,255,255,0.08)" : "transparent",
-                }}
-              >
-                {k}
-              </button>
-            ),
-          )}
-          <a
-            href="#"
-            className="ml-auto flex items-center gap-1.5 rounded-md px-3 py-1 text-[12px] text-white/55 transition-colors hover:text-white"
-          >
-            <BookOpen className="size-3.5" /> Read the docs
-          </a>
-        </div>
-        <pre
-          className="overflow-x-auto p-5 text-[12.5px] leading-[1.7] text-white/80"
-          style={monoFont}
-        >
-          <code>{CODE_SAMPLES[tab]}</code>
-        </pre>
-      </Reveal>
     </section>
   );
 }
@@ -575,7 +347,7 @@ const TIERS = [
     name: "Individual",
     price: "Free",
     cta: "Start investigating",
-    ctaHref: "/app",
+    ctaHref: "/signup",
     body: "For anyone building the investigation reps a certification alone can't teach.",
     features: [
       "Unlimited scenarios",
@@ -604,7 +376,8 @@ const TIERS = [
 
 function Pricing() {
   return (
-    <section id="pricing" className="relative mx-auto max-w-7xl px-6 py-24">
+    <section id="pricing" style={{ background: "#000000", color: "#E9EEF3" }}>
+      <div className="relative mx-auto max-w-7xl px-6 py-24">
       <SectionHead
         eyebrow="Pricing"
         title="Free to start. Priced for institutions at scale."
@@ -692,6 +465,7 @@ function Pricing() {
           </Reveal>
         ))}
       </div>
+      </div>
     </section>
   );
 }
@@ -699,14 +473,40 @@ function Pricing() {
 /* ------------------------------ FOOTER ------------------------------ */
 
 const FOOTER_COLS = [
-  { title: "Platform", links: ["Console", "Scenario library", "Progress dashboard", "Pricing"] },
-  { title: "Who it's for", links: ["Aspiring analysts", "Bootcamps & universities", "Career switchers", "Corporate upskilling"] },
-  { title: "Resources", links: ["Docs", "API", "Status", "Changelog"] },
-  { title: "Company", links: ["About", "Security", "Contact"] },
-  { title: "Legal", links: ["Privacy", "Terms"] },
+  {
+    title: "Platform",
+    links: [
+      { l: "Console", h: "/app" },
+      { l: "Investigations", h: "/investigations" },
+      { l: "Correlation", h: "/correlation" },
+      { l: "Scoring", h: "/scoring" },
+    ],
+  },
+  {
+    title: "Who it's for",
+    links: [
+      { l: "For individuals", h: "/students" },
+      { l: "For organizations", h: "/institutions" },
+      { l: "For instructors", h: "/instructors" },
+    ],
+  },
+  {
+    title: "Company",
+    links: [
+      { l: "Security", h: "/security" },
+      { l: "Contact", h: "mailto:hello@clickbox.io" },
+    ],
+  },
+  {
+    title: "Legal",
+    links: [
+      { l: "Privacy", h: "/privacy" },
+      { l: "Terms", h: "/terms" },
+    ],
+  },
 ];
 
-function Footer() {
+export function Footer() {
   return (
     <footer id="book" className="relative border-t border-white/8 bg-black">
       <div className="relative mx-auto max-w-7xl px-6 py-24">
@@ -728,13 +528,12 @@ function Footer() {
                 Ready to run your first case?
               </h3>
               <p className="mt-4 text-[14.5px] leading-[1.65] text-white/55">
-                Start free, alone. Or bring a cohort — a 30-minute walkthrough
-                with our team, no slide decks.
+                Start free, alone. Or bring a cohort.
               </p>
             </div>
             <div className="flex shrink-0 gap-3">
-              <Link to="/app" className="btn-primary">
-                Start investigating <ArrowRight className="size-4" />
+              <Link to="/signup" className="btn-primary">
+                Get started <ArrowRight className="size-4" />
               </Link>
               <a href="mailto:hello@clickbox.io" className="btn-ghost">
                 For institutions
@@ -749,15 +548,12 @@ function Footer() {
           <div className="col-span-2 md:col-span-1">
             <div className="flex items-center gap-2">
               <Mark className="size-6" />
-              <span
-                className="text-[14px] font-semibold tracking-[-0.02em] text-white"
-                style={displayFont}
-              >
-                ClickBox
+              <span className="text-white" style={displayFont}>
+                <BrandLockup size="footer" />
               </span>
             </div>
             <p className="mt-4 text-[12.5px] leading-[1.65] text-white/40">
-              SOCVerse — the SOC investigation simulator. Learn by doing the
+              ThreatLens — the SOC investigation simulator. Learn by doing the
               job, not by reading about it.
             </p>
           </div>
@@ -770,14 +566,23 @@ function Footer() {
                 {col.title}
               </div>
               <ul className="mt-4 space-y-2.5">
-                {col.links.map((l) => (
-                  <li key={l}>
-                    <a
-                      href="#"
-                      className="text-[13px] text-white/65 transition-colors hover:text-white"
-                    >
-                      {l}
-                    </a>
+                {col.links.map((item) => (
+                  <li key={item.l}>
+                    {item.h.startsWith("/") ? (
+                      <Link
+                        to={item.h}
+                        className="text-[13px] text-white/65 transition-colors hover:text-white"
+                      >
+                        {item.l}
+                      </Link>
+                    ) : (
+                      <a
+                        href={item.h}
+                        className="text-[13px] text-white/65 transition-colors hover:text-white"
+                      >
+                        {item.l}
+                      </a>
+                    )}
                   </li>
                 ))}
               </ul>
@@ -798,24 +603,57 @@ function Footer() {
   );
 }
 
+/* -------------------------- PRODUCT DEMOS -------------------------- */
+
+/** The two demos kept on the homepage — Investigation Workspace and
+ * Progress & Instructor Dashboard. Correlation Practice moved to its own
+ * dedicated page (/correlation) to keep the homepage shorter. */
+function HomeDemos() {
+  return (
+    <div id="product" className="relative" style={{ background: "#000000", color: "#E9EEF3" }}>
+      <DemoSection id="workspace">
+        <div className="pointer-events-none absolute inset-0 -z-10">
+          <Pathways opacity={0.32} />
+        </div>
+        <DemoIntro
+          index="01"
+          kicker="Investigation Workspace"
+          title="Everything you need to investigate. Nothing solved for you."
+          body="Work the case across identity, endpoint, email and cloud, pin the evidence that matters, and build a narrative you can defend."
+        />
+        <Reveal className="mt-14">
+          <InvestigationWorkspace />
+        </Reveal>
+      </DemoSection>
+
+      <DemoSection id="executive">
+        <div className="pointer-events-none absolute inset-0 -z-10">
+          <Schematic opacity={0.22} />
+        </div>
+        <DemoIntro
+          index="02"
+          kicker="Progress & Instructor Dashboard"
+          title="Numbers that actually track whether you're learning."
+          body="Score trend and technique mastery for you — or a whole cohort's progress at a glance for instructors."
+        />
+        <Reveal className="mt-14">
+          <ExecutiveDashboard />
+        </Reveal>
+      </DemoSection>
+    </div>
+  );
+}
+
 /* ------------------------------ PAGE ------------------------------ */
 
 function Landing() {
   return (
-    <div
-      className="relative min-h-screen overflow-hidden"
-      style={{ background: "#000000", color: "#E9EEF3" }}
-    >
+    <div className="relative min-h-screen overflow-hidden">
       <Nav />
       <Hero />
-      <ProductDemos />
-      <Narrative />
-      <CapabilityStack />
+      <CustomerTypes />
+      <HomeDemos />
       <Pipeline />
-      <Modules />
-      <Customers />
-      <Trust />
-      <Developers />
       <Pricing />
       <Footer />
     </div>
