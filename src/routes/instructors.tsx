@@ -76,12 +76,12 @@ function InstructorsPage() {
         <div className="mt-12 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {FEATURES.map((f, i) => (
             <Reveal key={f.name} delay={i * 60}>
-              <div className="h-full rounded-xl border border-black/8 bg-black/[0.02] p-5">
-                <div className="flex size-9 items-center justify-center rounded-lg border border-black/8 bg-black/[0.04] text-black/75">
+              <div className="h-full glass-card-dark p-5">
+                <div className="icon-frame-dark text-white/85">
                   <f.icon className="size-[18px]" />
                 </div>
-                <h3 className="mt-3.5 text-[14px] font-semibold text-[#0A0C0F]" style={displayFont}>{f.name}</h3>
-                <p className="mt-1.5 text-[12.5px] leading-[1.6] text-black/55">{f.body}</p>
+                <h3 className="mt-3.5 text-[14px] font-semibold text-white" style={displayFont}>{f.name}</h3>
+                <p className="mt-1.5 text-[12.5px] leading-[1.6] text-white/55">{f.body}</p>
               </div>
             </Reveal>
           ))}

@@ -75,14 +75,14 @@ function InvestigationsPage() {
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {STAGES.map((s, i) => (
             <Reveal key={s.title} delay={i * 60}>
-              <div className="h-full rounded-xl border border-black/8 bg-black/[0.02] p-5">
-                <div className="flex size-9 items-center justify-center rounded-lg border border-black/8 bg-black/[0.04] text-black/75">
+              <div className="h-full glass-card-dark p-5">
+                <div className="icon-frame-dark text-white/85">
                   <s.icon className="size-[18px]" />
                 </div>
-                <h3 className="mt-3.5 text-[14px] font-semibold text-[#0A0C0F]" style={displayFont}>
+                <h3 className="mt-3.5 text-[14px] font-semibold text-white" style={displayFont}>
                   {s.title}
                 </h3>
-                <p className="mt-1.5 text-[12.5px] leading-[1.6] text-black/55">{s.body}</p>
+                <p className="mt-1.5 text-[12.5px] leading-[1.6] text-white/55">{s.body}</p>
               </div>
             </Reveal>
           ))}

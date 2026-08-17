@@ -84,8 +84,8 @@ function StudentsPage() {
         <div className="mt-12 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {FEATURES.map((f, i) => (
             <Reveal key={f.name} delay={i * 60}>
-              <div className="h-full rounded-xl border border-white/8 bg-[#080B0F] p-5">
-                <div className="flex size-9 items-center justify-center rounded-lg border border-white/8 bg-white/[0.04] text-white/85">
+              <div className="h-full glass-card-dark p-5">
+                <div className="icon-frame-dark text-white/85">
                   <f.icon className="size-[18px]" />
                 </div>
                 <h3 className="mt-3.5 text-[14px] font-semibold text-white" style={displayFont}>{f.name}</h3>

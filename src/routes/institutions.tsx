@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, BarChart3, FileText, Users, Wrench } from "lucide-react";
+import { ArrowRight, BarChart3, Building2, FileText, GraduationCap, Landmark, Radar, Rocket, TrendingUp, Users, Wrench } from "lucide-react";
 
 import { MarketingPage, Section } from "@/components/soc/marketing/page-shell";
 import { Reveal, SectionHead, displayFont, monoFont } from "@/components/soc/marketing/atmos";
@@ -19,12 +19,12 @@ export const Route = createFileRoute("/institutions")({
 });
 
 const SEGMENTS = [
-  { t: "Universities & bootcamps", b: "Cybersecurity programs that need hands-on labs, not another slide deck." },
-  { t: "Enterprises", b: "Onboarding new hires or leveling up junior analysts, at their own pace." },
-  { t: "Government agencies", b: "Workforce-ready SOC training without standing up a live range." },
-  { t: "Workforce development programs", b: "Measurable outcomes for public and nonprofit training initiatives." },
-  { t: "Training providers & MSSPs", b: "A lab component you don't have to build or maintain yourselves." },
-  { t: "Accelerators & incubators", b: "Practical security training as part of a founder or cohort curriculum." },
+  { icon: GraduationCap, t: "Universities & bootcamps", b: "Cybersecurity programs that need hands-on labs, not another slide deck." },
+  { icon: Building2, t: "Enterprises", b: "Onboarding new hires or leveling up junior analysts, at their own pace." },
+  { icon: Landmark, t: "Government agencies", b: "Workforce-ready SOC training without standing up a live range." },
+  { icon: TrendingUp, t: "Workforce development programs", b: "Measurable outcomes for public and nonprofit training initiatives." },
+  { icon: Radar, t: "Training providers & MSSPs", b: "A lab component you don't have to build or maintain yourselves." },
+  { icon: Rocket, t: "Accelerators & incubators", b: "Practical security training as part of a founder or cohort curriculum." },
 ];
 
 const FEATURES = [
@@ -71,11 +71,14 @@ function InstitutionsPage() {
 
       <Section tone="light">
         <SectionHead tone="light" eyebrow="Who this is for" title="Every kind of training program." />
-        <div className="mt-10 grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-black/8 bg-black/[0.04] md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-10 grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3">
           {SEGMENTS.map((s) => (
-            <div key={s.t} className="bg-white p-6">
-              <h3 className="text-[15px] font-semibold text-[#0A0C0F]" style={displayFont}>{s.t}</h3>
-              <p className="mt-2 text-[13px] leading-[1.6] text-black/55">{s.b}</p>
+            <div key={s.t} className="glass-card-dark p-6">
+              <div className="icon-frame-dark text-white/85">
+                <s.icon className="size-[18px]" />
+              </div>
+              <h3 className="mt-4 text-[15px] font-semibold text-white" style={displayFont}>{s.t}</h3>
+              <p className="mt-2 text-[13px] leading-[1.6] text-white/55">{s.b}</p>
             </div>
           ))}
         </div>
@@ -86,8 +89,8 @@ function InstitutionsPage() {
         <div className="mt-12 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {FEATURES.map((f, i) => (
             <Reveal key={f.name} delay={i * 60}>
-              <div className="h-full rounded-xl border border-white/8 bg-[#080B0F] p-5">
-                <div className="flex size-9 items-center justify-center rounded-lg border border-white/8 bg-white/[0.04] text-white/85">
+              <div className="h-full glass-card-dark p-5">
+                <div className="icon-frame-dark text-white/85">
                   <f.icon className="size-[18px]" />
                 </div>
                 <h3 className="mt-3.5 text-[14px] font-semibold text-white" style={displayFont}>{f.name}</h3>

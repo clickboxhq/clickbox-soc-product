@@ -55,12 +55,12 @@ function SecurityPage() {
         <SectionHead tone="light" eyebrow="Principles" title="What the architecture is built around." />
         <div className="mt-12 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {PRINCIPLES.map((p) => (
-            <div key={p.title} className="h-full rounded-xl border border-black/8 bg-white p-5">
-              <div className="flex size-9 items-center justify-center rounded-lg border border-black/8 bg-black/[0.03] text-black/75">
+            <div key={p.title} className="h-full glass-card-dark p-5">
+              <div className="icon-frame-dark text-white/85">
                 <p.icon className="size-[18px]" />
               </div>
-              <h3 className="mt-3.5 text-[14px] font-semibold text-[#0A0C0F]" style={displayFont}>{p.title}</h3>
-              <p className="mt-1.5 text-[12.5px] leading-[1.6] text-black/55">{p.body}</p>
+              <h3 className="mt-3.5 text-[14px] font-semibold text-white" style={displayFont}>{p.title}</h3>
+              <p className="mt-1.5 text-[12.5px] leading-[1.6] text-white/55">{p.body}</p>
             </div>
           ))}
         </div>

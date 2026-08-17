@@ -62,75 +62,69 @@
   --font-sans:
     "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --font-display:
-    "Geist", "Inter", ui-sans-serif, system-ui, sans-serif;
+    "Space Grotesk", "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-mono:
     "Geist Mono", "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 
-
+/*
+ * ThreatLens is the official ClickBox black brand — one theme, always dark.
+ * True neutral blacks (no blue cast), four-step elevation:
+ * nav < workspace < card < elevated card.
+ */
 :root,
 .dark {
   --radius: 0.75rem;
 
-  /* ClickBox brand palette
-     Black #05070A · Interactive Blue #3E82F7 · Neutral grays · White #FFFFFF
-     Semantic status only: Green (success) · Amber (warning) · Orange (high) · Red (critical) */
-
-  /* Core surfaces — near-black with a subtle warm cast and real elevation steps */
-  --background: #06090D;
-  --sidebar: #0A0E14;
-  --surface: #0F141B;
-  --surface-2: #151C24;
-  --card: #0E131A;
+  --background: #111111;
+  --sidebar: #090909;
+  --surface: #111111;
+  --surface-2: #1C1C1C;
+  --card: #171717;
   --card-foreground: #EEF2F6;
-  --popover: #121820;
+  --popover: #1C1C1C;
   --popover-foreground: #EEF2F6;
 
-  /* Text hierarchy */
   --foreground: #F3F6F9;
   --secondary-foreground: #AEBAC6;
   --muted-foreground: #8391A0;
 
-  /* Borders / inputs */
-  --border: #212B35;
-  --input: #26313C;
+  --border: #262626;
+  --card-border-tint: rgba(189, 196, 198, 0.16);
+  --icon-frame-bg: rgba(255, 255, 255, 0.06);
+  --input: #262626;
   --ring: #3E82F7;
 
-  /* Brand accents — interactive blue, never red (red is reserved for --critical) */
   --primary: #3E82F7;
   --primary-foreground: #FFFFFF;
   --primary-hover: #5C97FF;
   --secondary: #AEBAC6;
-  --muted: #151C24;
-  --accent: #17222D;
+  --muted: #1C1C1C;
+  --accent: #1C1C1C;
   --accent-foreground: #EEF2F6;
   --destructive: #D93A3F;
   --destructive-foreground: #FFFFFF;
 
-  /* Semantic status — the only place red should appear is --critical */
   --success: #2FBF8F;
   --warning: #E3A008;
   --high: #F97316;
   --critical: #F2555A;
   --info: #4C90F5;
 
-  /* Sidebar */
   --sidebar-foreground: #AEBAC6;
-  --sidebar-accent: #17222D;
+  --sidebar-accent: #171717;
   --sidebar-accent-foreground: #F3F6F9;
-  --sidebar-border: #1C242D;
+  --sidebar-border: #1C1C1C;
   --sidebar-primary: #3E82F7;
   --sidebar-primary-foreground: #FFFFFF;
   --sidebar-ring: #3E82F7;
 
-  /* Charts — blue for primary/performance series, green for success trends */
   --chart-1: #3E82F7;
   --chart-2: #12946B;
   --chart-3: #8391A0;
   --chart-4: #C98A0B;
   --chart-5: #5A6875;
 
-  /* Elevations */
   --shadow-card:
     0 1px 0 oklch(1 0 0 / 5%) inset,
     0 1px 2px oklch(0 0 0 / 40%),
@@ -151,6 +145,7 @@
 
 @theme inline {
   --color-primary-hover: var(--primary-hover);
+  --color-card-border-tint: var(--card-border-tint);
 }
 
 @layer base {
@@ -214,6 +209,72 @@
     0 1px 0 oklch(1 0 0 / 6%) inset,
     0 2px 6px oklch(0 0 0 / 45%),
     0 24px 60px -22px oklch(0 0 0 / 75%);
+}
+
+/* ClickBox glass card — the brand's exact card language: subtle blue-gray
+   border, top inset highlight, soft drop shadow, real backdrop blur.
+   Theme-aware (dashboard use — follows light/dark tokens). */
+@utility glass-card {
+  border-radius: 0.75rem;
+  border: 1px solid var(--card-border-tint);
+  background: var(--card);
+  backdrop-filter: blur(18px) saturate(1.4);
+  -webkit-backdrop-filter: blur(18px) saturate(1.4);
+  box-shadow:
+    0 1px 0 0 oklch(1 0 0 / 6%) inset,
+    0 20px 50px -25px oklch(0 0 0 / 60%);
+}
+
+/* Same card language, hardcoded black — for marketing pages, which stay
+   fixed black/white regardless of the dashboard's light/dark preference. */
+@utility glass-card-dark {
+  border-radius: 0.75rem;
+  border: 1px solid rgba(189, 196, 198, 0.22);
+  background: #0A0A0A;
+  backdrop-filter: blur(18px) saturate(1.4);
+  -webkit-backdrop-filter: blur(18px) saturate(1.4);
+  box-shadow:
+    0 1px 0 0 oklch(1 0 0 / 6%) inset,
+    0 20px 50px -25px oklch(0 0 0 / 60%);
+}
+
+@utility icon-frame-dark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  flex-shrink: 0;
+  border-radius: 0.375rem;
+  border: 1px solid rgba(189, 196, 198, 0.4);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* Subtle premium hover — a small lift, not a bounce. Pair with glass-card /
+   glass-card-dark on clickable or scannable cards. */
+@utility card-hover-lift {
+  transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 220ms ease, border-color 220ms ease;
+  &:hover {
+    transform: translateY(-3px);
+    border-color: rgba(189, 196, 198, 0.4);
+    box-shadow:
+      0 1px 0 0 oklch(1 0 0 / 8%) inset,
+      0 28px 60px -28px oklch(0 0 0 / 70%);
+  }
+}
+
+/* ClickBox icon frame — 44px square, subtle border, faint fill. One shape
+   for every icon container sitewide so nothing reads as ad hoc. */
+@utility icon-frame {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  flex-shrink: 0;
+  border-radius: 0.375rem;
+  border: 1px solid var(--card-border-tint);
+  background: var(--icon-frame-bg);
 }
 
 /* Typography scale — ClickBox enterprise */

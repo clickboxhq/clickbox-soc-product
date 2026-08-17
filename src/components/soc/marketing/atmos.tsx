@@ -11,7 +11,7 @@ import { useEffect, useRef, useState, type ReactNode } from "react";
 /* -------------------------------------------------------------- tokens */
 
 export const displayFont = {
-  fontFamily: 'Geist, "Inter", system-ui, sans-serif',
+  fontFamily: '"Space Grotesk", "Inter", system-ui, sans-serif',
 };
 export const monoFont = {
   fontFamily: '"Geist Mono", "JetBrains Mono", monospace',

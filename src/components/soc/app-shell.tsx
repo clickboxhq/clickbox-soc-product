@@ -115,21 +115,34 @@ function NavGroup({ label, items }: { label?: string; items: NavItem[] }) {
               <Link
                 to={it.to}
                 className={cn(
-                  "group flex items-center gap-2.5 rounded-md px-2 py-1.5 text-[13px] transition-colors",
+                  "group relative flex items-center gap-2.5 rounded-md py-1.5 pl-3.5 pr-2 text-[13px] transition-all duration-150",
                   active
                     ? "bg-sidebar-accent text-foreground"
                     : "text-sidebar-foreground hover:bg-sidebar-accent/60 hover:text-foreground",
                 )}
               >
-                <Icon
+                {active && (
+                  <span
+                    aria-hidden
+                    className="absolute -left-2 top-1/2 h-4 w-[3px] -translate-y-1/2 rounded-full bg-[color:var(--info)]"
+                  />
+                )}
+                <span
                   className={cn(
-                    "size-4 shrink-0",
-                    active ? "text-[color:var(--info)]" : "text-muted-foreground group-hover:text-secondary",
+                    "flex size-6 shrink-0 items-center justify-center rounded-[5px] transition-colors",
+                    active ? "bg-[color:var(--info)]/15" : "",
                   )}
-                />
+                >
+                  <Icon
+                    className={cn(
+                      "size-4 shrink-0",
+                      active ? "text-[color:var(--info)]" : "text-muted-foreground group-hover:text-secondary",
+                    )}
+                  />
+                </span>
                 <span className="flex-1 truncate">{it.label}</span>
                 {it.badge && (
-                  <span className="rounded border border-border bg-background/60 px-1.5 py-0.5 text-[10px] font-medium tabular-nums text-secondary">
+                  <span className="rounded border border-[color:var(--card-border-tint)] bg-background/60 px-1.5 py-0.5 text-[10px] font-medium tabular-nums text-secondary">
                     {it.badge}
                   </span>
                 )}
@@ -151,7 +164,7 @@ function Sidebar() {
     <aside className="hidden w-[248px] shrink-0 border-r border-sidebar-border bg-sidebar lg:flex lg:flex-col">
       {/* Workspace switcher */}
       <div className="p-3">
-        <button className="flex w-full items-center gap-2.5 rounded-md border border-sidebar-border bg-background/40 px-2.5 py-2 text-left transition-colors hover:bg-sidebar-accent/50">
+        <button className="flex w-full items-center gap-2.5 rounded-md border border-[color:var(--card-border-tint)] bg-background/40 px-2.5 py-2 text-left transition-colors hover:bg-sidebar-accent/50">
           <div className="flex size-7 items-center justify-center rounded-md bg-[color:var(--info)]/15 text-[color:var(--info)]">
             {isOrg ? <Building2 className="size-4" /> : <CircleUserRound className="size-4" />}
           </div>
@@ -175,7 +188,7 @@ function Sidebar() {
 
       {/* Footer: subscription + storage */}
       <div className="border-t border-sidebar-border p-3">
-        <div className="rounded-lg border border-sidebar-border bg-background/40 p-3">
+        <div className="rounded-lg border border-[color:var(--card-border-tint)] bg-background/40 p-3">
           <div className="flex items-center gap-2 text-[11px] text-secondary">
             <Sparkles className="size-3.5 text-[color:var(--info)]" />
             <span className="font-medium text-foreground">{isOrg ? "Cohort Plan" : "Free Plan"}</span>

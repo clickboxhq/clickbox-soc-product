@@ -75,20 +75,17 @@ function PlatformPage() {
           eyebrow="Modules"
           title="One console, every domain."
         />
-        <div className="mt-12 grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-black/8 bg-black/[0.04] md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-12 grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3">
           {MODULES.map((m, i) => (
-            <div
-              key={m.name}
-              className="group relative bg-white p-6 transition-colors duration-300 hover:bg-black/[0.02]"
-            >
-              <div className="flex size-10 items-center justify-center rounded-lg border border-black/8 bg-black/[0.03] text-black/75">
+            <div key={m.name} className="glass-card-dark p-6">
+              <div className="icon-frame-dark text-white/85">
                 <m.icon className="size-[18px]" />
               </div>
-              <h3 className="mt-5 text-[15px] font-semibold text-[#0A0C0F]" style={displayFont}>
+              <h3 className="mt-5 text-[15px] font-semibold text-white" style={displayFont}>
                 {m.name}
               </h3>
-              <p className="mt-1.5 text-[13px] leading-[1.6] text-black/55">{m.body}</p>
-              <span className="mt-4 block text-[10px] tracking-[0.22em] text-black/25" style={monoFont}>
+              <p className="mt-1.5 text-[13px] leading-[1.6] text-white/55">{m.body}</p>
+              <span className="mt-4 block text-[10px] tracking-[0.22em] text-white/25" style={monoFont}>
                 {String(i + 1).padStart(2, "0")}
               </span>
             </div>

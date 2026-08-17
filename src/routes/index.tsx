@@ -1,18 +1,38 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
+  Award,
   ArrowRight,
-  Database,
+  BarChart3,
+  Bell,
+  Boxes,
+  Building2,
+  ClipboardList,
+  FileText,
+  Gavel,
+  GraduationCap,
+  KeyRound,
+  Landmark,
   Layers,
+  LayoutDashboard,
+  Library,
+  Menu,
+  Presentation,
   Radar,
+  Rocket,
   ScrollText,
-  Workflow,
+  ShieldCheck,
+  Tags,
+  TrendingUp,
+  Users,
+  X,
 } from "lucide-react";
 
 import { CommandCenter, InvestigationWorkspace, ExecutiveDashboard, ProofStrip } from "@/components/soc/marketing/demos";
 import { DemoSection, DemoIntro } from "@/components/soc/marketing/chrome";
 import { GraphField, Pathways, Schematic } from "@/components/soc/marketing/art";
 import { Mark, BrandLockup } from "@/components/soc/marketing/brand";
+import { CountUp } from "@/components/soc/ui/count-up";
 import {
   Bloom,
   GridField,
@@ -52,23 +72,43 @@ export const Route = createFileRoute("/")({
 
 /* ------------------------------- NAV ------------------------------- */
 
+const NAV_LINKS: [string, string][] = [
+  ["Platform", "/platform"],
+  ["Investigations", "/investigations"],
+  ["Who it's for", "#solutions"],
+  ["Pricing", "#pricing"],
+];
+
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+
   useEffect(() => {
     const on = () => setScrolled(window.scrollY > 8);
     on();
     window.addEventListener("scroll", on, { passive: true });
     return () => window.removeEventListener("scroll", on);
   }, []);
+
+  // Close the mobile menu on route change / resize past the mobile breakpoint.
+  useEffect(() => {
+    if (!menuOpen) return;
+    const onResize = () => {
+      if (window.innerWidth >= 768) setMenuOpen(false);
+    };
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, [menuOpen]);
+
   return (
     <header
       className="fixed inset-x-0 top-0 z-50 transition-all duration-300"
       style={{
-        backgroundColor: scrolled ? "rgba(6,9,13,0.72)" : "transparent",
-        borderBottom: scrolled
+        backgroundColor: scrolled || menuOpen ? "rgba(6,9,13,0.92)" : "transparent",
+        borderBottom: scrolled || menuOpen
           ? "1px solid rgba(255,255,255,0.07)"
           : "1px solid transparent",
-        backdropFilter: scrolled ? "blur(18px) saturate(140%)" : "none",
+        backdropFilter: scrolled || menuOpen ? "blur(18px) saturate(140%)" : "none",
       }}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3.5">
@@ -77,12 +117,7 @@ export function Nav() {
           <BrandLockup />
         </a>
         <nav className="hidden items-center gap-1 md:flex">
-          {[
-            ["Platform", "/platform"],
-            ["Investigations", "/investigations"],
-            ["Who it's for", "#solutions"],
-            ["Pricing", "#pricing"],
-          ].map(([l, h]) => (
+          {NAV_LINKS.map(([l, h]) => (
             <a
               key={l}
               href={h}
@@ -102,8 +137,43 @@ export function Nav() {
           <Link to="/login" className="btn-primary text-[13px]">
             Login <ArrowRight className="size-3.5" />
           </Link>
+          <button
+            type="button"
+            onClick={() => setMenuOpen((v) => !v)}
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={menuOpen}
+            className="ml-1 flex size-9 shrink-0 items-center justify-center rounded-md border border-white/12 bg-white/[0.04] text-white/80 transition-colors hover:text-white md:hidden"
+          >
+            {menuOpen ? <X className="size-4" /> : <Menu className="size-4" />}
+          </button>
         </div>
       </div>
+
+      {menuOpen && (
+        <div className="border-t border-white/8 px-6 pb-6 pt-2 md:hidden">
+          <nav className="flex flex-col">
+            {NAV_LINKS.map(([l, h]) => (
+              <a
+                key={l}
+                href={h}
+                onClick={() => setMenuOpen(false)}
+                className="rounded-md px-2 py-3 text-[15px] text-white/75 transition-colors hover:bg-white/[0.05] hover:text-white"
+              >
+                {l}
+              </a>
+            ))}
+          </nav>
+          <div className="mt-3 flex flex-col gap-2 border-t border-white/8 pt-4">
+            <Link
+              to="/signup"
+              onClick={() => setMenuOpen(false)}
+              className="btn-ghost w-full justify-center"
+            >
+              Get Started
+            </Link>
+          </div>
+        </div>
+      )}
     </header>
   );
 }
@@ -157,7 +227,7 @@ function Hero() {
                     "0 0 10px 2px color-mix(in oklab, var(--primary) 60%, transparent)",
                 }}
               />
-              SOC Investigation Simulator
+              Security Investigation &amp; Analyst Development Platform
             </div>
           </Reveal>
 
@@ -174,6 +244,17 @@ function Hero() {
             <p className="mx-auto mt-4 max-w-xl text-[15px] leading-[1.6] text-white/55 [text-wrap:pretty]">
               Realistic alerts, real investigations, a hidden ground truth —
               graded on your evidence, not just your answer.
+            </p>
+          </Reveal>
+
+          <Reveal delay={160}>
+            <p
+              className="mx-auto mt-4 max-w-2xl text-[11.5px] uppercase tracking-[0.14em] text-white/35"
+              style={monoFont}
+            >
+              Built for individuals · universities · bootcamps · MSSPs ·
+              enterprises · government programs · workforce development ·
+              accelerators &amp; incubators
             </p>
           </Reveal>
 
@@ -215,22 +296,23 @@ function Hero() {
 /* -------------------------- PIPELINE STRIP -------------------------- */
 
 const STEPS = [
-  { n: "01", icon: Database, title: "Scenario generated", body: "Realistic, synthetic telemetry — never real customer data." },
-  { n: "02", icon: Layers, title: "Investigate evidence", body: "Work the alerts across identity, endpoint, email, and cloud." },
-  { n: "03", icon: Radar, title: "Build the timeline", body: "Assemble the case and write your incident summary." },
-  { n: "04", icon: ScrollText, title: "Submit your verdict", body: "True positive, false positive, or benign — your call." },
-  { n: "05", icon: Workflow, title: "Get scored", body: "Graded against a hidden ground truth, evidence included." },
+  { n: "01", icon: Bell, title: "Alert", body: "A realistic, synthetic alert lands in the queue." },
+  { n: "02", icon: Layers, title: "Investigation", body: "Work the evidence across identity, endpoint, email, cloud." },
+  { n: "03", icon: ScrollText, title: "Timeline", body: "Assemble the case into an ordered narrative." },
+  { n: "04", icon: Gavel, title: "Verdict", body: "True positive, false positive, or benign — your call." },
+  { n: "05", icon: BarChart3, title: "Scoring", body: "Graded against a hidden ground truth." },
+  { n: "06", icon: TrendingUp, title: "Improvement", body: "Score trend and mastery, case over case." },
 ];
 
-function Pipeline() {
+function LearningJourney() {
   return (
     <section style={{ background: "#FFFFFF", color: "#0A0C0F" }}>
       <div className="relative mx-auto max-w-7xl px-6 py-24">
         <SectionHead
           tone="light"
-          eyebrow="How it works"
-          title="From alert to graded investigation."
-          sub="Five stages, every one of them yours to work through. Nothing is solved for you — that's the entire point."
+          eyebrow="Learning journey"
+          title="From alert to measurable improvement."
+          sub="Six stages, every one of them yours to work through. Nothing is solved for you — that's the entire point."
         />
         <div className="relative mt-14">
           <div
@@ -241,7 +323,7 @@ function Pipeline() {
                 "linear-gradient(90deg, transparent, rgba(10,12,15,.14) 10%, rgba(10,12,15,.14) 90%, transparent)",
             }}
           />
-          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-5 lg:gap-5">
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-6 lg:gap-5">
             {STEPS.map((s, i) => (
               <Reveal key={s.n} delay={i * 60}>
                 <div className="relative">
@@ -277,22 +359,24 @@ function Pipeline() {
 /* ---------------------------- CUSTOMERS ---------------------------- */
 
 const INDIVIDUAL_SEGMENTS = [
-  { t: "Students & career switchers", b: "Portfolio-ready case work for people breaking into their first SOC role." },
-  { t: "SOC analysts", b: "Building the investigation reps a certification alone can't teach." },
-  { t: "Cybersecurity learners", b: "Structured practice, not another course you'll forget by next month." },
-  { t: "Independent professionals", b: "Staying sharp between jobs, or preparing for an interview loop." },
+  { icon: GraduationCap, t: "Students & career switchers", b: "Portfolio-ready case work for people breaking into their first SOC role." },
+  { icon: ShieldCheck, t: "SOC analysts", b: "Building the investigation reps a certification alone can't teach." },
+  { icon: Library, t: "Cybersecurity learners", b: "Structured practice, not another course you'll forget by next month." },
+  { icon: Users, t: "Independent professionals", b: "Staying sharp between jobs, or preparing for an interview loop." },
 ];
 
 const ORG_SEGMENTS = [
-  { t: "Universities & bootcamps", b: "Cybersecurity programs that need hands-on labs, not another slide deck." },
-  { t: "Enterprises", b: "Onboarding new hires or leveling up junior analysts, at their own pace." },
-  { t: "Government agencies", b: "Workforce-ready SOC training without standing up a live range." },
-  { t: "Workforce development programs", b: "Measurable outcomes for public and nonprofit training initiatives." },
-  { t: "Training providers & MSSPs", b: "A lab component you don't have to build or maintain yourselves." },
-  { t: "Accelerators & incubators", b: "Practical security training as part of a founder or cohort curriculum." },
+  { icon: GraduationCap, t: "Universities & bootcamps", b: "Cybersecurity programs that need hands-on labs, not another slide deck." },
+  { icon: Building2, t: "Enterprises", b: "Onboarding new hires or leveling up junior analysts, at their own pace." },
+  { icon: Landmark, t: "Government agencies", b: "Workforce-ready SOC training without standing up a live range." },
+  { icon: TrendingUp, t: "Workforce development programs", b: "Measurable outcomes for public and nonprofit training initiatives." },
+  { icon: Radar, t: "Training providers & MSSPs", b: "A lab component you don't have to build or maintain yourselves." },
+  { icon: Rocket, t: "Accelerators & incubators", b: "Practical security training as part of a founder or cohort curriculum." },
 ];
 
-function SegmentGrid({ label, items }: { label: string; items: { t: string; b: string }[] }) {
+type Segment = { icon: typeof GraduationCap; t: string; b: string };
+
+function SegmentGrid({ label, items }: { label: string; items: Segment[] }) {
   return (
     <div className="mt-10 first:mt-0">
       <div
@@ -301,19 +385,19 @@ function SegmentGrid({ label, items }: { label: string; items: { t: string; b: s
       >
         {label}
       </div>
-      <div className="mt-3 grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-black/8 bg-black/[0.04] md:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-3 grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3">
         {items.map((s) => (
-          <div
-            key={s.t}
-            className="group relative bg-white p-6 transition-colors duration-300 hover:bg-black/[0.02]"
-          >
+          <div key={s.t} className="glass-card-dark card-hover-lift h-full p-6">
+            <div className="icon-frame-dark text-white/85">
+              <s.icon className="size-[18px]" />
+            </div>
             <h3
-              className="text-[15px] font-semibold text-[#0A0C0F]"
+              className="mt-4 text-[15px] font-semibold text-white"
               style={displayFont}
             >
               {s.t}
             </h3>
-            <p className="mt-2 text-[13px] leading-[1.6] text-black/55">
+            <p className="mt-2 text-[13px] leading-[1.6] text-white/55">
               {s.b}
             </p>
           </div>
@@ -335,6 +419,162 @@ function CustomerTypes() {
         />
         <SegmentGrid label="For individuals" items={INDIVIDUAL_SEGMENTS} />
         <SegmentGrid label="For organizations" items={ORG_SEGMENTS} />
+      </div>
+    </section>
+  );
+}
+
+/* ------------------------------- TRUST ------------------------------- */
+
+const TRUST_STATS: {
+  icon: typeof Library;
+  target: number | null;
+  suffix?: string;
+  staticValue?: string;
+  label: string;
+}[] = [
+  { icon: Library, target: 50, suffix: "+", label: "Investigation scenarios" },
+  { icon: Boxes, target: 4, label: "Security domains covered" },
+  { icon: Tags, target: 12, label: "MITRE ATT&CK techniques mapped" },
+  { icon: GraduationCap, target: 2, label: "Structured learning tracks" },
+  { icon: Users, target: null, staticValue: "Cohorts", label: "Organization support" },
+];
+
+/** Fires `seen` once an element scrolls into view — drives the counters below. */
+function useOnScreenOnce<T extends HTMLElement>() {
+  const ref = useRef<T>(null);
+  const [seen, setSeen] = useState(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (e.isIntersecting) {
+            setSeen(true);
+            io.disconnect();
+          }
+        }
+      },
+      { threshold: 0.3 },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+  return { ref, seen };
+}
+
+function Trust() {
+  const { ref, seen } = useOnScreenOnce<HTMLDivElement>();
+  return (
+    <section style={{ background: "#000000", color: "#E9EEF3" }}>
+      <div ref={ref} className="relative mx-auto max-w-7xl px-6 py-16">
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
+          {TRUST_STATS.map((s, i) => (
+            <Reveal key={s.label} delay={i * 50}>
+              <div className="glass-card-dark card-hover-lift h-full p-5">
+                <div className="icon-frame-dark text-white/85">
+                  <s.icon className="size-[18px]" />
+                </div>
+                <div
+                  className="mt-4 text-[22px] font-semibold tracking-[-0.02em] text-white"
+                  style={displayFont}
+                >
+                  {s.target === null ? (
+                    s.staticValue
+                  ) : (
+                    <>
+                      <CountUp value={seen ? s.target : 0} />
+                      {s.suffix}
+                    </>
+                  )}
+                </div>
+                <div className="mt-1 text-[12px] leading-[1.4] text-white/50">
+                  {s.label}
+                </div>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ------------------------- PRODUCT ECOSYSTEM ------------------------- */
+
+const ECOSYSTEM = [
+  { icon: LayoutDashboard, name: "SOC Console", body: "The unified investigation workspace." },
+  { icon: Layers, name: "Investigation Workspace", body: "Evidence, timeline, and notes — one place." },
+  { icon: Radar, name: "Scenario Engine", body: "A fresh, realistic incident every session." },
+  { icon: KeyRound, name: "Threat Intelligence", body: "Indicators, actors, campaigns — with decoys." },
+  { icon: BarChart3, name: "Scoring Engine", body: "Graded against a hidden ground truth." },
+  { icon: Presentation, name: "Instructor Tools", body: "Rosters, grading, scenario assignment." },
+  { icon: TrendingUp, name: "Progress Tracking", body: "Score trend and technique mastery over time." },
+  { icon: Award, name: "Certificates", body: "Verifiable proof of completion." },
+  { icon: Building2, name: "Organization Management", body: "Cohorts, seats, and reporting for teams." },
+];
+
+function ProductEcosystem() {
+  return (
+    <section id="platform" style={{ background: "#FFFFFF", color: "#0A0C0F" }}>
+      <div className="relative mx-auto max-w-7xl px-6 py-24">
+        <SectionHead tone="light" eyebrow="Platform" title="One ecosystem. Every capability." />
+        <div className="mt-12 grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3">
+          {ECOSYSTEM.map((m, i) => (
+            <Reveal key={m.name} delay={(i % 3) * 60}>
+              <div className="glass-card-dark card-hover-lift h-full p-6">
+                <div className="icon-frame-dark text-white/85">
+                  <m.icon className="size-[18px]" />
+                </div>
+                <h3 className="mt-4 text-[15px] font-semibold text-white" style={displayFont}>
+                  {m.name}
+                </h3>
+                <p className="mt-1.5 text-[13px] leading-[1.6] text-white/55">{m.body}</p>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ----------------------- INSTITUTION FEATURES ------------------------ */
+
+const INSTITUTION_FEATURES = [
+  { icon: Users, name: "Cohorts", body: "Group learners, assign scenario sets, track deadlines." },
+  { icon: ClipboardList, name: "Rosters", body: "Import and manage every learner in one place." },
+  { icon: Presentation, name: "Instructor Dashboards", body: "Grading overrides, feedback, reopen-with-notes." },
+  { icon: TrendingUp, name: "Progress Monitoring", body: "Cohort comparison and technique mastery heatmaps." },
+  { icon: FileText, name: "Reporting", body: "Exportable reports per learner and per cohort." },
+  { icon: Award, name: "Certificates", body: "Verifiable certificates on track completion." },
+];
+
+function InstitutionFeatures() {
+  return (
+    <section style={{ background: "#000000", color: "#E9EEF3" }}>
+      <div className="relative mx-auto max-w-7xl px-6 py-24">
+        <SectionHead
+          eyebrow="For institutions"
+          title="Built to run a program, not just a lab."
+          sub="A major part of the platform — everything an instructor or program lead needs to run a cohort at scale."
+        />
+        <div className="mt-12 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {INSTITUTION_FEATURES.map((f, i) => (
+            <Reveal key={f.name} delay={(i % 3) * 60}>
+              <div className="glass-card-dark card-hover-lift h-full p-6">
+                <div className="icon-frame-dark text-white/85">
+                  <f.icon className="size-[18px]" />
+                </div>
+                <h3 className="mt-4 text-[15px] font-semibold text-white" style={displayFont}>
+                  {f.name}
+                </h3>
+                <p className="mt-1.5 text-[13px] leading-[1.6] text-white/55">{f.body}</p>
+              </div>
+            </Reveal>
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -388,14 +628,14 @@ function Pricing() {
         {TIERS.map((t, i) => (
           <Reveal key={t.name} delay={i * 80}>
             <div
-              className="relative h-full overflow-hidden rounded-2xl border p-8"
+              className="glass-card-dark relative h-full overflow-hidden p-8"
               style={{
                 borderColor: t.featured
                   ? "color-mix(in oklab, var(--primary) 45%, transparent)"
-                  : "rgba(255,255,255,0.08)",
+                  : undefined,
                 background: t.featured
-                  ? "linear-gradient(180deg, color-mix(in oklab, var(--primary) 10%, transparent), transparent 55%), #080B0F"
-                  : "#080B0F",
+                  ? "linear-gradient(180deg, color-mix(in oklab, var(--primary) 12%, transparent), transparent 55%), #0A0A0A"
+                  : undefined,
               }}
             >
               <div className="flex items-center justify-between">
@@ -619,7 +859,7 @@ function HomeDemos() {
           index="01"
           kicker="Investigation Workspace"
           title="Everything you need to investigate. Nothing solved for you."
-          body="Work the case across identity, endpoint, email and cloud, pin the evidence that matters, and build a narrative you can defend."
+          body="The real console — evidence, timeline, notes."
         />
         <Reveal className="mt-14">
           <InvestigationWorkspace />
@@ -634,7 +874,7 @@ function HomeDemos() {
           index="02"
           kicker="Progress & Instructor Dashboard"
           title="Numbers that actually track whether you're learning."
-          body="Score trend and technique mastery for you — or a whole cohort's progress at a glance for instructors."
+          body="Score trend and mastery — for you, or a whole cohort."
         />
         <Reveal className="mt-14">
           <ExecutiveDashboard />
@@ -651,9 +891,12 @@ function Landing() {
     <div className="relative min-h-screen overflow-hidden">
       <Nav />
       <Hero />
-      <CustomerTypes />
+      <Trust />
+      <ProductEcosystem />
       <HomeDemos />
-      <Pipeline />
+      <CustomerTypes />
+      <LearningJourney />
+      <InstitutionFeatures />
       <Pricing />
       <Footer />
     </div>

@@ -108,24 +108,40 @@ function SignupPage() {
                     key={opt.key}
                     type="button"
                     onClick={() => setType(opt.key)}
-                    className="relative rounded-xl border p-4 text-left transition-colors"
-                    style={{
-                      borderColor: active ? "#0A0C0F" : "rgba(10,12,15,0.12)",
-                      background: active ? "rgba(10,12,15,0.03)" : "transparent",
-                    }}
+                    className={
+                      active
+                        ? "glass-card-dark relative p-5 text-left transition-all"
+                        : "relative rounded-xl border border-black/12 bg-black/[0.015] p-5 text-left transition-all hover:border-black/25"
+                    }
                   >
                     {active && (
-                      <CheckCircle2 className="absolute right-3.5 top-3.5 size-4 text-[#0A0C0F]" />
+                      <CheckCircle2 className="absolute right-4 top-4 size-4 text-white" />
                     )}
-                    <opt.icon className="size-5 text-[#0A0C0F]" />
-                    <div className="mt-2.5 text-[14px] font-semibold text-[#0A0C0F]" style={displayFont}>
+                    <div
+                      className={
+                        active
+                          ? "icon-frame-dark text-white/85"
+                          : "flex size-11 shrink-0 items-center justify-center rounded-md border border-black/12 bg-black/[0.03] text-black/70"
+                      }
+                    >
+                      <opt.icon className="size-[18px]" />
+                    </div>
+                    <div
+                      className={`mt-3.5 text-[14px] font-semibold ${active ? "text-white" : "text-[#0A0C0F]"}`}
+                      style={displayFont}
+                    >
                       {opt.label}
                     </div>
-                    <div className="mt-1 text-[11.5px] leading-[1.5] text-black/50">{opt.body}</div>
+                    <div className={`mt-1 text-[11.5px] leading-[1.5] ${active ? "text-white/55" : "text-black/50"}`}>
+                      {opt.body}
+                    </div>
                     <ul className="mt-3 space-y-1">
                       {opt.features.map((f) => (
-                        <li key={f} className="flex items-center gap-1.5 text-[11px] text-black/60">
-                          <span className="size-1 shrink-0 rounded-full bg-black/40" />
+                        <li
+                          key={f}
+                          className={`flex items-center gap-1.5 text-[11px] ${active ? "text-white/65" : "text-black/60"}`}
+                        >
+                          <span className={`size-1 shrink-0 rounded-full ${active ? "bg-white/50" : "bg-black/40"}`} />
                           {f}
                         </li>
                       ))}

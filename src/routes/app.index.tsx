@@ -182,24 +182,31 @@ function Dashboard() {
           title="MITRE ATT&CK mastery"
           actions={<span className="text-[11px] text-muted-foreground tabular-nums">76% overall</span>}
         >
-          <ul className="space-y-2.5">
-            {mitreMastery.map((t) => (
-              <li key={t.tactic}>
-                <div className="flex items-baseline justify-between text-[11.5px]">
-                  <span className="text-secondary">{t.tactic}</span>
-                  <span className="tabular-nums text-muted-foreground">
-                    {t.practiced}/{t.total} · <span className="text-foreground">{t.mastery}%</span>
-                  </span>
+          <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
+            {mitreMastery.map((t) => {
+              const tone = masteryTone(t.mastery);
+              return (
+                <div
+                  key={t.tactic}
+                  className="rounded-md border p-2.5"
+                  style={{
+                    borderColor: `color-mix(in oklab, ${tone} 35%, var(--card-border-tint))`,
+                    background: `color-mix(in oklab, ${tone} 8%, var(--card))`,
+                  }}
+                >
+                  <div className="truncate text-[10.5px] text-secondary">{t.tactic}</div>
+                  <div className="mt-1 flex items-baseline gap-1">
+                    <span className="text-[16px] font-semibold tabular-nums" style={{ color: tone }}>
+                      {t.mastery}%
+                    </span>
+                  </div>
+                  <div className="mt-1 text-[10px] tabular-nums text-muted-foreground">
+                    {t.practiced}/{t.total} techniques
+                  </div>
                 </div>
-                <div className="mt-1 h-1.5 overflow-hidden rounded-full bg-background">
-                  <div
-                    className="h-full rounded-full"
-                    style={{ width: `${t.mastery}%`, background: masteryTone(t.mastery) }}
-                  />
-                </div>
-              </li>
-            ))}
-          </ul>
+              );
+            })}
+          </div>
         </Panel>
       </div>
 

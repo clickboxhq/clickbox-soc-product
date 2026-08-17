@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { TrendingDown, TrendingUp } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export type Severity = "critical" | "high" | "medium" | "low" | "info";
@@ -66,12 +67,14 @@ export function StatCard({
   label,
   value,
   delta,
+  trend,
   icon,
   tone = "default",
 }: {
   label: string;
   value: string;
   delta?: string;
+  trend?: "up" | "down";
   icon?: ReactNode;
   tone?: "default" | "critical" | "high" | "success" | "info";
 }) {
@@ -83,8 +86,10 @@ export function StatCard({
     info: "text-[color:var(--info)]",
   }[tone];
 
+  const TrendIcon = trend === "up" ? TrendingUp : trend === "down" ? TrendingDown : null;
+
   return (
-    <div className="shadow-elev group relative overflow-hidden rounded-xl border border-border bg-card p-4 transition-colors hover:border-border/80">
+    <div className="glass-card group relative overflow-hidden p-4 transition-colors hover:border-[color:var(--card-border-tint)]">
       <div className="flex items-start justify-between">
         <div>
           <div className="text-[11px] font-medium uppercase tracking-wider text-muted-foreground">
@@ -94,14 +99,13 @@ export function StatCard({
             {value}
           </div>
           {delta && (
-            <div className="mt-1 text-xs text-secondary">{delta}</div>
+            <div className="mt-1 flex items-center gap-1 text-xs text-secondary">
+              {TrendIcon && <TrendIcon className="size-3" />}
+              {delta}
+            </div>
           )}
         </div>
-        {icon && (
-          <div className="rounded-lg border border-border bg-background/60 p-2 text-secondary">
-            {icon}
-          </div>
-        )}
+        {icon && <div className="icon-frame text-secondary">{icon}</div>}
       </div>
     </div>
   );
@@ -143,14 +147,9 @@ export function Panel({
   padded?: boolean;
 }) {
   return (
-    <div
-      className={cn(
-        "shadow-elev rounded-xl border border-border bg-card",
-        className,
-      )}
-    >
+    <div className={cn("glass-card overflow-hidden", className)}>
       {title && (
-        <div className="flex items-center justify-between border-b border-border px-4 py-3">
+        <div className="flex items-center justify-between border-b border-[color:var(--card-border-tint)] px-4 py-3">
           <h3 className="text-sm font-medium">{title}</h3>
           {actions}
         </div>
