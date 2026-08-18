@@ -1,6 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState } from "react";
-import { ArrowRight, BookOpen, ClipboardCheck, MessageSquare, Presentation, Users } from "lucide-react";
+import { ArrowRight, ClipboardCheck, MessageSquare, Presentation, Users } from "lucide-react";
 
 import { MarketingPage, Section } from "@/components/soc/marketing/page-shell";
 import { ExecutiveDashboard } from "@/components/soc/marketing/demos";
@@ -27,29 +26,7 @@ const FEATURES = [
   { icon: MessageSquare, name: "Feedback loop", body: "Leave notes on a submission the learner sees the moment they reopen it." },
 ];
 
-const CODE_SAMPLES: Record<string, string> = {
-  REST: `curl https://api.clickbox.io/v1/cohorts/bootcamp-2026/progress \\
-  -H "Authorization: Bearer $CLICKBOX_KEY"`,
-  Python: `from clickbox import ClickBox
-
-cb = ClickBox(api_key=os.environ["CLICKBOX_KEY"])
-
-progress = cb.cohorts.progress("bootcamp-2026")
-
-print(progress.average_score)   # cohort-wide case score
-print(progress.roster)          # per-student breakdown`,
-  Node: `import { ClickBox } from "@clickbox/sdk";
-
-const cb = new ClickBox({ apiKey: process.env.CLICKBOX_KEY });
-
-const progress = await cb.cohorts.progress("bootcamp-2026");
-
-console.log(progress.averageScore);  // cohort-wide case score
-console.log(progress.roster);        // per-student breakdown`,
-};
-
 function InstructorsPage() {
-  const [tab, setTab] = useState<keyof typeof CODE_SAMPLES>("REST");
   return (
     <MarketingPage>
       <Section tone="dark" className="!py-20 md:!py-28 text-center">
@@ -96,38 +73,6 @@ function InstructorsPage() {
         />
         <Reveal className="mt-14">
           <ExecutiveDashboard />
-        </Reveal>
-      </Section>
-
-      <Section tone="light">
-        <SectionHead
-          tone="light"
-          eyebrow="For instructors"
-          title="Rosters and grades — via API too."
-          sub="Sync a roster, pull cohort progress into your LMS gradebook, or export certificates. Every instructor action in the console is also an API call."
-        />
-        <Reveal className="mt-10 overflow-hidden rounded-xl border border-black/8 bg-black/[0.02]">
-          <div className="flex items-center gap-1 border-b border-black/8 px-2 py-1.5">
-            {(Object.keys(CODE_SAMPLES) as (keyof typeof CODE_SAMPLES)[]).map((k) => (
-              <button
-                key={k}
-                onClick={() => setTab(k)}
-                className="rounded-md px-3 py-1 text-[12px] font-medium transition-colors"
-                style={{
-                  color: tab === k ? "#0A0C0F" : "rgba(10,12,15,0.5)",
-                  background: tab === k ? "rgba(10,12,15,0.08)" : "transparent",
-                }}
-              >
-                {k}
-              </button>
-            ))}
-            <span className="ml-auto flex items-center gap-1.5 rounded-md px-3 py-1 text-[12px] text-black/45">
-              <BookOpen className="size-3.5" /> Docs coming soon
-            </span>
-          </div>
-          <pre className="overflow-x-auto p-5 text-[12.5px] leading-[1.7] text-black/80" style={monoFont}>
-            <code>{CODE_SAMPLES[tab]}</code>
-          </pre>
         </Reveal>
       </Section>
 

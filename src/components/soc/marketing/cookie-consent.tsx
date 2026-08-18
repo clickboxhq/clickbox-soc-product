@@ -50,7 +50,7 @@ export function CookieConsent() {
         style={{ background: "rgba(8,10,13,0.96)" }}
       >
         <button
-          onClick={() => decide({ essential: true, analytics: true, marketing: false })}
+          onClick={() => decide({ essential: true, analytics: false, marketing: false })}
           aria-label="Dismiss"
           className="absolute right-4 top-4 text-white/35 transition-colors hover:text-white"
         >

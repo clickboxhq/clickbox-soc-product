@@ -36,9 +36,11 @@ import {
   MessageSquare,
   ScrollText,
   Activity,
+  Menu,
+  X,
 
 } from "lucide-react";
-import type { ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
 import { Kbd } from "@/components/soc/primitives";
 import { CommandPalette, useCommandPalette } from "@/components/soc/command-palette";
@@ -155,13 +157,13 @@ function NavGroup({ label, items }: { label?: string; items: NavItem[] }) {
   );
 }
 
-function Sidebar() {
+function SidebarBody({ onNavigate }: { onNavigate?: () => void }) {
   const accountType = useSoc((s) => s.accountType);
   const accountName = useSoc((s) => s.accountName);
   const isOrg = accountType === "organization";
 
   return (
-    <aside className="hidden w-[248px] shrink-0 border-r border-sidebar-border bg-sidebar lg:flex lg:flex-col">
+    <>
       {/* Workspace switcher */}
       <div className="p-3">
         <button className="flex w-full items-center gap-2.5 rounded-md border border-[color:var(--card-border-tint)] bg-background/40 px-2.5 py-2 text-left transition-colors hover:bg-sidebar-accent/50">
@@ -178,7 +180,7 @@ function Sidebar() {
         </button>
       </div>
 
-      <nav className="flex-1 overflow-y-auto pb-4">
+      <nav className="flex-1 overflow-y-auto pb-4" onClick={onNavigate}>
         <NavGroup label="Investigations" items={primary} />
         <NavGroup label="Investigation Portals" items={portals} />
         <NavGroup label="Learning" items={learning} />
@@ -219,29 +221,79 @@ function Sidebar() {
           </div>
         </div>
       </div>
+    </>
+  );
+}
+
+function Sidebar() {
+  return (
+    <aside className="hidden w-[248px] shrink-0 border-r border-sidebar-border bg-sidebar lg:flex lg:flex-col">
+      <SidebarBody />
     </aside>
   );
 }
 
-function Topbar({ crumb, onOpenPalette }: { crumb: string; onOpenPalette: () => void }) {
+function MobileNavDrawer({ open, onClose }: { open: boolean; onClose: () => void }) {
+  if (!open) return null;
+  return (
+    <div className="fixed inset-0 z-40 lg:hidden">
+      <div
+        className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+        onClick={onClose}
+        aria-hidden
+      />
+      <div className="absolute inset-y-0 left-0 flex w-[280px] max-w-[82vw] flex-col border-r border-sidebar-border bg-sidebar">
+        <div className="flex items-center justify-between border-b border-sidebar-border p-3">
+          <span className="pl-1 text-[13px] font-semibold">ThreatLens</span>
+          <button
+            onClick={onClose}
+            aria-label="Close menu"
+            className="flex size-8 items-center justify-center rounded-md text-muted-foreground hover:bg-sidebar-accent/60 hover:text-foreground"
+          >
+            <X className="size-4" />
+          </button>
+        </div>
+        <SidebarBody onNavigate={onClose} />
+      </div>
+    </div>
+  );
+}
+
+function Topbar({
+  crumb,
+  onOpenPalette,
+  onOpenMobileNav,
+}: {
+  crumb: string;
+  onOpenPalette: () => void;
+  onOpenMobileNav: () => void;
+}) {
   return (
     <header className="sticky top-0 z-20 flex h-14 items-center gap-3 border-b border-border bg-background/85 px-4 backdrop-blur-md md:px-6">
+      <button
+        onClick={onOpenMobileNav}
+        aria-label="Open menu"
+        className="-ml-1 flex size-8 shrink-0 items-center justify-center rounded-md text-muted-foreground hover:bg-card hover:text-foreground lg:hidden"
+      >
+        <Menu className="size-[18px]" />
+      </button>
       <div className="flex items-center gap-2 text-sm">
-        <span className="text-muted-foreground">ThreatLens</span>
-        <span className="text-muted-foreground">/</span>
+        <span className="hidden text-muted-foreground sm:inline">ThreatLens</span>
+        <span className="hidden text-muted-foreground sm:inline">/</span>
         <span className="font-medium">{crumb}</span>
       </div>
-      <div className="ml-4 flex flex-1 items-center">
+      <div className="ml-4 hidden min-w-0 flex-1 items-center md:flex">
         <button
           onClick={onOpenPalette}
           className="group flex h-9 w-full max-w-md items-center gap-2 rounded-md border border-border bg-card px-3 text-[13px] text-muted-foreground transition-colors hover:border-[color:var(--info)]/50"
         >
-          <Search className="size-4" />
-          <span className="flex-1 text-left">Search users, devices, alerts, MITRE IDs…</span>
+          <Search className="size-4 shrink-0" />
+          <span className="flex-1 truncate whitespace-nowrap text-left">Search users, devices, alerts, MITRE IDs…</span>
           <Kbd>⌘</Kbd>
           <Kbd>K</Kbd>
         </button>
       </div>
+      <div className="flex-1 md:hidden" />
       <div className="flex items-center gap-2">
         <button
           onClick={onOpenPalette}
@@ -311,12 +363,22 @@ export function AppShell({ children }: { children?: ReactNode }) {
     crumbMap[path] ??
     (path.startsWith("/app/cases/") ? "Case Management" : "Dashboard");
   const { open, setOpen } = useCommandPalette();
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
+
+  useEffect(() => {
+    setMobileNavOpen(false);
+  }, [path]);
 
   return (
     <div className="flex min-h-screen bg-background text-foreground">
       <Sidebar />
+      <MobileNavDrawer open={mobileNavOpen} onClose={() => setMobileNavOpen(false)} />
       <div className="flex min-w-0 flex-1 flex-col">
-        <Topbar crumb={crumb} onOpenPalette={() => setOpen(true)} />
+        <Topbar
+          crumb={crumb}
+          onOpenPalette={() => setOpen(true)}
+          onOpenMobileNav={() => setMobileNavOpen(true)}
+        />
         <main className="flex-1 overflow-x-hidden">
           <PageTransition>{children ?? <Outlet />}</PageTransition>
         </main>

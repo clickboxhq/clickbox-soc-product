@@ -92,7 +92,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "Realistic investigations, evidence analysis, and threat hunting — graded, not automated.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:image", content: "/og-image.png" },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      { property: "og:image:alt", content: "ThreatLens by ClickBox — Security Investigation & Analyst Development Platform" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: "/og-image.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },

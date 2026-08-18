@@ -7,8 +7,6 @@ import {
   Bell,
   Boxes,
   Building2,
-  ClipboardList,
-  FileText,
   Gavel,
   GraduationCap,
   KeyRound,
@@ -57,7 +55,7 @@ export const Route = createFileRoute("/")({
       },
       {
         property: "og:title",
-        content: "ClickBox — ThreatLens: the SOC investigation simulator",
+        content: "ThreatLens — Security Investigation & Analyst Development Platform",
       },
       {
         property: "og:description",
@@ -65,7 +63,11 @@ export const Route = createFileRoute("/")({
           "Realistic alerts. Real investigations. Graded on your evidence, not just your answer.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:image", content: "/og-image.png" },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: "/og-image.png" },
     ],
   }),
 });
@@ -238,13 +240,6 @@ function Hero() {
             >
               Train Like You'll Work.
             </h1>
-          </Reveal>
-
-          <Reveal delay={130}>
-            <p className="mx-auto mt-4 max-w-xl text-[15px] leading-[1.6] text-white/55 [text-wrap:pretty]">
-              Realistic alerts, real investigations, a hidden ground truth —
-              graded on your evidence, not just your answer.
-            </p>
           </Reveal>
 
           <Reveal delay={160}>
@@ -540,46 +535,6 @@ function ProductEcosystem() {
   );
 }
 
-/* ----------------------- INSTITUTION FEATURES ------------------------ */
-
-const INSTITUTION_FEATURES = [
-  { icon: Users, name: "Cohorts", body: "Group learners, assign scenario sets, track deadlines." },
-  { icon: ClipboardList, name: "Rosters", body: "Import and manage every learner in one place." },
-  { icon: Presentation, name: "Instructor Dashboards", body: "Grading overrides, feedback, reopen-with-notes." },
-  { icon: TrendingUp, name: "Progress Monitoring", body: "Cohort comparison and technique mastery heatmaps." },
-  { icon: FileText, name: "Reporting", body: "Exportable reports per learner and per cohort." },
-  { icon: Award, name: "Certificates", body: "Verifiable certificates on track completion." },
-];
-
-function InstitutionFeatures() {
-  return (
-    <section style={{ background: "#000000", color: "#E9EEF3" }}>
-      <div className="relative mx-auto max-w-7xl px-6 py-24">
-        <SectionHead
-          eyebrow="For institutions"
-          title="Built to run a program, not just a lab."
-          sub="A major part of the platform — everything an instructor or program lead needs to run a cohort at scale."
-        />
-        <div className="mt-12 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {INSTITUTION_FEATURES.map((f, i) => (
-            <Reveal key={f.name} delay={(i % 3) * 60}>
-              <div className="glass-card-dark card-hover-lift h-full p-6">
-                <div className="icon-frame-dark text-white/85">
-                  <f.icon className="size-[18px]" />
-                </div>
-                <h3 className="mt-4 text-[15px] font-semibold text-white" style={displayFont}>
-                  {f.name}
-                </h3>
-                <p className="mt-1.5 text-[13px] leading-[1.6] text-white/55">{f.body}</p>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
 /* ----------------------------- PRICING ----------------------------- */
 
 const TIERS = [
@@ -767,9 +722,6 @@ export function Footer() {
               >
                 Ready to run your first case?
               </h3>
-              <p className="mt-4 text-[14.5px] leading-[1.65] text-white/55">
-                Start free, alone. Or bring a cohort.
-              </p>
             </div>
             <div className="flex shrink-0 gap-3">
               <Link to="/signup" className="btn-primary">
@@ -793,8 +745,9 @@ export function Footer() {
               </span>
             </div>
             <p className="mt-4 text-[12.5px] leading-[1.65] text-white/40">
-              ThreatLens — the SOC investigation simulator. Learn by doing the
-              job, not by reading about it.
+              ThreatLens — the security investigation &amp; analyst
+              development platform. Learn by doing the job, not by reading
+              about it.
             </p>
           </div>
           {FOOTER_COLS.map((col) => (
@@ -896,7 +849,6 @@ function Landing() {
       <HomeDemos />
       <CustomerTypes />
       <LearningJourney />
-      <InstitutionFeatures />
       <Pricing />
       <Footer />
     </div>

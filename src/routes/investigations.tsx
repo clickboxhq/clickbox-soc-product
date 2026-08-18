@@ -92,29 +92,11 @@ function InvestigationsPage() {
       <Section tone="dark">
         <SectionHead
           eyebrow="Evidence review"
-          title="The workspace, not a screenshot of one."
-          sub="This is the same console you'll work a live case in — timeline, evidence, and your notes, side by side."
+          title="Your Personal Workspace"
         />
         <Reveal className="mt-12">
           <InvestigationWorkspace />
         </Reveal>
-      </Section>
-
-      <Section tone="light" className="text-center">
-        <h2
-          className="text-[26px] font-semibold tracking-[-0.02em] text-[#0A0C0F] md:text-[34px]"
-          style={displayFont}
-        >
-          Want to see how it's graded?
-        </h2>
-        <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
-          <Link to="/scoring" className="btn-primary w-full sm:w-auto">
-            See the scoring rubric <ArrowRight className="size-4" />
-          </Link>
-          <Link to="/signup" className="btn-ghost-light w-full sm:w-auto">
-            Get started — free
-          </Link>
-        </div>
       </Section>
     </MarketingPage>
   );

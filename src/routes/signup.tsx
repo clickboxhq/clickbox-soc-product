@@ -173,6 +173,7 @@ function SignupPage() {
                 <input
                   type="email"
                   required
+                  autoComplete="username"
                   placeholder="you@organization.com"
                   className="w-full rounded-lg border border-black/15 bg-black/[0.015] px-3.5 py-3 text-[14px] text-[#0A0C0F] outline-none transition-colors placeholder:text-black/30 focus:border-black/40"
                 />
@@ -195,6 +196,7 @@ function SignupPage() {
                 <input
                   type="password"
                   required
+                  autoComplete="new-password"
                   placeholder="••••••••"
                   className="w-full rounded-lg border border-black/15 bg-black/[0.015] px-3.5 py-3 text-[14px] text-[#0A0C0F] outline-none transition-colors placeholder:text-black/30 focus:border-black/40"
                 />

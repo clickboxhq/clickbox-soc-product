@@ -97,22 +97,6 @@ function PlatformPage() {
         <CapabilityStack />
       </Section>
 
-      <Section tone="light" className="text-center">
-        <h2
-          className="text-[26px] font-semibold tracking-[-0.02em] text-[#0A0C0F] md:text-[34px]"
-          style={displayFont}
-        >
-          See it running on a real case.
-        </h2>
-        <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
-          <Link to="/investigations" className="btn-primary w-full sm:w-auto">
-            The investigation workflow <ArrowRight className="size-4" />
-          </Link>
-          <Link to="/signup" className="btn-ghost-light w-full sm:w-auto">
-            Get started — free
-          </Link>
-        </div>
-      </Section>
     </MarketingPage>
   );
 }
