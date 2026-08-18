@@ -31,7 +31,7 @@ function LoginPage() {
       {/* left — brand panel */}
       <div
         className="relative hidden flex-col justify-between overflow-hidden p-10 lg:flex xl:p-16"
-        style={{ background: "#000000", color: "#E9EEF3" }}
+        style={{ background: "#000000", color: "#EDEDED" }}
       >
         <div aria-hidden className="pointer-events-none absolute inset-0 opacity-40">
           <TopologyDiagram />
@@ -52,17 +52,17 @@ function LoginPage() {
             className="text-[11px] uppercase tracking-[0.2em] text-white/40"
             style={monoFont}
           >
-            Enterprise Security Investigation Platform
+            Security Investigation Platform
           </div>
           <h1
             className="mt-4 text-[28px] font-semibold leading-[1.15] tracking-[-0.02em] text-white xl:text-[32px]"
             style={displayFont}
           >
-            Develop real-world SOC investigation skills.
+            Develop practical security investigation skills.
           </h1>
           <p className="mt-3 text-[13.5px] leading-[1.7] text-white/50">
-            Built for individuals, universities, bootcamps, and enterprise
-            security teams.
+            For individuals and organizations building real investigation
+            capability.
           </p>
         </div>
 
@@ -141,7 +141,7 @@ function LoginPage() {
           <Link to="/privacy" className="hover:text-black/70">Privacy Policy</Link>
           <Link to="/terms" className="hover:text-black/70">Terms of Service</Link>
           <Link to="/security" className="hover:text-black/70">Security</Link>
-          <a href="mailto:hello@clickbox.io" className="hover:text-black/70">Contact</a>
+          <a href="mailto:info@useclickbox.com" className="hover:text-black/70">Contact</a>
         </div>
       </div>
     </div>

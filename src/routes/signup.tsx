@@ -21,16 +21,31 @@ const ACCOUNT_OPTIONS = [
     key: "individual" as const,
     icon: User,
     label: "Individual",
-    body: "Students, analysts, and independent learners.",
+    body: "Personal learning and investigation practice.",
     features: ["Personal investigations", "Learning paths", "Certificates", "Progress tracking"],
   },
   {
     key: "organization" as const,
     icon: Building2,
     label: "Organization",
-    body: "Universities, bootcamps, enterprises, MSSPs, and training providers.",
+    body: "Manage analysts, students, cohorts, and training programs.",
     features: ["Cohorts", "Instructor management", "Reporting", "Team analytics"],
   },
+];
+
+const ORG_TYPES = [
+  "Company / Enterprise",
+  "University / Higher Education",
+  "Bootcamp",
+  "Cybersecurity Academy",
+  "MSSP / Security Provider",
+  "Government Agency",
+  "Workforce Development Program",
+  "Training Provider",
+  "Accelerator",
+  "Incubator",
+  "Nonprofit",
+  "Other",
 ];
 
 function SignupPage() {
@@ -38,13 +53,14 @@ function SignupPage() {
   const setAccountType = useSoc((s) => s.setAccountType);
   const [type, setType] = useState<AccountType>("individual");
   const [orgName, setOrgName] = useState("");
+  const [orgType, setOrgType] = useState("");
 
   return (
     <div className="min-h-screen lg:grid lg:grid-cols-2">
       {/* left — brand panel */}
       <div
         className="relative hidden flex-col justify-between overflow-hidden p-10 lg:flex xl:p-16"
-        style={{ background: "#000000", color: "#E9EEF3" }}
+        style={{ background: "#000000", color: "#EDEDED" }}
       >
         <div aria-hidden className="pointer-events-none absolute inset-0 opacity-35">
           <EvidenceGraph />
@@ -62,17 +78,22 @@ function SignupPage() {
 
         <div className="relative max-w-sm">
           <div className="text-[11px] uppercase tracking-[0.2em] text-white/40" style={monoFont}>
-            Enterprise Security Investigation Platform
+            Security Investigation Platform
           </div>
           <h1
             className="mt-4 text-[28px] font-semibold leading-[1.15] tracking-[-0.02em] text-white xl:text-[32px]"
             style={displayFont}
           >
-            Train analysts using realistic security investigations.
+            Build practical security investigation skills.
           </h1>
           <p className="mt-3 text-[13.5px] leading-[1.7] text-white/50">
-            Built for individuals, universities, bootcamps, and enterprise
-            security teams.
+            Work through realistic security incidents, develop
+            evidence-driven investigation skills, and measure your progress
+            — whether you're learning independently or managing a security
+            training program.
+          </p>
+          <p className="mt-4 text-[11px] uppercase tracking-[0.2em] text-white/35" style={monoFont}>
+            Built for individuals and organizations
           </p>
         </div>
 
@@ -179,17 +200,37 @@ function SignupPage() {
                 />
               </label>
               {type === "organization" && (
-                <label className="block">
-                  <span className="mb-1.5 block text-[12px] font-medium text-black/70">Organization name</span>
-                  <input
-                    type="text"
-                    required
-                    value={orgName}
-                    onChange={(e) => setOrgName(e.target.value)}
-                    placeholder="Contoso University"
-                    className="w-full rounded-lg border border-black/15 bg-black/[0.015] px-3.5 py-3 text-[14px] text-[#0A0C0F] outline-none transition-colors placeholder:text-black/30 focus:border-black/40"
-                  />
-                </label>
+                <>
+                  <label className="block">
+                    <span className="mb-1.5 block text-[12px] font-medium text-black/70">Organization name</span>
+                    <input
+                      type="text"
+                      required
+                      value={orgName}
+                      onChange={(e) => setOrgName(e.target.value)}
+                      placeholder="Contoso University"
+                      className="w-full rounded-lg border border-black/15 bg-black/[0.015] px-3.5 py-3 text-[14px] text-[#0A0C0F] outline-none transition-colors placeholder:text-black/30 focus:border-black/40"
+                    />
+                  </label>
+                  <label className="block">
+                    <span className="mb-1.5 block text-[12px] font-medium text-black/70">Organization type</span>
+                    <select
+                      required
+                      value={orgType}
+                      onChange={(e) => setOrgType(e.target.value)}
+                      className="w-full rounded-lg border border-black/15 bg-black/[0.015] px-3.5 py-3 text-[14px] text-[#0A0C0F] outline-none transition-colors focus:border-black/40"
+                    >
+                      <option value="" disabled>
+                        Select organization type
+                      </option>
+                      {ORG_TYPES.map((t) => (
+                        <option key={t} value={t}>
+                          {t}
+                        </option>
+                      ))}
+                    </select>
+                  </label>
+                </>
               )}
               <label className="block">
                 <span className="mb-1.5 block text-[12px] font-medium text-black/70">Password</span>
@@ -214,7 +255,7 @@ function SignupPage() {
           <Link to="/privacy" className="hover:text-black/70">Privacy Policy</Link>
           <Link to="/terms" className="hover:text-black/70">Terms of Service</Link>
           <Link to="/security" className="hover:text-black/70">Security</Link>
-          <a href="mailto:hello@clickbox.io" className="hover:text-black/70">Contact</a>
+          <a href="mailto:info@useclickbox.com" className="hover:text-black/70">Contact</a>
         </div>
       </div>
     </div>

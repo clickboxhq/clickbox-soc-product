@@ -67,8 +67,8 @@ function PrivacyPage() {
             <h2 className="text-[16px] font-semibold text-[#0A0C0F]" style={displayFont}>Contact</h2>
             <p className="mt-2 text-[14px] leading-[1.75] text-black/60">
               Questions about this policy — reach us at{" "}
-              <a href="mailto:privacy@clickbox.io" className="text-[#0A0C0F] underline underline-offset-2">
-                privacy@clickbox.io
+              <a href="mailto:info@useclickbox.com" className="text-[#0A0C0F] underline underline-offset-2">
+                info@useclickbox.com
               </a>
               .
             </p>

@@ -27,7 +27,7 @@ import {
 
 import { Reveal, displayFont, monoFont } from "./atmos";
 import { AppWindow, DemoIntro, DemoSection, Pill } from "./chrome";
-import { GraphField, Glow, Pathways, Schematic } from "./art";
+import { Glow } from "./art";
 
 /* ------------------------------------------------------------------ */
 /*  shared hooks                                                       */
@@ -182,7 +182,7 @@ function CommandCenter() {
                 ["Cases closed (24h)", "34", ""],
                 ["Median time to verdict", "11m", ""],
               ].map(([l, v, tone]) => (
-                <div key={l} className="bg-[#080B10] px-4 py-3.5">
+                <div key={l} className="bg-[#0A0A0A] px-4 py-3.5">
                   <div
                     className="text-[9.5px] uppercase tracking-[0.18em] text-white/35"
                     style={monoFont}
@@ -504,7 +504,7 @@ function InvestigationWorkspace() {
                       {r.t}
                     </div>
                     <span
-                      className="relative z-10 mt-[6px] size-[7px] shrink-0 rounded-full ring-4 ring-[#080B10]"
+                      className="relative z-10 mt-[6px] size-[7px] shrink-0 rounded-full ring-4 ring-[#0A0A0A]"
                       style={{
                         background: r.hot
                           ? "var(--critical)"
@@ -535,7 +535,7 @@ function InvestigationWorkspace() {
                 className="pointer-events-none absolute inset-x-0 bottom-0 h-14"
                 style={{
                   background:
-                    "linear-gradient(180deg, transparent, #06090D)",
+                    "linear-gradient(180deg, transparent, #080808)",
                 }}
               />
             </div>
@@ -921,7 +921,7 @@ function CorrelationEngine() {
                 ["Deduplicated", "94%"],
                 ["Time to graph", "1.8s"],
               ].map(([l, v]) => (
-                <div key={l} className="bg-[#080B10] px-3 py-2.5">
+                <div key={l} className="bg-[#0A0A0A] px-3 py-2.5">
                   <div
                     className="text-[9px] uppercase tracking-[0.16em] text-white/35"
                     style={monoFont}
@@ -1062,7 +1062,7 @@ function ExecutiveDashboard() {
                 ["Verdict accuracy", "92%", "+11 pts"],
                 ["Median time / case", "34m", "−41%"],
               ].map(([l, v, d]) => (
-                <div key={l} className="bg-[#080B10] px-4 py-3.5">
+                <div key={l} className="bg-[#0A0A0A] px-4 py-3.5">
                   <div
                     className="text-[9.5px] uppercase tracking-[0.16em] text-white/35"
                     style={monoFont}
@@ -1139,57 +1139,6 @@ function ExecutiveDashboard() {
 /*  PUBLIC SECTION WRAPPERS                                            */
 /* ------------------------------------------------------------------ */
 
-export function ProductDemos() {
-  return (
-    <div id="product" className="relative">
-      <DemoSection id="workspace">
-        <div className="pointer-events-none absolute inset-0 -z-10">
-          <Pathways opacity={0.32} />
-        </div>
-        <DemoIntro
-          index="01"
-          kicker="Investigation Workspace"
-          title="Everything you need to investigate. Nothing solved for you."
-          body="Work the case across identity, endpoint, email and cloud, pin the evidence that matters, and build a narrative you can defend — the console gives you the tools, not the answer."
-        />
-        <Reveal className="mt-14">
-          <InvestigationWorkspace />
-        </Reveal>
-      </DemoSection>
-
-      <DemoSection id="correlation">
-        <div className="pointer-events-none absolute inset-0 -z-10">
-          <GraphField opacity={0.3} />
-        </div>
-        <DemoIntro
-          index="02"
-          kicker="Correlation Practice"
-          title="Isolated signals become one attack path — once you join them."
-          body="Identity, endpoint, email, cloud and network events sit there until you connect them. Learn to read the graph, not just the alert list — that's the actual job."
-        />
-        <Reveal className="mt-14">
-          <CorrelationEngine />
-        </Reveal>
-      </DemoSection>
-
-      <DemoSection id="executive">
-        <div className="pointer-events-none absolute inset-0 -z-10">
-          <Schematic opacity={0.22} />
-        </div>
-        <DemoIntro
-          index="03"
-          kicker="Progress & Instructor Dashboard"
-          title="Numbers that actually track whether you're learning."
-          body="Score trend, technique mastery, and case history for you — or a whole cohort's progress at a glance for instructors. No guessing whether the training is working."
-        />
-        <Reveal className="mt-14">
-          <ExecutiveDashboard />
-        </Reveal>
-      </DemoSection>
-    </div>
-  );
-}
-
 export { CommandCenter, InvestigationWorkspace, CorrelationEngine, ExecutiveDashboard };
 
 /** Small hero-adjacent proof strip. */
@@ -1205,7 +1154,7 @@ export function ProofStrip() {
       {items.map((i) => (
         <div
           key={i.l}
-          className="flex items-center gap-2.5 bg-[#07090C] px-4 py-4 text-[12px] text-white/60"
+          className="flex items-center gap-2.5 bg-[#080808] px-4 py-4 text-[12px] text-white/60"
         >
           <i.icon className="size-4 shrink-0 text-white/35" />
           {i.l}

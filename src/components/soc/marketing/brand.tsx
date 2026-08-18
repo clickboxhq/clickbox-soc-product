@@ -1,29 +1,14 @@
-import { useId } from "react";
-import { MousePointer2 } from "lucide-react";
-
-/** The ClickBox mark — a cursor, filled and beveled like glass. */
+/** The ClickBox / ThreatLens mark. */
 export function Mark({ className = "size-7" }: { className?: string }) {
-  const gradientId = `mark-gradient-${useId()}`;
   return (
     <span
-      className={`inline-flex shrink-0 items-center justify-center rounded-[7px] bg-black ${className}`}
+      className={`inline-flex shrink-0 items-center justify-center overflow-hidden rounded-[7px] bg-black ${className}`}
     >
-      <svg width="0" height="0" className="absolute">
-        <defs>
-          <linearGradient id={gradientId} x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#FFFFFF" />
-            <stop offset="100%" stopColor="#C7CDD4" />
-          </linearGradient>
-        </defs>
-      </svg>
-      <MousePointer2
-        className="size-[62%] -translate-x-px translate-y-px"
-        style={{
-          fill: `url(#${gradientId})`,
-          stroke: "rgba(255,255,255,0.9)",
-          strokeWidth: 1.5,
-          strokeLinejoin: "round",
-        }}
+      <img
+        src="/brand-mark.png"
+        alt="ClickBox"
+        className="size-full object-cover"
+        draggable={false}
       />
     </span>
   );

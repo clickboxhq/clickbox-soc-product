@@ -51,19 +51,21 @@ function InstitutionsPage() {
             className="mx-auto mt-5 max-w-2xl text-[34px] font-semibold leading-[1.08] tracking-[-0.03em] text-white md:text-[46px]"
             style={displayFont}
           >
-            A lab component you don't have to build yourselves.
+            Deploy practical security training without building the environment yourself.
           </h1>
         </Reveal>
         <Reveal delay={130}>
           <p className="mx-auto mt-4 max-w-xl text-[15px] leading-[1.6] text-white/55">
-            Cohort rostering, instructor tools, and reporting — for programs
-            that need to prove the training actually worked.
+            Give analysts, students, and security teams a structured
+            environment for hands-on investigation practice — with cohort
+            management, instructor controls, assessment, reporting, and
+            measurable progress built in.
           </p>
         </Reveal>
         <Reveal delay={190}>
           <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <a href="mailto:hello@clickbox.io" className="btn-primary w-full sm:w-auto">
-              Book a demo <ArrowRight className="size-4" />
+            <a href="mailto:info@useclickbox.com" className="btn-primary w-full sm:w-auto">
+              Let's Talk <ArrowRight className="size-4" />
             </a>
           </div>
         </Reveal>
@@ -109,8 +111,8 @@ function InstitutionsPage() {
           <Link to="/instructors" className="btn-primary w-full sm:w-auto">
             For instructors <ArrowRight className="size-4" />
           </Link>
-          <a href="mailto:hello@clickbox.io" className="btn-ghost-light w-full sm:w-auto">
-            Book a demo
+          <a href="mailto:info@useclickbox.com" className="btn-ghost-light w-full sm:w-auto">
+            Let's Talk
           </a>
         </div>
       </Section>

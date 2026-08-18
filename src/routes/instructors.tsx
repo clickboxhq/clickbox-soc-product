@@ -81,8 +81,8 @@ function InstructorsPage() {
           Setting this up for your program?
         </h2>
         <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
-          <a href="mailto:hello@clickbox.io" className="btn-primary w-full sm:w-auto">
-            Book a demo <ArrowRight className="size-4" />
+          <a href="mailto:info@useclickbox.com" className="btn-primary w-full sm:w-auto">
+            Let's Talk <ArrowRight className="size-4" />
           </a>
           <Link to="/institutions" className="btn-ghost w-full sm:w-auto">
             For organizations

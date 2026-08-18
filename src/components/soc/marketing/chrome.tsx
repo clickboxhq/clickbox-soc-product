@@ -24,7 +24,7 @@ export function AppWindow({
     <div
       className={`relative overflow-hidden rounded-2xl border border-white/10 ${className}`}
       style={{
-        background: "linear-gradient(180deg, #0B0F14, #06090D)",
+        background: "linear-gradient(180deg, #0D0D0D, #080808)",
         boxShadow:
           "0 1px 0 rgba(255,255,255,0.06) inset, 0 70px 150px -50px rgba(0,0,0,0.95), 0 0 0 1px rgba(255,255,255,0.03)",
       }}

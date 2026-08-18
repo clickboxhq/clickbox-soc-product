@@ -19,12 +19,12 @@ export const Route = createFileRoute("/security")({
 });
 
 const PRINCIPLES = [
-  { icon: KeyRound, title: "Authentication", body: "Email+password (argon2id) or SSO (SAML/OIDC) for enterprise tenants. Short-lived access tokens with rotating refresh tokens, never stored in localStorage." },
-  { icon: Fingerprint, title: "Role-based access control", body: "Four roles — student, instructor, org admin, platform admin — each mapped to an explicit capability matrix, enforced by shared middleware rather than ad hoc checks." },
-  { icon: Lock, title: "Tenant isolation", body: "Every tenant-scoped query is required to carry an organization filter at the query-builder layer, so an unscoped query is a build-time error, not a runtime leak." },
-  { icon: ShieldCheck, title: "Ground-truth protection", body: "The answer key behind every scenario is read only by the scoring engine's internal path — session and scenario read endpoints are built from an explicit column allow-list, never a raw select." },
-  { icon: Timer, title: "Rate limiting", body: "Per-IP and per-user limits at the API layer, with tighter limits specifically on auth endpoints and on evidence/note endpoints to blunt scripted solving." },
-  { icon: ScrollText, title: "Audit logging", body: "Every mutating action is logged and hash-chained, so tampering with the log itself is detectable." },
+  { icon: KeyRound, title: "Authentication", body: "Secure authentication for individuals and organizations, with support for password-based authentication and enterprise SSO where enabled. Sessions use short-lived access credentials and rotating refresh tokens, with sensitive authentication material protected from client-side storage." },
+  { icon: Fingerprint, title: "Role-based access control", body: "Access is governed by explicit roles and permissions — student, instructor, organization administrator, platform administrator. Capabilities are enforced centrally through shared authorization controls rather than scattered application-level checks." },
+  { icon: Lock, title: "Tenant isolation", body: "Organization data is logically isolated at the data-access layer. Tenant-scoped queries are required to include the appropriate organization boundary, reducing the risk of accidental cross-tenant access." },
+  { icon: ShieldCheck, title: "Ground-truth protection", body: "Scenario ground truth is protected from normal learner-facing APIs. Scoring infrastructure accesses answer keys through controlled internal paths, while learner-facing endpoints expose only the data required to conduct the investigation." },
+  { icon: Timer, title: "Rate limiting", body: "API rate limits protect authentication, investigation, evidence, and other sensitive endpoints against automated abuse and excessive request activity." },
+  { icon: ScrollText, title: "Audit logging", body: "Security-relevant and administrative actions are recorded through audit logging to provide traceability across the platform." },
 ];
 
 function SecurityPage() {
@@ -41,13 +41,19 @@ function SecurityPage() {
           className="mt-5 max-w-2xl text-[32px] font-semibold leading-[1.08] tracking-[-0.03em] text-white md:text-[42px]"
           style={displayFont}
         >
-          Designed in from the architecture up.
+          Security is built into the platform architecture.
         </h1>
         <p className="mt-4 max-w-xl text-[14.5px] leading-[1.7] text-white/55">
-          ThreatLens handles synthetic training telemetry, not real customer
-          security data — but the platform is architected with the same
-          discipline as the enterprise tools it's modeled on. This page
-          describes that architecture, not a compliance certification.
+          ThreatLens is designed for security investigation training using
+          synthetic telemetry rather than real customer security data. The
+          platform architecture follows the same principles of isolation,
+          access control, data protection, and operational security
+          expected from modern enterprise software.
+        </p>
+        <p className="mt-3 max-w-xl text-[13px] leading-[1.7] text-white/40">
+          This page describes the platform's security architecture and
+          engineering practices. It is not a compliance certification or
+          security certification.
         </p>
       </Section>
 
@@ -68,18 +74,17 @@ function SecurityPage() {
 
       <Section tone="dark">
         <p className="max-w-2xl text-[13.5px] leading-[1.8] text-white/55">
-          Secrets are never committed to the repository and are rotated on
-          any suspected exposure. Data in transit is encrypted with TLS;
-          higher-sensitivity fields (SSO configuration, MFA secrets) get an
-          additional layer of application-level encryption at rest. Every
-          request body is validated at the boundary before it reaches
-          business logic, and dependencies are scanned continuously for
-          known vulnerabilities.
+          Secrets are kept outside the source repository and rotated when
+          exposure is suspected. Data in transit is protected using TLS,
+          while sensitive configuration data receives additional protection
+          at rest. Requests are validated at application boundaries, and
+          dependencies are continuously monitored for known security
+          vulnerabilities.
         </p>
         <p className="mt-4 max-w-2xl text-[13.5px] leading-[1.8] text-white/40">
-          Have a specific security question? Reach us at{" "}
-          <a href="mailto:security@clickbox.io" className="text-white underline underline-offset-2">
-            security@clickbox.io
+          Have a security question? Contact us at{" "}
+          <a href="mailto:info@useclickbox.com" className="text-white underline underline-offset-2">
+            info@useclickbox.com
           </a>
           .
         </p>

@@ -14,7 +14,7 @@ export const Route = createFileRoute("/correlation")({
       {
         name: "description",
         content:
-          "Isolated signals become one attack path only once you join them. Practice reading the evidence graph in ThreatLens.",
+          "Correlate identity, endpoint, email, and cloud signals into a defensible incident narrative. Practice reading the evidence graph in ThreatLens.",
       },
     ],
   }),
@@ -37,8 +37,15 @@ function CorrelationPage() {
             className="mx-auto mt-5 max-w-2xl text-[34px] font-semibold leading-[1.08] tracking-[-0.03em] text-white md:text-[46px]"
             style={displayFont}
           >
-            Isolated signals become one attack path — once you join them.
+            Connect the signals. Reveal the attack path.
           </h1>
+        </Reveal>
+        <Reveal delay={120}>
+          <p className="mx-auto mt-5 max-w-xl text-[15px] leading-[1.6] text-white/55">
+            Individual events rarely tell the whole story. Correlate
+            activity across identities, endpoints, email, cloud, and
+            network telemetry to uncover how an incident developed.
+          </p>
         </Reveal>
       </Section>
 
@@ -49,8 +56,8 @@ function CorrelationPage() {
       <Section tone="dark">
         <SectionHead
           eyebrow="Correlation practice"
-          title="The graph is real. The connecting is yours."
-          sub="Identity, endpoint, email, cloud and network events sit there until you connect them. Learn to read the graph, not just the alert list — that's the actual job."
+          title="Find the connection others might miss."
+          sub="Identity, endpoint, email, cloud, and network events remain independent until you establish the relationship between them. Learn to move beyond individual alerts and identify the sequence, dependencies, and relationships that reveal an incident."
         />
         <Reveal className="mt-14">
           <CorrelationEngine />

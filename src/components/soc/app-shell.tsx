@@ -38,6 +38,7 @@ import {
   Activity,
   Menu,
   X,
+  ArrowLeft,
 
 } from "lucide-react";
 import { useEffect, useState, type ReactNode } from "react";
@@ -45,6 +46,7 @@ import { cn } from "@/lib/utils";
 import { Kbd } from "@/components/soc/primitives";
 import { CommandPalette, useCommandPalette } from "@/components/soc/command-palette";
 import { PageTransition } from "@/components/soc/ui/motion";
+import { Mark, BrandLockup } from "@/components/soc/marketing/brand";
 import { useSoc } from "@/lib/store";
 
 type NavItem = { to: string; label: string; icon: React.ComponentType<{ className?: string }>; badge?: string };
@@ -228,6 +230,20 @@ function SidebarBody({ onNavigate }: { onNavigate?: () => void }) {
 function Sidebar() {
   return (
     <aside className="hidden w-[248px] shrink-0 border-r border-sidebar-border bg-sidebar lg:flex lg:flex-col">
+      <div className="flex items-center justify-between border-b border-sidebar-border p-3">
+        <Link to="/" className="flex items-center gap-2">
+          <Mark className="size-6" />
+          <span className="text-foreground"><BrandLockup size="footer" /></span>
+        </Link>
+        <Link
+          to="/"
+          aria-label="Back to platform"
+          title="Back to platform"
+          className="flex size-7 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-sidebar-accent/60 hover:text-foreground"
+        >
+          <ArrowLeft className="size-4" />
+        </Link>
+      </div>
       <SidebarBody />
     </aside>
   );
@@ -244,7 +260,10 @@ function MobileNavDrawer({ open, onClose }: { open: boolean; onClose: () => void
       />
       <div className="absolute inset-y-0 left-0 flex w-[280px] max-w-[82vw] flex-col border-r border-sidebar-border bg-sidebar">
         <div className="flex items-center justify-between border-b border-sidebar-border p-3">
-          <span className="pl-1 text-[13px] font-semibold">ThreatLens</span>
+          <Link to="/" onClick={onClose} className="flex items-center gap-2" aria-label="Back to platform">
+            <Mark className="size-6" />
+            <span className="text-foreground"><BrandLockup size="footer" /></span>
+          </Link>
           <button
             onClick={onClose}
             aria-label="Close menu"

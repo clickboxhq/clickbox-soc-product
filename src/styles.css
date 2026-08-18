@@ -76,16 +76,16 @@
 .dark {
   --radius: 0.75rem;
 
-  --background: #111111;
-  --sidebar: #090909;
-  --surface: #111111;
-  --surface-2: #1C1C1C;
-  --card: #171717;
-  --card-foreground: #EEF2F6;
-  --popover: #1C1C1C;
-  --popover-foreground: #EEF2F6;
+  --background: #050505;
+  --sidebar: #050505;
+  --surface: #050505;
+  --surface-2: #1F1F1F;
+  --card: #121212;
+  --card-foreground: #F7F7F7;
+  --popover: #171717;
+  --popover-foreground: #F7F7F7;
 
-  --foreground: #F3F6F9;
+  --foreground: #F7F7F7;
   --secondary-foreground: #AEBAC6;
   --muted-foreground: #8391A0;
 

@@ -94,8 +94,8 @@ export function Signal() {
       <ChapterCopy
         n="01"
         label="Signal"
-        heading="Every case starts as noise."
-        body="Identity logs, endpoint telemetry, email headers, cloud audit trails — a fresh scenario, generated the moment you open it. Synthetic, never real customer data, but built to feel exactly like a live queue on a bad day."
+        heading="Every investigation begins with incomplete information."
+        body="ThreatLens places you inside realistic security scenarios containing identity activity, endpoint telemetry, email signals, cloud audit trails, and network events. Each case uses synthetic data designed to reproduce the ambiguity and complexity of a real security investigation — without exposing real customer data."
         facts={[
           ["events / case", "80–300"],
           ["domains covered", "4"],
@@ -119,8 +119,8 @@ export function Correlation() {
         <ChapterCopy
           n="02"
           label="Correlation"
-          heading="Learn to see the graph, not the alerts."
-          body="An OAuth consent grant, a new device, a mailbox rule, a database query. Individually: noise. Joined on identity, host, and time: an intrusion. Pinning the right evidence and drawing that connection is the skill — the console just gives you a place to do it."
+          heading="See the relationships behind the alerts."
+          body="Security investigations depend on understanding relationships, not simply reading individual alerts. Connect identity activity, endpoint behavior, email events, cloud activity, and network signals across time to determine whether separate events belong to the same incident. The platform provides the evidence and relationships. The investigation is yours."
           facts={[
             ["signal domains", "4"],
             ["decoys seeded", "on purpose"],
@@ -137,8 +137,8 @@ export function Investigation() {
       <ChapterCopy
         n="03"
         label="Investigation"
-        heading="You do the reading. No one does it for you."
-        body="Pull the evidence, test your hypotheses, discard what doesn't hold. The console gives you the graph and the tools an analyst actually uses — but the reasoning is yours, because that's the part a real incident won't do for you either."
+        heading="Pull the evidence. Test your reasoning."
+        body="Pull the evidence, test your hypotheses, and discard what doesn't hold. The console provides the graph and the tools an analyst actually uses — the reasoning behind each conclusion is what gets assessed."
         facts={[
           ["evidence pinned / case", "your call"],
           ["hints", "cost points"],
@@ -165,8 +165,8 @@ export function Understanding() {
       <ChapterCopy
         n="04"
         label="Understanding"
-        heading="Four alerts. One story — if you can write it."
-        body="Resolving scattered detections into a single narrative with a beginning, a blast radius, and an owner is the job. Tag each step to MITRE ATT&CK and write the summary yourself — it's graded on whether the story actually holds up."
+        heading="Turn fragmented signals into a defensible incident narrative."
+        body="Security incidents rarely arrive as a single clean alert. ThreatLens gives you the individual signals and asks you to determine how they connect. Correlate activity across users, hosts, identities, applications, and time — then build the incident narrative yourself. Map relevant activity to MITRE ATT&CK and explain why the evidence supports your conclusion."
       />
       <Reveal delay={120}>
         <div className="relative">
@@ -279,8 +279,8 @@ export function Response() {
         <ChapterCopy
           n="05"
           label="Response"
-          heading="What happened, and what you'd do next."
-          body="Every case ends with a verdict and a set of response actions you choose — each one scored against a hidden ground truth. Miss the required steps or take the wrong ones, and it shows up in your breakdown, not just your final grade."
+          heading="Reach a conclusion. Decide what happens next."
+          body="Every investigation ends with an evidence-backed verdict and a response decision. Determine what happened, assess the impact, and select the actions you would take next. Your decisions are evaluated against the scenario's hidden ground truth and reflected in your investigation breakdown."
           facts={[
             ["verdict options", "TP · FP · benign"],
             ["scored on", "evidence + actions"],

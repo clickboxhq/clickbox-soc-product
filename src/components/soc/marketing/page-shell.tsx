@@ -30,7 +30,7 @@ export function Section({
       style={
         tone === "light"
           ? { background: "#FFFFFF", color: "#0A0C0F" }
-          : { background: "#000000", color: "#E9EEF3" }
+          : { background: "#000000", color: "#EDEDED" }
       }
     >
       <div className={`relative mx-auto max-w-7xl px-6 py-24 ${className}`}>{children}</div>

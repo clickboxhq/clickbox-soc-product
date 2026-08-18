@@ -59,7 +59,7 @@ function ScoringPage() {
             </Reveal>
           </div>
           <Reveal delay={100}>
-            <div className="rounded-2xl border border-white/10 bg-[#080B0F] p-6">
+            <div className="rounded-2xl border border-white/10 bg-[#0A0A0A] p-6">
               <div
                 className="text-[10px] uppercase tracking-[0.2em] text-white/35"
                 style={monoFont}

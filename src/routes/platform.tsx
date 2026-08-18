@@ -60,8 +60,15 @@ function PlatformPage() {
             className="mx-auto mt-5 max-w-2xl text-[34px] font-semibold leading-[1.08] tracking-[-0.03em] text-white md:text-[46px]"
             style={displayFont}
           >
-            Everything a SOC analyst needs to practice. Nothing they don't.
+            A complete environment for security investigation practice.
           </h1>
+        </Reveal>
+        <Reveal delay={120}>
+          <p className="mx-auto mt-5 max-w-xl text-[15px] leading-[1.6] text-white/55">
+            Investigate across identity, endpoint, email, cloud, and network
+            telemetry in one structured environment — from the first alert
+            to the final verdict.
+          </p>
         </Reveal>
       </Section>
 

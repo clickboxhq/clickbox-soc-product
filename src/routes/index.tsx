@@ -4,17 +4,19 @@ import {
   Award,
   ArrowRight,
   BarChart3,
-  Bell,
   Boxes,
   Building2,
+  FileSearch,
   Gavel,
   GraduationCap,
   KeyRound,
   Landmark,
   Layers,
   LayoutDashboard,
+  Lightbulb,
   Library,
   Menu,
+  NotebookPen,
   Presentation,
   Radar,
   Rocket,
@@ -129,22 +131,24 @@ export function Nav() {
             </a>
           ))}
         </nav>
-        <div className="flex items-center gap-1.5">
+        <div className="hidden items-center gap-1.5 md:flex">
           <Link
             to="/signup"
-            className="hidden rounded-md px-3 py-1.5 text-[13px] text-white/60 transition-colors hover:text-white sm:inline-flex"
+            className="rounded-md px-3 py-1.5 text-[13px] text-white/60 transition-colors hover:text-white"
           >
             Get Started
           </Link>
           <Link to="/login" className="btn-primary text-[13px]">
             Login <ArrowRight className="size-3.5" />
           </Link>
+        </div>
+        <div className="flex items-center gap-1.5 md:hidden">
           <button
             type="button"
             onClick={() => setMenuOpen((v) => !v)}
             aria-label={menuOpen ? "Close menu" : "Open menu"}
             aria-expanded={menuOpen}
-            className="ml-1 flex size-9 shrink-0 items-center justify-center rounded-md border border-white/12 bg-white/[0.04] text-white/80 transition-colors hover:text-white md:hidden"
+            className="flex size-9 shrink-0 items-center justify-center rounded-md border border-white/12 bg-white/[0.04] text-white/80 transition-colors hover:text-white"
           >
             {menuOpen ? <X className="size-4" /> : <Menu className="size-4" />}
           </button>
@@ -166,6 +170,13 @@ export function Nav() {
             ))}
           </nav>
           <div className="mt-3 flex flex-col gap-2 border-t border-white/8 pt-4">
+            <Link
+              to="/login"
+              onClick={() => setMenuOpen(false)}
+              className="btn-primary w-full justify-center"
+            >
+              Login <ArrowRight className="size-3.5" />
+            </Link>
             <Link
               to="/signup"
               onClick={() => setMenuOpen(false)}
@@ -210,76 +221,48 @@ function HeroArtwork() {
 function Hero() {
   return (
     <section
-      className="relative overflow-hidden px-6 pb-16 pt-24 md:pb-20 md:pt-28"
-      style={{ background: "#000000", color: "#E9EEF3" }}
+      className="relative overflow-hidden px-5 pb-14 pt-28 sm:px-8 md:pb-16 md:pt-40"
+      style={{ background: "#000000", color: "#EDEDED" }}
     >
       <HeroArtwork />
-      <div className="mx-auto max-w-7xl">
-        <div className="mx-auto max-w-3xl text-center">
+      <div className="mx-auto max-w-[1440px]">
+        <div className="max-w-xl">
           <Reveal>
-            <div
-              className="inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/[0.04] px-3 py-1 text-[11px] uppercase tracking-[0.18em] text-white/60 backdrop-blur"
-              style={monoFont}
-            >
-              <span
-                className="size-1.5 rounded-full"
-                style={{
-                  background: "var(--primary)",
-                  boxShadow:
-                    "0 0 10px 2px color-mix(in oklab, var(--primary) 60%, transparent)",
-                }}
-              />
-              Security Investigation &amp; Analyst Development Platform
-            </div>
-          </Reveal>
-
-          <Reveal delay={70}>
             <h1
-              className="mt-5 text-[38px] font-semibold leading-[1.02] tracking-[-0.04em] text-white md:text-[54px]"
+              className="text-[34px] font-semibold leading-[1.1] tracking-[-0.03em] text-white md:text-[44px]"
               style={displayFont}
             >
-              Train Like You'll Work.
+              Real incidents. Real investigation. Real skills.
             </h1>
           </Reveal>
 
-          <Reveal delay={160}>
-            <p
-              className="mx-auto mt-4 max-w-2xl text-[11.5px] uppercase tracking-[0.14em] text-white/35"
-              style={monoFont}
-            >
-              Built for individuals · universities · bootcamps · MSSPs ·
-              enterprises · government programs · workforce development ·
-              accelerators &amp; incubators
-            </p>
-          </Reveal>
-
-          <Reveal delay={190}>
-            <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
-              <Link to="/signup" className="btn-primary w-full sm:w-auto">
-                <Layers className="size-4" /> Start investigating — free
+          <Reveal delay={110}>
+            <div className="mt-7 flex flex-wrap items-center gap-3">
+              <Link to="/signup" className="btn-primary">
+                Start investigating <ArrowRight className="size-3.5" />
               </Link>
-              <a href="#book" className="btn-ghost w-full sm:w-auto">
-                For institutions & teams <ArrowRight className="size-4" />
+              <a href="mailto:info@useclickbox.com" className="btn-ghost">
+                For institutions &amp; teams
               </a>
             </div>
           </Reveal>
         </div>
 
-        <Reveal delay={250} className="mt-12 md:mt-14">
+        <Reveal delay={200} className="mt-14 md:mt-20">
           <div className="relative">
             <div
               aria-hidden
-              className="pointer-events-none absolute -inset-x-10 -top-10 bottom-0 -z-10"
+              className="pointer-events-none absolute -inset-x-20 -inset-y-16 -z-10"
               style={{
                 background:
-                  "radial-gradient(900px 320px at 50% 0%, color-mix(in oklab, var(--primary) 12%, transparent), transparent 70%)",
+                  "radial-gradient(1100px 420px at 50% 15%, color-mix(in oklab, var(--primary) 14%, transparent), transparent 70%)",
               }}
             />
             <CommandCenter />
           </div>
         </Reveal>
 
-        <Reveal delay={320}>
+        <Reveal delay={280}>
           <ProofStrip />
         </Reveal>
       </div>
@@ -291,12 +274,12 @@ function Hero() {
 /* -------------------------- PIPELINE STRIP -------------------------- */
 
 const STEPS = [
-  { n: "01", icon: Bell, title: "Alert", body: "A realistic, synthetic alert lands in the queue." },
-  { n: "02", icon: Layers, title: "Investigation", body: "Work the evidence across identity, endpoint, email, cloud." },
-  { n: "03", icon: ScrollText, title: "Timeline", body: "Assemble the case into an ordered narrative." },
-  { n: "04", icon: Gavel, title: "Verdict", body: "True positive, false positive, or benign — your call." },
-  { n: "05", icon: BarChart3, title: "Scoring", body: "Graded against a hidden ground truth." },
-  { n: "06", icon: TrendingUp, title: "Improvement", body: "Score trend and mastery, case over case." },
+  { n: "01", icon: FileSearch, title: "Evidence Review", body: "Examine activity across identity, endpoint, email, cloud, and network telemetry. Determine which signals matter and preserve the evidence that supports your investigation." },
+  { n: "02", icon: Lightbulb, title: "Hypothesis", body: "Develop a working explanation of what happened, then challenge it against the available evidence. Deliberate decoys help test whether your reasoning holds up." },
+  { n: "03", icon: NotebookPen, title: "Investigation Notes", body: "Record your observations, assumptions, questions, and conclusions as the investigation develops. Your reasoning becomes part of the assessment." },
+  { n: "04", icon: ScrollText, title: "Timeline", body: "Organize relevant events into a coherent timeline and identify the sequence that connects the individual signals into an incident." },
+  { n: "05", icon: Gavel, title: "Findings & Verdict", body: "Classify the incident and explain your conclusion. Select the response actions you would take based on the evidence and observed impact." },
+  { n: "06", icon: BarChart3, title: "Scoring", body: "Your investigation is evaluated against the scenario's hidden ground truth, including evidence selection, reasoning, findings, and response decisions." },
 ];
 
 function LearningJourney() {
@@ -305,45 +288,35 @@ function LearningJourney() {
       <div className="relative mx-auto max-w-7xl px-6 py-24">
         <SectionHead
           tone="light"
-          eyebrow="Learning journey"
-          title="From alert to measurable improvement."
-          sub="Six stages, every one of them yours to work through. Nothing is solved for you — that's the entire point."
+          eyebrow="How it works"
+          title="From first signal to final verdict."
+          sub="Six stages. Every one of them yours to work through."
         />
-        <div className="relative mt-14">
-          <div
-            aria-hidden
-            className="absolute left-0 right-0 top-[22px] hidden h-px lg:block"
-            style={{
-              background:
-                "linear-gradient(90deg, transparent, rgba(10,12,15,.14) 10%, rgba(10,12,15,.14) 90%, transparent)",
-            }}
-          />
-          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-6 lg:gap-5">
-            {STEPS.map((s, i) => (
-              <Reveal key={s.n} delay={i * 60}>
-                <div className="relative">
-                  <div className="flex size-11 items-center justify-center rounded-lg border border-black/10 bg-black/[0.03]">
-                    <s.icon className="size-[18px] text-black/70" />
-                  </div>
-                  <div
-                    className="mt-4 text-[10.5px] tracking-[0.2em] text-black/35"
-                    style={monoFont}
-                  >
-                    {s.n}
-                  </div>
-                  <div
-                    className="mt-1.5 text-[14px] font-semibold text-[#0A0C0F]"
-                    style={displayFont}
-                  >
-                    {s.title}
-                  </div>
-                  <div className="mt-1.5 text-[13px] leading-[1.6] text-black/55">
-                    {s.body}
-                  </div>
+        <div className="mt-14 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-10 lg:gap-y-12">
+          {STEPS.map((s, i) => (
+            <Reveal key={s.n} delay={i * 60}>
+              <div className="relative">
+                <div className="flex size-11 items-center justify-center rounded-lg border border-black/10 bg-black/[0.03]">
+                  <s.icon className="size-[18px] text-black/70" />
                 </div>
-              </Reveal>
-            ))}
-          </div>
+                <div
+                  className="mt-4 text-[10.5px] tracking-[0.2em] text-black/35"
+                  style={monoFont}
+                >
+                  {s.n}
+                </div>
+                <div
+                  className="mt-1.5 text-[15px] font-semibold text-[#0A0C0F]"
+                  style={displayFont}
+                >
+                  {s.title}
+                </div>
+                <div className="mt-1.5 max-w-sm text-[13px] leading-[1.65] text-black/55">
+                  {s.body}
+                </div>
+              </div>
+            </Reveal>
+          ))}
         </div>
       </div>
     </section>
@@ -409,8 +382,8 @@ function CustomerTypes() {
         <SectionHead
           tone="light"
           eyebrow="Who it's for"
-          title="Built for whoever has to learn this the hard way."
-          sub="ThreatLens serves individuals and organizations alike — anyone who needs real investigation reps before the stakes are real."
+          title="Built for individuals and organizations."
+          sub="A practical environment to build skills. Infrastructure to train talent at scale."
         />
         <SegmentGrid label="For individuals" items={INDIVIDUAL_SEGMENTS} />
         <SegmentGrid label="For organizations" items={ORG_SEGMENTS} />
@@ -462,7 +435,7 @@ function useOnScreenOnce<T extends HTMLElement>() {
 function Trust() {
   const { ref, seen } = useOnScreenOnce<HTMLDivElement>();
   return (
-    <section style={{ background: "#000000", color: "#E9EEF3" }}>
+    <section style={{ background: "#000000", color: "#EDEDED" }}>
       <div ref={ref} className="relative mx-auto max-w-7xl px-6 py-16">
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
           {TRUST_STATS.map((s, i) => (
@@ -556,8 +529,8 @@ const TIERS = [
     name: "Institutions & Teams",
     featured: true,
     price: "Contact sales",
-    cta: "Book a demo",
-    ctaHref: "#book",
+    cta: "Let's Talk",
+    ctaHref: "mailto:info@useclickbox.com",
     body: "For bootcamps, universities, and companies onboarding a cohort at once.",
     features: [
       "Unlimited students/analysts",
@@ -571,12 +544,12 @@ const TIERS = [
 
 function Pricing() {
   return (
-    <section id="pricing" style={{ background: "#000000", color: "#E9EEF3" }}>
+    <section id="pricing" style={{ background: "#000000", color: "#EDEDED" }}>
       <div className="relative mx-auto max-w-7xl px-6 py-24">
       <SectionHead
         eyebrow="Pricing"
-        title="Free to start. Priced for institutions at scale."
-        sub="Practice on your own for free. Cohort and institutional plans are custom-quoted to your roster size and needs."
+        title="Start free. Scale when your team is ready."
+        sub="Free for individuals. Custom-priced for cohorts and institutions."
       />
 
       <div className="mt-12 grid grid-cols-1 gap-4 md:grid-cols-2">
@@ -689,7 +662,7 @@ const FOOTER_COLS = [
     title: "Company",
     links: [
       { l: "Security", h: "/security" },
-      { l: "Contact", h: "mailto:hello@clickbox.io" },
+      { l: "Contact", h: "mailto:info@useclickbox.com" },
     ],
   },
   {
@@ -703,13 +676,13 @@ const FOOTER_COLS = [
 
 export function Footer() {
   return (
-    <footer id="book" className="relative border-t border-white/8 bg-black">
+    <footer className="relative border-t border-white/8 bg-black">
       <div className="relative mx-auto max-w-7xl px-6 py-24">
         <div
           className="relative overflow-hidden rounded-2xl border p-8 md:p-14"
           style={{
             borderColor: "rgba(255,255,255,0.1)",
-            background: "#07090C",
+            background: "#080808",
           }}
         >
           <GridField size={40} opacity={0.06} />
@@ -727,7 +700,7 @@ export function Footer() {
               <Link to="/signup" className="btn-primary">
                 Get started <ArrowRight className="size-4" />
               </Link>
-              <a href="mailto:hello@clickbox.io" className="btn-ghost">
+              <a href="mailto:info@useclickbox.com" className="btn-ghost">
                 For institutions
               </a>
             </div>
@@ -745,9 +718,10 @@ export function Footer() {
               </span>
             </div>
             <p className="mt-4 text-[12.5px] leading-[1.65] text-white/40">
-              ThreatLens — the security investigation &amp; analyst
-              development platform. Learn by doing the job, not by reading
-              about it.
+              ThreatLens is a security investigation and analyst
+              development platform built to help individuals and
+              organizations develop practical incident investigation
+              capability through realistic, hands-on scenarios.
             </p>
           </div>
           {FOOTER_COLS.map((col) => (
@@ -803,7 +777,7 @@ export function Footer() {
  * dedicated page (/correlation) to keep the homepage shorter. */
 function HomeDemos() {
   return (
-    <div id="product" className="relative" style={{ background: "#000000", color: "#E9EEF3" }}>
+    <div id="product" className="relative" style={{ background: "#000000", color: "#EDEDED" }}>
       <DemoSection id="workspace">
         <div className="pointer-events-none absolute inset-0 -z-10">
           <Pathways opacity={0.32} />
@@ -811,8 +785,8 @@ function HomeDemos() {
         <DemoIntro
           index="01"
           kicker="Investigation Workspace"
-          title="Everything you need to investigate. Nothing solved for you."
-          body="The real console — evidence, timeline, notes."
+          title="Investigate with the tools analysts actually use."
+          body="Evidence, timeline, and case notes in one workspace."
         />
         <Reveal className="mt-14">
           <InvestigationWorkspace />
