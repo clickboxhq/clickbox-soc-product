@@ -8,7 +8,7 @@ export const Route = createFileRoute("/students")({
   component: StudentsPage,
   head: () => ({
     meta: [
-      { title: "For Individuals — ThreatLens by ClickBox" },
+      { title: "For Individuals — ThreatLens" },
       {
         name: "description",
         content:

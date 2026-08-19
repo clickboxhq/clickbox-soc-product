@@ -58,7 +58,7 @@ function ProfilePage() {
           </div>
           <div className="border-t border-border p-4">
             <div className="mb-2 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">Certificates</div>
-            {["ClickBox Certified Analyst — L2", "Identity Attack Investigation", "Endpoint Forensics Fundamentals"].map((c) => (
+            {["ThreatLens Certified Analyst — L2", "Identity Attack Investigation", "Endpoint Forensics Fundamentals"].map((c) => (
               <div key={c} className="flex items-center gap-2 py-1 text-[12.5px]">
                 <Award className="size-3.5 text-[color:var(--info)]" />
                 {c}

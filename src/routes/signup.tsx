@@ -10,7 +10,7 @@ export const Route = createFileRoute("/signup")({
   component: SignupPage,
   head: () => ({
     meta: [
-      { title: "Get Started — ThreatLens by ClickBox" },
+      { title: "Get Started — ThreatLens" },
       { name: "robots", content: "noindex" },
     ],
   }),
@@ -105,7 +105,7 @@ function SignupPage() {
         <div className="flex items-center justify-between px-6 py-5 lg:justify-end lg:px-10">
           <Link to="/" className="flex items-center gap-2.5 lg:hidden" style={displayFont}>
             <Mark />
-            <span className="text-[15px] font-semibold text-[#0A0C0F]">ClickBox | ThreatLens</span>
+            <span className="text-[15px] font-semibold text-[#0A0C0F]">ThreatLens</span>
           </Link>
           <Link to="/login" className="text-[13px] text-black/55 transition-colors hover:text-black">
             Already have an account? <span className="font-medium text-[#0A0C0F]">Login</span>

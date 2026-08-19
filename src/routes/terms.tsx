@@ -6,7 +6,7 @@ export const Route = createFileRoute("/terms")({
   component: TermsPage,
   head: () => ({
     meta: [
-      { title: "Terms of Service — ThreatLens by ClickBox" },
+      { title: "Terms of Service — ThreatLens" },
       { name: "robots", content: "noindex" },
     ],
   }),
@@ -31,7 +31,7 @@ const SECTIONS = [
   },
   {
     h: "Intellectual property",
-    b: "Scenarios, telemetry generation, scoring logic, and platform content belong to ClickBox. Your own case notes and submissions remain yours; we use them only to operate and improve the platform.",
+    b: "Scenarios, telemetry generation, scoring logic, and platform content belong to ThreatLens. Your own case notes and submissions remain yours; we use them only to operate and improve the platform.",
   },
   {
     h: "Termination",

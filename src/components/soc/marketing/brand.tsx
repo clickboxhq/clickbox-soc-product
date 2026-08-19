@@ -1,4 +1,4 @@
-/** The ClickBox / ThreatLens mark. */
+/** The ThreatLens mark. */
 export function Mark({ className = "size-7" }: { className?: string }) {
   return (
     <span
@@ -6,7 +6,7 @@ export function Mark({ className = "size-7" }: { className?: string }) {
     >
       <img
         src="/brand-mark.png"
-        alt="ClickBox"
+        alt="ThreatLens"
         className="size-full object-cover"
         draggable={false}
       />
@@ -14,16 +14,12 @@ export function Mark({ className = "size-7" }: { className?: string }) {
   );
 }
 
-/** Nav/footer wordmark lockup: "ClickBox | ThreatLens". */
+/** Nav/footer wordmark: "ThreatLens". */
 export function BrandLockup({ size = "nav" }: { size?: "nav" | "footer" }) {
   const big = size === "nav";
   return (
-    <span
-      className={`flex items-center gap-2 font-semibold tracking-[-0.02em] ${big ? "text-[15px] gap-2.5" : "text-[14px] gap-1.5"}`}
-    >
-      ClickBox
-      <span className={`${big ? "h-3.5" : "h-3"} w-px bg-white/15`} aria-hidden />
-      <span className="font-normal text-white/70">ThreatLens</span>
+    <span className={`font-semibold tracking-[-0.02em] ${big ? "text-[15px]" : "text-[14px]"}`}>
+      ThreatLens
     </span>
   );
 }

@@ -35,13 +35,13 @@ export const Route = createFileRoute("/app/cases/$id")({
   component: CaseWorkspace,
   head: () => ({
     meta: [
-      { title: "Case Management — ClickBox" },
+      { title: "Case Management — ThreatLens" },
       {
         name: "description",
         content:
           "Work a single incident end to end: evidence locker, global timeline, analyst notes, response actions, and scored verdict submission.",
       },
-      { property: "og:title", content: "Case Management — ClickBox" },
+      { property: "og:title", content: "Case Management — ThreatLens" },
       {
         property: "og:description",
         content: "Evidence locker, timeline reconstruction, containment actions, and rubric-based scoring.",

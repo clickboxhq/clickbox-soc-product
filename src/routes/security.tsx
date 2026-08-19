@@ -8,7 +8,7 @@ export const Route = createFileRoute("/security")({
   component: SecurityPage,
   head: () => ({
     meta: [
-      { title: "Security — ThreatLens by ClickBox" },
+      { title: "Security — ThreatLens" },
       {
         name: "description",
         content: "How ThreatLens is architected to handle authentication, authorization, tenant isolation, and data protection.",

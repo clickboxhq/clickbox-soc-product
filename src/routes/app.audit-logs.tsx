@@ -8,7 +8,7 @@ export const Route = createFileRoute("/app/audit-logs")({
       { title: "ThreatLens · Audit Logs" },
       { name: "description", content: "Platform audit trail for investigation actions, grading changes, and admin events." },
       { property: "og:title", content: "ThreatLens · Audit Logs" },
-      { property: "og:description", content: "Immutable audit trail across the ClickBox training platform." },
+      { property: "og:description", content: "Immutable audit trail across the ThreatLens platform." },
     ],
   }),
 });

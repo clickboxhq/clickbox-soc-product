@@ -70,7 +70,7 @@ function LearningPage() {
         <Panel title="Recent certificates" padded={false}>
           <ul className="divide-y divide-border">
             {[
-              ["ClickBox Certified Analyst — L2", "Jun 24, 2026"],
+              ["ThreatLens Certified Analyst — L2", "Jun 24, 2026"],
               ["Identity Attack Investigation", "Jun 12, 2026"],
               ["Endpoint Forensics Fundamentals", "May 30, 2026"],
               ["Email Threat Investigation", "May 18, 2026"],

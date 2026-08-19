@@ -119,7 +119,7 @@ Authentication-Results: contoso.com; spf=fail (sender IP is 185.220.101.44)
 Message-ID: <5d1c0a1c-4e7b-adobe-secure@mailer-31.rr-out.com>
 From: "Adobe Billing" <billing@adobe-secure-invoice.com>
 Subject: Adobe subscription — action required
-X-ClickBox-Verdict: PHISH/BRAND-IMPERSONATION`}
+X-ThreatLens-Verdict: PHISH/BRAND-IMPERSONATION`}
             </pre>
           </Panel>
         </div>

@@ -9,13 +9,13 @@ export const Route = createFileRoute("/app/timeline")({
   component: TimelinePage,
   head: () => ({
     meta: [
-      { title: "Global Timeline — ClickBox" },
+      { title: "Global Timeline — ThreatLens" },
       {
         name: "description",
         content:
           "Every event you curated as relevant, in order, grouped into per-identity, per-device and per-mailbox swimlanes.",
       },
-      { property: "og:title", content: "Global Timeline — ClickBox" },
+      { property: "og:title", content: "Global Timeline — ThreatLens" },
       { property: "og:description", content: "Reconstruct the attack chain across identity, endpoint, email and cloud." },
     ],
   }),

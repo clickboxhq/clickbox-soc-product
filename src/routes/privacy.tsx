@@ -6,7 +6,7 @@ export const Route = createFileRoute("/privacy")({
   component: PrivacyPage,
   head: () => ({
     meta: [
-      { title: "Privacy Policy — ThreatLens by ClickBox" },
+      { title: "Privacy Policy — ThreatLens" },
       { name: "robots", content: "noindex" },
     ],
   }),

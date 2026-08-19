@@ -21,7 +21,7 @@ export const Route = createFileRoute("/platform")({
   component: PlatformPage,
   head: () => ({
     meta: [
-      { title: "Platform — ThreatLens by ClickBox" },
+      { title: "Platform — ThreatLens" },
       {
         name: "description",
         content:

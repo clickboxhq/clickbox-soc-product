@@ -62,7 +62,7 @@ function BeforeSide() {
         className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.03] px-2.5 py-1 text-[10.5px] font-medium uppercase tracking-[0.14em] text-white/55"
         style={{ fontFamily: '"Geist Mono", monospace' }}
       >
-        Without ClickBox
+        Without ThreatLens
       </span>
       <h3
         className="mt-4 text-[38px] font-semibold leading-none tracking-[-0.03em] text-white/85 md:text-[52px]"
@@ -144,7 +144,7 @@ function AfterSide() {
             border: "1px solid rgba(255,255,255,0.3)",
           }}
         >
-          With ClickBox
+          With ThreatLens
         </span>
       </div>
       <h3

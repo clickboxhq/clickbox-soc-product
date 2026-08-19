@@ -8,7 +8,7 @@ export const Route = createFileRoute("/app/certificates")({
 });
 
 const certs = [
-  { name: "ClickBox Certified Analyst — L2", id: "SBX-CA2-4419", issued: "Jun 24, 2026", expires: "Jun 24, 2028" },
+  { name: "ThreatLens Certified Analyst — L2", id: "SBX-CA2-4419", issued: "Jun 24, 2026", expires: "Jun 24, 2028" },
   { name: "Identity Attack Investigation", id: "SBX-IAI-1188", issued: "Jun 12, 2026", expires: "Jun 12, 2028" },
   { name: "Endpoint Forensics Fundamentals", id: "SBX-EFF-0921", issued: "May 30, 2026", expires: "May 30, 2028" },
   { name: "Email Threat Investigation", id: "SBX-ETI-0774", issued: "May 18, 2026", expires: "May 18, 2028" },

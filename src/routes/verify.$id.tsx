@@ -5,13 +5,13 @@ export const Route = createFileRoute("/verify/$id")({
   component: VerifyPage,
   head: () => ({
     meta: [
-      { title: "Verify a ClickBox certificate" },
+      { title: "Verify a ThreatLens certificate" },
       {
         name: "description",
-        content: "Public verification for ClickBox SOC analyst certificates. Confirms holder, track, score and issue date.",
+        content: "Public verification for ThreatLens analyst certificates. Confirms holder, track, score and issue date.",
       },
-      { property: "og:title", content: "Verify a ClickBox certificate" },
-      { property: "og:description", content: "Confirm the authenticity of a ClickBox certificate of completion." },
+      { property: "og:title", content: "Verify a ThreatLens certificate" },
+      { property: "og:description", content: "Confirm the authenticity of a ThreatLens certificate of completion." },
       { name: "robots", content: "noindex" },
     ],
   }),
@@ -27,7 +27,7 @@ function VerifyPage() {
         </div>
         <h1 className="mt-4 text-xl font-semibold tracking-tight">Certificate verified</h1>
         <p className="mt-1 text-[13px] text-secondary">
-          This credential was issued by ClickBox and has not been revoked.
+          This credential was issued by ThreatLens and has not been revoked.
         </p>
 
         <dl className="mt-6 divide-y divide-border rounded-xl border border-border bg-background text-left text-[12.5px]">

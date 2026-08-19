@@ -30,7 +30,7 @@ import {
 
 import { CommandCenter, InvestigationWorkspace, ExecutiveDashboard, ProofStrip } from "@/components/soc/marketing/demos";
 import { DemoSection, DemoIntro } from "@/components/soc/marketing/chrome";
-import { GraphField, Pathways, Schematic } from "@/components/soc/marketing/art";
+import { Pathways, Schematic } from "@/components/soc/marketing/art";
 import { Mark, BrandLockup } from "@/components/soc/marketing/brand";
 import { CountUp } from "@/components/soc/ui/count-up";
 import {
@@ -48,7 +48,7 @@ export const Route = createFileRoute("/")({
     meta: [
       {
         title:
-          "ClickBox — ThreatLens. Learn SOC investigation by doing it.",
+          "ThreatLens — Security Investigation & Analyst Development Platform",
       },
       {
         name: "description",
@@ -197,19 +197,27 @@ export function Nav() {
 function HeroArtwork() {
   return (
     <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
-      <Schematic opacity={0.35} />
-      <div className="absolute inset-x-0 top-0 h-[900px]">
-        <GraphField opacity={0.34} />
-      </div>
       <div
-        className="absolute inset-x-0 top-0 h-[820px]"
+        className="absolute inset-0"
         style={{
-          background:
-            "radial-gradient(1100px 460px at 50% -10%, color-mix(in oklab, var(--primary) 15%, transparent), transparent 62%)",
+          backgroundImage: "url(/hero-bg.jpg)",
+          backgroundSize: "cover",
+          backgroundPosition: "center 65%",
         }}
       />
       <div
-        className="absolute inset-x-0 bottom-0 h-64"
+        className="absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(100deg, #000 0%, rgba(0,0,0,0.9) 18%, rgba(0,0,0,0.55) 36%, rgba(0,0,0,0.18) 55%, rgba(0,0,0,0.1) 100%)",
+        }}
+      />
+      <div
+        className="absolute inset-x-0 top-0 h-24"
+        style={{ background: "linear-gradient(180deg, #000, transparent)" }}
+      />
+      <div
+        className="absolute inset-x-0 bottom-0 h-48"
         style={{
           background: "linear-gradient(180deg, transparent, #000)",
         }}
@@ -221,48 +229,52 @@ function HeroArtwork() {
 function Hero() {
   return (
     <section
-      className="relative overflow-hidden px-5 pb-14 pt-28 sm:px-8 md:pb-16 md:pt-40"
+      className="relative z-0 overflow-hidden px-5 pb-16 pt-28 sm:px-8 md:pb-24 md:pt-36"
       style={{ background: "#000000", color: "#EDEDED" }}
     >
       <HeroArtwork />
       <div className="mx-auto max-w-[1440px]">
-        <div className="max-w-xl">
-          <Reveal>
-            <h1
-              className="text-[34px] font-semibold leading-[1.1] tracking-[-0.03em] text-white md:text-[44px]"
-              style={displayFont}
-            >
-              Real incidents. Real investigation. Real skills.
-            </h1>
-          </Reveal>
+        <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-[minmax(0,440px)_minmax(0,1fr)] lg:gap-6">
+          <div>
+            <Reveal>
+              <h1
+                className="text-[26px] font-semibold leading-[1.15] tracking-[-0.025em] text-white sm:text-[30px] md:text-[34px]"
+                style={displayFont}
+              >
+                Real incidents. Real investigation. Real skills.
+              </h1>
+            </Reveal>
 
-          <Reveal delay={110}>
-            <div className="mt-7 flex flex-wrap items-center gap-3">
-              <Link to="/signup" className="btn-primary">
-                Start investigating <ArrowRight className="size-3.5" />
-              </Link>
-              <a href="mailto:info@useclickbox.com" className="btn-ghost">
-                For institutions &amp; teams
-              </a>
+            <Reveal delay={110}>
+              <div className="mt-7 flex flex-wrap items-center gap-3">
+                <Link to="/signup" className="btn-primary">
+                  Start investigating <ArrowRight className="size-3.5" />
+                </Link>
+                <a href="mailto:info@useclickbox.com" className="btn-ghost">
+                  For institutions &amp; teams
+                </a>
+              </div>
+            </Reveal>
+          </div>
+
+          <Reveal delay={200}>
+            <div className="relative lg:-mr-6 xl:-mr-24 2xl:-mr-40">
+              <div
+                aria-hidden
+                className="pointer-events-none absolute -inset-x-16 -inset-y-14 -z-10"
+                style={{
+                  background:
+                    "radial-gradient(900px 380px at 50% 20%, color-mix(in oklab, var(--primary) 16%, transparent), transparent 70%)",
+                }}
+              />
+              <div className="rounded-2xl shadow-[0_60px_140px_-40px_rgba(0,0,0,0.85)]">
+                <CommandCenter />
+              </div>
             </div>
           </Reveal>
         </div>
 
-        <Reveal delay={200} className="mt-14 md:mt-20">
-          <div className="relative">
-            <div
-              aria-hidden
-              className="pointer-events-none absolute -inset-x-20 -inset-y-16 -z-10"
-              style={{
-                background:
-                  "radial-gradient(1100px 420px at 50% 15%, color-mix(in oklab, var(--primary) 14%, transparent), transparent 70%)",
-              }}
-            />
-            <CommandCenter />
-          </div>
-        </Reveal>
-
-        <Reveal delay={280}>
+        <Reveal delay={280} className="mt-14 md:mt-20">
           <ProofStrip />
         </Reveal>
       </div>
@@ -758,7 +770,7 @@ export function Footer() {
         </div>
 
         <div className="mt-16 flex flex-wrap items-center justify-between gap-4 border-t border-white/8 pt-6 text-[11.5px] text-white/35">
-          <div>© 2026 ClickBox</div>
+          <div>© 2026 ThreatLens</div>
           <div className="flex items-center gap-5">
             <a href="#" className="transition-colors hover:text-white">Twitter</a>
             <a href="#" className="transition-colors hover:text-white">LinkedIn</a>

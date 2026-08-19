@@ -8,7 +8,7 @@ export const Route = createFileRoute("/app/mitre")({
   head: () => ({
     meta: [
       { title: "ThreatLens · MITRE ATT&CK Explorer" },
-      { name: "description", content: "Explore ATT&CK tactics and techniques you have practiced across ClickBox investigations." },
+      { name: "description", content: "Explore ATT&CK tactics and techniques you have practiced across ThreatLens investigations." },
       { property: "og:title", content: "ThreatLens · MITRE ATT&CK Explorer" },
       { property: "og:description", content: "Technique-level mastery across the ATT&CK enterprise matrix." },
     ],

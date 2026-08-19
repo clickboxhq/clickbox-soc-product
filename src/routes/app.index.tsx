@@ -338,7 +338,7 @@ function Dashboard() {
               Recent certificates
             </div>
             {[
-              { name: "ClickBox Certified Analyst — L2", when: "Jun 24" },
+              { name: "ThreatLens Certified Analyst — L2", when: "Jun 24" },
               { name: "Identity Attack Investigation", when: "Jun 12" },
               { name: "Endpoint Forensics Fundamentals", when: "May 30" },
             ].map((c) => (

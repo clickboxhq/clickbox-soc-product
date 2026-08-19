@@ -393,7 +393,7 @@ const TIMELINE: {
   { t: "02:14", lane: "Endpoint", title: "SSH to SRV-DB-07 accepted", detail: "Key auth · session 44m", hot: true },
   { t: "02:19", lane: "Endpoint", title: "LSASS memory read", detail: "procdump-like behaviour, unsigned binary" },
   { t: "02:41", lane: "Cloud", title: "3 privileged queries on customers.pii", detail: "1.2M rows scanned · no export" },
-  { t: "02:58", lane: "Cloud", title: "S3 policy widened on prod-artifacts", detail: "Principal: * (blocked by ClickBox playbook)" },
+  { t: "02:58", lane: "Cloud", title: "S3 policy widened on prod-artifacts", detail: "Principal: * (blocked by ThreatLens playbook)" },
 ];
 
 const LANES: { k: Lane; icon: typeof Mail }[] = [

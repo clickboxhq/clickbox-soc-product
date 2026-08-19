@@ -10,7 +10,7 @@ export const Route = createFileRoute("/correlation")({
   component: CorrelationPage,
   head: () => ({
     meta: [
-      { title: "Correlation — ThreatLens by ClickBox" },
+      { title: "Correlation — ThreatLens" },
       {
         name: "description",
         content:
