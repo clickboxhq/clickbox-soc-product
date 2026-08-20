@@ -48,7 +48,6 @@ function SettingsPage() {
               {["EU-West (Frankfurt)", "US-East (Virginia)", "APAC (Singapore)"].map((r, i) => (
                 <button key={r} className={`rounded-md border p-3 text-left ${i === 0 ? "border-[color:var(--info)]/50 bg-[color:var(--info)]/10" : "border-border bg-background/40"}`}>
                   <div className="text-[13px] font-medium">{r}</div>
-                  <div className="text-[11px] text-muted-foreground">GDPR · SOC 2 · ISO 27001</div>
                 </button>
               ))}
             </div>

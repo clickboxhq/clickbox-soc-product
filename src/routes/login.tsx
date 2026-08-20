@@ -119,7 +119,7 @@ function LoginPage() {
               <label className="block">
                 <div className="mb-1.5 flex items-center justify-between">
                   <span className="text-[12px] font-medium text-black/70">Password</span>
-                  <a href="#" className="text-[12px] text-black/45 hover:text-black">Forgot password?</a>
+                  <Link to="/forgot-password" className="text-[12px] text-black/45 hover:text-black">Forgot password?</Link>
                 </div>
                 <input
                   type="password"

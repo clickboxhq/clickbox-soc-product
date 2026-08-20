@@ -769,13 +769,8 @@ export function Footer() {
           ))}
         </div>
 
-        <div className="mt-16 flex flex-wrap items-center justify-between gap-4 border-t border-white/8 pt-6 text-[11.5px] text-white/35">
+        <div className="mt-16 border-t border-white/8 pt-6 text-[11.5px] text-white/35">
           <div>© 2026 ThreatLens</div>
-          <div className="flex items-center gap-5">
-            <a href="#" className="transition-colors hover:text-white">Twitter</a>
-            <a href="#" className="transition-colors hover:text-white">LinkedIn</a>
-            <a href="#" className="transition-colors hover:text-white">GitHub</a>
-          </div>
         </div>
       </div>
     </footer>
