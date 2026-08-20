@@ -121,15 +121,25 @@ export function Nav() {
           <BrandLockup />
         </a>
         <nav className="hidden items-center gap-1 md:flex">
-          {NAV_LINKS.map(([l, h]) => (
-            <a
-              key={l}
-              href={h}
-              className="rounded-md px-3 py-1.5 text-[13px] text-white/60 transition-colors duration-200 hover:bg-white/[0.05] hover:text-white"
-            >
-              {l}
-            </a>
-          ))}
+          {NAV_LINKS.map(([l, h]) =>
+            h.startsWith("/") ? (
+              <Link
+                key={l}
+                to={h}
+                className="rounded-md px-3 py-1.5 text-[13px] text-white/60 transition-colors duration-200 hover:bg-white/[0.05] hover:text-white"
+              >
+                {l}
+              </Link>
+            ) : (
+              <a
+                key={l}
+                href={h}
+                className="rounded-md px-3 py-1.5 text-[13px] text-white/60 transition-colors duration-200 hover:bg-white/[0.05] hover:text-white"
+              >
+                {l}
+              </a>
+            ),
+          )}
         </nav>
         <div className="hidden items-center gap-1.5 md:flex">
           <Link
@@ -158,16 +168,27 @@ export function Nav() {
       {menuOpen && (
         <div className="border-t border-white/8 px-6 pb-6 pt-2 md:hidden">
           <nav className="flex flex-col">
-            {NAV_LINKS.map(([l, h]) => (
-              <a
-                key={l}
-                href={h}
-                onClick={() => setMenuOpen(false)}
-                className="rounded-md px-2 py-3 text-[15px] text-white/75 transition-colors hover:bg-white/[0.05] hover:text-white"
-              >
-                {l}
-              </a>
-            ))}
+            {NAV_LINKS.map(([l, h]) =>
+              h.startsWith("/") ? (
+                <Link
+                  key={l}
+                  to={h}
+                  onClick={() => setMenuOpen(false)}
+                  className="rounded-md px-2 py-3 text-[15px] text-white/75 transition-colors hover:bg-white/[0.05] hover:text-white"
+                >
+                  {l}
+                </Link>
+              ) : (
+                <a
+                  key={l}
+                  href={h}
+                  onClick={() => setMenuOpen(false)}
+                  className="rounded-md px-2 py-3 text-[15px] text-white/75 transition-colors hover:bg-white/[0.05] hover:text-white"
+                >
+                  {l}
+                </a>
+              ),
+            )}
           </nav>
           <div className="mt-3 flex flex-col gap-2 border-t border-white/8 pt-4">
             <Link
