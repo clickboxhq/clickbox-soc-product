@@ -112,6 +112,38 @@ export function DemoSection({
   );
 }
 
+/**
+ * Wraps a full-size product demo so mobile gets a tall, cropped "peek" into
+ * it (masked with overflow + a fade, gently tilted) instead of the demo's
+ * own responsive layout collapsing into a long, fully-stacked column. The
+ * demo itself is untouched and stays a single mounted instance — only the
+ * viewport window around it changes below `lg`.
+ */
+export function MobileDemoCrop({
+  children,
+  bleed = false,
+}: {
+  children: ReactNode;
+  bleed?: boolean;
+}) {
+  return (
+    <div className="relative">
+      <div
+        className={`max-h-[460px] -rotate-1 overflow-hidden rounded-2xl lg:max-h-none lg:rotate-0 lg:overflow-visible lg:rounded-none ${
+          bleed ? "-mr-5 sm:-mr-8 lg:mr-0" : ""
+        }`}
+      >
+        {children}
+      </div>
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-28 rounded-b-2xl lg:hidden"
+        style={{ background: "linear-gradient(180deg, transparent, #000)" }}
+      />
+    </div>
+  );
+}
+
 export function Pill({
   tone = "muted",
   children,

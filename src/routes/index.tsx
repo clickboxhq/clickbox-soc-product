@@ -29,7 +29,7 @@ import {
 } from "lucide-react";
 
 import { CommandCenter, InvestigationWorkspace, ExecutiveDashboard, ProofStrip } from "@/components/soc/marketing/demos";
-import { DemoSection, DemoIntro } from "@/components/soc/marketing/chrome";
+import { DemoSection, DemoIntro, MobileDemoCrop } from "@/components/soc/marketing/chrome";
 import { Pathways, Schematic } from "@/components/soc/marketing/art";
 import { Mark, BrandLockup } from "@/components/soc/marketing/brand";
 import { CountUp } from "@/components/soc/ui/count-up";
@@ -117,7 +117,6 @@ export function Nav() {
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3.5">
         <a href="/" className="flex items-center gap-2.5" style={displayFont}>
-          <Mark />
           <BrandLockup />
         </a>
         <nav className="hidden items-center gap-1 md:flex">
@@ -268,7 +267,9 @@ function Hero() {
                 }}
               />
               <div className="rounded-2xl shadow-[0_60px_140px_-40px_rgba(0,0,0,0.85)]">
-                <CommandCenter />
+                <MobileDemoCrop bleed>
+                  <CommandCenter />
+                </MobileDemoCrop>
               </div>
             </div>
           </Reveal>
@@ -769,8 +770,14 @@ export function Footer() {
           ))}
         </div>
 
-        <div className="mt-16 border-t border-white/8 pt-6 text-[11.5px] text-white/35">
+        <div className="mt-16 flex flex-wrap items-center justify-between gap-4 border-t border-white/8 pt-6 text-[11.5px] text-white/35">
           <div>© 2026 ThreatLens</div>
+          <div className="flex items-center gap-2.5">
+            <span className="inline-flex h-5 w-6 shrink-0 items-center justify-center overflow-hidden rounded bg-black">
+              <img src="/clickbox-logo.png" alt="ClickBox" className="size-full object-contain p-0.5" />
+            </span>
+            <span>ThreatLens by ClickBox</span>
+          </div>
         </div>
       </div>
     </footer>
@@ -796,7 +803,9 @@ function HomeDemos() {
           body="Evidence, timeline, and case notes in one workspace."
         />
         <Reveal className="mt-14">
-          <InvestigationWorkspace />
+          <MobileDemoCrop>
+            <InvestigationWorkspace />
+          </MobileDemoCrop>
         </Reveal>
       </DemoSection>
 
@@ -811,7 +820,9 @@ function HomeDemos() {
           body="Score trend and mastery — for you, or a whole cohort."
         />
         <Reveal className="mt-14">
-          <ExecutiveDashboard />
+          <MobileDemoCrop>
+            <ExecutiveDashboard />
+          </MobileDemoCrop>
         </Reveal>
       </DemoSection>
     </div>
