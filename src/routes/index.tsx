@@ -117,6 +117,7 @@ export function Nav() {
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3.5">
         <a href="/" className="flex items-center gap-2.5" style={displayFont}>
+          <Mark />
           <BrandLockup />
         </a>
         <nav className="hidden items-center gap-1 md:flex">
