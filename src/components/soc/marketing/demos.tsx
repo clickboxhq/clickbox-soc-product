@@ -117,7 +117,7 @@ function CommandCenter() {
 
   return (
     <div ref={ref}>
-      <AppWindow path="clickbox.io / command-center">
+      <AppWindow path="threatlensapp.com / console">
         <div className="grid grid-cols-1 lg:grid-cols-[188px_minmax(0,1fr)]">
           {/* sidebar */}
           <div className="hidden border-r border-white/8 bg-black/40 p-3 lg:block">
@@ -433,7 +433,7 @@ function InvestigationWorkspace() {
 
   return (
     <div ref={ref}>
-      <AppWindow path="clickbox.io / investigations / INC-42188">
+      <AppWindow path="threatlensapp.com / investigations / INC-42188">
         <div className="flex flex-wrap items-center gap-3 border-b border-white/8 px-4 py-3">
           <div
             className="text-[11px] text-white/40"
@@ -661,7 +661,7 @@ function CorrelationEngine() {
   return (
     <div ref={ref} className="relative">
       <Glow className="-inset-x-24 -inset-y-24 rounded-full" intensity={0.14} />
-      <AppWindow path="clickbox.io / correlation-engine">
+      <AppWindow path="threatlensapp.com / correlation">
         <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1.55fr)_minmax(0,1fr)]">
           <div className="relative border-white/8 lg:border-r">
             <svg viewBox="0 0 780 580" className="h-full w-full">
@@ -1023,7 +1023,7 @@ function ExecutiveDashboard() {
 
   return (
     <div ref={ref}>
-      <AppWindow path="clickbox.io / progress" live={false}>
+      <AppWindow path="threatlensapp.com / progress" live={false}>
         <div className="flex items-center gap-3 border-b border-white/8 px-4 py-3">
           <div className="text-[13.5px] font-medium text-white">
             Your progress — 12 cases completed

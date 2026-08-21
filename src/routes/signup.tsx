@@ -177,7 +177,7 @@ function SignupPage() {
               onSubmit={(e) => {
                 e.preventDefault();
                 setAccountType(type, type === "organization" ? orgName || "My Organization" : undefined);
-                navigate({ to: "/app" });
+                navigate({ to: "/welcome" });
               }}
             >
               <label className="block">

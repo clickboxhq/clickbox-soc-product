@@ -123,6 +123,9 @@ type SocState = {
   accountName: string;
   setAccountType: (type: AccountType, name?: string) => void;
 
+  onboardingCompleted: boolean;
+  completeOnboarding: () => void;
+
   alerts: Alert[];
   incidents: Incident[];
   identities: Identity[];
@@ -283,6 +286,9 @@ export const useSoc = create<SocState>()(
           accountType: type,
           accountName: name ?? (type === "organization" ? "My Organization" : "Personal Workspace"),
         })),
+
+      onboardingCompleted: false,
+      completeOnboarding: () => set(() => ({ onboardingCompleted: true })),
 
       setAlertStatus: (id, status) =>
         set((s) => ({ alerts: s.alerts.map((a) => (a.id === id ? { ...a, status } : a)) })),

@@ -11,6 +11,7 @@ import {
 
 import { MarketingPage, Section } from "@/components/soc/marketing/page-shell";
 import { InvestigationWorkspace } from "@/components/soc/marketing/demos";
+import { MobileDemoCrop } from "@/components/soc/marketing/chrome";
 import { Schematic } from "@/components/soc/marketing/art";
 import { Reveal, SectionHead, displayFont, monoFont } from "@/components/soc/marketing/atmos";
 
@@ -95,7 +96,9 @@ function InvestigationsPage() {
           title="Your Personal Workspace"
         />
         <Reveal className="mt-12">
-          <InvestigationWorkspace />
+          <MobileDemoCrop>
+            <InvestigationWorkspace />
+          </MobileDemoCrop>
         </Reveal>
       </Section>
     </MarketingPage>

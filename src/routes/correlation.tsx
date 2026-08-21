@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react";
 
 import { MarketingPage, Section } from "@/components/soc/marketing/page-shell";
 import { CorrelationEngine } from "@/components/soc/marketing/demos";
+import { MobileDemoCrop } from "@/components/soc/marketing/chrome";
 import { Correlation } from "@/components/soc/marketing/narrative";
 import { Reveal, SectionHead, displayFont, monoFont } from "@/components/soc/marketing/atmos";
 
@@ -60,7 +61,9 @@ function CorrelationPage() {
           sub="Identity, endpoint, email, cloud, and network events remain independent until you establish the relationship between them. Learn to move beyond individual alerts and identify the sequence, dependencies, and relationships that reveal an incident."
         />
         <Reveal className="mt-14">
-          <CorrelationEngine />
+          <MobileDemoCrop>
+            <CorrelationEngine />
+          </MobileDemoCrop>
         </Reveal>
       </Section>
 

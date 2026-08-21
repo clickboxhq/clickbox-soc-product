@@ -3,6 +3,7 @@ import { ArrowRight, ClipboardCheck, MessageSquare, Presentation, Users } from "
 
 import { MarketingPage, Section } from "@/components/soc/marketing/page-shell";
 import { ExecutiveDashboard } from "@/components/soc/marketing/demos";
+import { MobileDemoCrop } from "@/components/soc/marketing/chrome";
 import { Reveal, SectionHead, displayFont, monoFont } from "@/components/soc/marketing/atmos";
 
 export const Route = createFileRoute("/instructors")({
@@ -72,7 +73,9 @@ function InstructorsPage() {
           sub="Score trend, technique mastery, and case history — for one learner, or a whole cohort."
         />
         <Reveal className="mt-14">
-          <ExecutiveDashboard />
+          <MobileDemoCrop>
+            <ExecutiveDashboard />
+          </MobileDemoCrop>
         </Reveal>
       </Section>
 

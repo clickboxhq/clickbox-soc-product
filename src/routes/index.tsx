@@ -547,129 +547,208 @@ function ProductEcosystem() {
 
 /* ----------------------------- PRICING ----------------------------- */
 
-const TIERS = [
-  {
-    name: "Individual",
-    price: "Free",
-    cta: "Start investigating",
-    ctaHref: "/signup",
-    body: "For anyone building the investigation reps a certification alone can't teach.",
-    features: [
-      "Unlimited scenarios",
-      "All investigation portals",
-      "MITRE ATT&CK mapping & scoring",
-      "Progress dashboard",
-      "Community support",
-    ],
-  },
-  {
-    name: "Institutions & Teams",
-    featured: true,
-    price: "Contact sales",
-    cta: "Let's Talk",
-    ctaHref: "mailto:info@useclickbox.com",
-    body: "For bootcamps, universities, and companies onboarding a cohort at once.",
-    features: [
-      "Unlimited students/analysts",
-      "Cohort rostering & instructor tools",
-      "Custom scenario packs",
-      "LMS & gradebook integration",
-      "Dedicated support",
-    ],
-  },
+const INDIVIDUAL_FEATURES = [
+  "Unlimited investigation scenarios",
+  "Identity, endpoint, email & cloud investigation",
+  "MITRE ATT&CK mapping",
+  "Evidence-based scoring",
+  "Investigation notes & timeline building",
+  "Progress dashboard & investigation history",
+  "Learning paths & certificates",
 ];
 
+const ORG_FEATURES = [
+  "Multiple learner accounts",
+  "Cohort management & instructor dashboard",
+  "Assign investigations & monitor progress",
+  "Performance analytics & investigation scoring",
+  "Custom scenario packs",
+  "Reporting & instructor feedback",
+  "Organization workspace & support",
+];
+
+const ENTERPRISE_FEATURES = [
+  "SSO & advanced RBAC",
+  "Large-scale user management",
+  "Custom scenario & learning-path development",
+  "Advanced analytics",
+  "LMS & gradebook integration",
+  "Dedicated support & custom deployment",
+];
+
+function PricingCard({
+  name,
+  badge,
+  price,
+  priceNote,
+  body,
+  features,
+  cta,
+  ctaHref,
+  featured,
+  delay,
+}: {
+  name: string;
+  badge?: string;
+  price: string;
+  priceNote?: string;
+  body: string;
+  features: string[];
+  cta: string;
+  ctaHref: string;
+  featured?: boolean;
+  delay: number;
+}) {
+  return (
+    <Reveal delay={delay}>
+      <div
+        className="glass-card-dark relative flex h-full flex-col overflow-hidden p-8"
+        style={{
+          borderColor: featured
+            ? "color-mix(in oklab, var(--primary) 45%, transparent)"
+            : undefined,
+          background: featured
+            ? "linear-gradient(180deg, color-mix(in oklab, var(--primary) 12%, transparent), transparent 55%), #0A0A0A"
+            : undefined,
+        }}
+      >
+        <div className="flex items-center justify-between">
+          <div className="text-[14px] font-semibold text-white" style={displayFont}>
+            {name}
+          </div>
+          {badge && (
+            <span
+              className="rounded-full px-2 py-0.5 text-[10px] font-medium uppercase tracking-[0.16em]"
+              style={{
+                background: "color-mix(in oklab, var(--primary) 18%, transparent)",
+                color: "color-mix(in oklab, var(--primary) 92%, white)",
+              }}
+            >
+              {badge}
+            </span>
+          )}
+        </div>
+        <div className="mt-3 flex items-baseline gap-2">
+          <span className="text-[24px] font-semibold text-white" style={displayFont}>
+            {price}
+          </span>
+        </div>
+        {priceNote && (
+          <div className="mt-1 text-[12px] text-white/45" style={monoFont}>
+            {priceNote}
+          </div>
+        )}
+        <p className="mt-3 text-[13px] leading-[1.6] text-white/50">{body}</p>
+        <ul className="mt-6 space-y-2.5 text-[13px]">
+          {features.map((f) => (
+            <li key={f} className="flex items-start gap-2.5 text-white/75">
+              <span
+                className="mt-[7px] size-1.5 shrink-0 rounded-full"
+                style={{ background: "var(--primary)" }}
+              />
+              {f}
+            </li>
+          ))}
+        </ul>
+        <div className="flex-1" />
+        {ctaHref.startsWith("/") ? (
+          <Link
+            to={ctaHref}
+            className={featured ? "btn-primary mt-8 w-full justify-center" : "btn-ghost mt-8 w-full justify-center"}
+          >
+            {cta} <ArrowRight className="size-3.5" />
+          </Link>
+        ) : (
+          <a
+            href={ctaHref}
+            className={featured ? "btn-primary mt-8 w-full justify-center" : "btn-ghost mt-8 w-full justify-center"}
+          >
+            {cta} <ArrowRight className="size-3.5" />
+          </a>
+        )}
+      </div>
+    </Reveal>
+  );
+}
+
 function Pricing() {
+  const [billing, setBilling] = useState<"monthly" | "annual">("monthly");
+
   return (
     <section id="pricing" style={{ background: "#000000", color: "#EDEDED" }}>
       <div className="relative mx-auto max-w-7xl px-6 py-24">
-      <SectionHead
-        eyebrow="Pricing"
-        title="Start free. Scale when your team is ready."
-        sub="Free for individuals. Custom-priced for cohorts and institutions."
-      />
+        <SectionHead
+          eyebrow="Pricing"
+          title="Practice the skill. Build the analyst."
+          sub="Start with a 7-day trial and continue with a subscription built for continuous investigation practice. Teams and institutions get dedicated tools for managing learners, cohorts, and outcomes."
+        />
 
-      <div className="mt-12 grid grid-cols-1 gap-4 md:grid-cols-2">
-        {TIERS.map((t, i) => (
-          <Reveal key={t.name} delay={i * 80}>
-            <div
-              className="glass-card-dark relative h-full overflow-hidden p-8"
-              style={{
-                borderColor: t.featured
-                  ? "color-mix(in oklab, var(--primary) 45%, transparent)"
-                  : undefined,
-                background: t.featured
-                  ? "linear-gradient(180deg, color-mix(in oklab, var(--primary) 12%, transparent), transparent 55%), #0A0A0A"
-                  : undefined,
-              }}
-            >
-              <div className="flex items-center justify-between">
-                <div
-                  className="text-[14px] font-semibold text-white"
-                  style={displayFont}
+        <Reveal delay={40}>
+          <div className="mt-10 flex justify-center">
+            <div className="inline-flex items-center gap-1 rounded-full border border-white/10 bg-white/[0.03] p-1">
+              {(["monthly", "annual"] as const).map((period) => (
+                <button
+                  key={period}
+                  type="button"
+                  onClick={() => setBilling(period)}
+                  className="rounded-full px-4 py-1.5 text-[13px] font-medium capitalize transition-colors"
+                  style={{
+                    background: billing === period ? "#fff" : "transparent",
+                    color: billing === period ? "#0A0C0F" : "rgba(255,255,255,0.6)",
+                  }}
                 >
-                  {t.name}
-                </div>
-                {t.featured && (
-                  <span
-                    className="rounded-full px-2 py-0.5 text-[10px] font-medium uppercase tracking-[0.16em]"
-                    style={{
-                      background:
-                        "color-mix(in oklab, var(--primary) 18%, transparent)",
-                      color: "color-mix(in oklab, var(--primary) 92%, white)",
-                    }}
-                  >
-                    Most cohorts
-                  </span>
-                )}
-              </div>
-              <div
-                className="mt-3 text-[24px] font-semibold text-white"
-                style={displayFont}
-              >
-                {t.price}
-              </div>
-              <p className="mt-2 text-[13px] leading-[1.6] text-white/50">
-                {t.body}
-              </p>
-              <ul className="mt-6 space-y-2.5 text-[13px]">
-                {t.features.map((f) => (
-                  <li key={f} className="flex items-start gap-2.5 text-white/75">
-                    <span
-                      className="mt-[7px] size-1.5 shrink-0 rounded-full"
-                      style={{ background: "var(--primary)" }}
-                    />
-                    {f}
-                  </li>
-                ))}
-              </ul>
-              {t.ctaHref.startsWith("/") ? (
-                <Link
-                  to={t.ctaHref}
-                  className={
-                    t.featured
-                      ? "btn-primary mt-8 w-full justify-center"
-                      : "btn-ghost mt-8 w-full justify-center"
-                  }
-                >
-                  {t.cta} <ArrowRight className="size-3.5" />
-                </Link>
-              ) : (
-                <a
-                  href={t.ctaHref}
-                  className={
-                    t.featured
-                      ? "btn-primary mt-8 w-full justify-center"
-                      : "btn-ghost mt-8 w-full justify-center"
-                  }
-                >
-                  {t.cta} <ArrowRight className="size-3.5" />
-                </a>
-              )}
+                  {period}
+                </button>
+              ))}
             </div>
-          </Reveal>
-        ))}
-      </div>
+          </div>
+        </Reveal>
+
+        <div className="mt-10 grid grid-cols-1 gap-4 lg:grid-cols-3">
+          {billing === "monthly" ? (
+            <PricingCard
+              name="Individual"
+              price="$19/month"
+              priceNote="7-day free trial"
+              body="For individuals building real SOC investigation skill."
+              features={INDIVIDUAL_FEATURES}
+              cta="Start 7-Day Trial"
+              ctaHref="/signup"
+              delay={0}
+            />
+          ) : (
+            <PricingCard
+              name="Individual"
+              price="$190/year"
+              priceNote="Save ~17% · 7-day free trial"
+              body="For individuals building real SOC investigation skill."
+              features={INDIVIDUAL_FEATURES}
+              cta="Start Annual Plan"
+              ctaHref="/signup"
+              delay={0}
+            />
+          )}
+          <PricingCard
+            name="Organizations & Institutions"
+            badge="Most cohorts"
+            featured
+            price="Starting at $199/month"
+            body="For teams, cohorts, universities, bootcamps and training programs."
+            features={ORG_FEATURES}
+            cta="Let's Talk"
+            ctaHref="mailto:info@useclickbox.com"
+            delay={80}
+          />
+          <PricingCard
+            name="Enterprise"
+            price="Custom"
+            body="For organizations requiring scale, integrations, custom programs and enterprise support."
+            features={ENTERPRISE_FEATURES}
+            cta="Let's Talk"
+            ctaHref="mailto:info@useclickbox.com"
+            delay={160}
+          />
+        </div>
       </div>
     </section>
   );
@@ -681,7 +760,6 @@ const FOOTER_COLS = [
   {
     title: "Platform",
     links: [
-      { l: "Console", h: "/app" },
       { l: "Investigations", h: "/investigations" },
       { l: "Correlation", h: "/correlation" },
       { l: "Scoring", h: "/scoring" },
