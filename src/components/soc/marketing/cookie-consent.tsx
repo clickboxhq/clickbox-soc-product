@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { Cookie, X } from "lucide-react";
 import { Link } from "@tanstack/react-router";
-import { monoFont } from "./atmos";
 
 const STORAGE_KEY = "threatlens:cookie-consent";
 
@@ -26,6 +25,9 @@ function writeConsent(consent: Consent) {
   window.localStorage.setItem(STORAGE_KEY, JSON.stringify(consent));
 }
 
+/** Dispatch this to reopen the banner from anywhere (e.g. a "Cookie Settings" footer link). */
+export const OPEN_COOKIE_SETTINGS_EVENT = "open-cookie-settings";
+
 export function CookieConsent() {
   const [visible, setVisible] = useState(false);
   const [managing, setManaging] = useState(false);
@@ -34,6 +36,17 @@ export function CookieConsent() {
 
   useEffect(() => {
     setVisible(!readConsent());
+    const reopen = () => {
+      const existing = readConsent();
+      if (existing) {
+        setAnalytics(existing.analytics);
+        setMarketing(existing.marketing);
+      }
+      setManaging(true);
+      setVisible(true);
+    };
+    window.addEventListener(OPEN_COOKIE_SETTINGS_EVENT, reopen);
+    return () => window.removeEventListener(OPEN_COOKIE_SETTINGS_EVENT, reopen);
   }, []);
 
   if (!visible) return null;
@@ -112,13 +125,6 @@ export function CookieConsent() {
               Manage Preferences
             </button>
           )}
-          <button
-            onClick={() => decide({ essential: true, analytics: false, marketing: false })}
-            className="ml-1 text-[12.5px] text-white/45 underline underline-offset-2 transition-colors hover:text-white/70"
-            style={monoFont}
-          >
-            Reject non-essential
-          </button>
         </div>
       </div>
     </div>

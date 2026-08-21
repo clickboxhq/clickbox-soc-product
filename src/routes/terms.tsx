@@ -62,7 +62,7 @@ function TermsPage() {
       <Section tone="light">
         <div className="max-w-3xl space-y-9">
           {SECTIONS.map((s) => (
-            <div key={s.h}>
+            <div key={s.h} id={s.h === "Acceptable use" ? "acceptable-use" : undefined}>
               <h2 className="text-[16px] font-semibold text-[#0A0C0F]" style={displayFont}>{s.h}</h2>
               <p className="mt-2 text-[14px] leading-[1.75] text-black/60">{s.b}</p>
             </div>
