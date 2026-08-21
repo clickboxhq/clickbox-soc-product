@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { MarketingPage, Section } from "@/components/soc/marketing/page-shell";
 import { displayFont, monoFont } from "@/components/soc/marketing/atmos";
 
@@ -13,6 +13,10 @@ export const Route = createFileRoute("/privacy")({
 });
 
 const SECTIONS = [
+  {
+    h: "About this policy",
+    b: "ThreatLens is a product operated by ClickBox (\"ClickBox,\" \"we,\" \"us,\" \"our\"). This policy explains how ClickBox collects, uses, and protects data through the ThreatLens platform.",
+  },
   {
     h: "What we collect",
     b: "Account information you provide (name, email, organization name if applicable), usage data (pages visited, features used, scenario progress), and cookies as described below. Investigation scenarios use synthetic, generated telemetry — never real third-party security data.",
@@ -60,7 +64,19 @@ function PrivacyPage() {
           {SECTIONS.map((s) => (
             <div key={s.h}>
               <h2 className="text-[16px] font-semibold text-[#0A0C0F]" style={displayFont}>{s.h}</h2>
-              <p className="mt-2 text-[14px] leading-[1.75] text-black/60">{s.b}</p>
+              <p className="mt-2 text-[14px] leading-[1.75] text-black/60">
+                {s.b}
+                {s.h === "Cookies" && (
+                  <>
+                    {" "}
+                    See our{" "}
+                    <Link to="/cookies" className="text-[#0A0C0F] underline underline-offset-2">
+                      Cookie Policy
+                    </Link>{" "}
+                    for the full list of cookies we use.
+                  </>
+                )}
+              </p>
             </div>
           ))}
           <div>

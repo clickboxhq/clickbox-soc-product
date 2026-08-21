@@ -14,6 +14,10 @@ export const Route = createFileRoute("/terms")({
 
 const SECTIONS = [
   {
+    h: "About ThreatLens",
+    b: "ThreatLens is a product operated by ClickBox (\"ClickBox,\" \"we,\" \"us,\" \"our\"). By creating an account or otherwise using ThreatLens, you're entering into this agreement with ClickBox as the operating company.",
+  },
+  {
     h: "Using ThreatLens",
     b: "ThreatLens is a training platform: a simulated environment for practicing SOC investigation skills against synthetic, generated telemetry. It is not a security monitoring product and should not be used to investigate real, live incidents.",
   },
@@ -31,7 +35,7 @@ const SECTIONS = [
   },
   {
     h: "Intellectual property",
-    b: "Scenarios, telemetry generation, scoring logic, and platform content belong to ThreatLens. Your own case notes and submissions remain yours; we use them only to operate and improve the platform.",
+    b: "Scenarios, telemetry generation, scoring logic, and platform content belong to ClickBox. Your own case notes and submissions remain yours; we use them only to operate and improve the platform.",
   },
   {
     h: "Termination",

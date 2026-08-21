@@ -22,6 +22,7 @@ import { Route as InstructorsRouteImport } from './routes/instructors'
 import { Route as InstitutionsRouteImport } from './routes/institutions'
 import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
 import { Route as CorrelationRouteImport } from './routes/correlation'
+import { Route as CookiesRouteImport } from './routes/cookies'
 import { Route as AppRouteImport } from './routes/app'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AppIndexRouteImport } from './routes/app.index'
@@ -120,6 +121,11 @@ const ForgotPasswordRoute = ForgotPasswordRouteImport.update({
 const CorrelationRoute = CorrelationRouteImport.update({
   id: '/correlation',
   path: '/correlation',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CookiesRoute = CookiesRouteImport.update({
+  id: '/cookies',
+  path: '/cookies',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AppRoute = AppRouteImport.update({
@@ -296,6 +302,7 @@ const AppCasesIdRoute = AppCasesIdRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/app': typeof AppRouteWithChildren
+  '/cookies': typeof CookiesRoute
   '/correlation': typeof CorrelationRoute
   '/forgot-password': typeof ForgotPasswordRoute
   '/institutions': typeof InstitutionsRoute
@@ -344,6 +351,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/cookies': typeof CookiesRoute
   '/correlation': typeof CorrelationRoute
   '/forgot-password': typeof ForgotPasswordRoute
   '/institutions': typeof InstitutionsRoute
@@ -394,6 +402,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/app': typeof AppRouteWithChildren
+  '/cookies': typeof CookiesRoute
   '/correlation': typeof CorrelationRoute
   '/forgot-password': typeof ForgotPasswordRoute
   '/institutions': typeof InstitutionsRoute
@@ -445,6 +454,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/app'
+    | '/cookies'
     | '/correlation'
     | '/forgot-password'
     | '/institutions'
@@ -493,6 +503,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/cookies'
     | '/correlation'
     | '/forgot-password'
     | '/institutions'
@@ -542,6 +553,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/app'
+    | '/cookies'
     | '/correlation'
     | '/forgot-password'
     | '/institutions'
@@ -592,6 +604,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AppRoute: typeof AppRouteWithChildren
+  CookiesRoute: typeof CookiesRoute
   CorrelationRoute: typeof CorrelationRoute
   ForgotPasswordRoute: typeof ForgotPasswordRoute
   InstitutionsRoute: typeof InstitutionsRoute
@@ -699,6 +712,13 @@ declare module '@tanstack/react-router' {
       path: '/correlation'
       fullPath: '/correlation'
       preLoaderRoute: typeof CorrelationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cookies': {
+      id: '/cookies'
+      path: '/cookies'
+      fullPath: '/cookies'
+      preLoaderRoute: typeof CookiesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/app': {
@@ -1015,6 +1035,7 @@ const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AppRoute: AppRouteWithChildren,
+  CookiesRoute: CookiesRoute,
   CorrelationRoute: CorrelationRoute,
   ForgotPasswordRoute: ForgotPasswordRoute,
   InstitutionsRoute: InstitutionsRoute,

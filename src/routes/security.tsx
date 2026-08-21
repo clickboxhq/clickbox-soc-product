@@ -44,11 +44,12 @@ function SecurityPage() {
           Security is built into the platform architecture.
         </h1>
         <p className="mt-4 max-w-xl text-[14.5px] leading-[1.7] text-white/55">
-          ThreatLens is designed for security investigation training using
-          synthetic telemetry rather than real customer security data. The
-          platform architecture follows the same principles of isolation,
-          access control, data protection, and operational security
-          expected from modern enterprise software.
+          ThreatLens, a product operated by ClickBox, is designed for
+          security investigation training using synthetic telemetry rather
+          than real customer security data. The platform architecture
+          follows the same principles of isolation, access control, data
+          protection, and operational security expected from modern
+          enterprise software.
         </p>
         <p className="mt-3 max-w-xl text-[13px] leading-[1.7] text-white/40">
           This page describes the platform's security architecture and
