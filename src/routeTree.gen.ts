@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AppRouteImport } from './routes/app'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CookiesRouteImport } from './routes/cookies'
 import { Route as CorrelationRouteImport } from './routes/correlation'
 import { Route as DataProcessingRouteImport } from './routes/data-processing'
@@ -68,6 +69,11 @@ const IndexRoute = IndexRouteImport.update({
 const AppRoute = AppRouteImport.update({
   id: '/app',
   path: '/app',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CookiesRoute = CookiesRouteImport.update({
@@ -314,6 +320,7 @@ const AppCasesIdRoute = AppCasesIdRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/app': typeof AppRouteWithChildren
+  '/contact': typeof ContactRoute
   '/cookies': typeof CookiesRoute
   '/correlation': typeof CorrelationRoute
   '/data-processing': typeof DataProcessingRoute
@@ -365,6 +372,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
   '/cookies': typeof CookiesRoute
   '/correlation': typeof CorrelationRoute
   '/data-processing': typeof DataProcessingRoute
@@ -418,6 +426,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/app': typeof AppRouteWithChildren
+  '/contact': typeof ContactRoute
   '/cookies': typeof CookiesRoute
   '/correlation': typeof CorrelationRoute
   '/data-processing': typeof DataProcessingRoute
@@ -472,6 +481,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/app'
+    | '/contact'
     | '/cookies'
     | '/correlation'
     | '/data-processing'
@@ -523,6 +533,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/contact'
     | '/cookies'
     | '/correlation'
     | '/data-processing'
@@ -575,6 +586,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/app'
+    | '/contact'
     | '/cookies'
     | '/correlation'
     | '/data-processing'
@@ -628,6 +640,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AppRoute: typeof AppRouteWithChildren
+  ContactRoute: typeof ContactRoute
   CookiesRoute: typeof CookiesRoute
   CorrelationRoute: typeof CorrelationRoute
   DataProcessingRoute: typeof DataProcessingRoute
@@ -661,6 +674,13 @@ declare module '@tanstack/react-router' {
       path: '/app'
       fullPath: '/app'
       preLoaderRoute: typeof AppRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/cookies': {
@@ -1075,6 +1095,7 @@ const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AppRoute: AppRouteWithChildren,
+  ContactRoute: ContactRoute,
   CookiesRoute: CookiesRoute,
   CorrelationRoute: CorrelationRoute,
   DataProcessingRoute: DataProcessingRoute,

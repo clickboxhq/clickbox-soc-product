@@ -120,10 +120,20 @@ export function Nav() {
       }}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3.5">
-        <a href="/" className="flex items-center gap-2.5" style={displayFont}>
+        <Link
+          to="/"
+          onClick={(e) => {
+            if (window.location.pathname === "/") {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }
+          }}
+          className="flex items-center gap-2.5"
+          style={displayFont}
+        >
           <Mark />
           <BrandLockup />
-        </a>
+        </Link>
         <nav className="hidden items-center gap-1 md:flex">
           {NAV_LINKS.map(([l, h]) => {
             const cls =
@@ -736,7 +746,7 @@ function Pricing() {
             body="For teams, cohorts, universities, bootcamps and training programs."
             features={ORG_FEATURES}
             cta="Let's Talk"
-            ctaHref="mailto:info@useclickbox.com"
+            ctaHref="/contact"
             delay={80}
           />
           <PricingCard
@@ -745,7 +755,7 @@ function Pricing() {
             body="For organizations requiring scale, integrations, custom programs and enterprise support."
             features={ENTERPRISE_FEATURES}
             cta="Let's Talk"
-            ctaHref="mailto:info@useclickbox.com"
+            ctaHref="/contact"
             delay={160}
           />
         </div>

@@ -152,6 +152,16 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+
+  // This effect only runs on a genuine full document load (initial load or
+  // browser refresh) -- RootComponent persists across client-side route
+  // transitions, so this never fires on normal in-app navigation. Without
+  // it, the router's scroll restoration can reopen a refreshed page at a
+  // previously-scrolled position instead of the top.
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <QueryClientProvider client={queryClient}>
       <Outlet />

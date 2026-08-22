@@ -64,9 +64,9 @@ function InstitutionsPage() {
         </Reveal>
         <Reveal delay={190}>
           <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <a href="mailto:info@useclickbox.com" className="btn-primary w-full sm:w-auto">
+            <Link to="/contact" className="btn-primary w-full sm:w-auto">
               Let's Talk <ArrowRight className="size-4" />
-            </a>
+            </Link>
           </div>
         </Reveal>
       </Section>
@@ -111,9 +111,9 @@ function InstitutionsPage() {
           <Link to="/instructors" className="btn-primary w-full sm:w-auto">
             For instructors <ArrowRight className="size-4" />
           </Link>
-          <a href="mailto:info@useclickbox.com" className="btn-ghost-light w-full sm:w-auto">
+          <Link to="/contact" className="btn-ghost-light w-full sm:w-auto">
             Let's Talk
-          </a>
+          </Link>
         </div>
       </Section>
     </MarketingPage>
